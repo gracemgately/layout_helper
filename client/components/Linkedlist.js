@@ -2,22 +2,17 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
-import { logout } from '../store'
-import {RightArrow} from '../components'
+import {RightArrow, createNode} from '../components'
 
+
+//COMPONENT
 const Linkedlist = (props) => {
 
-  const deleteItem = 43;
-  const arr = [1, 2, 43, 23, 67, 78, 79];
-  console.log('rightarrow ', RightArrow());
+  var arr = props.nodes;
 
-  return (
+  return ( 
     <div>
     <form>
-      <label>
-
-        <input type="number" />
-      </label>
       <input type="submit" value="Submit" />
     </form>
 
@@ -45,30 +40,26 @@ const Linkedlist = (props) => {
 //   return ()
 // }
 
-const createNode = (data) => {
-  return (
-
-    <svg>
-      <circle className="circle1" cx="25" cy="25" r="25"> </circle>
-
-      <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{data}</text>
-
-      </svg>
-
- );
-}
-
-// const createRightArrow = (data) => {
-//   return (
-//     <p className="arrowsize">
-//       {'\u27f6'}
-//     </p>
-//   )
-// }
 
   // handleSubmit(event) {
   //   alert('A name was submitted: ' + this.state.value);
   //   event.preventDefault();
   // }
 
-export default Linkedlist;
+/**
+ * CONTAINER
+ */
+const mapState = (state) => {
+  return {
+    nodes: state.node
+  }
+}
+
+const mapDispatch = (state) => {
+  console.log('here is state', state)
+  return {
+    values: state.user.email
+  }
+}
+
+export default connect(mapState, null)(Linkedlist);
