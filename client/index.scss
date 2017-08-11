@@ -19,3 +19,21 @@ body {
     display: inline-block;
   }
 }
+
+.circle1 {
+
+  fill: none;
+  border: 5px;
+  stroke: black;
+
+}
+
+.container {
+  display:flex;
+}
+
+.arrowsize {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+}
