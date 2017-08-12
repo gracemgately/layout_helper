@@ -46,8 +46,8 @@ export default function (state = initialState, action) {
       //new node -- this should also work with the head node (don't)
       //know how to do this with the spread operator :( )
       var newState = state
-      newState[newState.length - 2] = oldLastNode;
-      newState[newState.length - 1] = newLastNode;
+      newState[newState.length - 1] = oldLastNode;
+      newState.push(newLastNode);
 
       return newState;
 
