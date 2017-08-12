@@ -1,36 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {RightArrow, createNode} from '../components'
-
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { RightArrow, createNode } from '../components'
+import AddNodeForm from './AddNodeForm';
 
 //COMPONENT
 const Linkedlist = (props) => {
 
   var arr = props.nodes;
 
-  return ( 
+  return (
     <div>
-    <form>
-      <input type="submit" value="Submit" />
-    </form>
-
-    <div className="container">
-      {
-        (arr.map(( el, idx) => {
+      <div>
+      <AddNodeForm />
+      </div>
+      <div className="container">
+        {
+          (arr.map((el, idx) => {
             return (
               <div className="basicnode" key={idx} id={idx}>
                 {createNode(el)}
-                {(idx !== arr.length-1) ?
-                RightArrow(el) : null}
+                {(idx !== arr.length - 1) ?
+                  RightArrow(el) : null}
               </div>
             )
           }))
 
-      }
+        }
+      </div>
     </div>
-  </div>
   )
 
 
@@ -40,26 +39,14 @@ const Linkedlist = (props) => {
 //   return ()
 // }
 
-
-  // handleSubmit(event) {
-  //   alert('A name was submitted: ' + this.state.value);
-  //   event.preventDefault();
-  // }
-
 /**
  * CONTAINER
  */
 const mapState = (state) => {
   return {
-    nodes: state.node
+    nodes: state.node,
   }
 }
 
-const mapDispatch = (state) => {
-  console.log('here is state', state)
-  return {
-    values: state.user.email
-  }
-}
 
-export default connect(mapState, null)(Linkedlist);
+export default connect(mapState)(Linkedlist);
