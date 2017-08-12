@@ -7,18 +7,17 @@ import { RightArrow } from '../components'
 
 export const drawNode = (node) => {
 
+  console.log('node in drawNode ', node);
+  console.log('RightArrow ', RightArrow);
   return (
-
+    <div className="basicnode">
     <svg>
       <circle className="circle1" cx="25" cy="25" r="25"> </circle>
 
       <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
-
-      {(node.next !== null) ?
-        RightArrow(node.value) : null}
-
-      </svg>
-
- );
+    </svg>
+    {(node.next !== null) ? RightArrow(node.value) : null}
+    </div>
+      );
 }
 

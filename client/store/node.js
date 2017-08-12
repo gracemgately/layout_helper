@@ -95,15 +95,21 @@ class LinkedList {
 
 // create a new linkedlist class, which will hold all the nodes
 const list = new LinkedList();
+// initialize list
+list.addToTail(1);
+list.addToTail(4);
+list.addToTail(16);
+list.addToTail(34);
 
-export default function (state = {}, action) {
+
+export default function (state = list, action) {
   switch (action.type) {
     case GET_NODE:
       return action.node
     case ADD_SINGLE_LL_NODE:
-
       list.addToTail(action.node.value);
       // console.log('list ', list);
+
       const newState = list;
 
       return newState;

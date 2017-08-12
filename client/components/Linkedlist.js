@@ -40,7 +40,7 @@ const Linkedlist = (props) => {
       {
         (nodeArr.map((node) => {
           return (
-            <div className="basicnode" key={node.value}>
+            <div key={node.value}>
               {drawNode(node)}
               {console.log('node.value ', node.value)}
             </div>
