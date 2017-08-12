@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
-import {RightArrow, createNode} from '../components'
-
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+import { drawNode } from '../components'
+import AddNodeForm from './AddNodeForm';
 
 /**
  * COMPONENT
@@ -11,59 +11,68 @@ import {RightArrow, createNode} from '../components'
 const Linkedlist = (props) => {
 
   const { nodes } = props
-  console.log(nodes);
 
-  return ( 
+  // node:LinkedList {head: Node, tail: Node}...
+
+  // create an array of linked list from 'nodes' class(object)
+
+  const nodeArr = []; // initialize empty nodeArr.  important!
+  let oldHead = nodes.head; // this is startpoint
+
+  console.log('oldHead ', oldHead);
+
+  // push nodes into arr until there is no more 'oldHead'
+  while (oldHead !== null && oldHead !== undefined) {
+    nodeArr.push(oldHead);
+    oldHead = oldHead.next || null;
+  }
+
+  console.log('nodeArr ', nodeArr);
+
+  return (
+
+
     <div>
-    <form>
-      <input type="submit" value="Submit" />
-    </form>
-
-    <div className="container">
+      <div>
+      <AddNodeForm />
+      </div>
+      <div className="container">
       {
-        (nodes.map((node, idx) => {
-            return (
-              <div className="basicnode" key={idx} id={idx}>
-                {createNode(node)}
-                {(idx !== nodes.length-1) ?
-                RightArrow(node) : null}
-              </div>
-            )
-          }))
+        (nodeArr.map((node) => {
+          return (
+            <div className="basicnode" key={node.value}>
+              {drawNode(node)}
+              {console.log('node.value ', node.value)}
+            </div>
+          )
+        }))
 
       }
+      </div>
     </div>
-  </div>
   )
 
 
 }
 
-// const deleteNode = (num) => {
-//   return ()
-// }
 
-
-  // handleSubmit(event) {
-  //   alert('A name was submitted: ' + this.state.value);
-  //   event.preventDefault();
-  // }
-
-/**
+/*
  * CONTAINER
  */
+
 const mapState = (state) => {
-  //console.log('state', state)
+  console.log('state', state)
   return {
-    nodes: state.node
+    nodes: state.node,
   }
 }
 
-const mapDispatch = (state) => {
-  //console.log('here is state', state)
-  return {
-    values: state
-  }
-}
 
-export default connect(mapState, null)(Linkedlist);
+// const mapDispatch = (state) => {
+//   //console.log('here is state', state)
+//   return {
+//     values: state
+//   }
+// }
+
+export default connect(mapState)(Linkedlist);

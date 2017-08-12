@@ -3,15 +3,16 @@ import history from '../history'
 const GET_NODE = 'GET_NODE'
 const ADD_SINGLE_LL_NODE = 'ADD_SINGLE_LL_NODE'
 
-const getNode = node => ({ type: GET_NODE, node })
-const addSingleLLNode = node => ({ type: ADD_SINGLE_LL_NODE, value })
+
+export const getNode = node => ({ type: GET_NODE, node })
+export const addSingleLLNode = node => ({ type: ADD_SINGLE_LL_NODE, node })
 
 
 //ES6 class declaration to create a node object which can have the following
 //properties (or they can be null). Based on which properties are not null,
 //we can determine what data structure and arrows??? should be rendered
 class Node {
-  constructor(value, next, previous, parent, child){
+  constructor(value, next=null, previous=null, parent=null, child=null){
     this.value = value;
     this.next = next;
     this.previous = previous;
@@ -20,34 +21,90 @@ class Node {
   }
 }
 
-//creating a headNode for the LL and setting it in the initial
-//state -- we will have to change this somehow for other DS 
-//that don't start with a head node
-const headNode = new Node('head', null, null, null, null);
+class LinkedList {
 
-const initialState = [headNode];
+  constructor() {
+    this.head = null;
+    this.tail = null;
+  }
 
-export default function (state = initialState, action) {
+  addToHead(item) {
+    const newNode = new Node(item);
+    const oldHead = this.head;
+
+    this.head = newNode;
+
+    if (!this.tail) this.tail = this.head;
+
+    if (oldHead) {
+      oldHead.previous = newNode;
+      newNode.next = oldHead;
+    }
+
+  }
+
+  addToTail(item) {
+    const newNode = new Node(item);
+    const oldTail = this.tail;
+
+    this.tail = newNode;
+
+    if (!this.head) {
+      this.head = this.tail;
+    }
+
+    if (oldTail) {
+      oldTail.next = newNode;
+      newNode.previous = oldTail;
+    }
+  }
+
+  removeHead() {
+    const oldHead = this.head;
+
+    if (!oldHead) return;
+
+    if (oldHead.next) {
+      this.head = oldHead.next;
+      this.head.previous = null;
+    } else { // if there is no item == no head
+      this.head = null;
+      this.tail = null;
+    }
+
+    return oldHead.value;
+  }
+
+  removeTail() {
+    const oldTail = this.tail;
+
+    if (!oldTail) return;
+
+    if (oldTail.previous) {
+      this.tail = oldTail.previous;
+      this.tail.next = null;
+    } else { // if there is no item == no head
+      this.head = null;
+      this.tail = null;
+    }
+
+    return oldTail.value;
+  }
+}
+
+
+// create a new linkedlist class, which will hold all the nodes
+const list = new LinkedList();
+
+export default function (state = {}, action) {
   switch (action.type) {
     case GET_NODE:
       return action.node
     case ADD_SINGLE_LL_NODE:
-      //find last node in the array and create a new node with the value
-      //sent in from the add form on the front
-      var oldLastNode = state[state.length - 1];
-      var newLastNode = new Node(action.value, null, null, null, null)
 
-      //setting the pointer on the last node in the array to the new node, 
-      //and then storing both the last node and the new node in the array
-      oldLastNode.next = newLastNode;
-
-      //make a copy of the current state and replace the second-to-last
-      //element with the edited lastNode and the last element with the 
-      //new node -- this should also work with the head node (don't)
-      //know how to do this with the spread operator :( )
-      var newState = state
-      newState[newState.length - 1] = oldLastNode;
-      newState.push(newLastNode);
+      list.addToTail(action.node.value);
+      // console.log('list ', list);
+      const newState = list;
 
       return newState;
 
