@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { writeNode } from '../store/writeNode'
+import { writeNode } from '../store'
 import { addNode } from '../store/node'
 
 const AddNodeForm = (props) => {

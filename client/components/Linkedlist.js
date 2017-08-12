@@ -8,7 +8,9 @@ import AddNodeForm from './AddNodeForm';
 //COMPONENT
 const Linkedlist = (props) => {
 
-  var arr = props.nodes;
+
+  // now arr holds [{node: 2}, {node: 47}]...
+  var arr = Object.values(props.nodes);
 
   return (
     <div>
@@ -20,7 +22,8 @@ const Linkedlist = (props) => {
           (arr.map((el, idx) => {
             return (
               <div className="basicnode" key={idx} id={idx}>
-                {createNode(el)}
+                {createNode(el.node)}
+                {console.log('el.node ', el.node)}
                 {(idx !== arr.length - 1) ?
                   RightArrow(el) : null}
               </div>
