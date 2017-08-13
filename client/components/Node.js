@@ -6,9 +6,6 @@ import { logout } from '../store'
 import { RightArrow } from '../components'
 
 export const drawNode = (node) => {
-
-  console.log('node in drawNode ', node);
-  console.log('RightArrow ', RightArrow);
   return (
     <div className="basicnode">
     <svg>
@@ -18,6 +15,6 @@ export const drawNode = (node) => {
     </svg>
     {(node.next !== null) ? RightArrow(node.value) : null}
     </div>
-      );
+  );
 }
 
