@@ -40,3 +40,11 @@ process all the left children, then right children, then this node's value. This
 
 Hash Tables are a data structure used to implement a Dictionary, Associative Array, or other entity that allows dynamically storing and retrieving values via string keys.
 
+# Binary heap
+
+A binary heap has 2 properties:
+
+1/ Uses a complete binary tree, which means that every level of the tree is full except the bottom level, which is filled from left to right
+
+2/ Insertions satisfy the heap-order-property, which says that no child's priority is less than its parent's priority
+
