@@ -5,9 +5,10 @@ import user from './user'
 import node from './node'
 import writeNode from './writeNode'
 import removeNode from './removeNode'
+import bstNode from './bstNode'
 
 
-const reducer = combineReducers({user, node, writeNode, removeNode})
+const reducer = combineReducers({user, node, writeNode, removeNode, bstNode})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware);
 
@@ -16,5 +17,6 @@ export * from './user'
 export * from './node'
 export * from './writeNode'
 export * from './removeNode'
+export * from './bstNode'
 
 

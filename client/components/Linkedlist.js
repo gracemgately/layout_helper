@@ -34,6 +34,7 @@ const Linkedlist = (props) => {
 
 
     <div>
+      <h1> Linked List </h1>
       <div>
       <AddNodeForm />
       <DeleteNodeForm />
