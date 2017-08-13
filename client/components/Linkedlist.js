@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
 import AddNodeForm from './AddNodeForm';
+import DeleteNodeForm from './DeleteNodeForm';
 
 /**
  * COMPONENT
@@ -35,6 +36,7 @@ const Linkedlist = (props) => {
     <div>
       <div>
       <AddNodeForm />
+      <DeleteNodeForm />
       </div>
       <div className="container">
       {
