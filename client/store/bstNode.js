@@ -35,10 +35,12 @@ class BinarySearchTree {
         queue = queue || [this];
         if (!queue.length) return;
         var tree = queue.shift();
-        return iterator(tree);
         if (tree.left) queue.push(tree.left);
         if (tree.right) queue.push(tree.right);
-        BinarySearchTree.prototype.breadthFirstForEach(iterator, queue);
+        console.log('tree', tree)
+        tree.breadthFirstForEach(iterator, queue);
+        console.log('queue', queue);
+        return iterator(tree);
   };
 
     //   delete (value) {

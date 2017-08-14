@@ -11,7 +11,7 @@ import bstNode from '../store';
  * COMPONENT
  */
 const BinarySearchTree = (props) => {
-  console.log('props', props);
+  //console.log('props', props);
 
   const { BST } = props
 
@@ -42,7 +42,7 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  console.log('state', state);
+  //console.log('state', state);
   return {
     BST: state.bstNode.initialTree,
     NodeCount: state.bstNode.BSTNodeCount
