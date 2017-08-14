@@ -2,17 +2,19 @@ import history from '../history'
 
 const GET_NODE = 'GET_NODE'
 const ADD_SINGLE_LL_NODE = 'ADD_SINGLE_LL_NODE'
+const REMOVE_SINGLE_LL_NODE = 'REMOVE_SINGLE_LL_NODE'
 
 
 export const getNode = node => ({ type: GET_NODE, node })
 export const addSingleLLNode = node => ({ type: ADD_SINGLE_LL_NODE, node })
+export const removeSingleLLNode = node => ({ type: REMOVE_SINGLE_LL_NODE, node })
 
 
 //ES6 class declaration to create a node object which can have the following
 //properties (or they can be null). Based on which properties are not null,
 //we can determine what data structure and arrows??? should be rendered
 class Node {
-  constructor(value, next=null, previous=null, parent=null, child=null){
+  constructor(value, next = null, previous = null, parent = null, child = null, index = null) {
     this.value = value;
     this.next = next;
     this.previous = previous;
@@ -31,6 +33,7 @@ class LinkedList {
   addToHead(item) {
     const newNode = new Node(item);
     const oldHead = this.head;
+    const current = previous.next;
 
     this.head = newNode;
 
@@ -90,6 +93,26 @@ class LinkedList {
 
     return oldTail.value;
   }
+
+  removeOne() {
+    const oldTail = this.tail;
+    if (this.head.value === value) {
+      this.head = this.head.next;
+    } else {
+      var previous = this.head;
+      var current = previous.next;
+      while (current) {
+        if (current.data === val) {
+          previous.next = current.next;
+          current = current.next;
+          break;
+        } else {
+          previous = current;
+          current = current.next;
+        }
+      }
+    }
+  }
 }
 
 
@@ -114,7 +137,14 @@ export default function (state = list, action) {
 
       return newState;
 
-    default:
+    case REMOVE_SINGLE_LL_NODE:
+
+      list.removeOne(action.node.value);
+      // newState = list;
+
+      return newState;
+
+        default:
       return state
   }
 }

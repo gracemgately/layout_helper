@@ -2,6 +2,10 @@ const router = require('express').Router()
 const User = require('../db/models/user')
 module.exports = router
 
+router.post('/linked-list', (req, res, next) => {
+  res.redirect('/')
+})
+
 router.post('/login', (req, res, next) => {
   User.findOne({where: {email: req.body.email}})
     .then(user => {
@@ -27,6 +31,8 @@ router.post('/signup', (req, res, next) => {
       else next(err)
     })
 })
+
+
 
 router.post('/logout', (req, res) => {
   req.logout()
