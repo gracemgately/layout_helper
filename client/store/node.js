@@ -65,6 +65,30 @@ class LinkedList {
     }
   }
 
+
+    // PREV -- 'NEW'(insertion)  -- CURR
+
+  addAtIndex(value, index) {
+
+    let newNode = new Node(value);
+    let currentNode = search(index);
+
+    let prev = currentNode.previous;
+    prev.next = newNode;
+    newNode.next = currentNode;
+    currentNode.previous = newNode;
+    newNode.previous = prev;
+
+    /*
+    let prev = currentNode.previous;
+    prev.next = newNode;
+    newNode.next = currentNode;
+    currentNode.previous = newNode;
+    newNode.previous = prev;
+    */
+
+  }
+
   removeHead() {
     const oldHead = this.head;
 
@@ -129,7 +153,7 @@ list.addToTail(16);
 list.addToTail(34);
 
 // external search function converts LinkedList class to an ordered array and search at specific index
-const search = (idx) => {
+const search = (index) => {
 
   // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
   // keep looking at next node until next node === idx
@@ -137,10 +161,11 @@ const search = (idx) => {
   let currentNode = Object.assign({}, list.head);
   let counter = 0;
   // loop while there is next node and counter is <= idx -1
-  while (currentNode.next !== null && counter <= (idx - 1)) {
+  while (currentNode.next !== null && counter <= (index - 1)) {
     currentNode = currentNode.next;
     counter++;
   }
+  console.log('found node at index ', currentNode);
   return currentNode;
 
 }
@@ -160,8 +185,8 @@ export default function (state = list, action) {
       return Object.assign({}, list);
 
     case SEARCH_NODE:
-      search(action.node.value);
-      return list;
+      list.addAtIndex(action.node.value, action.node.index);
+      return Object.assign({}, list);
 
     default:
       return state
