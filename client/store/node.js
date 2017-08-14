@@ -3,12 +3,15 @@ import history from '../history'
 const GET_NODE = 'GET_NODE'
 const ADD_NODE_TO_TAIL = 'ADD_NODE_TO_TAIL'
 const ADD_NODE_TO_HEAD = 'ADD_NODE_TO_HEAD'
+const SEARCH_NODE = 'SEARCH_NODE'
 // const REMOVE_SINGLE_LL_NODE = 'REMOVE_SINGLE_LL_NODE'
 
 
 export const getNode = node => ({ type: GET_NODE, node })
 export const addNodeToTail = node => ({ type: ADD_NODE_TO_TAIL, node })
 export const addNodeToHead = node => ({ type: ADD_NODE_TO_HEAD, node })
+export const searchNode = node => ({ type: SEARCH_NODE, node })
+
 // export const removeSingleLLNode = node => ({ type: REMOVE_SINGLE_LL_NODE, node })
 
 
@@ -116,6 +119,7 @@ class LinkedList {
 }
 
 
+
 // create a new linkedlist class, which will hold all the nodes
 const list = new LinkedList();
 // initialize list
@@ -123,6 +127,23 @@ list.addToTail(1);
 list.addToTail(4);
 list.addToTail(16);
 list.addToTail(34);
+
+// external search function converts LinkedList class to an ordered array and search at specific index
+const search = (idx) => {
+
+  // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
+  // keep looking at next node until next node === idx
+
+  let currentNode = Object.assign({}, list.head);
+  let counter = 0;
+  // loop while there is next node and counter is <= idx -1
+  while (currentNode.next !== null && counter <= (idx - 1)) {
+    currentNode = currentNode.next;
+    counter++;
+  }
+  return currentNode;
+
+}
 
 
 export default function (state = list, action) {
@@ -138,12 +159,9 @@ export default function (state = list, action) {
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
 
-    // case REMOVE_SINGLE_LL_NODE:
-
-    //   list.removeOne(action.node.value);
-    //   // newState = list;
-
-    //   return newState;
+    case SEARCH_NODE:
+      search(action.node.value);
+      return list;
 
     default:
       return state

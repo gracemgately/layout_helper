@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { writeNode, addNodeToTail, addNodeToHead } from '../store'
+import { writeNode, addNodeToTail, addNodeToHead, searchNode } from '../store'
 
 const InsertNodeForm = (props) => {
 //added individual handleSubmit functions for inserting at head and at tail
@@ -22,6 +22,7 @@ const InsertNodeForm = (props) => {
         <div className="input-group-btn">
           <button type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to Head</button>
           <button type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to Tail</button>
+          <button type="click" onClick={(evt) => props.handleSearchSubmit(evt, props.newNode)} > Search Node</button>
         </div>
       </form>
     </div>
@@ -52,6 +53,11 @@ const mapDispatch = (dispatch) => {
     handleTailSubmit(evt, nodeValue){
       evt.preventDefault();
       dispatch(addNodeToTail({ value: +nodeValue }))
+      dispatch(writeNode(''))
+    },
+    handleSearchSubmit(evt, nodeValue){
+      evt.preventDefault();
+      dispatch(searchNode({ value: +nodeValue }))
       dispatch(writeNode(''))
     }
   }
