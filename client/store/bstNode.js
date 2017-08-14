@@ -8,7 +8,7 @@ const FIRST_BST_NODE = 'FIRST_BST_NODE';
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = node => ({ type: ADD_SINGLE_BST_NODE, node })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
-export const firstBSTNode = node => ({ type: FIRST_BST_NODE, node })
+export const firstBSTNode = value => ({ type: FIRST_BST_NODE, value })
 
 'use strict';
 
@@ -63,7 +63,7 @@ export default function (state = {}, action) {
 
     switch (action.type) {
         case FIRST_BST_NODE:
-            var firstNode = new BinarySearchTree(value);
+            var firstNode = new BinarySearchTree(action.value);
             return Object.assign({}, state, { initialTree: firstNode })
         case GET_BSTNODE:
             return action.node

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
-import AddBSTNodeForm from './AddNodeForm';
+import AddBSTNodeForm from './AddBSTNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 import bstNode from '../store';
 

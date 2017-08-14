@@ -7,14 +7,26 @@ import history from '../history'
 
 
 const AddBSTNodeForm = (props) => {
+      function handleChange(evt) {
+        console.log("val", evt.target.value)
+        props.writeNode(Number(evt.target.value));
+      }
+      function handleSubmit(evt) {
+        evt.preventDefault();
+        var nodeValue = Number(evt.target.node.value);
+        console.log('nodeValue ', nodeValue)
+        props.firstBSTNode( nodeValue )
+        props.writeNode('')
+
+      }
 
   return (
     <div>
-      <form id="form-group" onSubmit={props.handleSubmit}>
+      <form id="form-group" onSubmit={handleSubmit}>
         <div>
           <input
             type="text"
-            onChange={props.handleChange}
+            onChange={handleChange}
             placeholder="add a node"
             name="node"
             value={props.newNode}
@@ -41,18 +53,9 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-      handleChange(evt) {
-        dispatch(writeNode(Number(evt.target.value)));
-      },
-      handleSubmit(evt) {
-        console.log("STATE",state);
-        evt.preventDefault();
-        const nodeValue = Number(evt.target.node.value);
-        console.log('nodeValue ', nodeValue)
-        dispatch(firstBSTNode( state.newNode.value ))
-        dispatch(writeNode(''))
+      writeNode:  (value) => dispatch(writeNode(value)),
+      firstBSTNode: (value) => dispatch(firstBSTNode(value))
 
-      }
     }
   }
 
