@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
-import AddNodeForm from './AddNodeForm';
+import InsertNodeForm from './InsertNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 
 /**
@@ -33,7 +33,7 @@ class Linkedlist extends Component {
       <div>
         <h1> Linked List </h1>
         <div>
-          <AddNodeForm />
+          <InsertNodeForm />
           <DeleteNodeForm />
         </div>
         <div className="container">
