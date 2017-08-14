@@ -5,30 +5,13 @@ import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
 import AddBSTNodeForm from './AddNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
+import bstNode from '../store';
 
 /**
  * COMPONENT
  */
 const BinarySearchTree = (props) => {
 
-  const { nodes } = props
-
-  // node:LinkedList {head: Node, tail: Node}...
-
-  // create an array of linked list from 'nodes' class(object)
-
-  const nodeArr = []; // initialize empty nodeArr.  important!
-  let oldHead = nodes.head; // this is startpoint
-
-  console.log('oldHead ', oldHead);
-
-  // push nodes into arr until there is no more 'oldHead'
-  while (oldHead !== null && oldHead !== undefined) {
-    nodeArr.push(oldHead);
-    oldHead = oldHead.next || null;
-  }
-
-  console.log('nodeArr ', nodeArr);
 
   return (
 
@@ -41,14 +24,14 @@ const BinarySearchTree = (props) => {
       </div>
       <div className="container">
       {
-        (nodeArr.map((node) => {
+        /*(nodeArr.map((node) => {
           return (
             <div className="basicnode" key={node.value}>
               {drawNode(node)}
               {console.log('node.value ', node.value)}
             </div>
           )
-        }))
+        }))*/
 
       }
       </div>

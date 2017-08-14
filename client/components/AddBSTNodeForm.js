@@ -2,7 +2,9 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { writeNode, bstNode, addSingleBSTNode } from '../store'
+import { writeNode, bstNode, firstBSTNode } from '../store'
+import history from '../history'
+
 
 const AddBSTNodeForm = (props) => {
 
@@ -40,13 +42,14 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
       handleChange(evt) {
-        dispatch(writeNode(evt.target.value));
+        dispatch(writeNode(Number(evt.target.value)));
       },
       handleSubmit(evt) {
+        console.log("STATE",state);
         evt.preventDefault();
-        const nodeValue = evt.target.node.value;
-        // console.log('nodeValue ', nodeValue)
-        dispatch(addSingleBSTNode({ value: nodeValue }))
+        const nodeValue = Number(evt.target.node.value);
+        console.log('nodeValue ', nodeValue)
+        dispatch(firstBSTNode( state.newNode.value ))
         dispatch(writeNode(''))
 
       }
