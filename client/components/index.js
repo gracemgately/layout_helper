@@ -10,7 +10,7 @@ export {default as Linkedlist} from './linkedlist'
 export {default as BinarySearchTree} from './BinarySearchTree'
 
 export * from './arrow'
-export * from './Node'
+export * from './DrawNode'
 export * from './InsertNodeForm'
 export * from './DeleteNodeForm'
 export * from './AddBSTNodeForm'
