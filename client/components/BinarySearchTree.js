@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { drawNode } from '../components'
+import { drawBSTNode } from '../components'
 import AddBSTNodeForm from './AddBSTNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 import bstNode from '../store';
@@ -11,10 +11,11 @@ import bstNode from '../store';
  * COMPONENT
  */
 const BinarySearchTree = (props) => {
+  console.log('props', props);
 
+  const { BST } = props
 
   return (
-
 
     <div>
       <h1> Binary Search Tree </h1>
@@ -24,14 +25,8 @@ const BinarySearchTree = (props) => {
       </div>
       <div className="container">
       {
-        /*(nodeArr.map((node) => {
-          return (
-            <div className="basicnode" key={node.value}>
-              {drawNode(node)}
-              {console.log('node.value ', node.value)}
-            </div>
-          )
-        }))*/
+          //drawBSTNode({value: 22, magnitude: 1, left: null, right: null})
+          BST ? BST.breadthFirstForEach(drawBSTNode) : <div />
 
       }
       </div>
@@ -47,12 +42,12 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  console.log('state', state)
+  console.log('state', state);
   return {
-    nodes: state.node,
+    BST: state.bstNode.initialTree,
+    NodeCount: state.bstNode.BSTNodeCount
   }
 }
-
 
 // const mapDispatch = (state) => {
 //   //console.log('here is state', state)
@@ -61,4 +56,4 @@ const mapState = (state) => {
 //   }
 // }
 
-export default connect(mapState)(BinarySearchTree);
+export default connect(mapState, null)(BinarySearchTree);

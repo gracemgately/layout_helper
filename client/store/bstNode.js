@@ -1,3 +1,4 @@
+'use strict';
 import history from '../history'
 
 const GET_BSTNODE = 'GET_BSTNODE'
@@ -6,11 +7,9 @@ const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const FIRST_BST_NODE = 'FIRST_BST_NODE';
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
-export const addSingleBSTNode = node => ({ type: ADD_SINGLE_BST_NODE, node })
+export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const firstBSTNode = value => ({ type: FIRST_BST_NODE, value })
-
-'use strict';
 
 class BinarySearchTree {
     constructor(value) {
@@ -31,6 +30,17 @@ class BinarySearchTree {
         if (this[direction]) return this[direction].contains(value);
         else return false;
     }
+    breadthFirstForEach (iterator, queue) {
+        console.log('this', this);
+        queue = queue || [this];
+        if (!queue.length) return;
+        var tree = queue.shift();
+        return iterator(tree);
+        if (tree.left) queue.push(tree.left);
+        if (tree.right) queue.push(tree.right);
+        BinarySearchTree.prototype.breadthFirstForEach(iterator, queue);
+  };
+
     //   delete (value) {
     //       if (contains(value) === true) {
 
@@ -41,23 +51,9 @@ class BinarySearchTree {
     //   }
 
     size(value) {
-        return this.magnitude; // O(1) time
-        // // alternative by walking the tree in O(n) time
-        // var size = 0;
-
-        // if (this) { size++ }
-        // size += this.left && this.left.size()
-        // size += this.right && this.right.size()
-
-        // return size;
+        return this.magnitude; 
     }
 }
-
-
-
-
-// create a new Binary Search Tree class, which will hold all the nodes
-var bstList = new BinarySearchTree();
 
 export default function (state = {}, action) {
 
@@ -65,12 +61,19 @@ export default function (state = {}, action) {
         case FIRST_BST_NODE:
             var firstNode = new BinarySearchTree(action.value);
             return Object.assign({}, state, { initialTree: firstNode })
+        
         case GET_BSTNODE:
             return action.node
-        case ADD_SINGLE_BST_NODE:
-            bstList.insert(action.node.value);
-            var newState = bstList;
-            return newState;
+        
+            case ADD_SINGLE_BST_NODE:
+            
+            var rootNode = state.initialTree;
+            rootNode.insert(action.value);
+
+            return Object.assign({}, state, {
+                initialTree: rootNode, 
+                BSTNodeCount: rootNode.magnitude
+            });
 
         case REMOVE_SINGLE_BST_NODE:
             bstList.remove(action.node.value);
