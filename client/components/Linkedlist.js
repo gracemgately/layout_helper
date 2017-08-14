@@ -14,7 +14,6 @@ class Linkedlist extends Component {
   render() {
 
     const { nodes } = this.props;
-    console.log('Nodes in linkedlist ', nodes);
 
     // node:LinkedList {head: Node, tail: Node}...
 
@@ -42,7 +41,6 @@ class Linkedlist extends Component {
               return (
                 <div className="basicnode" key={node.value}>
                   {drawNode(node)}
-                  {console.log('node.value ', node.value)}
                 </div>
               )
             }))
@@ -60,7 +58,7 @@ class Linkedlist extends Component {
  */
 
 const mapState = (state) => {
-  console.log('state', state)
+ // console.log('state', state)
   return {
     nodes: state.node,
   }
