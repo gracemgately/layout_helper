@@ -40,11 +40,11 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
       handleChange(evt) {
-        dispatch(writeNode(evt.target.value));
+        dispatch(writeNode(Number(evt.target.value)));
       },
       handleSubmit(evt) {
         evt.preventDefault();
-        const nodeValue = evt.target.node.value;
+        const nodeValue = Number(evt.target.node.value);
         // console.log('nodeValue ', nodeValue)
         dispatch(addSingleLLNode({ value: nodeValue }))
         dispatch(writeNode(''))

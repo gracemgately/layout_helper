@@ -131,11 +131,8 @@ export default function (state = list, action) {
       return action.node
     case ADD_SINGLE_LL_NODE:
       list.addToTail(action.node.value);
-      // console.log('list ', list);
-
-      const newState = list;
-
-      return newState;
+      // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
+      return Object.assign({}, list);
 
     case REMOVE_SINGLE_LL_NODE:
 

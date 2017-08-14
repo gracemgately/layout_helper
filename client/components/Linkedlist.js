@@ -11,18 +11,10 @@ import DeleteNodeForm from './DeleteNodeForm';
  */
 class Linkedlist extends Component {
 
-  componentDidMount() {
-
-
-  }
-
-  shouldComponentUpdate(nextProps, nextState) {
-    return this.props.nodes !== nextProps.nodes || nextState.nodes !== this.state.nodes
-  }
-
   render() {
 
     const { nodes } = this.props;
+    console.log('Nodes in linkedlist ', nodes);
 
     // node:LinkedList {head: Node, tail: Node}...
 
