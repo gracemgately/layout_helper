@@ -46,32 +46,6 @@ export const drawBSTNode2 = (node) => {
 }
 
 
-// const drawBSTNode2 = (node) => {
-//   console.log("mwah", node)
-//   return (
-//     <div>chocolate</div>
-//   )
-// }
-
-// export const breadthFirstForEach = (node) => {
-//   var queue = [node];
-//   var tree;
-
-//   while (queue.length) {
-//     tree = queue.shift();
-//     iterator(node);
-//     if (tree.left) breadthFirstForEach(tree.left);
-//     if (tree.right) breadthFirstForEach(tree.right);
-//   }
-// }
-
-
-// function iterator(node) {
-//   console.log("node", node);
-//   return drawBSTNode2(node);
-// }
-
-
 export const breadthFirstForEach = (node) => {
   var queue = [node];
   var collection = [];
