@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
-import AddNodeForm from './AddNodeForm';
+import InsertNodeForm from './InsertNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 
 /**
@@ -14,7 +14,6 @@ class Linkedlist extends Component {
   render() {
 
     const { nodes } = this.props;
-    console.log('Nodes in linkedlist ', nodes);
 
     // node:LinkedList {head: Node, tail: Node}...
 
@@ -33,7 +32,7 @@ class Linkedlist extends Component {
       <div>
         <h1> Linked List </h1>
         <div>
-          <AddNodeForm />
+          <InsertNodeForm />
           <DeleteNodeForm />
         </div>
         <div className="container">
@@ -42,7 +41,6 @@ class Linkedlist extends Component {
               return (
                 <div className="basicnode" key={node.value}>
                   {drawNode(node)}
-                  {console.log('node.value ', node.value)}
                 </div>
               )
             }))
@@ -60,7 +58,7 @@ class Linkedlist extends Component {
  */
 
 const mapState = (state) => {
-  console.log('state', state)
+ // console.log('state', state)
   return {
     nodes: state.node,
   }
