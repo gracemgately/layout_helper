@@ -11,17 +11,19 @@ export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const firstBSTNode = value => ({ type: FIRST_BST_NODE, value })
 
+
 class BinarySearchTree {
-    constructor(value) {
+    constructor(value, parent) {
         this.value = value;
         this.magnitude = 1;
         this.left = null;
         this.right = null;
+        this.parent = parent;
     }
     insert(value) {
         this.magnitude++;
         var direction = value < this.value ? 'left' : 'right';
-        if (!this[direction]) this[direction] = new BinarySearchTree(value);
+        if (!this[direction]) this[direction] = new BinarySearchTree(value, this);
         else this[direction].insert(value);
     }
     contains(value) {
@@ -59,7 +61,12 @@ class BinarySearchTree {
 
 var initialTree = new BinarySearchTree(5);
 initialTree.insert(2);
+initialTree.insert(50);
+initialTree.insert(40);
 initialTree.insert(100);
+initialTree.insert(37);
+initialTree.insert(46);
+
 
 
 

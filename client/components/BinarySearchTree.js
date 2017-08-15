@@ -25,7 +25,8 @@ console.log("BST", BST)
       </div>
       <div className="container">
       {
-        breadthFirstForEach(BST).map(ele => ele)
+        breadthFirstForEach(BST).map(ele => ele[0])
+        //each element is a [node: level]
           //drawBSTNode({value: 22, magnitude: 1, left: null, right: null})
           /*BST ? BST.(drawBSTNode) : <div />*/
 
