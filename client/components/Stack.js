@@ -49,7 +49,7 @@ const Stack = (props) => {
                         (nodeArr.map((node, index) => {
                             var highlight = (index === highlightIndex) ? "yellow" : "none"                          
                                 return (
-                                <div className="basicnode" key={node.value}>
+                                <div className="basicnode" key={index}>
                                     {drawNode(node, highlight)}
                                 </div>
                             )
