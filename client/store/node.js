@@ -7,6 +7,7 @@ const SEARCH_NODE = 'SEARCH_NODE'
 const DELETE_NODE_FROM_TAIL = 'DELETE_NODE_FROM_TAIL'
 const DELETE_NODE_FROM_HEAD = 'DELETE_NODE_FROM_HEAD'
 const DELETE_AT_INDEX = 'DELETE_AT_INDEX'
+const HIGHLIGHT_NODE_AT_INDEX = 'HIGHLIGHT_NODE_AT_INDEX'
 
 export const getNode = node => ({ type: GET_NODE, node })
 export const addNodeToTail = node => ({ type: ADD_NODE_TO_TAIL, node })
@@ -15,6 +16,7 @@ export const searchNode = node => ({ type: SEARCH_NODE, node })
 export const deleteNodeFromTail = () => ({ type: DELETE_NODE_FROM_TAIL })
 export const deleteNodeFromHead = () => ({ type: DELETE_NODE_FROM_HEAD })
 export const deleteAtIndex = node => ({ type: DELETE_AT_INDEX, node })
+export const highlightNodeAtIndex = index => ({ type: HIGHLIGHT_NODE_AT_INDEX, index })
 
 
 //ES6 class declaration to create a node object which can have the following
@@ -141,6 +143,7 @@ class LinkedList {
     //   }
     // }
   }
+
 }
 
 
@@ -196,6 +199,9 @@ export default function (state = list, action) {
     case DELETE_AT_INDEX:
       list.removeAtIndex(action.node.index);
       return Object.assign({}, list);
+    case HIGHLIGHT_NODE_AT_INDEX: 
+      console.log('here', action.index)
+      return Object.assign({}, state, { highlightIdx: action.index })
     default:
       return state
   }
