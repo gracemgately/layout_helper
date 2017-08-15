@@ -4,15 +4,17 @@ const GET_NODE = 'GET_NODE'
 const ADD_NODE_TO_TAIL = 'ADD_NODE_TO_TAIL'
 const ADD_NODE_TO_HEAD = 'ADD_NODE_TO_HEAD'
 const SEARCH_NODE = 'SEARCH_NODE'
-// const REMOVE_SINGLE_LL_NODE = 'REMOVE_SINGLE_LL_NODE'
-
+const DELETE_NODE_FROM_TAIL = 'DELETE_NODE_FROM_TAIL'
+const DELETE_NODE_FROM_HEAD = 'DELETE_NODE_FROM_HEAD'
+const DELETE_AT_INDEX = 'DELETE_AT_INDEX'
 
 export const getNode = node => ({ type: GET_NODE, node })
 export const addNodeToTail = node => ({ type: ADD_NODE_TO_TAIL, node })
 export const addNodeToHead = node => ({ type: ADD_NODE_TO_HEAD, node })
 export const searchNode = node => ({ type: SEARCH_NODE, node })
-
-// export const removeSingleLLNode = node => ({ type: REMOVE_SINGLE_LL_NODE, node })
+export const deleteNodeFromTail = () => ({ type: DELETE_NODE_FROM_TAIL })
+export const deleteNodeFromHead = () => ({ type: DELETE_NODE_FROM_HEAD })
+export const deleteAtIndex = node => ({ type: DELETE_AT_INDEX, node })
 
 
 //ES6 class declaration to create a node object which can have the following
@@ -79,14 +81,6 @@ class LinkedList {
     currentNode.previous = newNode;
     newNode.previous = prev;
 
-    /*
-    let prev = currentNode.previous;
-    prev.next = newNode;
-    newNode.next = currentNode;
-    currentNode.previous = newNode;
-    newNode.previous = prev;
-    */
-
   }
 
   removeHead() {
@@ -121,24 +115,31 @@ class LinkedList {
     return oldTail.value;
   }
 
-  removeOne() {
-    const oldTail = this.tail;
-    if (this.head.value === value) {
-      this.head = this.head.next;
-    } else {
-      var previous = this.head;
-      var current = previous.next;
-      while (current) {
-        if (current.data === val) {
-          previous.next = current.next;
-          current = current.next;
-          break;
-        } else {
-          previous = current;
-          current = current.next;
-        }
-      }
-    }
+  removeAtIndex(index) {
+    let deletedNode = search(index);
+    console.log('deleted node', deletedNode)
+    let prevNode = deletedNode.previous;
+    prevNode.next = deletedNode.next;
+    deletedNode.previous = prevNode;
+
+
+    // const oldTail = this.tail;
+    // if (this.head.value === value) {
+    //   this.head = this.head.next;
+    // } else {
+    //   var previous = this.head;
+    //   var current = previous.next;
+    //   while (current) {
+    //     if (current.data === val) {
+    //       previous.next = current.next;
+    //       current = current.next;
+    //       break;
+    //     } else {
+    //       previous = current;
+    //       current = current.next;
+    //     }
+    //   }
+    // }
   }
 }
 
@@ -183,11 +184,18 @@ export default function (state = list, action) {
       list.addToHead(action.node.value);
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
-
+    case DELETE_NODE_FROM_TAIL:
+      list.removeTail();
+      return Object.assign({}, list);
+    case DELETE_NODE_FROM_HEAD:
+      list.removeHead();
+      return Object.assign({}, list);
     case SEARCH_NODE:
       list.addAtIndex(action.node.value, action.node.index);
       return Object.assign({}, list);
-
+    case DELETE_AT_INDEX:
+      list.removeAtIndex(action.node.index);
+      return Object.assign({}, list);
     default:
       return state
   }
