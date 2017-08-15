@@ -1,0 +1,3 @@
+
+store/node.js
+need to evaluate user input because right now if user inputs a string, you get a NAN in the form field. This is due to type coercion we hard-coded.
