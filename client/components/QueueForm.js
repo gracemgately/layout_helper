@@ -1,10 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addNodeToTail, deleteNodeFromHead } from '../store'
+import { writeNode, addNodeToTail, deleteNodeFromHead, highlightNodeAtIndex } from '../store'
 
 const QueueForm = (props) => {
- console.log('props', props.nodes.head);
- const head = props.nodes.head
+
   return (
     <div>
       <form id="form-group"  >
@@ -21,18 +20,13 @@ const QueueForm = (props) => {
         <div className="input-group-btn">
           <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>
           <button type="click" name="tail" onClick={(evt) => props.handleHeadDelete(evt, props.newNode)} > Dequeue</button>
-          <button type="click"  onClick={(evt) => highlightHead(evt, head)} > Peek</button>
+          <button type="click" onClick={(evt) => props.handlePeek(evt, 0)} > PEEK </button>
         </div>
       </form>
     </div>
   )
 }
 
-const highlightHead = (evt, head) => {
-  evt.preventDefault();
-  head['activated'] = true;
-  console.log('head here', head);
-}
 
 //newNode is mounted off writeNode in the reducer
 const mapState = (state) => {
@@ -56,7 +50,12 @@ const mapDispatch = (dispatch) => {
     handleHeadDelete(evt) {
       evt.preventDefault();
       dispatch(deleteNodeFromHead())
-    }
+    },
+    handlePeek(evt, index){
+      evt.preventDefault();
+      console.log(index);
+      dispatch(highlightNodeAtIndex(index));
+  }
   }
 }
 

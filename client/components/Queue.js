@@ -1,25 +1,22 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
 import QueueForm from './QueueForm';
-import DeleteNodeForm from './DeleteNodeForm';
 
 /**
  * COMPONENT
  */
 class Queue extends Component {
-  constructor(){
-    super(props);
-    this.state = {
-      queue: []
-    }
-  }
+  // constructor (props){
+  //   super(props);
+  //   this.state = {
+  //     nodeArr: []
+  //   }
+  // }
 
   render() {
 
-    const { nodes } = this.props;
+    const { nodes, highlightIndex } = this.props;
     const nodeArr = [];
     let oldHead = nodes.head; // this is startpoint
 
@@ -27,18 +24,20 @@ class Queue extends Component {
       nodeArr.push(oldHead);
       oldHead = oldHead.next || null;
     }
+
     return (
       <div>
         <h1> Queue </h1>
         <div>
-          <QueueForm />
+          <QueueForm nodeArray={nodeArr} />
         </div>
         <div className="container">
           {
             (nodeArr.map((node, index) => {
+              var highlight = (index === highlightIndex) ? "yellow" : "none"
               return (
                 <div className="basicnode" key={index}>
-                  {drawNode(node)}
+                  {drawNode(node, highlight)}
                 </div>
               )
             }))
@@ -58,8 +57,11 @@ class Queue extends Component {
 const mapState = (state) => {
   return {
     nodes: state.node,
+    highlightIndex: state.node.highlightIdx,
   }
 }
+
+
 
 
 export default connect(mapState)(Queue);

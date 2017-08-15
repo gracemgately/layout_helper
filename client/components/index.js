@@ -10,10 +10,12 @@ export {default as Linkedlist} from './linkedlist'
 export {default as BinarySearchTree} from './BinarySearchTree'
 export {default as Queue} from './Queue'
 
+export {default as Stack} from './Stack'
 
 export * from './arrow'
 export * from './DrawNode'
 export * from './InsertNodeForm'
 export * from './DeleteNodeForm'
 export * from './AddBSTNodeForm'
+export * from './Stack'
 
