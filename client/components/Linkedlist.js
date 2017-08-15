@@ -37,9 +37,9 @@ class Linkedlist extends Component {
         </div>
         <div className="container">
           {
-            (nodeArr.map((node) => {
+            (nodeArr.map((node, index) => {
               return (
-                <div className="basicnode" key={node.value}>
+                <div className="basicnode" key={index}>
                   {drawNode(node)}
                 </div>
               )
