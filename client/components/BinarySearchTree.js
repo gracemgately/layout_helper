@@ -11,10 +11,23 @@ import bstNode from '../store';
  * COMPONENT
  */
 const BinarySearchTree = (props) => {
-  //console.log('props', props);
 
-  const { BST } = props
-console.log("BST", BST)
+  const { BST } = props;
+  const bstArr = breadthFirstForEach(BST);
+  // bstArr.sort((a, b) => {
+  //   return a.level - b.level;
+  // })
+
+  let groups = []; // initialize array
+  // [[node],[node, node],[node, node]] // each index is level
+
+  bstArr.map(([node, level]) => {
+    console.log('node', node);
+    if (!groups[level]) groups[level] = [];
+    groups[level].push(node);
+  })
+
+  // console.log('groups ', groups);
   return (
 
     <div>
@@ -25,17 +38,20 @@ console.log("BST", BST)
       </div>
       <div className="container">
       {
-        breadthFirstForEach(BST).map(ele => ele[0])
-        //each element is a [node: level]
-          //drawBSTNode({value: 22, magnitude: 1, left: null, right: null})
-          /*BST ? BST.(drawBSTNode) : <div />*/
-
+          groups.map((ele, index) => {
+            return (
+              <div className={'bstlevel' + index} key={index}>
+                {
+                  ele.map((node) => {
+                    return (<div>{node}</div>)
+                  })
+              }
+              </div>)
+          })
       }
       </div>
     </div>
   )
-
-
 }
 
 

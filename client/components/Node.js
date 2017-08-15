@@ -35,11 +35,12 @@ export const drawNode = (node) => {
 export const drawBSTNode2 = (node) => {
   return (
     <div className="basicnode">
+    {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
         <circle className="circle1" cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
-      {(node.left !== null) ? SouthWestArrow(node.value) : null}
+
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   )
