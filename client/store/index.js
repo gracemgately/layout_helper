@@ -6,9 +6,10 @@ import node from './node'
 import writeNode from './writeNode'
 import removeNode from './removeNode'
 import bstNode from './bstNode'
+import stack from './stack'
 
 
-const reducer = combineReducers({user, node, writeNode, removeNode, bstNode})
+const reducer = combineReducers({user, node, writeNode, removeNode, bstNode, stack})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware);
 
@@ -18,5 +19,6 @@ export * from './node'
 export * from './writeNode'
 export * from './removeNode'
 export * from './bstNode'
+export * from './stack'
 
 

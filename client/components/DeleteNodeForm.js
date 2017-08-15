@@ -47,7 +47,7 @@ const mapDispatch = (dispatch) => {
         const nodeValue = evt.target.node.value;
         // console.log('nodeValue ', nodeValue)
         dispatch(removeSingleLLNode({ value: nodeValue }))
-        dispatch(removeNode(''))
+        //dispatch(removeNode(''))
 
       }
     }
