@@ -32,6 +32,7 @@ const Main = (props) => {
               <Link to="/signup">Sign Up</Link>
               <Link to="/linked-list">Linked List</Link>
               <Link to="/binary-search-tree">Binary Search Tree</Link>
+              <Link to="/stack">Stack</Link>
             </div>
         }
       </nav>
