@@ -18,7 +18,7 @@ export const drawNode = (node) => {
   );
 }
 
-/*export const drawBSTNode = (node) => {
+export const drawBSTNode = (node) => {
   return (
     <div className="basicnode">
       {(node.left !== null) ? SouthWestArrow(node.value) : null}
@@ -30,8 +30,7 @@ export const drawNode = (node) => {
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   );
-}*/
-
+}
 
 export const drawBSTNode2 = (node) => {
   return (
@@ -46,21 +45,43 @@ export const drawBSTNode2 = (node) => {
   )
 }
 
+
+// const drawBSTNode2 = (node) => {
+//   console.log("mwah", node)
+//   return (
+//     <div>chocolate</div>
+//   )
+// }
+
+// export const breadthFirstForEach = (node) => {
+//   var queue = [node];
+//   var tree;
+
+//   while (queue.length) {
+//     tree = queue.shift();
+//     iterator(node);
+//     if (tree.left) breadthFirstForEach(tree.left);
+//     if (tree.right) breadthFirstForEach(tree.right);
+//   }
+// }
+
+
+// function iterator(node) {
+//   console.log("node", node);
+//   return drawBSTNode2(node);
+// }
+
+
 export const breadthFirstForEach = (node) => {
   var queue = [node];
+  var collection = [];
   var tree;
-  let output;
 
   while (queue.length) {
-
     tree = queue.shift();
-    console.log("tree", tree);
-    output = (drawBSTNode2(tree));
-    console.log(output);
-
-    if (tree.left) breadthFirstForEach(tree.left);
-    if (tree.right) breadthFirstForEach(tree.right);
+    collection.push(drawBSTNode2(tree));
+    if (tree.left) queue.push(tree.left);
+    if (tree.right) queue.push(tree.right);
   }
-  console.log("output", output)
-  return output;
+  return collection;
 }

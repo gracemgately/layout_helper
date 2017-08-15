@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { drawBSTNode, breadthFirstForEach } from '../components'
+import { breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './AddBSTNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 import bstNode from '../store';
@@ -25,7 +25,7 @@ console.log("BST", BST)
       </div>
       <div className="container">
       {
-        breadthFirstForEach(BST)
+        breadthFirstForEach(BST).map(ele => ele)
           //drawBSTNode({value: 22, magnitude: 1, left: null, right: null})
           /*BST ? BST.(drawBSTNode) : <div />*/
 
