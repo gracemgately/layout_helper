@@ -6,10 +6,11 @@ import { logout } from '../store'
 import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 
 export const drawNode = (node) => {
+  console.log('node', node);
   return (
     <div className="basicnode">
     <svg>
-      <circle className="circle1" cx="25" cy="25" r="25"> </circle>
+      <circle className="circle1" id={node.activated ? "peek" : ''} cx="25" cy="25" r="25"> </circle>
 
       <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
     </svg>

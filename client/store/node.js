@@ -121,29 +121,8 @@ class LinkedList {
     let prevNode = deletedNode.previous;
     prevNode.next = deletedNode.next;
     deletedNode.previous = prevNode;
-
-
-    // const oldTail = this.tail;
-    // if (this.head.value === value) {
-    //   this.head = this.head.next;
-    // } else {
-    //   var previous = this.head;
-    //   var current = previous.next;
-    //   while (current) {
-    //     if (current.data === val) {
-    //       previous.next = current.next;
-    //       current = current.next;
-    //       break;
-    //     } else {
-    //       previous = current;
-    //       current = current.next;
-    //     }
-    //   }
-    // }
   }
 }
-
-
 
 // create a new linkedlist class, which will hold all the nodes
 const list = new LinkedList();

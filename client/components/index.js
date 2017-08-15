@@ -8,6 +8,8 @@ export {default as UserHome} from './user-home'
 export {Login, Signup} from './auth-form'
 export {default as Linkedlist} from './linkedlist'
 export {default as BinarySearchTree} from './BinarySearchTree'
+export {default as Queue} from './Queue'
+
 
 export * from './arrow'
 export * from './DrawNode'
