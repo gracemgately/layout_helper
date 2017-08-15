@@ -36,20 +36,6 @@ const mapState = (state) => {
   }
 
 const mapDispatch = (dispatch) => {
-<<<<<<< HEAD
-    return {
-      handleChange(evt) {
-        dispatch(removeNode(evt.target.value));
-      },
-      handleSubmit(evt) {
-        evt.preventDefault();
-        const nodeValue = evt.target.node.value;
-        // console.log('nodeValue ', nodeValue)
-        dispatch(removeSingleLLNode({ value: nodeValue }))
-        //dispatch(removeNode(''))
-
-      }
-=======
   return {
     handleHeadDelete(evt) {
       evt.preventDefault();
@@ -65,7 +51,6 @@ const mapDispatch = (dispatch) => {
     handleIndexSubmit(evt, index){
       evt.preventDefault();
       dispatch(deleteAtIndex({ index: +index }))
->>>>>>> 2312f6fd80a3ec48d735fbf274e6d3bea0bd4ac9
     }
   }
 }

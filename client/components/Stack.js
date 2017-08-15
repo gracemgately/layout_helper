@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
 import { drawNode } from '../components'
-import { writeNode, addNodeToTail, searchNode, removeSingleLLNode } from '../store'
+import { writeNode, addNodeToTail, deleteNodeFromTail, searchNode } from '../store'
 
 
 
@@ -74,7 +74,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
     handleChange(evt) {
-      //console.log('event target ', evt.target.value);
       dispatch(writeNode(Number(evt.target.value)));
     },
     handleTailSubmit(evt, nodeValue){
@@ -84,9 +83,7 @@ const mapDispatch = (dispatch) => {
     }, 
     handlePopSubmit(evt, lastNode) {
         evt.preventDefault();
-        console.log('lastNode', lastNode.value)
-        dispatch(removeSingleLLNode({ value: lastNode.value }))
-        //dispatch(removeNode(''))
+        dispatch(deleteNodeFromTail());
 
       }
     }
