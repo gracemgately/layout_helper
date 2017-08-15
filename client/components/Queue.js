@@ -7,12 +7,6 @@ import QueueForm from './QueueForm';
  * COMPONENT
  */
 class Queue extends Component {
-  // constructor (props){
-  //   super(props);
-  //   this.state = {
-  //     nodeArr: []
-  //   }
-  // }
 
   render() {
 

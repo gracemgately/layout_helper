@@ -11,7 +11,7 @@ const QueueForm = (props) => {
           <input
             type="text"
             onChange={props.handleChange}
-            placeholder="add a node value"
+            placeholder="add an item to queue"
             name="node"
             value={props.newNode}
           />
