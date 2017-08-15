@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { drawBSTNode } from '../components'
+import { drawBSTNode, breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './AddBSTNodeForm';
 import DeleteNodeForm from './DeleteNodeForm';
 import bstNode from '../store';
@@ -14,7 +14,7 @@ const BinarySearchTree = (props) => {
   //console.log('props', props);
 
   const { BST } = props
-
+console.log("BST", BST)
   return (
 
     <div>
@@ -25,8 +25,9 @@ const BinarySearchTree = (props) => {
       </div>
       <div className="container">
       {
+        breadthFirstForEach(BST)
           //drawBSTNode({value: 22, magnitude: 1, left: null, right: null})
-          BST ? BST.breadthFirstForEach(drawBSTNode) : <div />
+          /*BST ? BST.(drawBSTNode) : <div />*/
 
       }
       </div>
@@ -42,9 +43,9 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  //console.log('state', state);
+  console.log('state', state);
   return {
-    BST: state.bstNode.initialTree,
+    BST: state.bstNode,
     NodeCount: state.bstNode.BSTNodeCount
   }
 }
