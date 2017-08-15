@@ -11,7 +11,7 @@ export {default as BinarySearchTree} from './BinarySearchTree'
 export {default as Stack} from './Stack'
 
 export * from './arrow'
-export * from './Node'
+export * from './DrawNode'
 export * from './InsertNodeForm'
 export * from './DeleteNodeForm'
 export * from './AddBSTNodeForm'
