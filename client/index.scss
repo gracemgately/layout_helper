@@ -34,6 +34,7 @@ svg {
 
 .container {
   display:flex;
+  flex-wrap: wrap;
 }
 
 .basicnode {
@@ -46,6 +47,27 @@ svg {
   margin: 0;
 }
 
-#peek {
-  background-color: yellow;
+.bstlevel0 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
+
+.bstlevel1 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel2 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
