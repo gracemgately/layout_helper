@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Stack} from './components'
+import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack} from './components'
 import {me} from './store'
 
 /**
@@ -28,9 +28,10 @@ class Routes extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-             <Route exact path="/linked-list" component={Linkedlist} />
-              <Route path="/binary-search-tree" component={BinarySearchTree} />
-              <Route path="/stack" component={Stack} />
+            <Route exact path="/linked-list" component={Linkedlist} />
+            <Route path="/binary-search-tree" component={BinarySearchTree} />
+            <Route path="/queue" component={Queue} />
+            <Route path="/stack" component={Stack} />
             {
               isLoggedIn ?
                 <Switch>
