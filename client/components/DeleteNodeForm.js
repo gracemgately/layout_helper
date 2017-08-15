@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { deleteNodeFromHead, deleteNodeFromTail, deleteAtIndex, writeIndex } from '../store'
+import { deleteNodeFromHead, deleteNodeFromTail, deleteAtIndex, writeDeleteIndex } from '../store'
 
 const DeleteNodeForm = (props) => {
 
@@ -14,8 +14,7 @@ const DeleteNodeForm = (props) => {
             type="text"
             onChange={props.handleIdxChange}
             placeholder="specify index.."
-            name="index"
-            value={props.index}
+            name="delete-index"
           />
         </div>
         <br />
@@ -47,8 +46,7 @@ const mapDispatch = (dispatch) => {
       dispatch(deleteNodeFromTail())
     },
     handleIdxChange(evt) {
-      //console.log('event target ', evt.target.value);
-      dispatch(writeIndex(Number(evt.target.value)));
+      dispatch(writeDeleteIndex(Number(evt.target.value)));
     },
     handleIndexSubmit(evt, index){
       evt.preventDefault();

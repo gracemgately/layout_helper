@@ -24,7 +24,6 @@ const InsertNodeForm = (props) => {
             onChange={props.handleIdxChange}
             placeholder="specify index.."
             name="index"
-            value={props.index}
           />
         </div>
         <br />
@@ -50,17 +49,14 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleChange(evt) {
-      //console.log('event target ', evt.target.value);
       dispatch(writeNode(Number(evt.target.value)));
     },
     handleIdxChange(evt) {
-      //console.log('event target ', evt.target.value);
       dispatch(writeIndex(Number(evt.target.value)));
     },
     handleHeadSubmit(evt, nodeValue) {
       evt.preventDefault();
       dispatch(addNodeToHead({ value: +nodeValue }))
-      //type coerced nodeValue to a number
       dispatch(writeNode(''))
     },
     handleTailSubmit(evt, nodeValue){
