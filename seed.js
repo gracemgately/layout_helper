@@ -1,6 +1,7 @@
 const db = require('./server/db');
 const User = require('./server/db/models/user');
 const BinarySearchTree = require('./server/db/models/binarysearchtree');
+const LinkedList = require('./server/db/models/linkedlists')
 
 
 
@@ -62,6 +63,32 @@ const binarySearchTrees = [{
     userId: 1
 }];
 
+const linkedLists = [{
+  name: 'LoopyLList',
+  content: [
+    {
+      value: 1,
+      next: 1,
+      previous: null
+    },
+    {
+      value: 4,
+      next: 2,
+      previous: 0
+    },
+    {
+      value: 16,
+      next: 3,
+      previous: 1
+    },
+    {
+      value: 34,
+      next: null,
+      previous: 2
+    },
+  ]
+}]
+
 const seed = () =>
     Promise.all(users.map(user =>
         User.create(user))
@@ -69,7 +96,11 @@ const seed = () =>
     .then(() =>
         Promise.all(binarySearchTrees.map(BST =>
     BinarySearchTree.create(BST))
-))
+    ))
+    .then(() =>
+        Promise.all(linkedLists.map(LL =>
+    LinkedList.create(LL))
+    ))
 
 const main = () => {
   console.log('Syncing db...');

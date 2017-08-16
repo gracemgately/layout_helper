@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
-import SaveDSForm from './Forms/SaveDSForm';
+import SaveLLForm from './Forms/SaveLLForm';
 
 
 /**
@@ -37,7 +37,7 @@ class Linkedlist extends Component {
         <div>
           <InsertNodeForm />
           <DeleteNodeForm />
-          <SaveDSForm content={nodes} />
+          <SaveLLForm content={nodeArr} />
         </div>
         <div className="container">
           {

@@ -23,9 +23,6 @@ export default class SaveDSForm extends Component {
     this.SaveDS = this.SaveDS.bind(this);
   }
 
-  ComponentDidMount(){
-  }
-
   handleChange(evt) {
     const name = evt.target.value;
     this.setState({name})
@@ -79,38 +76,48 @@ const breadthFirstForEach_ = (BST) => {
   var collection = [];
   var queue = [BST];
   var tree;
-  var left = -1;
+  var left = 0;
   var right = 0;
   var parent = null;
 
   while (queue.length) {
     tree = queue.shift();
-    //console.log("tree", tree);
+    console.log("tree", tree);
+
+    left*=2 + 1;
+    right*=2 + 2;
 
     collection.push({
       value: tree.value,
-      left: left+=2,
-      right: right+=2,
+      left: left,
+      right: right,
       //each left and right index for that node increments by two 
       parent: parentFinder(collection, tree)
     });
 
-    tree.left ? queue.push(tree.left) : collection.push({
+    left*=2 + 1;
+    right*=2 + 2;
+
+    tree.left ? queue.push(tree.left) : queue.push({
       value: null,
-      left: left+=2,
-      right: right+=2,
+      left: left,
+      right: right,
       //each left and right index for that node increments by two 
       parent: tree.value
     });
-    tree.right ? queue.push(tree.right) : collection.push({
+
+    left*=2 + 1;
+    right*=2 + 2;
+
+    tree.right ? queue.push(tree.right) : queue.push({
       value: null,
-      left: left+=2,
-      right: right+=2,
+      left: left,
+      right: right,
       //each left and right index for that node increments by two 
       parent: tree.value
     });
+        console.log('collection', collection);
   }
-    console.log('collection', collection);
     return collection;
 }
 
