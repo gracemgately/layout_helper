@@ -8,13 +8,11 @@ import history from '../../history'
 
 const AddBSTNodeForm = (props) => {
       function handleChange(evt) {
-        //console.log("val", evt.target.value)
         props.writeNode(Number(evt.target.value));
       }
       function handleSubmit(evt) {
         evt.preventDefault();
         var nodeValue = Number(evt.target.node.value);
-        console.log("props stuff", props.bstNode);
         if (!props.bstNode){
           props.firstBSTNode(nodeValue)
         }
