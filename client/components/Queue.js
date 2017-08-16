@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { drawNode } from '../components'
-import QueueForm from './QueueForm';
+import QueueForm from './Forms/QueueForm';
 
 /**
  * COMPONENT
