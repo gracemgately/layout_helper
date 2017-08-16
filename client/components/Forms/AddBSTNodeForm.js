@@ -14,7 +14,8 @@ const AddBSTNodeForm = (props) => {
       function handleSubmit(evt) {
         evt.preventDefault();
         var nodeValue = Number(evt.target.node.value);
-        if (!props.bstNode.initialTree){
+        console.log("props stuff", props.bstNode);
+        if (!props.bstNode){
           props.firstBSTNode(nodeValue)
         }
         else {

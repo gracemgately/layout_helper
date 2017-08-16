@@ -22,7 +22,6 @@ const BinarySearchTree = (props) => {
   // [[node],[node, node],[node, node]] // each index is level
 
   bstArr.map(([node, level]) => {
-    console.log('node', node);
     if (!groups[level]) groups[level] = [];
     groups[level].push(node);
   })
@@ -60,7 +59,6 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  console.log('state', state);
   return {
     BST: state.bstNode,
     NodeCount: state.bstNode.BSTNodeCount

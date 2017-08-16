@@ -59,7 +59,7 @@ class BinarySearchTree {
     }
 }
 
-var initialTree = new BinarySearchTree(5);
+const initialTree = new BinarySearchTree(5);
 initialTree.insert(2);
 initialTree.insert(50);
 initialTree.insert(40);
@@ -81,7 +81,7 @@ export default function (state = initialTree, action) {
         
         case ADD_SINGLE_BST_NODE:
         
-        var rootNode = state.initialTree;
+        var rootNode = state;
         rootNode.insert(action.value);
 
         return Object.assign({}, state, {
