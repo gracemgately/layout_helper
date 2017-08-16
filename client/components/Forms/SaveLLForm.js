@@ -7,18 +7,17 @@ export default class SaveLLForm extends Component {
   constructor(props) {
     super(props);
 
-    const userId = 1;
 
     this.state = {
       name: name,
       content: LLNodeArray(props.content),
-      userId: userId
+      userId: props.user.id
     }
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.SaveDS = this.SaveDS.bind(this);
-    
+
   }
 
   handleChange(evt) {
@@ -33,16 +32,13 @@ export default class SaveLLForm extends Component {
 
   SaveDS(obj) {
 
-    //console.log('tree', util.inspect(this.state.content, { showHidden: true, depth: null }));
-    //const saveObj = JSON.stringify(util.inspect(obj, { showHidden: true, depth: null }));
-    // axios.post('/api/datastructures', obj)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+    axios.post('/api/linkedlists', obj)
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
 
   }
 
   render() {
-    console.log('state content', this.state.content)
 
     return (
       <div>

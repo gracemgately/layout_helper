@@ -86,7 +86,8 @@ const linkedLists = [{
       next: null,
       previous: 2
     },
-  ]
+  ], 
+  userId: 2
 }]
 
 const seed = () =>

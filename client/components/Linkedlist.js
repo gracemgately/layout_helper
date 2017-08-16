@@ -15,7 +15,7 @@ class Linkedlist extends Component {
 
   render() {
 
-    const { nodes } = this.props;
+    const { nodes, user } = this.props;
 
 
     // node:LinkedList {head: Node, tail: Node}...
@@ -37,7 +37,7 @@ class Linkedlist extends Component {
         <div>
           <InsertNodeForm />
           <DeleteNodeForm />
-          <SaveLLForm content={nodeArr} />
+          {user.id ? <SaveLLForm content={nodeArr} user={user}/> : null}
         </div>
         <div className="container">
           {
@@ -62,9 +62,10 @@ class Linkedlist extends Component {
  */
 
 const mapState = (state) => {
- // console.log('state', state)
+  console.log('state', state)
   return {
     nodes: state.node,
+    user: state.user
   }
 }
 
