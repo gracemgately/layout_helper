@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { drawNode } from '../components'
+import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
+import SaveDSForm from './Forms/SaveDSForm';
+
 
 /**
  * COMPONENT
@@ -31,10 +33,11 @@ class Linkedlist extends Component {
     }
     return (
       <div>
-        <h1> Linked List </h1> <div>{JSON.stringify(nodes)}</div>
+        <h1> Linked List </h1>
         <div>
           <InsertNodeForm />
           <DeleteNodeForm />
+          <SaveDSForm content={nodes} />
         </div>
         <div className="container">
           {
