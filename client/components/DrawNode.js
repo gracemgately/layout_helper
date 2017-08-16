@@ -23,7 +23,7 @@ export const drawBSTNode = (node, fill="none") => {
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
     <svg>
-      <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+      <circle fill="none" className="circle1" cx="25" cy="25" r="25"> </circle>
 
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
@@ -37,7 +37,7 @@ export const drawBSTNode2 = (node) => {
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
-        <circle className="circle1" cx="25" cy="25" r="25"> </circle>
+        <circle className="circle1" fill="none" cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 

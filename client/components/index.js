@@ -14,8 +14,10 @@ export {default as Stack} from './Stack'
 
 export * from './arrow'
 export * from './DrawNode'
-export * from './InsertNodeForm'
-export * from './DeleteNodeForm'
-export * from './AddBSTNodeForm'
+export * from './Forms/InsertNodeForm'
+export * from './Forms/DeleteNodeForm'
+export * from './Forms/AddBSTNodeForm'
 export * from './Stack'
+export * from './Forms/StackForm'
+export * from './Forms/QueueForm'
 

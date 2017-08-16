@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addNodeToTail, deleteNodeFromHead, highlightNodeAtIndex } from '../store'
+import { writeNode, addNodeToTail, deleteNodeFromHead, highlightNodeAtIndex } from '../../store'
 
 const QueueForm = (props) => {
 

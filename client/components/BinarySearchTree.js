@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { breadthFirstForEach } from '../components'
-import AddBSTNodeForm from './AddBSTNodeForm';
-import DeleteNodeForm from './DeleteNodeForm';
+import AddBSTNodeForm from './Forms/AddBSTNodeForm';
+import DeleteNodeForm from './Forms/DeleteNodeForm';
 import bstNode from '../store';
 
 /**
