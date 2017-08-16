@@ -15,6 +15,7 @@ class Linkedlist extends Component {
 
     const { nodes } = this.props;
 
+
     // node:LinkedList {head: Node, tail: Node}...
 
     // create an array of linked list from 'nodes' class(object)
@@ -30,7 +31,7 @@ class Linkedlist extends Component {
     }
     return (
       <div>
-        <h1> Linked List </h1>
+        <h1> Linked List </h1> <div>{JSON.stringify(nodes)}</div>
         <div>
           <InsertNodeForm />
           <DeleteNodeForm />
