@@ -1,6 +1,6 @@
 const db = require('./server/db');
 const User = require('./server/db/models/user');
-const DataStructure = require('./server/db/models/datastructure');
+const BinarySearchTree = require('./server/db/models/binarysearchtree');
 
 
 
@@ -31,15 +31,34 @@ const users = [{
 }];
 
 
-const dataStructures = [{
-    name: 'CoolestLinkedList',
-    content: {},
-    category: 'Linked List',
-    userId: 2
-}, {
+const binarySearchTrees = [{
     name: 'BeautifulBST',
-    content: {},
-    category: 'Binary Search Tree',
+    content: [
+      {
+        value: 1200,
+        left: 1,
+        right: 2,
+        parent: null
+      }, 
+      {
+        value: 600,
+        left: 3,
+        right: 4,
+        parent: 0
+      }, 
+      {
+        value: 1000,
+        left: 5,
+        right: 6,
+        parent: 0
+      }, 
+      {
+        value: 700,
+        left: 7,
+        right: 8,
+        parent: 1,
+      }
+    ],
     userId: 1
 }];
 
@@ -48,15 +67,15 @@ const seed = () =>
         User.create(user))
     )
     .then(() =>
-        Promise.all(dataStructures.map(dataStructure =>
-    DataStructure.create(dataStructure))
+        Promise.all(binarySearchTrees.map(BST =>
+    BinarySearchTree.create(BST))
 ))
 
 const main = () => {
   console.log('Syncing db...');
   db.sync({ force: true })
     .then(() => {
-      console.log('Seeding databse...');
+      console.log('Seeding database...');
       return seed();
     })
     .catch(err => {

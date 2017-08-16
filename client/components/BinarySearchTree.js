@@ -6,6 +6,8 @@ import { breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import bstNode from '../store';
+import SaveDSForm from './Forms/SaveDSForm';
+
 
 /**
  * COMPONENT
@@ -22,7 +24,7 @@ const BinarySearchTree = (props) => {
   // [[node],[node, node],[node, node]] // each index is level
 
   bstArr.map(([node, level]) => {
-    console.log('node', node);
+    //console.log('node', node);
     if (!groups[level]) groups[level] = [];
     groups[level].push(node);
   })
@@ -35,6 +37,7 @@ const BinarySearchTree = (props) => {
       <div>
       <AddBSTNodeForm />
       <DeleteNodeForm />
+      <SaveDSForm content={BST} />
       </div>
       <div className="container">
       {
@@ -42,8 +45,8 @@ const BinarySearchTree = (props) => {
             return (
               <div className={'bstlevel' + index} key={index}>
                 {
-                  ele.map((node) => {
-                    return (<div>{node}</div>)
+                  ele.map((node, idx) => {
+                    return (<div key={idx}>{node}</div>)
                   })
               }
               </div>)
@@ -60,7 +63,7 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  console.log('state', state);
+  //console.log('state', state);
   return {
     BST: state.bstNode,
     NodeCount: state.bstNode.BSTNodeCount

@@ -1,5 +1,5 @@
 const User = require('./user')
-const DataStructure = require('./datastructure')
+const BinarySearchTree = require('./binarysearchtree')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -8,8 +8,8 @@ const DataStructure = require('./datastructure')
  *    BlogPost.belongsTo(User)
  */
 
-DataStructure.belongsTo(User)
-User.hasMany(DataStructure, { as: 'Visualizations' })
+BinarySearchTree.belongsTo(User)
+User.hasMany(BinarySearchTree, { as: 'Visualizations' })
 // instances of User will get the accessors getVisualiztions and setVisualiztions
 
 
@@ -22,5 +22,5 @@ User.hasMany(DataStructure, { as: 'Visualizations' })
  */
 module.exports = {
   User,
-  DataStructure
+  BinarySearchTree
 }

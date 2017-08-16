@@ -1,9 +1,9 @@
 const router = require('express').Router()
-const { DataStructure } = require('../db/models')
+const { BinarySearchTree } = require('../db/models')
 module.exports = router
 
 router.get('/', (req, res, next) => {
-  DataStructure.findAll({})
+  BinarySearchTree.findAll({})
     .then(everything => res.json(everything))
     .catch(next)
 })
@@ -11,10 +11,9 @@ router.get('/', (req, res, next) => {
 router.post('/', (req, res, next) => {
   const name = req.body.name;
   const content = req.body.content;
-  const category = req.body.category;
   const userId = req.body.userId;
 
-  DataStructure.create({ name, content, category, userId })
+  BinarySearchTree.create({ name, content, userId })
     .then(newDS => res.json(newDS))
     .catch(next)
   })
