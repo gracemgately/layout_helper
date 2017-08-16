@@ -1,10 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
 import { breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
-import DeleteNodeForm from './Forms/DeleteNodeForm';
+import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 
 /**
@@ -33,7 +31,7 @@ const BinarySearchTree = (props) => {
       <h1> Binary Search Tree </h1>
       <div>
       <AddBSTNodeForm />
-      <DeleteNodeForm />
+      <DeleteBSTNodeForm />
       </div>
       <div className="container">
       {
