@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
-import { deleteNodeFromHead, deleteNodeFromTail, deleteAtIndex, writeDeleteIndex } from '../store'
+import { deleteNodeFromHead, deleteNodeFromTail, deleteAtIndex, writeDeleteIndex } from '../../store'
 
 const DeleteNodeForm = (props) => {
 

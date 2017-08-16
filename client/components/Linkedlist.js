@@ -3,8 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { drawNode } from '../components'
-import InsertNodeForm from './InsertNodeForm';
-import DeleteNodeForm from './DeleteNodeForm';
+import InsertNodeForm from './Forms/InsertNodeForm';
+import DeleteNodeForm from './Forms/DeleteNodeForm';
 
 /**
  * COMPONENT
