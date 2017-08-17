@@ -178,7 +178,7 @@ export default function (state = list, action) {
     case DELETE_AT_INDEX:
       list.removeAtIndex(action.node.index);
       return Object.assign({}, list);
-    case HIGHLIGHT_NODE_AT_INDEX: 
+    case HIGHLIGHT_NODE_AT_INDEX:
       console.log('here', action.index)
       return Object.assign({}, state, { highlightIdx: action.index })
     default:
