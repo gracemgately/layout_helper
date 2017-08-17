@@ -10,10 +10,17 @@ const LinkedList = require('./linkedlists')
  */
 
 BinarySearchTree.belongsTo(User)
-User.hasMany(BinarySearchTree, { as: 'BinarySearchTrees' })
+User.hasMany(BinarySearchTree)
 
 LinkedList.belongsTo(User)
-User.hasMany(LinkedList, { as: 'LinkedLists' })
+User.hasMany(LinkedList)
+
+// Stack.belongsTo(User)
+// User.hasMany(Stack, { as: 'Stacks' })
+
+// Queue.belongsTo(User)
+// User.hasMany(Queue, { as: 'Queues' })
+
 // instances of User will get the accessors getVisualiztions and setVisualiztions
 
 
