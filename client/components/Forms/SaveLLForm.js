@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { LLNodeArray_ } from '../../utils'
+import { LLNodeArray_, CleanArray_ } from '../../utils'
 
 export default class SaveLLForm extends Component {
 
@@ -23,10 +23,14 @@ export default class SaveLLForm extends Component {
 
   componentWillReceiveProps(nextProps){
     console.log('thisprops', this.props.content);
-    console.log('nextprops', nextProps.content)
+    console.log('nextprops', nextProps.content);
+
     if (this.props.content !== nextProps){
+
       var propsContent = LLNodeArray_(nextProps.content);
-      this.setState({content: propsContent});
+      var cleanedPropsContent = CleanArray_(propsContent);
+
+      this.setState({ content: cleanedPropsContent });
     }
   }
 

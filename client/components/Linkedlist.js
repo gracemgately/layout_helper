@@ -6,6 +6,7 @@ import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
+import { nodeArray_ } from '../utils'
 
 
 /**
@@ -18,20 +19,8 @@ class Linkedlist extends Component {
     const { nodes, user } = this.props;
     console.log('nodes', nodes)
 
-
     // node:LinkedList {head: Node, tail: Node}...
-
-    // create an array of linked list from 'nodes' class(object)
-
-    const nodeArr = []; // initialize empty nodeArr.  important!
-    let oldHead = nodes.head; // this is startpoint
-
-
-    // push nodes into arr until there is no more 'oldHead'
-    while (oldHead !== null && oldHead !== undefined) {
-      nodeArr.push(oldHead);
-      oldHead = oldHead.next || null;
-    }
+    const nodeArr = nodeArray_(nodes)
 
     console.log('nodeArr from LL component', nodeArr);
 
