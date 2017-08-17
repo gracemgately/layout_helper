@@ -54,12 +54,13 @@ class BinarySearchTree {
             this.value = null;
             return;
         }
-        var direction = (this.parent.left && (this.value === this.parent.left.value)) ? 'left' : 'right';
-        var otherDirection = direction === 'left' ? 'right' : 'left';
+        var direction = (this.parent.right && (this.value === this.parent.right.value)) ? 'right' : 'left';
+
+        var otherDirection = direction === 'right' ? 'left' : 'right';
         this.parent[direction] = null;
         if (this[direction] && this[otherDirection]){
-            this.parent.insert(this[direction]);
-            this.parent.insert(this[otherDirection]);
+            this.parent.insert(this.right);
+            this.parent.insert(this.left);
         } else if ( this[direction] ) {this.parent.insert(this[direction])}
     }
 }
