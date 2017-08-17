@@ -6,15 +6,15 @@ export default class SaveDSForm extends Component {
 
   constructor(props) {
     super(props);
-    // const { userId, category, content } = props;
+    const { content } = props;
     //const userId = 1;
     //const category = "Linked List";
     // const content = props.content;
     //const name = "Me";
 
     this.state = {
-      // name: name,
-      // content: null,
+      name: name,
+      content: content
       // category: category,
       // userId: userId
     }
@@ -30,16 +30,20 @@ export default class SaveDSForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.SaveDS(this.state);
+    this.SaveDS(this.state.content);
   }
 
   SaveDS(obj) {
 
-    //console.log('tree', util.inspect(this.state.content, { showHidden: true, depth: null }));
-    //const saveObj = JSON.stringify(util.inspect(obj, { showHidden: true, depth: null }));
-    // axios.post('/api/datastructures', obj)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err))
+   // convert bst to heap array
+    let content = breadthFirstForEach_(obj);
+
+    axios.post('/api/binarysearchtrees', {
+      name: this.state.name,
+      content
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err))
 
   }
 
@@ -49,7 +53,6 @@ export default class SaveDSForm extends Component {
     return (
       <div>
       <div>
-      {/* breadthFirstForEach_(this.props.content)*/}
       </div>
       <form id="form-group"  >
         <div>
@@ -73,61 +76,37 @@ export default class SaveDSForm extends Component {
 }
 
 const breadthFirstForEach_ = (BST) => {
-  var collection = [];
-  var queue = [BST];
-  var tree;
-  var left = 0;
-  var right = 0;
-  var parent = null;
 
-  while (queue.length) {
-    tree = queue.shift();
-    //console.log("tree", tree);
-
-    left*=2 + 1;
-    right*=2 + 2;
+  let queue = [BST];
+  let collection = [];
+  let counter = 0;
+  while (counter < 40) {
+//counter set to 40 to avoid infinite loop -- to be changed later
+    let current = queue.shift();
+    (current.left) ?  queue.push(current.left) : queue.push("empty");
+    (current.right) ? queue.push(current.right) : queue.push("empty");
 
     collection.push({
-      value: tree.value,
-      left: left,
-      right: right,
-      //each left and right index for that node increments by two 
-      parent: parentFinder(collection, tree)
+      value: current.value,
+      left: childrenIdx(counter)[0],
+      right: childrenIdx(counter)[1],
+      parent: parentIdx(counter)
     });
-
-    left*=2 + 1;
-    right*=2 + 2;
-
-    tree.left ? queue.push(tree.left) : queue.push({
-      value: null,
-      left: left,
-      right: right,
-      //each left and right index for that node increments by two 
-      parent: tree.value
-    });
-
-    left*=2 + 1;
-    right*=2 + 2;
-
-    tree.right ? queue.push(tree.right) : queue.push({
-      value: null,
-      left: left,
-      right: right,
-      //each left and right index for that node increments by two 
-      parent: tree.value
-    });
-        //console.log('collection', collection);
+    counter++;
   }
-    return collection;
+  console.log('collection ', collection);
+  return collection;
+
 }
 
-//find the object/node in the collection whose value is the same 
-//as the passed-in node's parent's value, return the index
-function parentFinder(coll, node) {
-  for (let i = 0; i < coll.length; i++){
-    if (coll[i].value === node.parent.value){
-      return i;
-    }
-  }
-  return null;
+
+
+function parentIdx(childIdx) {
+  if (childIdx === 0) return null;
+  return Math.floor( (childIdx-1) / 2)
+}
+
+
+function childrenIdx(parentIdx) {
+  return [parentIdx * 2 + 1, (parentIdx + 1) * 2]
 }
