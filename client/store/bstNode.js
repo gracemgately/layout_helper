@@ -44,7 +44,7 @@ class BinarySearchTree {
         if (!deleteRef) return false;
         deleteRef.die();
     }
-
+  
     die() {
         if ((!this.parent) && (this.left.value !==null && this.right.value !== null)) {
             console.log("THIS1", this)
@@ -75,7 +75,6 @@ class BinarySearchTree {
 
 
 const initialTree = new BinarySearchTree();
-//initialTree.insert(5);
 
 export default function (state = initialTree, action) {
     switch (action.type) {

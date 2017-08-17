@@ -4,6 +4,8 @@ import { breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
+import SaveDSForm from './Forms/SaveDSForm';
+
 
 /**
  * COMPONENT
@@ -31,6 +33,7 @@ const BinarySearchTree = (props) => {
       <h1> Binary Search Tree </h1>
       <div>
       <AddBSTNodeForm />
+      <SaveDSForm content={BST} />
       <DeleteBSTNodeForm />
       </div>
       <div className="container">
@@ -39,8 +42,8 @@ const BinarySearchTree = (props) => {
             return (
               <div className={'bstlevel' + index} key={index}>
                 {
-                  ele.map((node) => {
-                    return (<div>{node}</div>)
+                  ele.map((node, idx) => {
+                    return (<div key={idx}>{node}</div>)
                   })
               }
               </div>)
