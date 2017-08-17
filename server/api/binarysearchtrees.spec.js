@@ -1,12 +1,12 @@
-const Bluebird = require('bluebird');
-
 const { expect } = require('chai')
+const request = require('supertest')
 const db = require('../db')
+const app = require('../index')
 const BinarySearchTree = db.model('binarysearchtree')
+const Bluebird = require('bluebird')
 
-describe('Binary search tree model', () => {
+describe('BinarySearchTree routes', () => {
 
-  // clear the database before all tests
   beforeEach(() => {
     return db.sync({ force: true })
   });
@@ -16,7 +16,7 @@ describe('Binary search tree model', () => {
     return db.sync({force: true});
   });
 
-  describe('test binary search tree', function () {
+  describe('/api/binarysearchtrees/', () => {
 
     beforeEach(() => {
       return Bluebird.all([
@@ -31,15 +31,14 @@ describe('Binary search tree model', () => {
       ]);
     });
 
-      it('saves binary search tree with name and content', function () {
-        return BinarySearchTree.findAll()
-          .then(function (alltrees) {
-            expect(alltrees).to.have.length(2);
-            expect(alltrees[0].name).to.equal('BST1');
-            expect(alltrees[1].name).to.equal('BST2');
-            expect(alltrees[1].name).to.not.equal('WRONG TREE NAME');
-          });
-      });
+    it('GET /api/binarysearchtrees', () => {
+      return request(app)
+        .get('/api/binarysearchtrees')
+        .expect(200)
+        .then(res => {
+          expect(res.body).to.be.an('array')
+        expect(res.body.length).to.be.equal(2)
+      })
     })
   })
-
+})
