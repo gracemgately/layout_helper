@@ -16,4 +16,4 @@ router.post('/', (req, res, next) => {
   BinarySearchTree.create({ name, content, userId })
     .then(newDS => res.json(newDS))
     .catch(next)
-  })
+})
