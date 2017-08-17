@@ -4,11 +4,11 @@ const { User, BinarySearchTree, LinkedList } = require('../db/models')
 
 module.exports = router
 
-router.get(`/:userId?type=${Model}`, (req, res, next) => {
-    console.log(Model);
-    Model.findAll({
-        where: {}
-    })
-    .then(users => res.json(users))
-    .catch(next)
-})
+// router.get(`/:userId?type=model`, (req, res, next) => {
+//     if (Model === 'binarysearchtree') Model = BinarySearchTree
+//     console.log(Model);
+//     Model.findAll({
+//     })
+//     .then(users => res.json(users))
+//     .catch(next)
+// })

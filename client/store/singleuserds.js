@@ -13,7 +13,7 @@ const getAllUserBsts = userId => ({ type: GET_ALL_USER_BSTS, userId })
 
 export const BSTS = userId => 
     dispatch =>
-        axios.get(`/api/userds/${userId}?type=BinarySearchTree`)
+        axios.get(`/api/userds/${userId}?type=binarysearchtree`)
         .then(res => res.data)
         .then()
 
