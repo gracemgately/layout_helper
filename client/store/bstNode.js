@@ -44,17 +44,13 @@ class BinarySearchTree {
         if (!deleteRef) return false;
         deleteRef.die();
     }
-  
-    die() {
 
-        // if (!this.parent && (this.left.value !== null) && (this.right.value !== null)) {
-        //     console.log("THIS1", this)
-        //     this.right.insert(this.left);
-        //     // this.left.value = this.right.left.value;
-        //     this.value = null;
-        //     return;
-        // }
-        if ((!this.parent && this.left.value !== null)  || (!this.parent && this.right.value !== null) ){
+    die() {
+        if ((!this.parent) && (!this.left) && (!this.right)){
+            this.value = undefined;
+            return;
+        }
+        if ((!this.parent && this.left)  || (!this.parent && this.right) ){
             var side = this.left ? 'left' : 'right';
             this.value = this[side].value
             this[side].parent = null;
