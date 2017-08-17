@@ -9,11 +9,15 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+
   const name = req.body.name;
   const content = req.body.content;
   const userId = req.body.userId;
 
   LinkedList.create({ name, content, userId })
-    .then(newDS => res.json(newDS))
+    .then(newDS => {
+      console.log('newDS', newDS)
+      res.json(newDS)
+    })
     .catch(next)
   })

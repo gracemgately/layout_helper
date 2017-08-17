@@ -2,17 +2,16 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { LLNodeArray } from '../../utils'
+import { LLNodeArray_ } from '../../utils'
 
 export default class SaveLLForm extends Component {
 
   constructor(props) {
     super(props);
 
-
     this.state = {
       name: name,
-      content: LLNodeArray(props.content),
+      content: null,
       userId: props.user.id
     }
 
@@ -20,6 +19,15 @@ export default class SaveLLForm extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.SaveDS = this.SaveDS.bind(this);
 
+  }
+
+  componentWillReceiveProps(nextProps){
+    console.log('thisprops', this.props.content);
+    console.log('nextprops', nextProps.content)
+    if (this.props.content !== nextProps){
+      var propsContent = LLNodeArray_(nextProps.content);
+      this.setState({content: propsContent});
+    }
   }
 
   handleChange(evt) {
@@ -41,6 +49,9 @@ export default class SaveLLForm extends Component {
   }
 
   render() {
+
+    //console.log('props.content', this.props.content)
+    console.log('nodearr value on state', this.state.content)
 
     return (
       <div>

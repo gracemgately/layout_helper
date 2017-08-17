@@ -37,21 +37,24 @@ function childrenIdx(parentIdx) {
 //
 //SaveLLForm.js
 
-export const LLNodeArray = (nodeArray) => {
+export const LLNodeArray_ = (nodeArray) => {
+    console.log('array before LLNodeArray', nodeArray)
     nodeArray.map((node, index) => {
-        if (index === nodeArray.length - 1){
-            node.next = null;
-            node.previous = index-1;
-        }
-        else if (index === 0){
+        console.log('node', node);
+        console.log('index', index)
+        if (typeof(node) !== 'number' && index === 0){
+            node.value = node.value
             node.next = index+1;
             node.previous = null;
         }
-        else {
+        else if (typeof(node) !== 'number') {
+            node.value = node.value
             node.next = index+1;
             node.previous = index-1;
         }
     })
+    nodeArray[nodeArray.length - 1].next = null;
+    console.log('array after LLNodeArray', nodeArray)
     return nodeArray;
 }
 

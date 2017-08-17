@@ -12,10 +12,11 @@ import SaveLLForm from './Forms/SaveLLForm';
  * COMPONENT
  */
 class Linkedlist extends Component {
-
+  
   render() {
 
     const { nodes, user } = this.props;
+    console.log('nodes', nodes)
 
 
     // node:LinkedList {head: Node, tail: Node}...
@@ -31,6 +32,9 @@ class Linkedlist extends Component {
       nodeArr.push(oldHead);
       oldHead = oldHead.next || null;
     }
+
+    console.log('nodeArr from LL component', nodeArr);
+
     return (
       <div>
         <h1> Linked List </h1>
