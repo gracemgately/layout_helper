@@ -18,19 +18,6 @@ export const drawNode = (node, fill="none") => {
   );
 }
 
-export const drawBSTNode = (node, fill="none") => {
-  return (
-    <div className="basicnode">
-    {(node.left !== null) ? SouthWestArrow(node.value) : null}
-    <svg>
-      <circle fill="none" className="circle1" cx="25" cy="25" r="25"> </circle>
-
-        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
-      </svg>
-      {(node.right !== null) ? SouthEastArrow(node.value) : null}
-    </div>
-  );
-}
 
 export const drawBSTNode2 = (node) => {
   return (
@@ -54,10 +41,10 @@ export const breadthFirstForEach = (node) => {
 
   while (queue.length) {
     tree = queue.shift();
-    console.log("tree", tree);
+    // console.log("tree", tree);
     let level = treeLevel(tree);
-    console.log("LEVEL", level);
-    collection.push([drawBSTNode2(tree), level]);
+    // console.log("LEVEL", level);
+    if (node.value) collection.push([drawBSTNode2(tree), level]);
 
     if (tree.left) {
       queue.push(tree.left)
