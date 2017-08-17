@@ -82,7 +82,7 @@ const breadthFirstForEach_ = (BST) => {
 
   while (queue.length) {
     tree = queue.shift();
-    console.log("tree", tree);
+    //console.log("tree", tree);
 
     left*=2 + 1;
     right*=2 + 2;
@@ -116,7 +116,7 @@ const breadthFirstForEach_ = (BST) => {
       //each left and right index for that node increments by two 
       parent: tree.value
     });
-        console.log('collection', collection);
+        //console.log('collection', collection);
   }
     return collection;
 }
