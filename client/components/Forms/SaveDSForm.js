@@ -49,7 +49,7 @@ export default class SaveDSForm extends Component {
     return (
       <div>
       <div>
-      { breadthFirstForEach_(this.props.content)}
+      {/* breadthFirstForEach_(this.props.content)*/}
       </div>
       <form id="form-group"  >
         <div>

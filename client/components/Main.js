@@ -25,6 +25,11 @@ const Main = (props) => {
               {/* The navbar will show these links after you log in */}
               <Link to="/home">Home</Link>
               <a href="#" onClick={handleClick}>Logout</a>
+              <Link to="/linked-list">Linked List</Link>
+              <Link to="/binary-search-tree">Binary Search Tree</Link>
+              <Link to="/queue">Queue</Link>
+              <Link to="/stack">Stack</Link>
+              <Link to="/my-data-structures">My Data Structures</Link>
             </div> :
             <div>
               {/* The navbar will show these links before you log in */}
@@ -33,7 +38,6 @@ const Main = (props) => {
               <Link to="/linked-list">Linked List</Link>
               <Link to="/binary-search-tree">Binary Search Tree</Link>
               <Link to="/queue">Queue</Link>
-
               <Link to="/stack">Stack</Link>
             </div>
         }

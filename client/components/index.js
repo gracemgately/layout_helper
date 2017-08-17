@@ -10,6 +10,7 @@ export {NewLL, SavedLL} from './linkedlist'
 export {default as BinarySearchTree} from './BinarySearchTree'
 export {default as Queue} from './Queue'
 export {default as Stack} from './Stack'
+export {default as AllUserDS} from './AllUserDS'
 
 export * from './arrow'
 export * from './DrawNode'
