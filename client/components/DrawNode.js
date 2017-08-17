@@ -59,12 +59,8 @@ export const breadthFirstForEach = (node) => {
     //console.log("LEVEL", level);
     collection.push([drawBSTNode2(tree), level]);
 
-    if (tree.left) {
-      queue.push(tree.left)
-    };
-    if (tree.right) {
-      queue.push(tree.right)
-    };
+    if (tree.left) queue.push(tree.left)
+    if (tree.right) queue.push(tree.right)
   }
   return collection;
 }
