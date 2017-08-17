@@ -28,8 +28,6 @@ class BinarySearchTree {
              this.value = node.value;
              return;
         }
-        console.log('this', this);
-        console.log('node', node.value);
         var direction = node.value < this.value ? 'left' : 'right';
         node.parent = this;
         if (!this[direction]) this[direction] = node;
@@ -57,13 +55,17 @@ class BinarySearchTree {
             return;
         }
         var direction = (this.parent.left && (this.value === this.parent.left.value)) ? 'left' : 'right';
+        var otherDirection = direction === 'left' ? 'right' : 'left';
         this.parent[direction] = null;
-        this.parent.insert(this[direction]);
+        if (this[direction] && this[otherDirection]){
+            this.parent.insert(this[direction]);
+            this.parent.insert(this[otherDirection]);
+        } else if ( this[direction] ) {this.parent.insert(this[direction])}
     }
 }
 
 const initialTree = new BinarySearchTree();
-initialTree.insert(5);
+//initialTree.insert(5);
 
 export default function (state = initialTree, action) {
     switch (action.type) {
@@ -76,7 +78,7 @@ export default function (state = initialTree, action) {
 
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.value)
-            return state;
+            return Object.assign({}, initialTree);
         default:
             return state
     }
