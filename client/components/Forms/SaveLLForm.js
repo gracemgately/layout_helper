@@ -28,9 +28,9 @@ export default class SaveLLForm extends Component {
     if (this.props.content !== nextProps){
 
       var propsContent = LLNodeArray_(nextProps.content);
-      var cleanedPropsContent = CleanArray_(propsContent);
+      //var cleanedPropsContent = CleanArray_(propsContent);
 
-      this.setState({ content: cleanedPropsContent });
+      this.setState({ content: LLNodeArray_ });
     }
   }
 
