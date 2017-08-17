@@ -55,17 +55,17 @@ class BinarySearchTree {
     //   }
 
     size(value) {
-        return this.magnitude; 
+        return this.magnitude;
     }
 }
 
 var initialTree = new BinarySearchTree(5);
-initialTree.insert(2);
 initialTree.insert(50);
 initialTree.insert(40);
 initialTree.insert(100);
 initialTree.insert(37);
 initialTree.insert(46);
+initialTree.insert(2);
 
 
 
@@ -75,17 +75,17 @@ export default function (state = initialTree, action) {
     switch (action.type) {
         case FIRST_BST_NODE:
             return Object.assign({}, state)
-        
+
         // case GET_BSTNODE:
         //     return action.node
-        
+
         case ADD_SINGLE_BST_NODE:
-        
+
         var rootNode = state.initialTree;
         rootNode.insert(action.value);
 
         return Object.assign({}, state, {
-            initialTree: rootNode, 
+            initialTree: rootNode,
             BSTNodeCount: rootNode.magnitude
         });
 
