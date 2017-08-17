@@ -6,13 +6,11 @@ import { withRouter, Link } from 'react-router-dom'
 /**
  * COMPONENT
  */
-class AllUserDS extends Component {
+const AllUserDS = (props) => {
 
-  render() {
     return(
         <div>user DS here</div>
     )
-  }
 }
 
 /*

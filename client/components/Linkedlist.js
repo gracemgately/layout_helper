@@ -61,7 +61,7 @@ class Linkedlist extends Component {
  * CONTAINER
  */
 
-const mapNewLL = (state) => {
+const mapState = (state) => {
   console.log('state', state)
   return {
     nodes: state.node,
@@ -69,13 +69,6 @@ const mapNewLL = (state) => {
   }
 }
 
-const mapSavedLL = (state) => {
-  console.log('state', state)
-  return {
-    nodes: state.node,
-    user: state.user
-  }
-}
 
 
 // const mapDispatch = (dispatch) => {
@@ -85,5 +78,4 @@ const mapSavedLL = (state) => {
 // }
 // }
 
-export const NewLL = connect(mapNewLL)(Linkedlist);
-export const SavedLL = connect(mapSavedLL)(Linkedlist)
+export default connect(mapState)(Linkedlist);

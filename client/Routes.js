@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, NewLL, BinarySearchTree, Queue, Stack, AllUserDS} from './components'
+import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack, AllUserDS} from './components'
 import {me} from './store'
 
 /**
@@ -28,7 +28,7 @@ class Routes extends Component {
             <Route exact path="/" component={Main} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route exact path="/linked-list" component={NewLL} />
+            <Route exact path="/linked-list" component={Linkedlist} />
             <Route path="/binary-search-tree" component={BinarySearchTree} />
             <Route path="/queue" component={Queue} />
             <Route path="/stack" component={Stack} />
@@ -38,7 +38,7 @@ class Routes extends Component {
                   {/* Routes placed here are only available after logging in */}
                   <Route exact path="/" component={Main} />
                   <Route path="/home" component={Main} />
-                  <Route exact path="/linked-list" component={NewLL} />
+                  <Route exact path="/linked-list" component={Linkedlist} />
                   <Route path="/binary-search-tree" component={BinarySearchTree} />
                   <Route path="/queue" component={Queue} />
                   <Route path="/stack" component={Stack} />
