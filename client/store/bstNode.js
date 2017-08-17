@@ -5,12 +5,10 @@ import { breadthFirstForEach } from '../components'
 const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
-const FIRST_BST_NODE = 'FIRST_BST_NODE';
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
-export const removeSingleBSTNode = value => ({ type: REMOVE_SINGLE_BST_NODE, value })
-export const firstBSTNode = value => ({ type: FIRST_BST_NODE, value })
+export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 
 class BinarySearchTree {
     constructor(value) {
@@ -40,9 +38,7 @@ class BinarySearchTree {
         else return false;
     }
 
-    // size(value) {
-    //     return this.magnitude;
-    // }
+   
     remove(value) {
         const deleteRef = this.contains(value);
         if (!deleteRef) return false;
@@ -50,10 +46,22 @@ class BinarySearchTree {
     }
 
     die() {
-        if (!this.parent) {
+        if ((!this.parent) && (this.left.value !==null && this.right.value !== null)) {
+            console.log("THIS1", this)
+            // var currNode = this; //10
+            // var currLeft = this.left; //5
+            // var currRight = this.right; //20
+
+            // currRight.insert(currLeft); //inserting 5 to left of 20
+            // currNode = currRight //currNode = 20
+            // currLeft = null;
+
+            this.right.insert(this.left);
+            // this.left.value = this.right.left.value;
             this.value = null;
             return;
         }
+        console.log("THIS", this)
         var direction = (this.parent.right && (this.value === this.parent.right.value)) ? 'right' : 'left';
 
         var otherDirection = direction === 'right' ? 'left' : 'right';
@@ -65,20 +73,18 @@ class BinarySearchTree {
     }
 }
 
+
 const initialTree = new BinarySearchTree();
 //initialTree.insert(5);
 
 export default function (state = initialTree, action) {
     switch (action.type) {
-        case FIRST_BST_NODE:
-            return Object.assign({}, state)
-
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
             return Object.assign({}, initialTree);
 
         case REMOVE_SINGLE_BST_NODE:
-            initialTree.remove(action.value)
+            initialTree.remove(action.node)
             return Object.assign({}, initialTree);
         default:
             return state

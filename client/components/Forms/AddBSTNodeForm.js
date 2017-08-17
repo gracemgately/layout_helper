@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, firstBSTNode, addSingleBSTNode } from '../../store'
+import { writeNode, addSingleBSTNode } from '../../store'
 import history from '../../history'
 
 
@@ -11,12 +11,7 @@ const AddBSTNodeForm = (props) => {
       function handleSubmit(evt) {
         evt.preventDefault();
         var nodeValue = Number(evt.target.node.value);
-        if (!props.bstNode){
-          props.firstBSTNode(nodeValue)
-        }
-        else {
           props.addSingleBSTNode(nodeValue);
-        }
         props.writeNode('')
       }
 
@@ -55,7 +50,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
     return {
       writeNode:  (value) => dispatch(writeNode(value)),
-      firstBSTNode: (value) => dispatch(firstBSTNode(value)),
       addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value))
 
     }
