@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack, AllUserDS} from './components'
+import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack, SingleUserDS} from './components'
 import {me} from './store'
 
 /**
@@ -22,10 +22,10 @@ class Routes extends Component {
 
     return (
       <Router history={history}>
-        {/*<Main>*/}
+        <Main>
           <Switch>
-            {/* Routes placed here are available to all visitors */}
-            <Route exact path="/" component={Main} />
+            {/* Routes placed here are available to all visitors*/}
+            <Route exact path="/" component={Home} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route exact path="/linked-list" component={Linkedlist} />
@@ -36,19 +36,18 @@ class Routes extends Component {
               isLoggedIn ?
                 <Switch>
                   {/* Routes placed here are only available after logging in */}
-                  <Route exact path="/" component={Main} />
-                  <Route path="/home" component={Main} />
+                  <Route exact path="/" component={Home} />
                   <Route exact path="/linked-list" component={Linkedlist} />
                   <Route path="/binary-search-tree" component={BinarySearchTree} />
                   <Route path="/queue" component={Queue} />
                   <Route path="/stack" component={Stack} />
-                  <Route path="/my-data-structures" component={AllUserDS}/>
+                  <Route path="/my-data-structures" component={SingleUserDS}/>
                 </Switch> : null
             }
             {/* Displays our Login component as a fallback */}
-            <Route component={Main} />
+            <Route component={Home} />
           </Switch>
-        {/*</Main>*/}
+        </Main>
       </Router>
     )
   }

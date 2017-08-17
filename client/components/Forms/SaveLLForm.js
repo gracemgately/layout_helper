@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
+import { LLNodeArray } from '../../utils'
+
 export default class SaveLLForm extends Component {
 
   constructor(props) {
@@ -65,20 +67,3 @@ export default class SaveLLForm extends Component {
 
 }
 
-const LLNodeArray = (nodeArray) => {
-    nodeArray.map((node, index) => {
-        if (index === nodeArray.length - 1){
-            node.next = null;
-            node.previous = index-1;
-        }
-        else if (index === 0){
-            node.next = index+1;
-            node.previous = null;
-        }
-        else {
-            node.next = index+1;
-            node.previous = index-1;
-        }
-    })
-    return nodeArray;
-}

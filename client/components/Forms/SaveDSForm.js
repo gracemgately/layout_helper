@@ -2,6 +2,8 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
+import { breadthFirstForEach_ } from '../../utils';
+
 export default class SaveDSForm extends Component {
 
   constructor(props) {
@@ -75,38 +77,4 @@ export default class SaveDSForm extends Component {
 
 }
 
-const breadthFirstForEach_ = (BST) => {
 
-  let queue = [BST];
-  let collection = [];
-  let counter = 0;
-  while (counter < 40) {
-//counter set to 40 to avoid infinite loop -- to be changed later
-    let current = queue.shift();
-    (current.left) ?  queue.push(current.left) : queue.push("empty");
-    (current.right) ? queue.push(current.right) : queue.push("empty");
-
-    collection.push({
-      value: current.value,
-      left: childrenIdx(counter)[0],
-      right: childrenIdx(counter)[1],
-      parent: parentIdx(counter)
-    });
-    counter++;
-  }
-  console.log('collection ', collection);
-  return collection;
-
-}
-
-
-
-function parentIdx(childIdx) {
-  if (childIdx === 0) return null;
-  return Math.floor( (childIdx-1) / 2)
-}
-
-
-function childrenIdx(parentIdx) {
-  return [parentIdx * 2 + 1, (parentIdx + 1) * 2]
-}

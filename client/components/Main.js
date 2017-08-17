@@ -23,7 +23,7 @@ const Main = (props) => {
           isLoggedIn ?
             <div>
               {/* The navbar will show these links after you log in */}
-              <Link to="/home">Home</Link>
+              <Link to="/">Home</Link>
               <a href="#" onClick={handleClick}>Logout</a>
               <Link to="/linked-list">Linked List</Link>
               <Link to="/binary-search-tree">Binary Search Tree</Link>
@@ -33,6 +33,7 @@ const Main = (props) => {
             </div> :
             <div>
               {/* The navbar will show these links before you log in */}
+              <Link to="/">Home</Link>
               <Link to="/login">Login</Link>
               <Link to="/signup">Sign Up</Link>
               <Link to="/linked-list">Linked List</Link>
