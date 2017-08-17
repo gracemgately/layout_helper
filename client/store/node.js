@@ -129,11 +129,11 @@ class LinkedList {
 
 // create a new linkedlist class, which will hold all the nodes
 const list = new LinkedList();
-// initialize list
-list.addToTail(1);
-list.addToTail(4);
-list.addToTail(16);
-list.addToTail(34);
+// // initialize list
+// list.addToTail(1);
+// list.addToTail(4);
+// list.addToTail(16);
+// list.addToTail(34);
 
 // external search function converts LinkedList class to an ordered array and search at specific index
 const search = (index) => {

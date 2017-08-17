@@ -1,102 +1,92 @@
 'use strict';
 import history from '../history'
+import { breadthFirstForEach } from '../components'
 
 const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
-const FIRST_BST_NODE = 'FIRST_BST_NODE';
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
-export const firstBSTNode = value => ({ type: FIRST_BST_NODE, value })
-
 
 class BinarySearchTree {
-    constructor(value, parent) {
+    constructor(value) {
         this.value = value;
         this.magnitude = 1;
         this.left = null;
         this.right = null;
-        this.parent = parent;
     }
-    insert(value) {
+    insert(node) {
+        if (typeof node !== 'object'){
+            node = new BinarySearchTree(node);
+        }
         this.magnitude++;
-        var direction = value < this.value ? 'left' : 'right';
-        if (!this[direction]) this[direction] = new BinarySearchTree(value, this);
-        else this[direction].insert(value);
+        if (this.value === undefined) {
+             this.value = node.value;
+             return;
+        }
+        var direction = node.value < this.value ? 'left' : 'right';
+        node.parent = this;
+        if (!this[direction]) this[direction] = node;
+        else this[direction].insert(node);
     }
     contains(value) {
-        if (this.value === value) return true;
+        if (this.value === value) return this;
         var direction = value < this.value ? 'left' : 'right';
         if (this[direction]) return this[direction].contains(value);
         else return false;
     }
-//     breadthFirstForEach (iterator, queue) {
-//         console.log('this', this);
-//         queue = queue || [this];
-//         if (!queue.length) return;
-//         var tree = queue.shift();
-//         if (tree.left) queue.push(tree.left);
-//         if (tree.right) queue.push(tree.right);
-//         console.log('tree', tree)
-//         tree.breadthFirstForEach(iterator, queue);
-//         console.log('queue', queue);
-//         return iterator(tree);
-//   };
 
-    //   delete (value) {
-    //       if (contains(value) === true) {
+   
+    remove(value) {
+        const deleteRef = this.contains(value);
+        if (!deleteRef) return false;
+        deleteRef.die();
+    }
+  
+    die() {
+        if ((!this.parent) && (this.left.value !==null && this.right.value !== null)) {
+            console.log("THIS1", this)
+            // var currNode = this; //10
+            // var currLeft = this.left; //5
+            // var currRight = this.right; //20
 
-    //       } else {
-    //           return false;
-    //       }
+            // currRight.insert(currLeft); //inserting 5 to left of 20
+            // currNode = currRight //currNode = 20
+            // currLeft = null;
 
-    //   }
+            this.right.insert(this.left);
+            // this.left.value = this.right.left.value;
+            this.value = null;
+            return;
+        }
+        console.log("THIS", this)
+        var direction = (this.parent.right && (this.value === this.parent.right.value)) ? 'right' : 'left';
 
-    size(value) {
-        return this.magnitude;
+        var otherDirection = direction === 'right' ? 'left' : 'right';
+        this.parent[direction] = null;
+        if (this[direction] && this[otherDirection]){
+            this.parent.insert(this.right);
+            this.parent.insert(this.left);
+        } else if ( this[direction] ) {this.parent.insert(this[direction])}
     }
 }
 
-var initialTree = new BinarySearchTree(5);
-initialTree.insert(50);
-initialTree.insert(40);
-initialTree.insert(100);
-initialTree.insert(37);
-initialTree.insert(46);
-initialTree.insert(2);
 
-
-
+const initialTree = new BinarySearchTree();
 
 export default function (state = initialTree, action) {
-
     switch (action.type) {
-        case FIRST_BST_NODE:
-            return Object.assign({}, state)
-
-        // case GET_BSTNODE:
-        //     return action.node
-
         case ADD_SINGLE_BST_NODE:
-
-        var rootNode = state.initialTree;
-        rootNode.insert(action.value);
-
-        return Object.assign({}, state, {
-            initialTree: rootNode,
-            BSTNodeCount: rootNode.magnitude
-        });
+            initialTree.insert(action.value);
+            return Object.assign({}, initialTree);
 
         case REMOVE_SINGLE_BST_NODE:
-            bstList.remove(action.node.value);
-            var newState = bstList;
-            return newState;
-
+            initialTree.remove(action.node)
+            return Object.assign({}, initialTree);
         default:
             return state
     }
 }
-
 

@@ -1,10 +1,8 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
 import { breadthFirstForEach } from '../components'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
-import DeleteNodeForm from './Forms/DeleteNodeForm';
+import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 
@@ -24,7 +22,6 @@ const BinarySearchTree = (props) => {
   // [[node],[node, node],[node, node]] // each index is level
 
   bstArr.map(([node, level]) => {
-    //console.log('node', node);
     if (!groups[level]) groups[level] = [];
     groups[level].push(node);
   })
@@ -36,8 +33,8 @@ const BinarySearchTree = (props) => {
       <h1> Binary Search Tree </h1>
       <div>
       <AddBSTNodeForm />
-      <DeleteNodeForm />
       <SaveDSForm content={BST} />
+      <DeleteBSTNodeForm />
       </div>
       <div className="container">
       {
@@ -63,7 +60,6 @@ const BinarySearchTree = (props) => {
  */
 
 const mapState = (state) => {
-  //console.log('state', state);
   return {
     BST: state.bstNode,
     NodeCount: state.bstNode.BSTNodeCount
