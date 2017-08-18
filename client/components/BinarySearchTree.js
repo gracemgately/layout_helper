@@ -14,7 +14,11 @@ import SaveDSForm from './Forms/SaveDSForm';
 const BinarySearchTree = (props) => {
 
   const { BST } = props;
+
   // const bstArr = breadthFirstForEach(BST);
+
+  //console.log("QUERY", props.location.query);
+
   // bstArr.sort((a, b) => {
   //   return a.level - b.level;
   // })
@@ -33,6 +37,7 @@ const BinarySearchTree = (props) => {
   /* [...Array(10).keys()]
   //=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
   */
+
 
 
 
@@ -59,56 +64,89 @@ const BinarySearchTree = (props) => {
     }
   })
 
+  // const bstArr = props.location.query ? props.location.query : breadthFirstForEach(BST);
+
+//NOTE: we will rewrite this once we determine the mathematical pattern
+  //if (props.location.query) {
+  //   groups[1] = [];
+  //   groups[2] = [];
+  //   groups[3] = [];
+  //   props.location.query.map((node) => {
+  //     if (node.parent === null) {
+  //       groups[0] = [];
+  //       groups[0].push(node);
+  //     } else if (node.parent === 0) {
+  //       groups[1].push(node);
+  //     } else if (node.parent === 1 || node.parent === 2) {
+  //       groups[2].push(node);
+  //     } else if (node.parent === 3 || node.parent === 2 || (node.parent === 1 || node.parent === 2))
+
+
+  //     if (!groups[level]) groups[level] = [];
+  //     groups[level].push(node);
+  //   })
+  // } else {
+    const bstArr = breadthFirstForEach(BST);
+
+    bstArr.map(([node, level]) => {
+      if (!groups[level]) groups[level] = [];
+      groups[level].push(node);
+    })
+  // }
+
+
+>>>>>>> master
+
 
 
 
   console.log('groups ', groups);
   return (
 
-    <div>
-      <h1> Binary Search Tree </h1>
-      <div className='formDisplay' >
-      <AddBSTNodeForm />
-      <DeleteBSTNodeForm />
-      <SaveDSForm content={BST} />
+      <div>
 
+        <h1> Binary Search Tree </h1>
+        <div className='formDisplay' >
+          <AddBSTNodeForm />
+          <DeleteBSTNodeForm />
+          <SaveDSForm content={BST} />
+
+        </div>
+        <div className="container">
+          {
+            groups.map((ele, index) => {
+              return (
+                <div className={'bstlevel' + index} key={index}>
+                  {
+                    ele.map((node, idx) => {
+                      return (<div key={idx}>{node}</div>)
+                    })
+                  }
+                </div>)
+            })
+          }
+        </div>
       </div>
-      <div className="container">
-
-      {
-          groups.map((ele, index) => {
-            return (
-              <div className={'bstlevel' + index} key={index}>
-                {
-                  ele.map((node, idx) => {
-                    return (<div key={idx}>{node}</div>)
-                  })
-              }
-              </div>)
-          })
-      }
-      </div>
-    </div>
-  )
-}
-
-
-/*
- * CONTAINER
- */
-
-const mapState = (state) => {
-  return {
-    BST: state.bstNode,
-    NodeCount: state.bstNode.BSTNodeCount
+    )
   }
-}
 
-// const mapDispatch = (state) => {
-//   //console.log('here is state', state)
-//   return {
-//     values: state
-//   }
-// }
 
-export default connect(mapState, null)(BinarySearchTree);
+  /*
+   * CONTAINER
+   */
+
+  const mapState = (state) => {
+    return {
+      BST: state.bstNode,
+      NodeCount: state.bstNode.BSTNodeCount
+    }
+  }
+
+  // const mapDispatch = (state) => {
+  //   //console.log('here is state', state)
+  //   return {
+  //     values: state
+  //   }
+  // }
+
+  export default connect(mapState, null)(BinarySearchTree);
