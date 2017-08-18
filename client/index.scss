@@ -32,6 +32,14 @@ svg {
 
 }
 
+
+.circle-empty {
+
+  border: 5px;
+  stroke: white;
+
+}
+
 .container {
   display:flex;
   flex-wrap: wrap;
@@ -39,9 +47,17 @@ svg {
 
 .basicnode {
   display: flex;
+  width: 150px;
+  height: 150px;
 }
 
 .arrowsize {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+}
+
+.arrow-empty {
   font-size: 2em;
   padding: 0;
   margin: 0;
@@ -66,6 +82,18 @@ svg {
 }
 
 .bstlevel3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel4 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel5 {
   display: flex;
   justify-content: center;
   width: 100%;
