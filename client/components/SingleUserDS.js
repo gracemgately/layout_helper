@@ -4,6 +4,8 @@ import { withRouter, Link } from 'react-router-dom'
 import store, { getAllUserDS } from '../store'
 import { FetchUserDS } from '../store'
 
+import { _Time } from '../utils'
+
 /**
  * COMPONENT
  */
@@ -16,8 +18,6 @@ class SingleUserDS extends Component {
   render() {
 
     const { user, userBST, userLL, userQueues, userStacks } = this.props;
-    //console.log("BSTS", userBST);
-    console.log("Stacks", userStacks);
 
     return (
       <div>
@@ -26,7 +26,7 @@ class SingleUserDS extends Component {
           userBST.map((el, idx) => {
             return (
               <div key={idx}>
-                <Link to={{pathname: '/binary-search-tree', query: el.content }}>{el.name}</Link>
+                <Link to={{pathname: '/binary-search-tree', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
               </div>
             )
           })
@@ -37,7 +37,7 @@ class SingleUserDS extends Component {
             userLL.map((el, idx) => {
               return (
                 <div key={idx}>
-                  <Link to={{pathname: '/linked-list', query: el.content }}>{el.name}</Link>
+                  <Link to={{pathname: '/linked-list', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                 </div>
             )
           })
@@ -48,7 +48,7 @@ class SingleUserDS extends Component {
           userQueues.map((el, idx) => {
             return (
               <div key={idx}>
-                <Link to={{pathname: '/queue', query: el.content }}>{el.name}</Link>
+                <Link to={{pathname: '/queue', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
               </div>
             )
           })
@@ -59,7 +59,7 @@ class SingleUserDS extends Component {
           userStacks.map((el, idx) => {
             return (
               <div key={idx}>
-                <Link to={{pathname: '/stack', query: el.content }}>{el.name}</Link>
+                <Link to={{pathname: '/stack', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
               </div>
             )
           })
