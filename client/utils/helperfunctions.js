@@ -1,4 +1,4 @@
-//SaveDSForm: 
+//SaveDSForm:
 
 export const breadthFirstForEach_ = (BST) => {
 
@@ -38,6 +38,7 @@ function childrenIdx(parentIdx) {
 //SaveLLForm.js
 
 export const LLNodeArray = (nodeArray) => {
+    console.log('nodeArray ', nodeArray)
     nodeArray.map((node, index) => {
         if (index === nodeArray.length - 1){
             node.next = null;
