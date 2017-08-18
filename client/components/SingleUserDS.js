@@ -15,9 +15,9 @@ class SingleUserDS extends Component {
 
   render() {
 
-    const { user, userBST, userLL, userQueues } = this.props;
+    const { user, userBST, userLL, userQueues, userStacks } = this.props;
     //console.log("BSTS", userBST);
-    console.log("LLs", userLL);
+    console.log("Stacks", userStacks);
 
     return (
       <div>
@@ -54,6 +54,17 @@ class SingleUserDS extends Component {
           })
         }
         </div>
+        <div> My Stacks </div>
+        <div>{
+          userStacks.map((el, idx) => {
+            return (
+              <div key={idx}>
+                <Link to={{pathname: '/stack', query: el.content }}>{el.name}</Link>
+              </div>
+            )
+          })
+        }
+        </div>
         </div>
     )
   }
@@ -69,22 +80,12 @@ const mapState = (state) => {
     user: state.user,
     userBST: state.singleuserds.BinarySearchTrees,
     userLL: state.singleuserds.LinkedLists,
-    userQueues: state.singleuserds.Queues
+    userQueues: state.singleuserds.Queues,
+    userStacks: state.singleuserds.Stacks
   }
 }
 
 export default connect(mapState, null)(SingleUserDS);
 
 
- /*
-        <div> My Stacks </div>
-        <div>{
-          userStacks.map((el, idx) => {
-            return (
-              <div key={idx}>
-                {el}
-              </div>
-            )
-          })
-        }
-        </div>*/
+ 

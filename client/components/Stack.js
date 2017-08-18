@@ -7,27 +7,21 @@ import StackForm from './Forms/StackForm'
 import { drawNode } from '../components'
 import { writeNode, addNodeToTail, deleteNodeFromTail, searchNode, highlightNodeAtIndex } from '../store'
 
+import SaveLLForm from './Forms/SaveLLForm';
+import { nodeArray_ } from '../utils';
 
 
 const Stack = (props) => {
 
-    const { nodes, highlightIndex } = props
+    const { user, nodes, highlightIndex } = props
 
-    const nodeArr = []; // initialize empty nodeArr.  important!
-    let oldHead = nodes.head; // this is startpoint
-
-
-    // push nodes into arr until there is no more 'oldHead'
-    while (oldHead !== null && oldHead !== undefined) {
-        nodeArr.push(oldHead);
-        oldHead = oldHead.next || null;
-    }
+    const nodeArr = (props.location.query) ? (props.location.query) : (nodeArray_(nodes));
 
     return (
         <div>
             <h2> Stack </h2>
             <div><StackForm nodeArr={nodeArr} /></div>
-
+             {user.id ? <SaveLLForm type={'stacks'} content={nodeArr} user={user}/> : null}
             <div className="container">
                 {
                     (nodeArr.map((node, index) => {
@@ -52,12 +46,11 @@ const Stack = (props) => {
 
 const mapState = (state) => {
   return {
+    user: state.user,
     nodes: state.node,
     highlightIndex: state.node.highlightIdx,
+
   }
 }
-
-
-
 
 export default connect(mapState)(Stack);
