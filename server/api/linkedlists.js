@@ -15,9 +15,6 @@ router.post('/', (req, res, next) => {
   const userId = req.body.userId;
 
   LinkedList.create({ name, content, userId })
-    .then(newDS => {
-      console.log('newDS', newDS)
-      res.json(newDS)
-    })
+    .then(newDS => res.json(newDS))
     .catch(next)
   })

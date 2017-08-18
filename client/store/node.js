@@ -160,11 +160,9 @@ export default function (state = list, action) {
       return action.node
     case ADD_NODE_TO_TAIL:
       list.addToTail(action.node.value);
-      console.log('action node value tail', action.node.value)
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
     case ADD_NODE_TO_HEAD:
-      console.log('action node value head', action.node.value)
       list.addToHead(action.node.value);
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
