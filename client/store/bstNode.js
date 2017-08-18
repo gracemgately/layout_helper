@@ -38,30 +38,26 @@ class BinarySearchTree {
         else return false;
     }
 
-   
+
     remove(value) {
         const deleteRef = this.contains(value);
         if (!deleteRef) return false;
         deleteRef.die();
     }
-  
+
     die() {
-        if ((!this.parent) && (this.left.value !==null && this.right.value !== null)) {
-            console.log("THIS1", this)
-            // var currNode = this; //10
-            // var currLeft = this.left; //5
-            // var currRight = this.right; //20
-
-            // currRight.insert(currLeft); //inserting 5 to left of 20
-            // currNode = currRight //currNode = 20
-            // currLeft = null;
-
-            this.right.insert(this.left);
-            // this.left.value = this.right.left.value;
-            this.value = null;
+        if ((!this.parent) && (!this.left) && (!this.right)){
+            this.value = undefined;
             return;
         }
-        console.log("THIS", this)
+        if ((!this.parent && this.left)  || (!this.parent && this.right) ){
+            var side = this.left ? 'left' : 'right';
+            this.value = this[side].value
+            this[side].parent = null;
+            this[side] = null;
+            return;
+        }
+
         var direction = (this.parent.right && (this.value === this.parent.right.value)) ? 'right' : 'left';
 
         var otherDirection = direction === 'right' ? 'left' : 'right';

@@ -34,7 +34,7 @@ class Linkedlist extends Component {
     return (
       <div>
         <h1> Linked List </h1>
-        <div>
+        <div className='formDisplay'>
           <InsertNodeForm />
           <DeleteNodeForm />
           {user.id ? <SaveLLForm content={nodeArr} user={user}/> : null}

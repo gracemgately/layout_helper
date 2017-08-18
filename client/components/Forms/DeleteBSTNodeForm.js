@@ -5,23 +5,6 @@ import { removeSingleBSTNode, writeNode } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {
 
-  // const arrayCreator = () => {
-  //   const initialTree =
-  //   if (!initialTree.contains(props.bstNode.value)) {
-  //     return false;
-  //   } else {
-  //     const { BST } = props;
-  //     const bstArr = breadthFirstForEach(BST);
-  //     const valRemovedArr = [];
-  //     bstArr.map(el => {
-  //       if (el !== props.bstNode.value){
-  //         valRemovedArr.push(el);
-  //       }
-  //     })
-
-  //   }
-  // }
-
   return (
     <div>
       <form id="form-group" onSubmit={props.handleSubmit}>
@@ -34,7 +17,6 @@ const DeleteBSTNodeForm = (props) => {
             value={props.newNode}
           />
         </div>
-        <br />
         <br />
         <div className="input-group-btn">
           <button
