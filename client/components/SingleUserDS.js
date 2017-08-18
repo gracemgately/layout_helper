@@ -1,35 +1,91 @@
 import React, { Component } from 'react'
-import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import store, { getAllUserDS } from '../store'
+import { FetchUserDS } from '../store'
 
 /**
  * COMPONENT
  */
-const AllUserDS = (props) => {
+class SingleUserDS extends Component {
 
-    return(
-        <div>user DS here</div>
+  componentDidMount() {
+    store.dispatch(FetchUserDS(this.props.user.id));
+  }
+
+  render() {
+
+    const { user, userBST, userLL, userQueues, userStacks } = this.props;
+    //console.log("BSTS", userBST);
+    console.log("Stacks", userStacks);
+
+    return (
+      <div>
+        <div> My Binary Search Trees </div>
+        <div>{
+          userBST.map((el, idx) => {
+            return (
+              <div key={idx}>
+                <Link to={{pathname: '/binary-search-tree', query: el.content }}>{el.name}</Link>
+              </div>
+            )
+          })
+        }
+        </div>
+        <div> My Linked Lists </div>
+        <div>{
+            userLL.map((el, idx) => {
+              return (
+                <div key={idx}>
+                  <Link to={{pathname: '/linked-list', query: el.content }}>{el.name}</Link>
+                </div>
+            )
+          })
+        }
+        </div>
+        <div> My Queues </div>
+        <div>{
+          userQueues.map((el, idx) => {
+            return (
+              <div key={idx}>
+                <Link to={{pathname: '/queue', query: el.content }}>{el.name}</Link>
+              </div>
+            )
+          })
+        }
+        </div>
+        <div> My Stacks </div>
+        <div>{
+          userStacks.map((el, idx) => {
+            return (
+              <div key={idx}>
+                <Link to={{pathname: '/stack', query: el.content }}>{el.name}</Link>
+              </div>
+            )
+          })
+        }
+        </div>
+        </div>
     )
+  }
 }
+
 
 /*
  * CONTAINER
  */
 
 const mapState = (state) => {
-  console.log('state', state)
   return {
-    user: state.user
+    user: state.user,
+    userBST: state.singleuserds.BinarySearchTrees,
+    userLL: state.singleuserds.LinkedLists,
+    userQueues: state.singleuserds.Queues,
+    userStacks: state.singleuserds.Stacks
   }
 }
 
+export default connect(mapState, null)(SingleUserDS);
 
-// const mapDispatch = (dispatch) => {
 
-// return {
-//   values: state
-// }
-// }
-
-export default connect(mapState, null)(AllUserDS);
+ 

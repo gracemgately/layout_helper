@@ -20,7 +20,7 @@ export const highlightNodeAtIndex = index => ({ type: HIGHLIGHT_NODE_AT_INDEX, i
 
 
 //ES6 class declaration to create a node object which can have the following
-//properties (or they can be null). Based on which properties are not null,
+//properties (or they can be null). Based on which properties are not null,S
 //we can determine what data structure and arrows??? should be rendered
 class Node {
   constructor(value, next = null, previous = null) {
@@ -185,4 +185,3 @@ export default function (state = list, action) {
       return state
   }
 }
-

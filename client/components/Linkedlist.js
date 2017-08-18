@@ -6,7 +6,7 @@ import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
-import { nodeArray_ } from '../utils'
+import { nodeArray_ } from '../utils';
 
 
 /**
@@ -18,16 +18,15 @@ class Linkedlist extends Component {
 
     const { nodes, user } = this.props;
     // node:LinkedList {head: Node, tail: Node}...
-
-    const nodeArr = nodeArray_(nodes)
-
+    const nodeArr = (this.props.location.query) ? (this.props.location.query) : (nodeArray_(nodes));
+    
     return (
       <div>
         <h1> Linked List </h1>
         <div className='formDisplay'>
           <InsertNodeForm />
           <DeleteNodeForm />
-          {user.id ? <SaveLLForm content={nodeArr} user={user}/> : null}
+          {user.id ? <SaveLLForm type={'linkedlists'} content={nodeArr} user={user}/> : null}
         </div>
         <div className="container">
           {

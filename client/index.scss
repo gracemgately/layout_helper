@@ -1,5 +1,7 @@
 body {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
+  // background-image: url('https://static1.squarespace.com/static/56de7db3d210b80e7a26dd73/t/56e7c148d210b88679ccf62f/1458028874087/Black+background+-+with+fade.jpg?format=2500w');
+  font: black;
 
   a {
     text-decoration: none;
@@ -9,14 +11,41 @@ body {
     display: block;
   }
 
+  h1 {
+    color: #C3C3C3;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+  }
+
+ h2 {
+    color: #C3C3C3;
+    text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
+  }
+
   nav a {
     display: inline-block;
     margin: 1em;
+    color: #C3C3C3;
+    font-family: 'Roboto', sans-serif;
+  }
+
+  input {
+    background-color: #C3C3C3;
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+  }
+
+   button {
+    background-color: #C3C3C3;
+    color: black;
+    font-family: 'Roboto', sans-serif;
   }
 
   form div {
     margin: 1em;
     display: inline-block;
+    color: #C3C3C3;
+
   }
 }
 
@@ -39,6 +68,8 @@ svg {
 
 .basicnode {
   display: flex;
+  color: black;
+  border: cornflowerblue;
 }
 
 .arrowsize {
