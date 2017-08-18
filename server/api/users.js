@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {User, BinarySearchTree, LinkedList} = require('../db/models')
 module.exports = router
 
-router.get('/:userId', (req, res, next) => {
+router.get('/:userId/data-structures', (req, res, next) => {
   var id = req.params.userId;
   User.findOne({ where: 
     {id: id },

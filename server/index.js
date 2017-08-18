@@ -20,8 +20,6 @@ module.exports = app
  * keys as environment variables, so that they can still be read by the
  * Node process on process.env
  */
-<<<<<<< HEAD
-=======
 
  /*
  to run local tests, change server/index.js
@@ -34,7 +32,6 @@ module.exports = app
 
 
  */
->>>>>>> 7f7375153c99aa48bbd71f85b507fa6a54d67b15
 if (process.env.NODE_ENV !== 'production') require('../secrets')
 
 
