@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { LLNodeArray_, CleanArray_ } from '../../utils'
+import { LLNodeArray_ } from '../../utils'
 
 export default class SaveLLForm extends Component {
 
@@ -22,15 +22,11 @@ export default class SaveLLForm extends Component {
   }
 
   componentWillReceiveProps(nextProps){
-    console.log('thisprops', this.props.content);
-    console.log('nextprops', nextProps.content);
-
+    //this component receives props (LLinformation) from
+    //LinkedList.js; we need the state to update when those
+    //props passed down change
     if (this.props.content !== nextProps){
-
-      var propsContent = LLNodeArray_(nextProps.content);
-      //var cleanedPropsContent = CleanArray_(propsContent);
-
-      this.setState({ content: LLNodeArray_ });
+      this.setState({ content: nextProps.content });
     }
   }
 
@@ -41,7 +37,17 @@ export default class SaveLLForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.SaveDS(this.state);
+
+    var LLtoBeMod = this.state.content;//get information about the props off the state
+    var LLModified = LLNodeArray_(LLtoBeMod);//modify that LL into the array with reference indices
+    
+    var LLtoSave = {
+      name: this.state.name,
+      content: LLModified,
+      userId: this.state.userId,
+    }; //the information to be saved to the database
+
+    this.SaveDS(LLtoSave);
   }
 
   SaveDS(obj) {
@@ -53,10 +59,6 @@ export default class SaveLLForm extends Component {
   }
 
   render() {
-
-    //console.log('props.content', this.props.content)
-    console.log('nodearr value on state', this.state.content)
-
     return (
       <div>
       <div>

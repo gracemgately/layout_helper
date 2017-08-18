@@ -17,12 +17,9 @@ class Linkedlist extends Component {
   render() {
 
     const { nodes, user } = this.props;
-    console.log('nodes', nodes)
-
     // node:LinkedList {head: Node, tail: Node}...
-    const nodeArr = nodeArray_(nodes)
 
-    console.log('nodeArr from LL component', nodeArr);
+    const nodeArr = nodeArray_(nodes)
 
     return (
       <div>
@@ -55,7 +52,6 @@ class Linkedlist extends Component {
  */
 
 const mapState = (state) => {
-  console.log('state', state)
   return {
     nodes: state.node,
     user: state.user
@@ -63,12 +59,4 @@ const mapState = (state) => {
 }
 
 
-
-// const mapDispatch = (dispatch) => {
-
-// return {
-//   values: state
-// }
-// }
-
-export default connect(mapState)(Linkedlist);
+export default connect(mapState, null)(Linkedlist);
