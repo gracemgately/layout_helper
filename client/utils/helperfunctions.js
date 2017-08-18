@@ -39,12 +39,12 @@ function childrenIdx(parentIdx) {
 
 export const LLNodeArray_ = (nodeArray) => {
     nodeArray.map((node, index) => {
-        if (typeof(node) !== 'number' && index === 0){
+        if (index === 0){
             node.value = node.value
             node.next = index+1;
             node.previous = null;
         }
-        else if (typeof(node) !== 'number') {
+        else {
             node.value = node.value
             node.next = index+1;
             node.previous = index-1;
