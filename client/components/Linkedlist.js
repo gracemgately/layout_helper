@@ -6,31 +6,21 @@ import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
+import { nodeArray_ } from '../utils'
 
 
 /**
  * COMPONENT
  */
 class Linkedlist extends Component {
-
+  
   render() {
 
     const { nodes, user } = this.props;
-
-
     // node:LinkedList {head: Node, tail: Node}...
 
-    // create an array of linked list from 'nodes' class(object)
+    const nodeArr = nodeArray_(nodes)
 
-    const nodeArr = []; // initialize empty nodeArr.  important!
-    let oldHead = nodes.head; // this is startpoint
-
-
-    // push nodes into arr until there is no more 'oldHead'
-    while (oldHead !== null && oldHead !== undefined) {
-      nodeArr.push(oldHead);
-      oldHead = oldHead.next || null;
-    }
     return (
       <div>
         <h1> Linked List </h1>
@@ -62,7 +52,6 @@ class Linkedlist extends Component {
  */
 
 const mapState = (state) => {
-  console.log('state', state)
   return {
     nodes: state.node,
     user: state.user
@@ -70,12 +59,4 @@ const mapState = (state) => {
 }
 
 
-
-// const mapDispatch = (dispatch) => {
-
-// return {
-//   values: state
-// }
-// }
-
-export default connect(mapState)(Linkedlist);
+export default connect(mapState, null)(Linkedlist);

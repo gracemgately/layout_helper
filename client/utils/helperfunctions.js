@@ -37,23 +37,35 @@ function childrenIdx(parentIdx) {
 //
 //SaveLLForm.js
 
-export const LLNodeArray = (nodeArray) => {
-    console.log('nodeArray ', nodeArray)
+export const LLNodeArray_ = (nodeArray) => {
     nodeArray.map((node, index) => {
-        if (index === nodeArray.length - 1){
-            node.next = null;
-            node.previous = index-1;
-        }
-        else if (index === 0){
+        if (index === 0){
+            node.value = node.value
             node.next = index+1;
             node.previous = null;
         }
         else {
+            node.value = node.value
             node.next = index+1;
             node.previous = index-1;
         }
     })
+    nodeArray[nodeArray.length - 1].next = null;
     return nodeArray;
+}
+
+//
+//LinkedList.js
+export const nodeArray_ = (nodes) => {
+    // create an array of linked list from 'nodes' class(object)
+    const nodeArr = []; // initialize empty nodeArr.  important!
+    let currentNode = nodes.head; // this is startpoint
+    // push nodes into arr until there is no more 'oldHead'
+    while (currentNode) {
+      nodeArr.push(currentNode);
+      currentNode = currentNode.next;
+    }
+    return nodeArr
 }
 
 //
