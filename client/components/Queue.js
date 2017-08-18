@@ -21,7 +21,7 @@ class Queue extends Component {
 
     return (
       <div>
-        <h1> Queue </h1>
+        <h2> Queue </h2>
         <div>
           <QueueForm nodeArray={nodeArr} />
         </div>

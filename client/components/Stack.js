@@ -25,7 +25,7 @@ const Stack = (props) => {
 
     return (
         <div>
-            <h1> Stack </h1>
+            <h2> Stack </h2>
             <div><StackForm nodeArr={nodeArr} /></div>
 
             <div className="container">

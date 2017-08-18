@@ -33,7 +33,7 @@ class Linkedlist extends Component {
     }
     return (
       <div>
-        <h1> Linked List </h1>
+        <h2> Linked List </h2>
         <div>
           <InsertNodeForm />
           <DeleteNodeForm />
