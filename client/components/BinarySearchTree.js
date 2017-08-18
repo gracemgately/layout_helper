@@ -14,7 +14,7 @@ import { CSSTransitionGroup } from 'react-transition-group';
 const BinarySearchTree = (props) => {
 
   const { BST } = props;
-  console.log("QUERY", props.location.query);
+  //console.log("QUERY", props.location.query);
   // bstArr.sort((a, b) => {
   //   return a.level - b.level;
   // })
