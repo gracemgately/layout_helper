@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const {User, BinarySearchTree, LinkedList} = require('../db/models')
+const {User, BinarySearchTree, LinkedList, Queue} = require('../db/models')
 module.exports = router
 
 router.get('/:userId/data-structures', (req, res, next) => {
@@ -9,7 +9,8 @@ router.get('/:userId/data-structures', (req, res, next) => {
     attributes: ['id', 'email'],
     include: [
       BinarySearchTree,
-      LinkedList
+      LinkedList, 
+      Queue
     ]
   })
     // explicitly select only the id and email fields - even though

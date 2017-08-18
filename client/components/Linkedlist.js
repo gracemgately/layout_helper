@@ -18,7 +18,6 @@ class Linkedlist extends Component {
 
     const { nodes, user } = this.props;
     // node:LinkedList {head: Node, tail: Node}...
-    //console.log('QUERY', this.props.location.query);
     const nodeArr = (this.props.location.query) ? (this.props.location.query) : (nodeArray_(nodes));
     
     return (
@@ -27,7 +26,7 @@ class Linkedlist extends Component {
         <div className='formDisplay'>
           <InsertNodeForm />
           <DeleteNodeForm />
-          {user.id ? <SaveLLForm content={nodeArr} user={user}/> : null}
+          {user.id ? <SaveLLForm type={'linkedlists'} content={nodeArr} user={user}/> : null}
         </div>
         <div className="container">
           {

@@ -7,14 +7,14 @@ import axios from 'axios'
 const GET_USER_BST = 'GET_USER_BST'
 const GET_USER_LL = 'GET_USER_LL'
 // const GET_USER_STACK = 'GET_USER_STACK'
-// const GET_USER_QUEUE = 'GET_USER_QUEUE'
+const GET_USER_QUEUE = 'GET_USER_QUEUE'
 
 // INITIAL STATE
 const defaultState = {
     BinarySearchTrees: [],
     LinkedLists: [],
     // Stacks: [],
-    // Queues: []
+    Queues: []
 };
 
 // const defaultState = {user: []} ;
@@ -24,7 +24,7 @@ const defaultState = {
 const getUserBST = binarysearchtrees => ({ type: GET_USER_BST, binarysearchtrees });
 const getUserLL = linkedlists => ({ type: GET_USER_LL, linkedlists });
 // const getUserStack = userId => ({ type: GET_USER_Stack, userId });
-// const getUserQueue = userId => ({ type: GET_USER_Queue, userId });
+const getUserQueue = queues => ({ type: GET_USER_QUEUE, queues });
 
 
 
@@ -42,6 +42,7 @@ export const FetchUserDS = userId =>
         .then(res => {
             dispatch(getUserBST(res.data.binarysearchtrees))
             dispatch(getUserLL(res.data.linkedlists))
+            dispatch(getUserQueue(res.data.queues))
         })
 
 
@@ -52,6 +53,8 @@ export default function (state = defaultState, action) {
             return Object.assign({}, state, {BinarySearchTrees: action.binarysearchtrees});
         case GET_USER_LL:
             return Object.assign({}, state, {LinkedLists: action.linkedlists});
+        case GET_USER_QUEUE:
+            return Object.assign({}, state, {Queues: action.queues});
         default:
             return defaultState;
     }

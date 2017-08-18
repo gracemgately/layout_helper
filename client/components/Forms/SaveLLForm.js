@@ -52,7 +52,7 @@ export default class SaveLLForm extends Component {
 
   SaveDS(obj) {
 
-    axios.post('/api/linkedlists', obj)
+    axios.post(`/api/${this.props.type}`, obj)
       .then(res => console.log(res))
       .catch(err => console.log(err))
 

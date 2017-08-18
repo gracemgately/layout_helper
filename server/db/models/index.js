@@ -1,6 +1,7 @@
 const User = require('./user')
 const BinarySearchTree = require('./binarysearchtree')
 const LinkedList = require('./linkedlists')
+const Queue = require('./queues')
 
 /**
  * If we had any associations to make, this would be a great place to put them!
@@ -18,11 +19,10 @@ User.hasMany(LinkedList)
 // Stack.belongsTo(User)
 // User.hasMany(Stack, { as: 'Stacks' })
 
-// Queue.belongsTo(User)
-// User.hasMany(Queue, { as: 'Queues' })
+Queue.belongsTo(User)
+User.hasMany(Queue)
 
 // instances of User will get the accessors getVisualiztions and setVisualiztions
-
 
 
 /**
@@ -34,5 +34,6 @@ User.hasMany(LinkedList)
 module.exports = {
   User,
   BinarySearchTree, 
-  LinkedList
+  LinkedList, 
+  Queue
 }
