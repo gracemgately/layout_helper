@@ -25,7 +25,7 @@ export default class SaveLLForm extends Component {
     //this component receives props (LLinformation) from
     //LinkedList.js; we need the state to update when those
     //props passed down change
-    if (this.props.content !== nextProps){
+    if (this.props.content !== nextProps.content){
       this.setState({ content: nextProps.content });
     }
   }
