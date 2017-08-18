@@ -69,3 +69,10 @@ export const nodeArray_ = (nodes) => {
 }
 
 //
+//SingleUserDS.js
+  export const _Time = (stringDate) => {
+    const YYYYMMDD = stringDate.slice(0,10).split('-');
+    return YYYYMMDD[1] + '-' + YYYYMMDD[2] + '-' + YYYYMMDD[0];
+  }
+
+//
