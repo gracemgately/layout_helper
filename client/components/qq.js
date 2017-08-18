@@ -30,11 +30,13 @@ const BinarySearchTree = (props) => {
   return (
 
     <div>
-      <h2> Binary Search Tree </h2>
-      <div>
+
+      <h1> Binary Search Tree </h1>
+      <div className='formDisplay' >
       <AddBSTNodeForm />
-      <SaveDSForm content={BST} />
       <DeleteBSTNodeForm />
+      <SaveDSForm content={BST} />
+
       </div>
       <div className="container">
       {

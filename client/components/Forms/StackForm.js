@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { writeNode, addNodeToTail, deleteNodeFromTail, highlightNodeAtIndex } from '../../store'
 
 const StackForm = (props) => {
+    const nodeArr = props.nodeArr;
 
     return (
         <div>

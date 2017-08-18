@@ -29,6 +29,7 @@ const InsertNodeForm = (props) => {
         <br />
         <div className="input-group-btn">
           <button type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to Head</button>
+          <br />
           <button type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to Tail</button>
           <button type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
         </div>

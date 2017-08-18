@@ -9,6 +9,7 @@ router.get('/', (req, res, next) => {
 })
 
 router.post('/', (req, res, next) => {
+
   const name = req.body.name;
   const content = req.body.content;
   const userId = req.body.userId;

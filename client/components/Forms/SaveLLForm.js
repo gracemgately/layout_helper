@@ -2,17 +2,16 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { LLNodeArray } from '../../utils'
+import { LLNodeArray_ } from '../../utils'
 
 export default class SaveLLForm extends Component {
 
   constructor(props) {
     super(props);
 
-
     this.state = {
       name: name,
-      content: LLNodeArray(props.content),
+      content: null,
       userId: props.user.id
     }
 
@@ -22,6 +21,15 @@ export default class SaveLLForm extends Component {
 
   }
 
+  componentWillReceiveProps(nextProps){
+    //this component receives props (LLinformation) from
+    //LinkedList.js; we need the state to update when those
+    //props passed down change
+    if (this.props.content !== nextProps.content){
+      this.setState({ content: nextProps.content });
+    }
+  }
+
   handleChange(evt) {
     const name = evt.target.value;
     this.setState({name})
@@ -29,7 +37,17 @@ export default class SaveLLForm extends Component {
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.SaveDS(this.state);
+
+    var LLtoBeMod = this.state.content;//get information about the props off the state
+    var LLModified = LLNodeArray_(LLtoBeMod);//modify that LL into the array with reference indices
+    
+    var LLtoSave = {
+      name: this.state.name,
+      content: LLModified,
+      userId: this.state.userId,
+    }; //the information to be saved to the database
+
+    this.SaveDS(LLtoSave);
   }
 
   SaveDS(obj) {
@@ -41,7 +59,6 @@ export default class SaveLLForm extends Component {
   }
 
   render() {
-
     return (
       <div>
       <div>
