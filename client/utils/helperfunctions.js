@@ -1,4 +1,4 @@
-//SaveDSForm: 
+//SaveDSForm:
 
 export const breadthFirstForEach_ = (BST) => {
 
@@ -53,7 +53,6 @@ export const LLNodeArray_ = (nodeArray) => {
     nodeArray[nodeArray.length - 1].next = null;
     return nodeArray;
 }
-
 
 //
 //LinkedList.js

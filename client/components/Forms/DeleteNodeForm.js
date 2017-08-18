@@ -20,6 +20,7 @@ const DeleteNodeForm = (props) => {
         <br />
         <div className="input-group-btn">
           <button type="click" name="head" onClick={(evt) => props.handleHeadDelete(evt)} >Delete Node from Head</button>
+          <br />
           <button type="click" name="tail" onClick={(evt) => props.handleTailDelete(evt)} > Delete Node from Tail</button>
           <button type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.index)} > Delete at specific index</button>
         </div>
