@@ -5,6 +5,7 @@ body {
 
   a {
     text-decoration: none;
+    color: #042E54;
   }
 
   label {
@@ -103,6 +104,31 @@ svg {
 }
 
 .formDisplay {
-  display: flex
+  display: flex;
+}
+
+#userDScontainer-left {
+  display: flex;
+  flex-direction: column;
+  flex-flow: nowrap;
+  justify-content: flex-start;
+  font-family: 'Roboto', sans-serif;
+  color: #445765;
+}
+
+#userDScontainer-right {
+  display: flex;
+  flex-direction: column;
+  flex-flow: nowrap;
+  justify-content: flex-end;
+  font-family: 'Roboto', sans-serif;
+  color: #445765;
+}
+
+#userDSitem {
+  flex-grow: 1;
+  padding: 20px;
+  align-content: left;
+  width: 100%;
 }
 

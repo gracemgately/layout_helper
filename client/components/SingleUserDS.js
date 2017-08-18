@@ -21,51 +21,63 @@ class SingleUserDS extends Component {
 
     return (
       <div>
-        <div> My Binary Search Trees </div>
-        <div>{
-          userBST.map((el, idx) => {
-            return (
-              <div key={idx}>
-                <Link to={{pathname: '/binary-search-tree', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
-              </div>
-            )
-          })
-        }
+        <div id="userDScontainer-left">
+          <div id="userDSitem">
+            <div> My Binary Search Trees </div>
+            <div>{
+              userBST.map((el, idx) => {
+                return (
+                  <div key={idx}>
+                    <Link to={{ pathname: '/binary-search-tree', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+          </div>
+          <div id="userDSitem">
+            <div> My Linked Lists </div>
+            <div>{
+              userLL.map((el, idx) => {
+                return (
+                  <div key={idx}>
+                    <Link to={{ pathname: '/linked-list', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+          </div>
         </div>
-        <div> My Linked Lists </div>
-        <div>{
-            userLL.map((el, idx) => {
-              return (
-                <div key={idx}>
-                  <Link to={{pathname: '/linked-list', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
-                </div>
-            )
-          })
-        }
+        <div id="userDScontainer-right">
+          <div id="userDSitem">
+            <div> My Queues </div>
+            <div>{
+              userQueues.map((el, idx) => {
+                return (
+                  <div key={idx}>
+                    <Link to={{ pathname: '/queue', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+          </div>
+          <div id="userDSitem">
+            <div> My Stacks </div>
+            <div>{
+              userStacks.map((el, idx) => {
+                return (
+                  <div key={idx}>
+                    <Link to={{ pathname: '/stack', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                  </div>
+                )
+              })
+            }
+            </div>
+          </div>
         </div>
-        <div> My Queues </div>
-        <div>{
-          userQueues.map((el, idx) => {
-            return (
-              <div key={idx}>
-                <Link to={{pathname: '/queue', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
-              </div>
-            )
-          })
-        }
-        </div>
-        <div> My Stacks </div>
-        <div>{
-          userStacks.map((el, idx) => {
-            return (
-              <div key={idx}>
-                <Link to={{pathname: '/stack', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
-              </div>
-            )
-          })
-        }
-        </div>
-        </div>
+      </div>
     )
   }
 }
