@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+import { removeEmptyChildren } from '../utils'
 
 export const drawNode = (node, fill="none") => {
   return (
@@ -95,7 +96,7 @@ function treeLevel(node) {
 export const userBST = () => {
 
   // work with preformatted testArr -> field name quotes removed manually "value"
-  const testArr = [
+  let testArr = [
     {
     value: 5,
     left: 1,
@@ -139,6 +140,10 @@ export const userBST = () => {
     ]
 
   console.log('userBST is called with this arr ', testArr);
+
+
+
+  testArr = removeEmptyChildren(testArr);
   const collection = [];
 
   testArr.map(node => {

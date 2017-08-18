@@ -52,7 +52,6 @@ const BinarySearchTree = (props) => {
     const foundLevel = level.findIndex( (el) => {
       return el.includes(parentIdx);
     })
-    console.log('parentIdx ', parentIdx, 'foundLevel ', foundLevel);
     if (!groups[foundLevel]) {
       groups[foundLevel] = [node];
     } else {

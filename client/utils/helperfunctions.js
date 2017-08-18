@@ -19,10 +19,50 @@ export const breadthFirstForEach_ = (BST) => {
     });
     counter++;
   }
-  console.log('collection ', collection);
+
   return collection;
 
 }
+
+
+export const removeEmptyChildren = (collection) => {
+
+
+    console.log('first collection ', collection);
+
+    const arrWithNullChildren = collection.slice(0);
+    let length = collection.length;
+    let i = 0;
+
+    while(i < length){
+      let node = arrWithNullChildren[i];
+      if (!node.value || node.left > length) {
+        arrWithNullChildren[i].left = null;
+        arrWithNullChildren[i].right = null;
+      }
+      i++;
+    }
+
+    console.log('arrWithNullChildren ', arrWithNullChildren);
+    let filteredCollection = arrWithNullChildren.slice(0);
+
+    console.log('filteredCollection ', filteredCollection);
+
+    for (let k = filteredCollection.length - 1; k >= 0; k--){
+      if (filteredCollection[k].value === undefined) {
+        console.log('fired index ', k);
+        filteredCollection.pop();
+      }
+      else break;
+    }
+    console.log('filteredCollection ', filteredCollection);
+
+    return filteredCollection;
+
+  }
+
+
+
 
 function parentIdx(childIdx) {
   if (childIdx === 0) return null;
