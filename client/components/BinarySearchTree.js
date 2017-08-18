@@ -24,30 +24,31 @@ const BinarySearchTree = (props) => {
   // const bstArr = props.location.query ? props.location.query : breadthFirstForEach(BST);
 
 //NOTE: we will rewrite this once we determine the mathematical pattern
-  if (props.location.query) {
-    groups[1] = [];
-    groups[2] = [];
-    groups[3] = [];
-    props.location.query.map((node) => {
-      if (node.parent === null) {
-        groups[0] = [];
-        groups[0].push(node);
-      } else if (node.parent === 0) {
-        groups[1].push(node);
-      } else if (node.parent === 1 || node.parent === 2) {
-        groups[2].push(node);
-      } else if (node.parent === 3 || node.parent === 2 || (node.parent === 1 || node.parent === 2))
+  //if (props.location.query) {
+  //   groups[1] = [];
+  //   groups[2] = [];
+  //   groups[3] = [];
+  //   props.location.query.map((node) => {
+  //     if (node.parent === null) {
+  //       groups[0] = [];
+  //       groups[0].push(node);
+  //     } else if (node.parent === 0) {
+  //       groups[1].push(node);
+  //     } else if (node.parent === 1 || node.parent === 2) {
+  //       groups[2].push(node);
+  //     } else if (node.parent === 3 || node.parent === 2 || (node.parent === 1 || node.parent === 2))
 
 
   //     if (!groups[level]) groups[level] = [];
   //     groups[level].push(node);
   //   })
   // } else {
-  //   bstArr = breadthFirstForEach(BST);
-  //   bstArr.map(([node, level]) => {
-  //     if (!groups[level]) groups[level] = [];
-  //     groups[level].push(node);
-  //   })
+    const bstArr = breadthFirstForEach(BST);
+
+    bstArr.map(([node, level]) => {
+      if (!groups[level]) groups[level] = [];
+      groups[level].push(node);
+    })
   // }
 
 

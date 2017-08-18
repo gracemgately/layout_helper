@@ -18,9 +18,9 @@ class Linkedlist extends Component {
 
     const { nodes, user } = this.props;
     // node:LinkedList {head: Node, tail: Node}...
-
-    const nodeArr = nodeArray_(nodes)
-
+    //console.log('QUERY', this.props.location.query);
+    const nodeArr = (this.props.location.query) ? (this.props.location.query) : (nodeArray_(nodes));
+    
     return (
       <div>
         <h1> Linked List </h1>

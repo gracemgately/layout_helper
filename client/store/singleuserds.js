@@ -39,7 +39,6 @@ const getUserLL = linkedlists => ({ type: GET_USER_LL, linkedlists });
 export const FetchUserDS = userId => 
     dispatch =>
         axios.get(`/api/users/${userId}/data-structures`)
-        // .then(res => res.data)
         .then(res => {
             dispatch(getUserBST(res.data.binarysearchtrees))
             dispatch(getUserLL(res.data.linkedlists))
@@ -48,7 +47,6 @@ export const FetchUserDS = userId =>
 
 //REDUCER
 export default function (state = defaultState, action) {
-    console.log("STATE", state);
     switch (action.type) {
         case GET_USER_BST:
             return Object.assign({}, state, {BinarySearchTrees: action.binarysearchtrees});
