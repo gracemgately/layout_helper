@@ -3,9 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import ReactFileReader from 'react-file-reader';
 
-import { addNodeToTail } from '../../store'
-
-
+import { addNodeToTail, addSingleBSTNode } from '../../store'
 
 class UploadCSV extends Component {
 
@@ -46,6 +44,11 @@ class UploadCSV extends Component {
                 this.props.handleTailSubmit(evt, value);
             });
         }
+        else if (this.state.DSType === 'binarysearchtree'){
+            this.state.arrToRender.forEach(value => {
+                this.props.addSingleBSTNode(value);
+            });
+        }
     }
 
     render(){
@@ -76,7 +79,8 @@ const mapDispatch = (dispatch) => {
         handleTailSubmit(evt, nodeValue){
         evt.preventDefault();
         dispatch(addNodeToTail({ value: +nodeValue }))
-        }
+        }, 
+        addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value))
     }            
 }
 
