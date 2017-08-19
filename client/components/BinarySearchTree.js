@@ -5,6 +5,8 @@ import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
+import UploadCSV from './Forms/UploadCSV'
+
 
 
 /**
@@ -62,6 +64,7 @@ const BinarySearchTree = (props) => {
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />
+          <UploadCSV DSType={'binarysearchtree'}/>
           <SaveDSForm content={BST} />
 
         </div>
