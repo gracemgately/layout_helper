@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import store, { getAllUserDS } from '../store'
 import { FetchUserDS } from '../store'
+import DeleteSingleUserDS from './Forms/DeleteSingleUserDS'
 
 import { _Time } from '../utils'
 
@@ -41,8 +42,9 @@ class SingleUserDS extends Component {
               userLL.map((el, idx) => {
                 return (
                   <div key={idx}>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'linkedlists'}/>
                     <Link to={{ pathname: '/linked-list', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
-                  </div>
+                    </div>
                 )
               })
             }
