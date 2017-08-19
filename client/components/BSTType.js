@@ -6,6 +6,8 @@ import { CSSTransitionGroup } from 'react-transition-group';
 /**
  * COMPONENT
  */
+
+
 class BSTType extends Component {
   constructor(props) {
     super(props);
@@ -13,10 +15,32 @@ class BSTType extends Component {
       selectedBST: ''
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.depthFirstForEach = this.depthFirstForEach.bind(this);
   }
 
   handleChange(evt) {
     this.setState({ selectedBST: evt.target.value })
+  }
+
+  handleSubmit(evt){
+    evt.preventDefault();
+    this.depthFirstForEach(this.state.selectedBST);
+  }
+
+  depthFirstForEach(type){
+    if (type === 'Depth First: In-order'){
+      const node = this.props.BST.bstDemo;
+      console.log('node', node)
+      if (node.left) {
+        console.log('node.left', node.left)
+        node.left.depthFirstForEach(type);
+      }
+      console.log('node.value', node.value);
+      if (node.right){
+        node.right.depthFirstForEach( type);
+      }
+    }
   }
 
   render() {
@@ -29,6 +53,9 @@ class BSTType extends Component {
       if (!groups[level]) groups[level] = [];
       groups[level].push(node);
     })
+
+    const type = this.state.selectedBST;
+
     return (
 
       <div>
@@ -45,31 +72,29 @@ class BSTType extends Component {
             <option>Breadth First</option>
           </select>
         </div>
+        <div className="input-group-btn">
+          <button onClick={(evt) => this.handleSubmit(evt)}
+          >Start Demo!
+          </button>
+        </div>
         <br /><br />
         <div className="container">
-          <CSSTransitionGroup
-            transitionName="fade"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500} >
+          {
+            groups.map((ele, index) => {
+              return (
+                <div className={'bstlevel' + index} key={index}>
+                  {
+                    ele.map((node, idx) => {
+                      return (
+                        <div key={idx}>
+                          {node}
+                        </div>)
+                    })
+                  }
 
-            {
-              groups.map((ele, index) => {
-                return (
-                  <div className={'bstlevel' + index} key={index}>
-                    {
-                      ele.map((node, idx) => {
-                        return (
-                          <div key={idx}>
-                            {node}
-                          </div>)
-                      })
-                    }
-
-                  </div>)
-              })
-            }
-          </CSSTransitionGroup>
-
+                </div>)
+            })
+          }
         </div>
       </div>
     )
@@ -84,9 +109,23 @@ class BSTType extends Component {
 const mapState = (state) => {
   return {
     BST: state.bstNode,
-    selectedBST: state.selectedBST
   }
 }
 
 
 export default connect(mapState, null)(BSTType);
+
+
+
+  // if (type === 'pre-order') {
+  //   (this.value);
+  //   if (this.left) {this.left.depthFirstForEach(func, type);}
+  //   if (this.right) {this.right.depthFirstForEach(func, type);}
+  // }
+
+  // if (type === 'post-order') {
+  //   if (this.left) {this.left.depthFirstForEach(func, type);}
+  //   if (this.right) {this.right.depthFirstForEach(func, type);}
+  //   func(this.value);
+  // }
+
