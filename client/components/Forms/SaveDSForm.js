@@ -2,7 +2,7 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { breadthFirstForEach_ } from '../../utils';
+import { breadthFirstForEach_, arrayifyBst, removeEmptyChildren } from '../../utils';
 
 export default class SaveDSForm extends Component {
 
@@ -38,7 +38,8 @@ export default class SaveDSForm extends Component {
   SaveDS(obj) {
 
    // convert bst to heap array
-    let content = breadthFirstForEach_(obj);
+    let content = arrayifyBst(obj);
+    content = removeEmptyChildren(content);
 
     axios.post('/api/binarysearchtrees', {
       name: this.state.name,

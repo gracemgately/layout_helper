@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addSingleBSTNode } from '../../store'
+import { writeNode, addSingleBSTNode, cleanBST } from '../../store'
 import history from '../../history'
 
 
@@ -12,7 +12,10 @@ const AddBSTNodeForm = (props) => {
         evt.preventDefault();
         var nodeValue = Number(evt.target.node.value);
           props.addSingleBSTNode(nodeValue);
-        props.writeNode('')
+          props.writeNode('');
+        // pass BST class to cleanBST everytime 'Add Me!' is clicked, i.e. new node is added.  we create an arrayified tree at every node change.
+          console.log('props.bstNode ', props.bstNode);
+          props.cleanBST(props.bstNode);
       }
 
   return (
@@ -40,17 +43,20 @@ const AddBSTNodeForm = (props) => {
 }
 
 const mapState = (state) => {
+  console.log('state in AddBSTNodeForm ', state);
     return {
       nodes: state.node,
       newNode: state.newNode,
-      bstNode: state.bstNode
+      bstNode: state.bstNode,
+      cleanBST: state.cleanBST.arrayBST,
     }
   }
 
 const mapDispatch = (dispatch) => {
     return {
       writeNode:  (value) => dispatch(writeNode(value)),
-      addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value))
+      addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value)),
+      cleanBST: (BST) => dispatch(cleanBST(BST))
 
     }
   }

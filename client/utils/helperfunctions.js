@@ -24,11 +24,67 @@ export const breadthFirstForEach_ = (BST) => {
 
 }
 
+export const groupBstNodes = arr => {
+
+  let groups = []; // initialize array
+
+
+  /* [...Array(10).keys()]
+  //=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+  */
+
+  const level = [
+    ["root"],
+    [0],
+    [1, 2],
+    [...Array(8).keys()].slice(3, 7), // 3.. 6
+    [...Array(16).keys()].slice(7, 15), // 7...14
+    [...Array(31).keys()].slice(15, 31) // 15...30
+  ]
+
+  arr.map(([node, parentIdx]) => {
+    const foundLevel = level.findIndex( (el) => {
+      return el.includes(parentIdx);
+    })
+    if (!groups[foundLevel]) {
+      groups[foundLevel] = [node];
+    } else {
+      groups[foundLevel].push(node);
+    }
+  })
+
+  return groups;
+
+}
+
+export const arrayifyBst = (BST) => {
+
+  let queue = [BST];
+  let collection = [];
+  let counter = 0;
+  while (counter < 40) {
+    //counter set to 40 to avoid infinite loop -- to be changed later
+    let current = queue.shift();
+    (current.left) ? queue.push(current.left) : queue.push("empty");
+    (current.right) ? queue.push(current.right) : queue.push("empty");
+
+    collection.push({
+      value: current.value,
+      left: childrenIdx(counter)[0],
+      right: childrenIdx(counter)[1],
+      parent: parentIdx(counter)
+    });
+    counter++;
+  }
+
+  console.log('arrayifyBst ', collection);
+
+  return collection;
+}
+
 
 export const removeEmptyChildren = (collection) => {
 
-
-    console.log('first collection ', collection);
 
     const arrWithNullChildren = collection.slice(0);
     let length = collection.length;
@@ -43,19 +99,15 @@ export const removeEmptyChildren = (collection) => {
       i++;
     }
 
-    console.log('arrWithNullChildren ', arrWithNullChildren);
     let filteredCollection = arrWithNullChildren.slice(0);
 
-    console.log('filteredCollection ', filteredCollection);
-
+    // remove orphan nodes
     for (let k = filteredCollection.length - 1; k >= 0; k--){
       if (filteredCollection[k].value === undefined) {
-        console.log('fired index ', k);
         filteredCollection.pop();
       }
       else break;
     }
-    console.log('filteredCollection ', filteredCollection);
 
     return filteredCollection;
 
