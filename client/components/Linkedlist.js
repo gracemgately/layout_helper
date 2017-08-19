@@ -6,6 +6,8 @@ import { drawNode} from '../components'
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
+import UploadCSV from './Forms/UploadCSV'
+
 import { nodeArray_ } from '../utils';
 
 
@@ -26,6 +28,7 @@ class Linkedlist extends Component {
         <div className='formDisplay'>
           <InsertNodeForm />
           <DeleteNodeForm />
+          <UploadCSV DSType={'linkedlist'}/>
           {user.id ? <SaveLLForm type={'linkedlists'} content={nodeArr} user={user}/> : null}
         </div>
         <div className="container">

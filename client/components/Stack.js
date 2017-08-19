@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import StackForm from './Forms/StackForm'
-
+import UploadCSV from './Forms/UploadCSV'
 import { drawNode } from '../components'
-import { writeNode, addNodeToTail, deleteNodeFromTail, searchNode, highlightNodeAtIndex } from '../store'
-
 import SaveLLForm from './Forms/SaveLLForm';
 import { nodeArray_ } from '../utils';
 
@@ -20,8 +18,11 @@ const Stack = (props) => {
     return (
         <div>
             <h2> Stack </h2>
-            <div><StackForm nodeArr={nodeArr} /></div>
+            <div className='formDisplay'>
+            <StackForm nodeArr={nodeArr} />
+            <UploadCSV DSType={'stack'}/>
              {user.id ? <SaveLLForm type={'stacks'} content={nodeArr} user={user}/> : null}
+            </div>
             <div className="container">
                 {
                     (nodeArr.map((node, index) => {
