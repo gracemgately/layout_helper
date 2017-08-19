@@ -12,6 +12,7 @@ export {default as Queue} from './Queue'
 export {default as Stack} from './Stack'
 export {default as SingleUserDS} from './SingleUserDS'
 export {default as Home} from './Home'
+export {default as BSTType} from './BSTType'
 
 export * from './arrow'
 export * from './DrawNode'

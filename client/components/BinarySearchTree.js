@@ -107,11 +107,5 @@ const mapState = (state) => {
   }
 }
 
-// const mapDispatch = (state) => {
-//   //console.log('here is state', state)
-//   return {
-//     values: state
-//   }
-// }
 
 export default connect(mapState, null)(BinarySearchTree);

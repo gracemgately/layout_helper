@@ -5,23 +5,15 @@ import history from '../../history'
 
 
 const AddBSTNodeForm = (props) => {
-  function handleChange(evt) {
-    props.writeNode(Number(evt.target.value));
-  }
-  function handleSubmit(evt) {
-    evt.preventDefault();
-    var nodeValue = Number(evt.target.node.value);
-    props.addSingleBSTNode(nodeValue);
-    props.writeNode('')
-  }
+
 
   return (
     <div>
-      <form id="form-group" onSubmit={handleSubmit}>
+      <form id="form-group" >
         <div>
           <input
             type="text"
-            onChange={handleChange}
+            onChange={props.handleChange}
             placeholder="add a node"
             name="node"
             value={props.newNode}
@@ -30,6 +22,7 @@ const AddBSTNodeForm = (props) => {
         <br />
         <div className="input-group-btn">
             <button
+              onClick={(evt) => props.handleSubmit(evt, props.newNode)}
               className="btn btn-default"
               type="submit">Add Me!
           </button>
@@ -42,16 +35,21 @@ const AddBSTNodeForm = (props) => {
 const mapState = (state) => {
   return {
     nodes: state.node,
-    newNode: state.newNode,
+    newNode: state.writeNode.newNode,
     bstNode: state.bstNode
   }
 }
 
 const mapDispatch = (dispatch) => {
   return {
-    writeNode: (value) => dispatch(writeNode(value)),
-    addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value))
-
+    handleChange(evt) {
+      dispatch(writeNode(Number(evt.target.value)));
+    },
+    handleSubmit(evt, value){
+      evt.preventDefault();
+      dispatch(addSingleBSTNode({value: +value}))
+      dispatch(writeNode(''))
+    }
   }
 }
 

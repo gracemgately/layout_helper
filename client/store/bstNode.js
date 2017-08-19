@@ -71,13 +71,21 @@ class BinarySearchTree {
 
 
 const initialTree = new BinarySearchTree();
+const bstDemo = new BinarySearchTree();
+    bstDemo.insert(10);
+    bstDemo.insert(5);
+    bstDemo.insert(15);
+    bstDemo.insert(25);
+    bstDemo.insert(1);
+    bstDemo.insert(75);
+    bstDemo.insert(3);
+    bstDemo.insert(8);
 
-export default function (state = initialTree, action) {
+export default function (state = { initialTree, bstDemo }, action) {
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
             return Object.assign({}, initialTree);
-
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
