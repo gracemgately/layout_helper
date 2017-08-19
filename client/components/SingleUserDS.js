@@ -28,7 +28,7 @@ class SingleUserDS extends Component {
               userBST.map((el, idx) => {
                 return (
                   <div key={idx}>
-                    <Link to={{ pathname: '/binary-search-tree', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                    <Link to={{ pathname: '/binary-search-tree', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
@@ -41,7 +41,7 @@ class SingleUserDS extends Component {
               userLL.map((el, idx) => {
                 return (
                   <div key={idx}>
-                    <Link to={{ pathname: '/linked-list', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                    <Link to={{ pathname: '/linked-list', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
@@ -56,7 +56,7 @@ class SingleUserDS extends Component {
               userQueues.map((el, idx) => {
                 return (
                   <div key={idx}>
-                    <Link to={{ pathname: '/queue', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                    <Link to={{ pathname: '/queue', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
@@ -69,7 +69,7 @@ class SingleUserDS extends Component {
               userStacks.map((el, idx) => {
                 return (
                   <div key={idx}>
-                    <Link to={{ pathname: '/stack', query: el.content }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                    <Link to={{ pathname: '/stack', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })

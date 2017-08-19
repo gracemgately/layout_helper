@@ -5,6 +5,8 @@ import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
+import UploadCSV from './Forms/UploadCSV'
+
 
 
 /**
@@ -59,12 +61,17 @@ const BinarySearchTree = (props) => {
       <div>
 
         <h1> Binary Search Tree </h1>
+        {//only render forms to edit DS if it is not a previously-saved one
+        props.location.query ?
+        <h2>Name: {props.location.query.name}</h2>
+        :
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />
+          <UploadCSV DSType={'binarysearchtree'}/>
           <SaveDSForm content={BST} />
-
         </div>
+        }
         <div className="container">
           {
             groups.map((ele, index) => {
