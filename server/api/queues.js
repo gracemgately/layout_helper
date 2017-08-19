@@ -10,7 +10,7 @@ router.get('/', (req, res, next) => {
 
 router.delete('/delete/:QId', (req, res, next) => {
   Queue.findById(req.params.QId)
-    .then(Queue => Queue.destroy({force: true}))
+    .then(userQueue => userQueue.destroy({force: true}))
     .then(response => res.json(response))
     .catch(next)
 })

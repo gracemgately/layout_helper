@@ -10,7 +10,6 @@ import { DeleteUserDS } from '../../store'
  * COMPONENT
  */
 const DeleteSingleUserDS = (props) => {
-    //console.log('props', props);
     return (
         <button onClick ={(evt) => props.deleteDS(evt, props.DSType, props.DSId)}>Delete</button>
     )
@@ -24,7 +23,6 @@ const DeleteSingleUserDS = (props) => {
     return   {
         deleteDS: (evt, DSType, DSId) => {
         evt.preventDefault();
-        console.log('type', DSType, 'id', DSId);
         dispatch(DeleteUserDS(DSType, DSId));
         }
     }        

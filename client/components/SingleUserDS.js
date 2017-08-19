@@ -73,6 +73,7 @@ class SingleUserDS extends Component {
               userStacks.map((el, idx) => {
                 return (
                   <div key={idx}>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'stacks'}/>
                     <Link to={{ pathname: '/stack', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )

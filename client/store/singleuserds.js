@@ -14,6 +14,7 @@ const GET_USER_QUEUE = 'GET_USER_QUEUE'
 const DELETE_USER_LL = 'DELETE_USER_LL'
 const DELETE_USER_QUEUE = 'DELETE_USER_QUEUE'
 const DELETE_USER_BST = 'DELETE_USER_BST'
+const DELETE_USER_STACK= 'DELETE_USER_STACK'
 
 // INITIAL STATE
 const defaultState = {
@@ -35,6 +36,7 @@ const getUserQueue = queues => ({ type: GET_USER_QUEUE, queues });
 const deleteUserLL = linkedListID => ({ type: DELETE_USER_LL, linkedListID });
 const deleteUserQueue = queueID => ({ type: DELETE_USER_QUEUE, queueID });
 const deleteUserBST = BSTID => ({ type: DELETE_USER_BST, BSTID });
+const deleteUserStack = stackID => ({ type: DELETE_USER_STACK, stackID });
 
 
 
@@ -61,7 +63,7 @@ export const DeleteUserDS = (DSType, DSId) =>
             if (DSType === 'binarysearchtrees') dispatch(deleteUserBST(DSId));
             if (DSType === 'linkedlists') dispatch(deleteUserLL(DSId));
             if (DSType === 'queues') dispatch(deleteUserQueue(DSId));
-            // dispatch(deleteUserStack);
+            if (DSType === 'stacks') dispatch(deleteUserStack(DSId));
             history.push('/my-data-structures');
         })
         .catch(err => console.error())
@@ -89,6 +91,10 @@ export default function (state = defaultState, action) {
             const allUserBST = state.BinarySearchTrees;
             const newBSTArray = deleteFromArray(allUserBST, action.BSTID)
             return Object.assign({}, state, {BinarySearchTrees: newBSTArray});
+        case DELETE_USER_STACK:
+            const allUserStack = state.Stacks;
+            const newStackArray = deleteFromArray(allUserStack, action.stackID)
+            return Object.assign({}, state, {Stacks: newStackArray});
         default:
             return defaultState;
     }
