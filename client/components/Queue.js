@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { drawNode } from '../components'
 import QueueForm from './Forms/QueueForm';
 import SaveLLForm from './Forms/SaveLLForm';
+import UploadCSV from './Forms/UploadCSV'
 import { nodeArray_ } from '../utils'
+
 
 /**
  * COMPONENT
@@ -19,8 +21,9 @@ class Queue extends Component {
     return (
       <div>
         <h2> Queue </h2>
-        <div>
+        <div className='formDisplay'>
           <QueueForm nodeArray={nodeArr} />
+          <UploadCSV DSType={'queue'}/>
         {user.id ? <SaveLLForm type={'queues'} content={nodeArr} user={user}/> : null}
         </div>
         <div className="container">
@@ -47,7 +50,6 @@ class Queue extends Component {
  */
 
 const mapState = (state) => {
-
   return {
     user: state.user,
     nodes: state.node,

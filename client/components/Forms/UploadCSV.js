@@ -37,7 +37,9 @@ class UploadCSV extends Component {
 
     handleSubmit(evt){
         evt.preventDefault();
-        if (this.state.DSType === 'linkedlist'){
+        if (this.state.DSType === 'linkedlist' || 
+            this.state.DSType === 'queue' ||
+            this.state.DSType === 'stack') {
         //for each value, dispatch the adding functionality 
         //passed down from mapToDispatch
             this.state.arrToRender.forEach(value => {
