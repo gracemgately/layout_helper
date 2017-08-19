@@ -10,7 +10,6 @@ router.get('/', (req, res, next) => {
 })
 
 router.delete('/delete/:LLId', (req, res, next) => {
-  console.log(req.params.LLId);
   LinkedList.findById(req.params.LLId)
     .then(LList => LList.destroy({force: true}))
     .then(response => res.json(response))

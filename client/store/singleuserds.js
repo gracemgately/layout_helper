@@ -12,6 +12,7 @@ const GET_USER_STACK = 'GET_USER_STACK'
 const GET_USER_QUEUE = 'GET_USER_QUEUE'
 
 const DELETE_USER_LL = 'DELETE_USER_LL'
+const DELETE_USER_QUEUE = 'DELETE_USER_QUEUE'
 
 // INITIAL STATE
 const defaultState = {
@@ -31,6 +32,7 @@ const getUserStack = stacks => ({ type: GET_USER_STACK, stacks});
 const getUserQueue = queues => ({ type: GET_USER_QUEUE, queues });
 
 const deleteUserLL = linkedListID => ({ type: DELETE_USER_LL, linkedListID });
+const deleteUserQueue = queueID => ({ type: DELETE_USER_QUEUE, queueID });
 
 
 
@@ -56,7 +58,7 @@ export const DeleteUserDS = (DSType, DSId) =>
             console.log(res.data);
             // dispatch(deleteUserBST);
             if (DSType === 'linkedlists') dispatch(deleteUserLL(DSId));
-            // dispatch(deleteUserQueue);
+            if (DSType === 'queues') dispatch(deleteUserQueue(DSId));
             // dispatch(deleteUserStack);
             history.push('/my-data-structures');
         })
@@ -74,10 +76,13 @@ export default function (state = defaultState, action) {
         case GET_USER_STACK:
             return Object.assign({}, state, {Stacks: action.stacks});
         case DELETE_USER_LL:
-            console.log('deleting!')
             const allUserLL = state.LinkedLists;
             const newLLArray = deleteFromArray(allUserLL, action.linkedListID)
             return Object.assign({}, state, {LinkedLists: newLLArray});
+        case DELETE_USER_QUEUE:
+            const allUserQueue = state.Queues;
+            const newQueueArray = deleteFromArray(allUserQueue, action.queueID)
+            return Object.assign({}, state, {Queues: newQueueArray});
         default:
             return defaultState;
     }

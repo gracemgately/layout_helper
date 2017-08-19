@@ -58,6 +58,7 @@ class SingleUserDS extends Component {
               userQueues.map((el, idx) => {
                 return (
                   <div key={idx}>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'queues'}/>
                     <Link to={{ pathname: '/queue', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
