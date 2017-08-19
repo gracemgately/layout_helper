@@ -14,7 +14,7 @@ import UploadCSV from './Forms/UploadCSV'
  */
 const BinarySearchTree = (props) => {
 
-  const { BST } = props;
+  const { BST, user } = props;
   //console.log("QUERY", props.location.query);
   // bstArr.sort((a, b) => {
   //   return a.level - b.level;
@@ -69,7 +69,7 @@ const BinarySearchTree = (props) => {
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />
           <UploadCSV DSType={'binarysearchtree'}/>
-          <SaveDSForm content={BST} />
+          <SaveDSForm content={BST} userId={props.user.id}/>
         </div>
         }
         <div className="container">
@@ -97,6 +97,7 @@ const BinarySearchTree = (props) => {
 
   const mapState = (state) => {
     return {
+      user: state.user,
       BST: state.bstNode,
       NodeCount: state.bstNode.BSTNodeCount
     }

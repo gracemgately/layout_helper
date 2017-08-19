@@ -29,6 +29,7 @@ class SingleUserDS extends Component {
               userBST.map((el, idx) => {
                 return (
                   <div key={idx}>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'binarysearchtrees'}/>
                     <Link to={{ pathname: '/binary-search-tree', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )

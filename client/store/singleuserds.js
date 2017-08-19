@@ -13,6 +13,7 @@ const GET_USER_QUEUE = 'GET_USER_QUEUE'
 
 const DELETE_USER_LL = 'DELETE_USER_LL'
 const DELETE_USER_QUEUE = 'DELETE_USER_QUEUE'
+const DELETE_USER_BST = 'DELETE_USER_BST'
 
 // INITIAL STATE
 const defaultState = {
@@ -33,6 +34,7 @@ const getUserQueue = queues => ({ type: GET_USER_QUEUE, queues });
 
 const deleteUserLL = linkedListID => ({ type: DELETE_USER_LL, linkedListID });
 const deleteUserQueue = queueID => ({ type: DELETE_USER_QUEUE, queueID });
+const deleteUserBST = BSTID => ({ type: DELETE_USER_BST, BSTID });
 
 
 
@@ -56,7 +58,7 @@ export const DeleteUserDS = (DSType, DSId) =>
         axios.delete(`/api/${DSType}/delete/${DSId}`)
         .then(res => {
             console.log(res.data);
-            // dispatch(deleteUserBST);
+            if (DSType === 'binarysearchtrees') dispatch(deleteUserBST(DSId));
             if (DSType === 'linkedlists') dispatch(deleteUserLL(DSId));
             if (DSType === 'queues') dispatch(deleteUserQueue(DSId));
             // dispatch(deleteUserStack);
@@ -83,6 +85,10 @@ export default function (state = defaultState, action) {
             const allUserQueue = state.Queues;
             const newQueueArray = deleteFromArray(allUserQueue, action.queueID)
             return Object.assign({}, state, {Queues: newQueueArray});
+        case DELETE_USER_BST:
+            const allUserBST = state.BinarySearchTrees;
+            const newBSTArray = deleteFromArray(allUserBST, action.BSTID)
+            return Object.assign({}, state, {BinarySearchTrees: newBSTArray});
         default:
             return defaultState;
     }
