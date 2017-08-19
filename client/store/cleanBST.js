@@ -23,7 +23,7 @@ export const cleanBST = bst =>
 export default function (state = initialState, action) {
   switch (action.type) {
       case GET_CLEAN_BST:
-        return Object.assign({}, state, { arrayBST: action.bst });
+        return Object.assign({}, { arrayBST: action.bst });
 
       default:
           return state

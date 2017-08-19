@@ -5,11 +5,11 @@ import { removeSingleBSTNode, writeNode, cleanBST } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {
 
- const clean = props.cleanBST;
+  const { bstNode } = props;
 
   return (
     <div>
-      <form id="form-group" onSubmit={(evt) => props.handleSubmit(evt, clean)}>
+      <form id="form-group" onSubmit={(evt) => props.handleSubmit(evt, bstNode)}>
         <div>
           <input
             type="text"
@@ -34,8 +34,7 @@ const DeleteBSTNodeForm = (props) => {
 const mapState = (state) => {
   return {
     nodes: state.node,
-    bstNode: state.bstNode,
-    cleanBST: state.cleanBST.arrayBST
+    bstNode: state.bstNode
   }
 }
 
@@ -44,13 +43,12 @@ const mapDispatch = (dispatch) => {
     handleChange(evt){
       dispatch(writeNode(Number(evt.target.value)));
     },
-    handleSubmit(evt, arr) {
+    handleSubmit(evt, bst) {
       evt.preventDefault();
       var nodeValue = Number(evt.target.node.value);
-      console.log('nodeValue', nodeValue);
       dispatch(removeSingleBSTNode(nodeValue))
       dispatch(writeNode(''));
-      dispatch(cleanBST(arr))
+      dispatch(cleanBST(bst))
 
     }
   }

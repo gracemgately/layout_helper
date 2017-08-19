@@ -5,8 +5,8 @@ export const breadthFirstForEach_ = (BST) => {
   let queue = [BST];
   let collection = [];
   let counter = 0;
-  while (counter < 40) {
-//counter set to 40 to avoid infinite loop -- to be changed later
+  while (counter < 65) {
+//counter set to 65 to avoid infinite loop -- to be changed later
     let current = queue.shift();
     (current.left) ?  queue.push(current.left) : queue.push("empty");
     (current.right) ? queue.push(current.right) : queue.push("empty");
@@ -37,9 +37,10 @@ export const groupBstNodes = arr => {
     ["root"],
     [0],
     [1, 2],
-    [...Array(8).keys()].slice(3, 7), // 3.. 6
+    [...Array(8).keys()].slice(3, 7), // INDEX 3.. 6
     [...Array(16).keys()].slice(7, 15), // 7...14
-    [...Array(31).keys()].slice(15, 31) // 15...30
+    [...Array(31).keys()].slice(15, 31), // 15...30
+    [...Array(31).keys()].slice(31, 63) // 31...62
   ]
 
   arr.map(([node, parentIdx]) => {
@@ -62,8 +63,8 @@ export const arrayifyBst = (BST) => {
   let queue = [BST];
   let collection = [];
   let counter = 0;
-  while (counter < 40) {
-    //counter set to 40 to avoid infinite loop -- to be changed later
+  while (counter < 65) {
+    //counter set to 65 to avoid infinite loop -- 2^6 = 64
     let current = queue.shift();
     (current.left) ? queue.push(current.left) : queue.push("empty");
     (current.right) ? queue.push(current.right) : queue.push("empty");
@@ -76,8 +77,7 @@ export const arrayifyBst = (BST) => {
     });
     counter++;
   }
-
-  console.log('arrayifyBst ', collection);
+  console.log('arrayfybst ', collection);
 
   return collection;
 }

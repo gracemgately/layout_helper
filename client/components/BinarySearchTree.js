@@ -26,7 +26,8 @@ const BinarySearchTree = (props) => {
 
       <div>
 
-        <h1> Binary Search Tree </h1>
+      <h1> Binary Search Tree </h1>
+      <div>BST {BST.magnitude} </div>
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />

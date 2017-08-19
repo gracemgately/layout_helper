@@ -15,7 +15,7 @@ const AddBSTNodeForm = (props) => {
           props.writeNode('');
         // pass BST class to cleanBST everytime 'Add Me!' is clicked, i.e. new node is added.  we create an arrayified tree at every node change.
           console.log('props.bstNode ', props.bstNode);
-          props.cleanBST(props.bstNode);
+          props.callCleanBST(props.bstNode);
       }
 
   return (
@@ -43,12 +43,9 @@ const AddBSTNodeForm = (props) => {
 }
 
 const mapState = (state) => {
-  console.log('state in AddBSTNodeForm ', state);
     return {
-      nodes: state.node,
       newNode: state.newNode,
-      bstNode: state.bstNode,
-      cleanBST: state.cleanBST.arrayBST,
+      bstNode: state.bstNode
     }
   }
 
@@ -56,7 +53,7 @@ const mapDispatch = (dispatch) => {
     return {
       writeNode:  (value) => dispatch(writeNode(value)),
       addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value)),
-      cleanBST: (BST) => dispatch(cleanBST(BST))
+      callCleanBST: (BST) => dispatch(cleanBST(BST))
 
     }
   }
