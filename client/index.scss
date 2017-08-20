@@ -1,9 +1,7 @@
 body {
   font-family: 'Roboto', sans-serif;
-  // background-image: url('');
   background-color: #EDEAE5;
   font: #026670;
-
 
   a {
     text-decoration: none;
@@ -26,8 +24,10 @@ body {
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
   }
 
-   h3 {
+   h4 {
     color: #FCE181;
+    padding: 0px;
+    margin: 0px;
   }
 
   nav a {
@@ -40,7 +40,6 @@ body {
   }
 
     nav a:hover {
-
     background-color: #9FEDD7;
 }
 
@@ -90,12 +89,10 @@ body {
     font-size: 15px;
 
   }
-.flex-container-2 {
+.flex-container {
   display: flex;
   justify-content: center;
-  height: 100%;
-  //   height: 250px;
-  // width: 200px;
+  height: 250px;
   margin: 0px;
   padding: 0px;
   animation:
@@ -117,8 +114,7 @@ body {
 }
 
 .col-xs-10 {
-  height: 150px;
-  // width: 
+  height: 85%;
 }
 
   .card {
@@ -128,12 +124,10 @@ body {
       width: 200px;
       transition: 0.3s;
       padding-top: 10px;
-      // border: 10px;
       margin: 20px;
       align-content: center;
       text-align: center;
       background-color: #026670;
-      // background-image: url('http://www.urbanwaxx.com/images/large_marble_background.jpg');
       border-radius: 5px;
 
   }
@@ -156,19 +150,7 @@ svg {
 
 .container {
   display:flex;
-
-  // flex-wrap: wrap;
 }
-
-// .flex-container-1 {
-//   display: flex;
-//   height: 250px;
-//   width: 200px;
-//   // width: calc(50% - 2rem);
-//   padding: 20px;
-//   margin: 10px;
-// }
-
 
 
 .basicnode {
@@ -211,7 +193,7 @@ svg {
 }
 
 #form-group {
-  color: #445765;
+  color: #026670;
 }
 
 #userDScontainer-left {
@@ -220,7 +202,7 @@ svg {
   flex-flow: nowrap;
   justify-content: flex-start;
   font-family: 'Roboto', sans-serif;
-  color: #445765;
+  color: #026670;
 }
 
 #userDScontainer-right {
@@ -229,7 +211,7 @@ svg {
   flex-flow: nowrap;
   justify-content: flex-end;
   font-family: 'Roboto', sans-serif;
-  color: #445765;
+  color: #026670;
 }
 
 #userDSitem {
@@ -237,5 +219,11 @@ svg {
   padding: 20px;
   align-content: left;
   width: 100%;
+  color: #026670;
 }
-
+   #userDSitem:hover {
+    background-color: #9FEDD7;
+}
+   #singleDS:hover {
+    background-color: #FCE181;
+}
