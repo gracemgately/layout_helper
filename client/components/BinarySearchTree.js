@@ -5,6 +5,8 @@ import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
+import UploadCSV from './Forms/UploadCSV'
+
 
 
 /**
@@ -12,7 +14,7 @@ import SaveDSForm from './Forms/SaveDSForm';
  */
 const BinarySearchTree = (props) => {
 
-  const { BST } = props;
+  const { BST, user } = props;
   //console.log("QUERY", props.location.query);
   // bstArr.sort((a, b) => {
   //   return a.level - b.level;
@@ -59,12 +61,17 @@ const BinarySearchTree = (props) => {
       <div>
 
         <h1> Binary Search Tree </h1>
+        {//only render forms to edit DS if it is not a previously-saved one
+        props.location.query ?
+        <h2>Name: {props.location.query.name}</h2>
+        :
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />
-          <SaveDSForm content={BST} />
-
+          <UploadCSV DSType={'binarysearchtree'}/>
+          <SaveDSForm content={BST} userId={props.user.id}/>
         </div>
+        }
         <div className="container">
           {
             groups.map((ele, index) => {
@@ -90,6 +97,7 @@ const BinarySearchTree = (props) => {
 
   const mapState = (state) => {
     return {
+      user: state.user,
       BST: state.bstNode,
       NodeCount: state.bstNode.BSTNodeCount
     }

@@ -12,6 +12,8 @@ export {default as Queue} from './Queue'
 export {default as Stack} from './Stack'
 export {default as SingleUserDS} from './SingleUserDS'
 export {default as Home} from './Home'
+export {default as UploadCSV} from './Forms/UploadCSV'
+export {default as DeleteSingleUserDS} from './Forms/DeleteSingleUserDS'
 
 export * from './arrow'
 export * from './DrawNode'
