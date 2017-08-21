@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
-import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 
 export const drawNode = (node, fill = "none") => {
   return (
@@ -14,6 +14,40 @@ export const drawNode = (node, fill = "none") => {
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
       {(node.next !== null) ? RightArrow(node.value) : null}
+    </div>
+  );
+}
+
+export const drawQueueNode = (node, fill = "none") => {
+  return (
+    <div className="queue-container">
+      <div className="basicnode">
+        <svg>
+          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+
+          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+        </svg>
+      </div>
+      <div id="down-arrow">
+        {(node.next !== null) ? DownArrow(node.value) : null}
+      </div>
+    </div>
+  );
+}
+
+export const drawStackNode = (node, fill = "none") => {
+  return (
+    <div className="queue-container">
+      <div id="down-arrow">
+        {(node.next !== null) ? DownArrow(node.value) : null}
+      </div>
+      <div className="basicnode">
+        <svg>
+          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+
+          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+        </svg>
+      </div>
     </div>
   );
 }

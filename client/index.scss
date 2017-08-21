@@ -155,6 +155,7 @@ svg {
 
 .container {
   display:flex;
+  justify-content: center;
 }
 
 
@@ -253,4 +254,19 @@ svg {
   opacity: 0.01;
   transition: opacity 500ms ease-in;
 }
+
+.queue-container {
+  display:flex;
+  flex-direction: column;
+}
+
+.stack-container {
+  display:flex;
+  flex-direction: column-reverse;
+}
+
+#down-arrow {
+  margin-left: 15px
+}
+
 

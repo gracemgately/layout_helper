@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { drawNode } from '../components'
+import { drawQueueNode } from '../components'
 import QueueForm from './Forms/QueueForm'
 import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
@@ -40,17 +40,25 @@ class Queue extends Component {
             </div>
         }
         <div className="container">
+          <div className="queue-container">
+          {//display 'Head' if there are values to display
+            nodeArr.length ? <div>Head</div> : <div></div>
+          }
           {
             (nodeArr.map((node, index) => {
               var highlight = (index === highlightIndex) ? "yellow" : "none"
               return (
                 <div className="basicnode" key={index}>
-                  {drawNode(node, highlight)}
+                  {drawQueueNode(node, highlight)}
                 </div>
               )
             }))
 
           }
+          {//display 'Tail' if there are values to display
+            nodeArr.length ? <div>Tail</div> : <div></div>
+          }
+        </div>
         </div>
       </div>
     )

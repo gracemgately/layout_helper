@@ -2,9 +2,11 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+import { CSSTransitionGroup } from 'react-transition-group';
+
 import StackForm from './Forms/StackForm'
 import UploadCSV from './Forms/UploadCSV'
-import { drawNode } from '../components'
+import { drawStackNode } from '../components'
 import SaveLLForm from './Forms/SaveLLForm';
 
 import { nodeArray_ } from '../utils';
@@ -42,18 +44,24 @@ class Stack extends Component {
                         </div>
                 }
                 <div className="container">
-                    {
-                        (nodeArr.map((node, index) => {
-                            var highlight = (index === highlightIndex) ? "yellow" : "none"
-                            return (
-                                <div className="basicnode" key={index}>
-                                    {drawNode(node, highlight)}
-                                </div>
-                            )
-                        }))
-
-                    }
-
+                    <div className="stack-container">
+                        {//display 'Head' if there are values to display
+                            nodeArr.length ? <div>Tail</div> : <div></div>
+                        }
+                        {
+                            (nodeArr.map((node, index) => {
+                                var highlight = (index === highlightIndex) ? "yellow" : "none"
+                                return (
+                                    <div className="basicnode" key={index}>
+                                        {drawStackNode(node, highlight)}
+                                    </div>
+                                )
+                            }))
+                        }
+                        {//display 'Tail' if there are values to display
+                            nodeArr.length ? <div>Head</div> : <div></div>
+                        }
+                    </div>
                 </div>
             </div>
         )
