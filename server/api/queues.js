@@ -8,6 +8,13 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.delete('/delete/:QId', (req, res, next) => {
+  Queue.findById(req.params.QId)
+    .then(userQueue => userQueue.destroy({force: true}))
+    .then(response => res.json(response))
+    .catch(next)
+})
+
 router.post('/', (req, res, next) => {
 
   const name = req.body.name;

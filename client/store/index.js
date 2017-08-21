@@ -6,10 +6,9 @@ import node from './node'
 import writeNode from './writeNode'
 import bstNode from './bstNode'
 import singleuserds from './singleuserds'
-import cleanBST from './cleanBST'
 
 
-const reducer = combineReducers({user, node, writeNode, bstNode, singleuserds, cleanBST})
+const reducer = combineReducers({user, node, writeNode, bstNode, singleuserds})
 const middleware = applyMiddleware(thunkMiddleware, createLogger({collapsed: true}))
 const store = createStore(reducer, middleware);
 
@@ -19,7 +18,6 @@ export * from './node'
 export * from './writeNode'
 export * from './bstNode'
 export * from './singleuserds'
-export * from './cleanBST'
 
 
 

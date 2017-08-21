@@ -8,9 +8,13 @@ class SaveDSForm extends Component {
 
   constructor(props) {
     super(props);
+    const { content, userId } = props;
 
     this.state = {
-      name: name
+      name: name,
+      content: content,
+      userId,
+      saveStatus: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,9 +31,16 @@ class SaveDSForm extends Component {
 
     axios.post('/api/binarysearchtrees', {
       name: this.state.name,
-      content: this.state.content
+      content: this.state.content,
+      userId: this.state.userId
+
     })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        if (res.status === 200){
+          this.setState({saveStatus: true})
+        };
+      })
       .catch(err => console.log(err))
   }
 
@@ -66,7 +77,7 @@ class SaveDSForm extends Component {
         <br />
         <div className="input-group-btn">
           <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
-
+          { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
         </div>
       </form>
     </div>

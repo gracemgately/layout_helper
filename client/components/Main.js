@@ -17,7 +17,7 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>Node Lego</h1>
+      <h1>NODEsign</h1>
       <nav>
         {
           isLoggedIn ?
@@ -30,6 +30,7 @@ const Main = (props) => {
               <Link to="/queue">Queue</Link>
               <Link to="/stack">Stack</Link>
               <Link to="/my-data-structures">My Data Structures</Link>
+              <Link to="/BSTDemo">BST Demo</Link>
             </div> :
             <div>
               {/* The navbar will show these links before you log in */}

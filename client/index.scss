@@ -1,11 +1,11 @@
 body {
   font-family: 'Roboto', sans-serif;
-  // background-image: url('https://static1.squarespace.com/static/56de7db3d210b80e7a26dd73/t/56e7c148d210b88679ccf62f/1458028874087/Black+background+-+with+fade.jpg?format=2500w');
-  font: black;
+  background-color: #EDEAE5;
+  font: #026670;
 
   a {
     text-decoration: none;
-    color: #042E54;
+    color: #026670;
   }
 
   label {
@@ -13,8 +13,10 @@ body {
   }
 
   h1 {
-    color: #C3C3C3;
+    color: #026670;
     text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    font-size: 40px;
+    margin-left: 20px
   }
 
  h2 {
@@ -22,32 +24,119 @@ body {
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
   }
 
+   h4 {
+    color: #FCE181;
+    padding: 0px;
+    margin: 0px;
+  }
+
   nav a {
     display: inline-block;
     margin: 1em;
-    color: #C3C3C3;
+    color: #026670;
     font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
+    font-size: 20px;
   }
 
+    nav a:hover {
+    background-color: #9FEDD7;
+}
+
+
+  .textBar {
+  display: flex;
+  height: 79px;
+  background-color: #FEF9C7;
+  font-family: 'Roboto', sans-serif;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.textTextBar {
+  color: #026670;
+  font-size: 35px;
+}
+
   input {
-    background-color: #C3C3C3;
-    color: black;
+    background-color: #9FEDD7;
+    color: 026670;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
+    font-size: 15px;
   }
 
    button {
-    background-color: #C3C3C3;
-    color: black;
+    background-color: #9FEDD7;
+    color: #026670;
     font-family: 'Roboto', sans-serif;
+    font-size: 11px;
+    // border: #FCE181;
+    border-color:#FEF9C7;
   }
+
+  button:hover {
+
+    background-color: #9FEDD7;
+}
 
   form div {
     margin: 1em;
     display: inline-block;
-    color: #C3C3C3;
+    color: #9FEDD7;
+    font-size: 15px;
 
   }
+.flex-container {
+  display: flex;
+  justify-content: center;
+  height: 250px;
+  margin: 0px;
+  padding: 0px;
+  animation:
+    bounce 5s linear infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translate(0, 0);
+  }
+
+  50% {
+    transform: translate(150px, 0);
+  }
+
+  99% {
+    transform: translate(0, 0);
+  }
+}
+
+.col-xs-10 {
+  height: 85%;
+}
+
+  .card {
+      position: static;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      height: 200px;
+      width: 200px;
+      transition: 0.3s;
+      padding-top: 10px;
+      margin: 20px;
+      align-content: center;
+      text-align: center;
+      background-color: #026670;
+      border-radius: 5px;
+
+  }
+
+}
+#form-group {
+  color: #026670;
 }
 
 svg {
@@ -58,7 +147,9 @@ svg {
 .circle1 {
 
   border: 5px;
-  stroke: black;
+  stroke: #026670;
+  // fill: #FEF9C7;
+  // stroke-width: "20";
 
 }
 
@@ -73,15 +164,14 @@ svg {
 .container {
   display:flex;
   flex-wrap: wrap;
+  justify-content: center;
 }
+
 
 .basicnode {
   display: flex;
   width: 150px;
   height: 150px;
-  color: black;
-  border: cornflowerblue;
-
 }
 
 .arrowsize {
@@ -136,13 +226,14 @@ svg {
   display: flex;
 }
 
+
 #userDScontainer-left {
   display: flex;
   flex-direction: column;
   flex-flow: nowrap;
   justify-content: flex-start;
   font-family: 'Roboto', sans-serif;
-  color: #445765;
+  color: #026670;
 }
 
 #userDScontainer-right {
@@ -151,7 +242,7 @@ svg {
   flex-flow: nowrap;
   justify-content: flex-end;
   font-family: 'Roboto', sans-serif;
-  color: #445765;
+  color: #026670;
 }
 
 #userDSitem {
@@ -159,5 +250,55 @@ svg {
   padding: 20px;
   align-content: left;
   width: 100%;
+  color: #026670;
 }
+   #userDSitem:hover {
+    background-color: #9FEDD7;
+}
+   #singleDS:hover {
+    background-color: #FCE181;
+}
+
+
+#DSTitle {
+  text-decoration: underline;
+}
+
+/* starting state of animation*/
+.fade-enter {
+  opacity: 0.01;
+}
+
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+
+.fade-leave {
+  opacity: 1;
+}
+
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  transition: opacity 500ms ease-in;
+}
+
+.queue-container {
+  display:flex;
+  flex-direction: column;
+}
+
+.stack-container {
+  display:flex;
+  flex-direction: column-reverse;
+}
+
+#down-arrow {
+  margin-left: 15px
+}
+
+.saved-ds {
+  color: black;
+}
+
 

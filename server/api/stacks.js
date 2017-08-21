@@ -8,6 +8,15 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+
+router.delete('/delete/:StackId', (req, res, next) => {
+  Stack.findById(req.params.StackId)
+    .then(userStack => userStack.destroy({force: true}))
+    .then(response => res.json(response))
+    .catch(next)
+})
+
+
 router.post('/', (req, res, next) => {
 
   const name = req.body.name;

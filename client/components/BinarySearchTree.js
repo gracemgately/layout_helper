@@ -6,6 +6,9 @@ import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
+import { CSSTransitionGroup } from 'react-transition-group';
+import UploadCSV from './Forms/UploadCSV'
+
 
 
 /**
@@ -77,7 +80,7 @@ class BinarySearchTree extends Component {
           <div className='formDisplay' >
             <AddBSTNodeForm />
             <DeleteBSTNodeForm />
-            <SaveDSForm content={this.props.array} />
+            <SaveDSForm content={this.props.array} userId={this.props.user.id}/>
 
           </div>
           <div className="container">
@@ -100,22 +103,15 @@ class BinarySearchTree extends Component {
 }
 
 
-  /*
-   * CONTAINER
-   */
 
   const mapState = (state) => {
     return {
+      user: state.user,
       BST: state.bstNode,
       array: state.bstNode.array
     }
+
   }
 
-  // const mapDispatch = (state) => {
-  //   //console.log('here is state', state)
-  //   return {
-  //     values: state
-  //   }
-  // }
 
-  export default connect(mapState, null)(BinarySearchTree);
+export default connect(mapState, null)(BinarySearchTree);

@@ -177,3 +177,15 @@ export const nodeArray_ = (nodes) => {
   }
 
 //
+//singleuserds.js
+
+  export const deleteFromArray = (DSarray, DSId) => {
+    for (let i = 0; i < DSarray.length; i++) {
+        if (DSarray[i].id === DSId) {
+            DSarray.splice(i, 1);
+        }
+    }
+    return DSarray;
+}
+
+//
