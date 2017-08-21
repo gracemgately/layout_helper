@@ -38,17 +38,17 @@ const getCleanBST = bst => ({ type: GET_CLEAN_BST, bst });
 
 
 
-// export const cleanBST = bst =>
-//   dispatch => {
-//     let arrayBST = arrayifyBst(bst);
-//     arrayBST = removeEmptyChildren(arrayBST);
-//     dispatch(getCleanBST(arrayBST));
-//   }
-
-  export const cleanBST = bst =>
-    dispatch => {
-      dispatch(getCleanBST(bst));
+export const cleanBST = bst =>
+  dispatch => {
+    let arrayBST = arrayifyBst(bst);
+    arrayBST = removeEmptyChildren(arrayBST);
+    dispatch(getCleanBST(arrayBST));
   }
+
+  // export const cleanBST = bst =>
+  //   dispatch => {
+  //     dispatch(getCleanBST(bst));
+  // }
 
 
 export default function (state = initialState, action) {

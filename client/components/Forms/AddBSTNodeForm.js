@@ -1,8 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addSingleBSTNode, cleanBST } from '../../store'
+import { writeNode, addSingleBSTNode, arrayifyClassBST } from '../../store'
 import history from '../../history'
-import { arrayifyBst, removeEmptyChildren } from '../../utils'
 
 
 const AddBSTNodeForm = (props) => {
@@ -14,15 +13,15 @@ const AddBSTNodeForm = (props) => {
         var nodeValue = Number(evt.target.node.value);
           props.addSingleBSTNode(nodeValue);
           props.writeNode('');
+
         // pass BST class to cleanBST everytime 'Add Me!' is clicked, i.e. new node is added.  we create an arrayified tree at every node change.
-          console.log('props.bstNode ', props.bstNode);
-          let arrayBST = arrayifyBst(props.bstNode);
-          let arrayBST2 = removeEmptyChildren(arrayBST);
-          props.callCleanBST(arrayBST2);
+          props.callArrayfyBST(props.bstNode);
 
       }
 
-  return (
+      console.log('props.array ', props.array);
+      return (
+
     <div>
       <form id="form-group" onSubmit={handleSubmit}>
         <div>
@@ -49,7 +48,8 @@ const AddBSTNodeForm = (props) => {
 const mapState = (state) => {
     return {
       newNode: state.newNode,
-      bstNode: state.bstNode
+      bstNode: state.bstNode,
+      array: state.bstNode.array
     }
   }
 
@@ -57,7 +57,7 @@ const mapDispatch = (dispatch) => {
     return {
       writeNode:  (value) => dispatch(writeNode(value)),
       addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value)),
-      callCleanBST: (BST) => dispatch(cleanBST(BST))
+      callArrayfyBST: (BST) => dispatch(arrayifyClassBST(BST))
 
     }
   }

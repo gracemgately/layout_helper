@@ -44,14 +44,14 @@ class BinarySearchTree extends Component {
     if (nextProps.BST !== this.state.BST) {
       console.log('next props...');
       this.setState({ BST: nextProps.BST, array: nextProps.array });
-      this.asyncCalls();
+      this.asyncCalls(nextProps.array);
     }
   }
 
 
-  asyncCalls() {
+  asyncCalls(arr) {
         // send arrayified bst nodes, get drawings and parentIdx values back
-    const bstDivs = drawBSTnodes(this.array);
+    const bstDivs = drawBSTnodes(arr);
 
         // group the bstDivs by parentIdx groups
 
@@ -67,6 +67,8 @@ class BinarySearchTree extends Component {
 
     console.log('this.props.array.... ', this.props.array);
 
+    console.log('this.state.array.... ', this.state.array);
+
       return (
 
         <div>
@@ -75,12 +77,12 @@ class BinarySearchTree extends Component {
           <div className='formDisplay' >
             <AddBSTNodeForm />
             <DeleteBSTNodeForm />
-            <SaveDSForm content={this.BST} />
+            <SaveDSForm content={this.props.array} />
 
           </div>
           <div className="container">
             {
-              this.state.array.map((ele, index) => {
+              this.state.groups.map((ele, index) => {
                 return (
                   <div className={'bstlevel' + index} key={index}>
                     {
@@ -105,7 +107,7 @@ class BinarySearchTree extends Component {
   const mapState = (state) => {
     return {
       BST: state.bstNode,
-      array: state.cleanBST.arrayBST
+      array: state.bstNode.array
     }
   }
 

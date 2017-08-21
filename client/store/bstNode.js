@@ -1,14 +1,17 @@
 'use strict';
 import history from '../history'
 import { breadthFirstForEach } from '../components'
+import { arrayifyBst, removeEmptyChildren } from '../utils'
 
 const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
+const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
+export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 
 class BinarySearchTree {
     constructor(value) {
@@ -72,16 +75,6 @@ class BinarySearchTree {
 
 const initialTree = new BinarySearchTree();
 
-// export const cleanBST2 = value =>
-//     dispatch => {
-//         Promise.promisify(
-//             dispatch(addSingleBSTNode(value))
-//         ).then(
-//             dispatch(cleanBST(tree??))
-//         )
-
-
-//     }
 
 export default function (state = initialTree, action) {
     switch (action.type) {
@@ -92,6 +85,16 @@ export default function (state = initialTree, action) {
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
+
+        case ARRAYIFY_CLASS_BST:
+            let arrayBST = arrayifyBst(state)
+            console.log('state in ARRAYIFY_CLASS_BST', state);
+
+            console.log('arrayBST in ARRAYIFY_CLASS_BST', arrayBST);
+            let arrayBST2 = removeEmptyChildren(arrayBST);
+            console.log('arrayBST2 in ARRAYIFY_CLASS_BST', arrayBST2);
+            return Object.assign({}, state, { array: arrayBST2 });
+
         default:
             return state
     }
