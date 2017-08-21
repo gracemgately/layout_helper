@@ -6,12 +6,16 @@ const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
+const GET_ARRAY = 'GET_ARRAY'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
+})
+export const getArray = array => ({
+    type: GET_ARRAY, array
 })
 
 class BinarySearchTree {
@@ -72,20 +76,24 @@ class BinarySearchTree {
         } else if (this[direction]) { this.parent.insert(this[direction]) }
     }
 
-    depthFirstForEach(type) {
+    depthFirstForEach(type, step, JSXArr, iterator) {
         const fill = 'yellow';
 
         if (type === 'Depth First: In-order') {
-            if (this.left) this.left.depthFirstForEach(type);
-
-            drawBSTNode2(this, fill);
-            console.log('this node', this);
+            let counter = 0;
+            if (this.left) this.left.depthFirstForEach(type, step, JSXArr, iterator);
+            iterator(this.value, step, counter);
+            counter++;
+            // drawBSTNode2(this, fill);
+            // console.log('this node', this);
             //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
 
 
             if (this.right) this.right.depthFirstForEach(type);
         }
         if (type === 'Depth First: Pre-order') {
+            this.colored = true;
+
             drawBSTNode2(this, fill)
 
             if (this.left) { this.left.depthFirstForEach(type); }
@@ -121,8 +129,11 @@ bstDemo.insert(14);
 // bstDemo.insert(11);
 // bstDemo.insert(13);
 // bstDemo.insert(15);
+const step = 0;
+const JSXArr = {};
 
-export default function (state = { initialTree, bstDemo }, action) {
+export default function (state = { initialTree, bstDemo, step, JSXArr }, action) {
+
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
@@ -130,10 +141,15 @@ export default function (state = { initialTree, bstDemo }, action) {
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
+        // case GET_ARRAY:
+        //     return Object.assign({}, action.JSXArr )
         case TRAVERSE_TREE:
-            console.log('here in traverse tree', action.BSTtype.BSTtype);
-            console.log('bstDemo', bstDemo)
+            // console.log('state', state);
+            // const newJSX = JSXArr.slice(0);
+            // console.log('newJSX', newJSX);
+            // const utilFn = findJSXVal(newJSX);
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
+            // return newJSX;
             return Object.assign({}, bstDemo);
 
         default:

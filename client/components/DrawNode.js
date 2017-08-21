@@ -20,7 +20,7 @@ export const drawNode = (node, fill = "none") => {
 
 
 export const drawBSTNode2 = (node, fill = 'none') => {
-  console.log('githere', fill, node.value)
+  console.log('githere', fill, node)
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
