@@ -9,19 +9,28 @@ import SaveLLForm from './Forms/SaveLLForm';
 import UploadCSV from './Forms/UploadCSV'
 
 import { nodeArray_ } from '../utils';
+import { cleanState } from '../store'
+
 
 
 /**
  * COMPONENT
  */
 class Linkedlist extends Component {
-  
+  //use componentWillUnmount to clean the state of any carryover
+  //values that otherwise would cause the LL to rerender as a Queue
+  //or Stack when switching between components
+  componentWillUnmount(){
+      this.props.cleanStateValues();
+  }
+
+
   render() {
 
     const { nodes, user } = this.props;
     // node:LinkedList {head: Node, tail: Node}...
     const nodeArr = (this.props.location.query) ? (this.props.location.query.content) : (nodeArray_(nodes));
-    
+
     return (
       <div>
 
@@ -69,4 +78,12 @@ const mapState = (state) => {
 }
 
 
-export default connect(mapState, null)(Linkedlist);
+const mapDispatch = (dispatch) => {
+  return {
+    cleanStateValues(){
+      dispatch(cleanState())
+    }
+  }
+}
+
+export default connect(mapState, mapDispatch)(Linkedlist);

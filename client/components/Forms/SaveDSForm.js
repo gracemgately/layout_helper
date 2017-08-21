@@ -9,16 +9,12 @@ export default class SaveDSForm extends Component {
   constructor(props) {
     super(props);
     const { content, userId } = props;
-    //const userId = 1;
-    //const category = "Linked List";
-    // const content = props.content;
-    //const name = "Me";
 
     this.state = {
       name: name,
       content: content,
-      // category: category,
-      userId
+      userId,
+      saveStatus: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -45,7 +41,12 @@ export default class SaveDSForm extends Component {
       content,
       userId: this.state.userId
     })
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        if (res.status === 200){
+          this.setState({saveStatus: true})
+        };
+      })
       .catch(err => console.log(err))
 
   }
@@ -68,7 +69,7 @@ export default class SaveDSForm extends Component {
         <br />
         <div className="input-group-btn">
           <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
-
+          { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
         </div>
       </form>
     </div>
