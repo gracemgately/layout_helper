@@ -5,7 +5,7 @@ import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 
-export const drawNode = (node, fill="none") => {
+export const drawNode = (node, fill = "none") => {
   return (
     <div className="basicnode">
     <svg>
@@ -19,12 +19,13 @@ export const drawNode = (node, fill="none") => {
 }
 
 
-export const drawBSTNode2 = (node) => {
+export const drawBSTNode2 = (node, fill = 'none') => {
+  console.log('githere', fill, node.value)
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
-        <circle className="circle1" fill="none" cx="25" cy="25" r="25"> </circle>
+        <circle className="circle1" fill={fill} cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
