@@ -148,23 +148,39 @@ svg {
 
   border: 5px;
   stroke: #026670;
-  fill: #FEF9C7;
+  // fill: #FEF9C7;
   // stroke-width: "20";
+
+}
+
+
+.circle-empty {
+
+  border: 5px;
+  stroke: white;
 
 }
 
 .container {
   display:flex;
+  flex-wrap: wrap;
   justify-content: center;
 }
 
 
 .basicnode {
   display: flex;
-  color: #026670;
+  width: 150px;
+  height: 150px;
 }
 
 .arrowsize {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+}
+
+.arrow-empty {
   font-size: 2em;
   padding: 0;
   margin: 0;
@@ -189,6 +205,18 @@ svg {
 }
 
 .bstlevel3 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel4 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel5 {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -233,7 +261,7 @@ svg {
 
 
 #DSTitle {
-  text-decoration: underline;  
+  text-decoration: underline;
 }
 
 /* starting state of animation*/

@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+import {removeEmptyChildren} from '../utils'
 
 export const drawNode = (node, fill = "none") => {
   return (
@@ -68,6 +69,32 @@ export const drawBSTNode2 = (node, fill = 'none') => {
   )
 }
 
+export const drawBSTNode3 = (node) => {
+
+  if (!node.value) {
+    return (
+      <div className="basicnode">
+      <svg>
+      <circle className="circle-empty" fill="none" cx="25" cy="25" r="25"> </circle>
+      <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">empty</text>
+    </svg>
+      </div>
+    )
+  }
+
+  return (
+    <div className="basicnode">
+    {(node.left !== null) ? SouthWestArrow(node.value) : null}
+      <svg>
+        <circle className="circle1" fill="none" cx="25" cy="25" r="25"> </circle>
+        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+      </svg>
+
+      {(node.right !== null) ? SouthEastArrow(node.value) : null}
+    </div>
+  )
+}
+
 
 export const breadthFirstForEach = (node) => {
   var queue = [node];
@@ -96,3 +123,35 @@ function treeLevel(node) {
   }
   return counter;
 }
+
+
+// takes user bst and calls drawBST() to render the nodes in full tree form
+export const userBST = (cleanbst) => {
+
+  cleanbst = removeEmptyChildren(cleanbst);
+  const collection = [];
+
+  cleanbst.map(node => {
+    let parentIdx = node.parent;
+    if (node.parent === null) parentIdx = "root";
+    collection.push([drawBSTNode3(node), parentIdx]);
+  })
+
+  return collection;
+}
+
+
+// takes user bst and calls drawBST() to render the nodes in full tree form
+export const drawBSTnodes = (cleanbst) => {
+
+    cleanbst = removeEmptyChildren(cleanbst);
+    const collection = [];
+
+    cleanbst.map(node => {
+      let parentIdx = node.parent;
+      if (node.parent === null) parentIdx = "root";
+      collection.push([drawBSTNode3(node), parentIdx]);
+    })
+
+    return collection;
+  }
