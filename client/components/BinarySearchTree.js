@@ -16,11 +16,13 @@ class BinarySearchTree extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cleanBST: props.cleanBST,
+      array: props.array,
       BST: props.BST,
       groups: []
     }
     this.asyncCalls = this.asyncCalls.bind(this);
+
+    console.log('props ', props);
   }
 
 
@@ -31,7 +33,6 @@ class BinarySearchTree extends Component {
   // // group the bstDivs by parentIdx groups
   // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
-
     this.asyncCalls();
     console.log('component mounted');
 
@@ -39,18 +40,18 @@ class BinarySearchTree extends Component {
 
   componentWillReceiveProps(nextProps) {
 
+    console.log('nextProps ', nextProps);
     if (nextProps.BST !== this.state.BST) {
       console.log('next props...');
-      this.setState({ BST: nextProps.BST });
+      this.setState({ BST: nextProps.BST, array: nextProps.array });
+      this.asyncCalls();
     }
-    this.asyncCalls();
   }
 
 
   asyncCalls() {
         // send arrayified bst nodes, get drawings and parentIdx values back
-    const bstDivs = drawBSTnodes(this.cleanBST);
-
+    const bstDivs = drawBSTnodes(this.array);
 
         // group the bstDivs by parentIdx groups
 
@@ -58,15 +59,13 @@ class BinarySearchTree extends Component {
 
     console.log('groups ', groups);
 
-    if (bstDivs !== groups) {
-      this.setState({ groups: groups });
-    }
+    this.setState({ groups: groups });
   }
 
 
   render() {
 
-    console.log('this.groups ', this.state.groups);
+    console.log('this.props.array.... ', this.props.array);
 
       return (
 
@@ -81,7 +80,7 @@ class BinarySearchTree extends Component {
           </div>
           <div className="container">
             {
-              this.state.groups.map((ele, index) => {
+              this.state.array.map((ele, index) => {
                 return (
                   <div className={'bstlevel' + index} key={index}>
                     {
@@ -106,8 +105,7 @@ class BinarySearchTree extends Component {
   const mapState = (state) => {
     return {
       BST: state.bstNode,
-      NodeCount: state.bstNode.BSTNodeCount,
-      cleanBST: state.cleanBST.arrayBST
+      array: state.cleanBST.arrayBST
     }
   }
 

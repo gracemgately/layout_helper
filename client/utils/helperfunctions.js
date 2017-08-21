@@ -60,6 +60,7 @@ export const groupBstNodes = arr => {
 
 export const arrayifyBst = (BST) => {
 
+  let startTime = new Date();
   let queue = [BST];
   let collection = [];
   let counter = 0;
@@ -79,11 +80,16 @@ export const arrayifyBst = (BST) => {
   }
   console.log('arrayfybst ', collection);
 
+  console.log('time it takes arrayify to run', new Date() - startTime);
+
   return collection;
 }
 
 
 export const removeEmptyChildren = (collection) => {
+
+  let startTime = new Date();
+
 
     if (collection === undefined) return [];
 
@@ -109,6 +115,8 @@ export const removeEmptyChildren = (collection) => {
       }
       else break;
     }
+
+    console.log('time it takes removeEmptyChildren to run', new Date() - startTime);
 
     return filteredCollection;
 

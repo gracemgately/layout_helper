@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { writeNode, addSingleBSTNode, cleanBST } from '../../store'
 import history from '../../history'
+import { arrayifyBst, removeEmptyChildren } from '../../utils'
 
 
 const AddBSTNodeForm = (props) => {
@@ -15,7 +16,10 @@ const AddBSTNodeForm = (props) => {
           props.writeNode('');
         // pass BST class to cleanBST everytime 'Add Me!' is clicked, i.e. new node is added.  we create an arrayified tree at every node change.
           console.log('props.bstNode ', props.bstNode);
-          props.callCleanBST(props.bstNode);
+          let arrayBST = arrayifyBst(props.bstNode);
+          let arrayBST2 = removeEmptyChildren(arrayBST);
+          props.callCleanBST(arrayBST2);
+
       }
 
   return (
