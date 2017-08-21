@@ -8,7 +8,7 @@ export default class SaveDSForm extends Component {
 
   constructor(props) {
     super(props);
-    const { content } = props;
+    const { content, userId } = props;
     //const userId = 1;
     //const category = "Linked List";
     // const content = props.content;
@@ -16,9 +16,9 @@ export default class SaveDSForm extends Component {
 
     this.state = {
       name: name,
-      content: content
+      content: content,
       // category: category,
-      // userId: userId
+      userId
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -42,7 +42,8 @@ export default class SaveDSForm extends Component {
 
     axios.post('/api/binarysearchtrees', {
       name: this.state.name,
-      content
+      content,
+      userId: this.state.userId
     })
       .then(res => console.log(res))
       .catch(err => console.log(err))

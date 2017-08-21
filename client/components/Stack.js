@@ -3,10 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import StackForm from './Forms/StackForm'
-
+import UploadCSV from './Forms/UploadCSV'
 import { drawNode } from '../components'
-import { writeNode, addNodeToTail, deleteNodeFromTail, searchNode, highlightNodeAtIndex } from '../store'
-
 import SaveLLForm from './Forms/SaveLLForm';
 import { nodeArray_ } from '../utils';
 
@@ -15,13 +13,21 @@ const Stack = (props) => {
 
     const { user, nodes, highlightIndex } = props
 
-    const nodeArr = (props.location.query) ? (props.location.query) : (nodeArray_(nodes));
+    const nodeArr = (props.location.query) ? (props.location.query.content) : (nodeArray_(nodes));
 
     return (
         <div>
             <h2> Stack </h2>
-            <div><StackForm nodeArr={nodeArr} /></div>
-             {user.id ? <SaveLLForm type={'stacks'} content={nodeArr} user={user}/> : null}
+            {//only render forms to edit DS if it is not a previously-saved one
+                props.location.query ?
+                    <h2>Name: {props.location.query.name}</h2>
+                    :
+                    <div className='formDisplay'>
+                        <StackForm nodeArr={nodeArr} />
+                        <UploadCSV DSType={'stack'} />
+                        {user.id ? <SaveLLForm type={'stacks'} content={nodeArr} user={user} /> : null}
+                    </div>
+            }
             <div className="container">
                 {
                     (nodeArr.map((node, index) => {
