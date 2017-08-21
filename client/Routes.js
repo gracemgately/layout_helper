@@ -4,7 +4,7 @@ import {Router} from 'react-router'
 import {Route, Switch} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import history from './history'
-import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack, SingleUserDS} from './components'
+import {Main, Login, Signup, UserHome, Home, Linkedlist, BinarySearchTree, Queue, Stack, SingleUserDS, BSTType} from './components'
 import {me} from './store'
 
 /**
@@ -32,6 +32,7 @@ class Routes extends Component {
             <Route path="/binary-search-tree" component={BinarySearchTree} />
             <Route path="/queue" component={Queue} />
             <Route path="/stack" component={Stack} />
+            <Route path="/bstdemo" component={BSTType} />
             {
               isLoggedIn ?
                 <Switch>
@@ -42,6 +43,7 @@ class Routes extends Component {
                   <Route path="/queue" component={Queue} />
                   <Route path="/stack" component={Stack} />
                   <Route path="/my-data-structures" component={SingleUserDS}/>
+                  <Route path="/bstdemo" component={BSTType} />
                 </Switch> : null
             }
             {/* Displays our Login component as a fallback */}

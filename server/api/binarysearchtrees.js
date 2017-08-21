@@ -8,6 +8,13 @@ router.get('/', (req, res, next) => {
     .catch(next)
 })
 
+router.delete('/delete/:BSTId', (req, res, next) => {
+  BinarySearchTree.findById(req.params.BSTId)
+    .then(BinarySearchTree => BinarySearchTree.destroy({force: true}))
+    .then(response => res.json(response))
+    .catch(next)
+})
+
 router.post('/', (req, res, next) => {
   const name = req.body.name;
   const content = req.body.content;

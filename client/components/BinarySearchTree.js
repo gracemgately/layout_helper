@@ -5,6 +5,9 @@ import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
+import { CSSTransitionGroup } from 'react-transition-group';
+import UploadCSV from './Forms/UploadCSV'
+
 
 
 /**
@@ -12,7 +15,7 @@ import SaveDSForm from './Forms/SaveDSForm';
  */
 const BinarySearchTree = (props) => {
 
-  const { BST } = props;
+  const { BST, user } = props;
   //console.log("QUERY", props.location.query);
   // bstArr.sort((a, b) => {
   //   return a.level - b.level;
@@ -23,7 +26,7 @@ const BinarySearchTree = (props) => {
 
   // const bstArr = props.location.query ? props.location.query : breadthFirstForEach(BST);
 
-//NOTE: we will rewrite this once we determine the mathematical pattern
+  //NOTE: we will rewrite this once we determine the mathematical pattern
   //if (props.location.query) {
   //   groups[1] = [];
   //   groups[2] = [];
@@ -43,12 +46,12 @@ const BinarySearchTree = (props) => {
   //     groups[level].push(node);
   //   })
   // } else {
-    const bstArr = breadthFirstForEach(BST);
+  const bstArr = breadthFirstForEach(BST);
 
-    bstArr.map(([node, level]) => {
-      if (!groups[level]) groups[level] = [];
-      groups[level].push(node);
-    })
+  bstArr.map(([node, level]) => {
+    if (!groups[level]) groups[level] = [];
+    groups[level].push(node);
+  })
   // }
 
 
@@ -56,50 +59,68 @@ const BinarySearchTree = (props) => {
   // console.log('groups ', groups);
   return (
 
-      <div>
+    <div>
+
 
         <h2> Binary Search Tree </h2>
+        {//only render forms to edit DS if it is not a previously-saved one
+        props.location.query ?
+        <h2>Name: {props.location.query.name}</h2>
+        :
+
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />
-          <SaveDSForm content={BST} />
-
+          <UploadCSV DSType={'binarysearchtree'}/>
+          <SaveDSForm content={BST} userId={props.user.id}/>
         </div>
+        }
         <div className="container">
-          {
-            groups.map((ele, index) => {
-              return (
-                <div className={'bstlevel' + index} key={index}>
+    
+
+                <CSSTransitionGroup
+                  transitionName="fade"
+                  transitionEnterTimeout={500}
+                  transitionLeaveTimeout={500} >
+
                   {
-                    ele.map((node, idx) => {
-                      return (<div key={idx}>{node}</div>)
+                    groups.map((ele, index) => {
+                      return (
+                        <div className={'bstlevel' + index} key={index}>
+                          {
+                            ele.map((node, idx) => {
+                              return (
+                              <div key={idx}>
+                                {node}
+                              </div>)
+                            })
+                          }
+
+                        </div>)
                     })
                   }
-                </div>)
-            })
-          }
-        </div>
+                </CSSTransitionGroup>
+
       </div>
-    )
-  }
+   
+</div>
+  )
+}
 
 
-  /*
-   * CONTAINER
-   */
+/*
+ * CONTAINER
+ */
+
 
   const mapState = (state) => {
     return {
+      user: state.user,
       BST: state.bstNode,
       NodeCount: state.bstNode.BSTNodeCount
     }
+
   }
 
-  // const mapDispatch = (state) => {
-  //   //console.log('here is state', state)
-  //   return {
-  //     values: state
-  //   }
-  // }
 
-  export default connect(mapState, null)(BinarySearchTree);
+export default connect(mapState, null)(BinarySearchTree);

@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import store, { getAllUserDS } from '../store'
 import { FetchUserDS } from '../store'
+import DeleteSingleUserDS from './Forms/DeleteSingleUserDS'
 
 import { _Time } from '../utils'
 
@@ -28,7 +29,8 @@ class SingleUserDS extends Component {
               userBST.map((el, idx) => {
                 return (
                   <div id="singleDS" key={idx}>
-                    <Link to={{ pathname: '/binary-search-tree', query: el }}>{el.name} - Date Created: {_Time(el.createdAt)}</Link>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'binarysearchtrees'}/>
+                    <Link to={{ pathname: '/binary-search-tree', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
@@ -41,8 +43,9 @@ class SingleUserDS extends Component {
               userLL.map((el, idx) => {
                 return (
                   <div id="singleDS" key={idx}>
-                    <Link to={{ pathname: '/linked-list', query: el }}>{el.name} - Date Created: {_Time(el.createdAt)}</Link>
-                  </div>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'linkedlists'}/>
+                    <Link to={{ pathname: '/linked-list', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
+                    </div>
                 )
               })
             }
@@ -56,7 +59,8 @@ class SingleUserDS extends Component {
               userQueues.map((el, idx) => {
                 return (
                   <div id="singleDS" key={idx}>
-                    <Link to={{ pathname: '/queue', query: el }}>{el.name} - Date Created: {_Time(el.createdAt)}</Link>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'queues'}/>
+                    <Link to={{ pathname: '/queue', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
@@ -69,7 +73,8 @@ class SingleUserDS extends Component {
               userStacks.map((el, idx) => {
                 return (
                   <div id="singleDS" key={idx}>
-                    <Link to={{ pathname: '/stack', query: el }}>{el.name} - Date Created: {_Time(el.createdAt)}</Link>
+                    <DeleteSingleUserDS DSId={el.id} DSType={'stacks'}/>
+                    <Link to={{ pathname: '/stack', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
                 )
               })
