@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { drawNode } from '../components'
-import QueueForm from './Forms/QueueForm';
-import SaveLLForm from './Forms/SaveLLForm';
+import QueueForm from './Forms/QueueForm'
+import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
+
 import { nodeArray_ } from '../utils'
+import { cleanState } from '../store'
 
 
 /**
  * COMPONENT
  */
 class Queue extends Component {
+    //use componentWillUnmount to clean the state of any carryover
+    //values that otherwise would cause the LL to rerender as a Queue
+    //or Stack when switching between components
+    componentWillUnmount() {
+        this.props.cleanStateValues();
+    }
 
   render() {
 
@@ -62,7 +70,13 @@ const mapState = (state) => {
   }
 }
 
+const mapDispatch = (dispatch) => {
+    return {
+        cleanStateValues() {
+            dispatch(cleanState())
+        }
+    }
+}
 
 
-
-export default connect(mapState)(Queue);
+export default connect(mapState, mapDispatch)(Queue);
