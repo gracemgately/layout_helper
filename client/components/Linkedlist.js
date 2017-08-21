@@ -24,7 +24,9 @@ class Linkedlist extends Component {
     
     return (
       <div>
-        <h1> Linked List </h1>
+
+        <h2> Linked List </h2>
+
         {//only render forms to edit DS if it is not a previously-saved one
           this.props.location.query ?
             <h2>Name: {this.props.location.query.name}</h2>
@@ -36,6 +38,7 @@ class Linkedlist extends Component {
               {user.id ? <SaveLLForm type={'linkedlists'} content={nodeArr} user={user} /> : null}
             </div>
         }
+
         <div className="container">
           {
             (nodeArr.map((node, index) => {

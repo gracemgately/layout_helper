@@ -61,11 +61,13 @@ const BinarySearchTree = (props) => {
 
     <div>
 
-        <h1> Binary Search Tree </h1>
+
+        <h2> Binary Search Tree </h2>
         {//only render forms to edit DS if it is not a previously-saved one
         props.location.query ?
         <h2>Name: {props.location.query.name}</h2>
         :
+
         <div className='formDisplay' >
           <AddBSTNodeForm />
           <DeleteBSTNodeForm />

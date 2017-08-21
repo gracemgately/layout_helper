@@ -24,11 +24,11 @@ class SingleUserDS extends Component {
       <div>
         <div id="userDScontainer-left">
           <div id="userDSitem">
-            <div> My Binary Search Trees </div>
+            <div id="DSTitle"> My Binary Search Trees </div>
             <div>{
               userBST.map((el, idx) => {
                 return (
-                  <div key={idx}>
+                  <div id="singleDS" key={idx}>
                     <DeleteSingleUserDS DSId={el.id} DSType={'binarysearchtrees'}/>
                     <Link to={{ pathname: '/binary-search-tree', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
@@ -38,11 +38,11 @@ class SingleUserDS extends Component {
             </div>
           </div>
           <div id="userDSitem">
-            <div> My Linked Lists </div>
+            <div id="DSTitle"> My Linked Lists </div>
             <div>{
               userLL.map((el, idx) => {
                 return (
-                  <div key={idx}>
+                  <div id="singleDS" key={idx}>
                     <DeleteSingleUserDS DSId={el.id} DSType={'linkedlists'}/>
                     <Link to={{ pathname: '/linked-list', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                     </div>
@@ -54,11 +54,11 @@ class SingleUserDS extends Component {
         </div>
         <div id="userDScontainer-right">
           <div id="userDSitem">
-            <div> My Queues </div>
+            <div id="DSTitle"> My Queues </div>
             <div>{
               userQueues.map((el, idx) => {
                 return (
-                  <div key={idx}>
+                  <div id="singleDS" key={idx}>
                     <DeleteSingleUserDS DSId={el.id} DSType={'queues'}/>
                     <Link to={{ pathname: '/queue', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
@@ -68,11 +68,11 @@ class SingleUserDS extends Component {
             </div>
           </div>
           <div id="userDSitem">
-            <div> My Stacks </div>
+            <div id="DSTitle"> My Stacks </div>
             <div>{
               userStacks.map((el, idx) => {
                 return (
-                  <div key={idx}>
+                  <div id="singleDS" key={idx}>
                     <DeleteSingleUserDS DSId={el.id} DSType={'stacks'}/>
                     <Link to={{ pathname: '/stack', query: el }}>{el.name} Date Created: {_Time(el.createdAt)}</Link>
                   </div>
