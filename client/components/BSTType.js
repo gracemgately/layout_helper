@@ -102,7 +102,7 @@ const mapDispatch = (dispatch) => {
       console.log('props here', props.BST.bstDemo);
       evt.preventDefault();
       dispatch(traverseTree( { BSTtype} ))
-      breadthFirstForEach(props.BST.bstDemo)
+      //breadthFirstForEach(props.BST.bstDemo)
     }
   }
 
