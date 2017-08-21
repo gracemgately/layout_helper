@@ -72,6 +72,17 @@ class BinarySearchTree {
 
 const initialTree = new BinarySearchTree();
 
+// export const cleanBST2 = value =>
+//     dispatch => {
+//         Promise.promisify(
+//             dispatch(addSingleBSTNode(value))
+//         ).then(
+//             dispatch(cleanBST(tree??))
+//         )
+
+
+//     }
+
 export default function (state = initialTree, action) {
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:

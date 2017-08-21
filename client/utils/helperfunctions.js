@@ -85,6 +85,7 @@ export const arrayifyBst = (BST) => {
 
 export const removeEmptyChildren = (collection) => {
 
+    if (collection === undefined) return [];
 
     const arrWithNullChildren = collection.slice(0);
     let length = collection.length;
