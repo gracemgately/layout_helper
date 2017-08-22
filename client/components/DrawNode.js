@@ -3,7 +3,8 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
-import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+import {removeEmptyChildren} from '../utils'
 
 export const drawNode = (node, fill = "none") => {
   return (
@@ -18,6 +19,40 @@ export const drawNode = (node, fill = "none") => {
   );
 }
 
+export const drawQueueNode = (node, fill = "none") => {
+  return (
+    <div className="queue-container">
+      <div className="basicnode">
+        <svg>
+          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+
+          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+        </svg>
+      </div>
+      <div id="down-arrow">
+        {(node.next !== null) ? DownArrow(node.value) : null}
+      </div>
+    </div>
+  );
+}
+
+export const drawStackNode = (node, fill = "none") => {
+  return (
+    <div className="queue-container">
+      <div id="down-arrow">
+        {(node.next !== null) ? DownArrow(node.value) : null}
+      </div>
+      <div className="basicnode">
+        <svg>
+          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+
+          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 
 export const drawBSTNode2 = (node, fill = 'none') => {
   console.log('githere', fill, node)
@@ -26,6 +61,32 @@ export const drawBSTNode2 = (node, fill = 'none') => {
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
         <circle className={node.colored ? 'yellow' : 'none'} cx="25" cy="25" r="25"> </circle>
+        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+      </svg>
+
+      {(node.right !== null) ? SouthEastArrow(node.value) : null}
+    </div>
+  )
+}
+
+export const drawBSTNode3 = (node) => {
+
+  if (!node.value) {
+    return (
+      <div className="basicnode">
+      <svg>
+      <circle className="circle-empty" fill="none" cx="25" cy="25" r="25"> </circle>
+      <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">empty</text>
+    </svg>
+      </div>
+    )
+  }
+
+  return (
+    <div className="basicnode">
+    {(node.left !== null) ? SouthWestArrow(node.value) : null}
+      <svg>
+        <circle className="circle1" fill="none" cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
@@ -62,3 +123,35 @@ function treeLevel(node) {
   }
   return counter;
 }
+
+
+// takes user bst and calls drawBST() to render the nodes in full tree form
+export const userBST = (cleanbst) => {
+
+  cleanbst = removeEmptyChildren(cleanbst);
+  const collection = [];
+
+  cleanbst.map(node => {
+    let parentIdx = node.parent;
+    if (node.parent === null) parentIdx = "root";
+    collection.push([drawBSTNode3(node), parentIdx]);
+  })
+
+  return collection;
+}
+
+
+// takes user bst and calls drawBST() to render the nodes in full tree form
+export const drawBSTnodes = (cleanbst) => {
+
+    cleanbst = removeEmptyChildren(cleanbst);
+    const collection = [];
+
+    cleanbst.map(node => {
+      let parentIdx = node.parent;
+      if (node.parent === null) parentIdx = "root";
+      collection.push([drawBSTNode3(node), parentIdx]);
+    })
+
+    return collection;
+  }

@@ -2,56 +2,65 @@ import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import axios from 'axios'
 
-import { breadthFirstForEach_ } from '../../utils';
+import { breadthFirstForEach_, arrayifyBst, removeEmptyChildren } from '../../utils';
 
-export default class SaveDSForm extends Component {
+class SaveDSForm extends Component {
 
   constructor(props) {
     super(props);
     const { content, userId } = props;
-    //const userId = 1;
-    //const category = "Linked List";
-    // const content = props.content;
-    //const name = "Me";
 
     this.state = {
       name: name,
       content: content,
-      // category: category,
-      userId
+      userId,
+      saveStatus: false
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.SaveDS = this.SaveDS.bind(this);
+    // this.SaveDS = this.SaveDS.bind(this);
   }
 
   handleChange(evt) {
     const name = evt.target.value;
-    this.setState({name})
+    this.setState({name, content: this.props.content})
   }
 
   handleSubmit(evt) {
     evt.preventDefault();
-    this.SaveDS(this.state.content);
-  }
-
-  SaveDS(obj) {
-
-   // convert bst to heap array
-    let content = breadthFirstForEach_(obj);
 
     axios.post('/api/binarysearchtrees', {
       name: this.state.name,
-      content,
+      content: this.state.content,
       userId: this.state.userId
-    })
-      .then(res => console.log(res))
-      .catch(err => console.log(err))
 
+    })
+      .then(res => {
+        console.log(res);
+        if (res.status === 200){
+          this.setState({saveStatus: true})
+        };
+      })
+      .catch(err => console.log(err))
   }
 
-  render() {
+  // SaveDS() {
 
+  // //  // convert bst to heap array
+  // //   let content = arrayifyBst(obj);
+  // //   content = removeEmptyChildren(content);
+  //   // console.log('this.state.content ', this.state.content)
+
+  //   axios.post('/api/binarysearchtrees', {
+  //     name: this.state.name,
+  //     content: this.state.content
+  //   })
+  //     .then(res => console.log(res))
+  //     .catch(err => console.log(err))
+
+  // }
+
+  render() {
 
     return (
       <div>
@@ -68,7 +77,7 @@ export default class SaveDSForm extends Component {
         <br />
         <div className="input-group-btn">
           <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
-
+          { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
         </div>
       </form>
     </div>
@@ -77,5 +86,13 @@ export default class SaveDSForm extends Component {
 
 
 }
+
+const mapState = (state) => {
+  return {
+    content: state.bstNode.array
+  }
+}
+
+export default connect(mapState, null)(SaveDSForm);
 
 
