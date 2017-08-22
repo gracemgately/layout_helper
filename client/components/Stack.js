@@ -64,10 +64,10 @@ class Stack extends Component {
                         }
                     </div>
                 </div>
-            </div>
+        
              <InsertionTime />
         </div>
-    )
+    
         )
     }
 }

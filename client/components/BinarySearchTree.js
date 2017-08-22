@@ -11,101 +11,6 @@ import UploadCSV from './Forms/UploadCSV';
 import BSTInsertionTime from './BSTInsertionTime';
 
 
-
-/**
- * COMPONENT
- */
-const BinarySearchTree = (props) => {
-
-  const { BST, user } = props;
-  //console.log("QUERY", props.location.query);
-  // bstArr.sort((a, b) => {
-  //   return a.level - b.level;
-  // })
-
-  let groups = []; // initialize array
-  // [[node],[node, node],[node, node]] // each index is level
-
-  // const bstArr = props.location.query ? props.location.query : breadthFirstForEach(BST);
-
-  //NOTE: we will rewrite this once we determine the mathematical pattern
-  //if (props.location.query) {
-  //   groups[1] = [];
-  //   groups[2] = [];
-  //   groups[3] = [];
-  //   props.location.query.map((node) => {
-  //     if (node.parent === null) {
-  //       groups[0] = [];
-  //       groups[0].push(node);
-  //     } else if (node.parent === 0) {
-  //       groups[1].push(node);
-  //     } else if (node.parent === 1 || node.parent === 2) {
-  //       groups[2].push(node);
-  //     } else if (node.parent === 3 || node.parent === 2 || (node.parent === 1 || node.parent === 2))
-
-
-  //     if (!groups[level]) groups[level] = [];
-  //     groups[level].push(node);
-  //   })
-  // } else {
-  const bstArr = breadthFirstForEach(BST);
-
-  bstArr.map(([node, level]) => {
-    if (!groups[level]) groups[level] = [];
-    groups[level].push(node);
-  })
-  // }
-
-
-
-  return (
-
-    <div>
-
-
-        <h2> Binary Search Tree </h2>
-        {//only render forms to edit DS if it is not a previously-saved one
-        props.location.query ?
-        <h2>Name: {props.location.query.name}</h2>
-        :
-
-        <div className='formDisplay' >
-          <AddBSTNodeForm />
-          <DeleteBSTNodeForm />
-          <UploadCSV DSType={'binarysearchtree'}/>
-          <SaveDSForm content={BST} userId={props.user.id}/>
-        </div>
-        }
-        <div className="container">
-    
-
-                <CSSTransitionGroup
-                  transitionName="fade"
-                  transitionEnterTimeout={500}
-                  transitionLeaveTimeout={500} >
-
-                  {
-                    groups.map((ele, index) => {
-                      return (
-                        <div className={'bstlevel' + index} key={index}>
-                          {
-                            ele.map((node, idx) => {
-                              return (
-                              <div key={idx}>
-                                {node}
-                              </div>)
-                            })
-                          }
-
-                        </div>)
-                    })
-                  }
-                </CSSTransitionGroup>
-
-      </div>
-      <BSTInsertionTime />
-</div>
-  )
 class BinarySearchTree extends Component {
 
   constructor(props) {
@@ -189,6 +94,7 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
+          <BSTInsertionTime />
         </div>
       )
     }
