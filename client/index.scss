@@ -285,18 +285,26 @@ svg {
 
 .yellow {
   border: 5px;
-  stroke: #026670;
+  stroke: orange;
   display: flex;
   color: #016670;
-  fill: yellow;
+  fill: url(#MyGradient);
+
+
+
 }
 
 .none {
   border: 5px;
-  stroke: #026670;
+  stroke: darkturquoise;
   display: flex;
   color: #016670;
-  fill: lightcyan;
+  fill: url(#MyGradient2);
+
+}
+
+#fade-stop-2 {
+  stop-color: white;
 }
 .queue-container {
   display:flex;

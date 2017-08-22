@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { breadthFirstForEach } from '../components'
-import { traverseTree, getArray } from '../store'
+import { breadthFirstForEach, drawBSTNode2 } from '../components'
+import { traverseTree, highlightBSTNodeAtIndex } from '../store'
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /**
@@ -23,13 +23,45 @@ class BSTType extends Component {
     this.setState({ selectedBST: evt.target.value })
   }
 
+  depthFirstForEach(type) {
+    const fill = 'yellow';
+
+    if (type === 'Depth First: In-order') {
+
+        if (this.left) this.left.depthFirstForEach(type);
+        drawBSTNode2(this, this.props.toggled, index, this.props.highlightIndex);
+
+        // drawBSTNode2(this, fill);
+        // console.log('this node', this);
+        //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
+
+
+        if (this.right) this.right.depthFirstForEach(type);
+    }
+    if (type === 'Depth First: Pre-order') {
+        this.colored = true;
+
+        drawBSTNode2(this, fill)
+
+        if (this.left) { this.left.depthFirstForEach(type); }
+        if (this.right) { this.right.depthFirstForEach(type); }
+    }
+
+    if (type === 'Depth First: Post-order') {
+        if (this.left) { this.left.depthFirstForEach(type); }
+        if (this.right) { this.right.depthFirstForEach(type); }
+
+        drawBSTNode2(this, fill)
+    }
+}
+
   render() {
     console.log('state', this.state);
-    const { BST } = this.props;
-    console.log('props', BST.bstDemo);
+    const { BST, highlightIndex, toggled } = this.props;
+    console.log('props', this.props);
 
     let groups = [];
-    const bstArr = breadthFirstForEach(BST.bstDemo);
+    const bstArr = breadthFirstForEach(BST.bstDemo, toggled, highlightIndex);
 
     bstArr.map(([node, level]) => {
       if (!groups[level]) groups[level] = [];
@@ -68,7 +100,7 @@ class BSTType extends Component {
                     ele.map((node, idx) => {
 
                       return (
-                        <div key={idx} className={ node.colored ? 'yellow' : 'none'}>
+                        <div key={idx} >
                           {node}
                         </div>
                         )
@@ -92,6 +124,8 @@ class BSTType extends Component {
 const mapState = (state) => {
   return {
     BST: state.bstNode,
+    highlightIndex: state.node.highlightIdx,
+    toggled: state.node.toggledStatus
   }
 }
 
@@ -100,7 +134,7 @@ const mapDispatch = (dispatch) => {
     handleSubmit(evt, BSTtype){
       evt.preventDefault();
       dispatch(traverseTree( { BSTtype } ))
-
+      dispatch(highlightBSTNodeAtIndex())
     }
   }
 

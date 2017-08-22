@@ -4,6 +4,7 @@ import { drawQueueNode } from '../components'
 import QueueForm from './Forms/QueueForm'
 import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
+import { CSSTransitionGroup } from 'react-transition-group';
 
 import { nodeArray_ } from '../utils'
 import { cleanState } from '../store'
@@ -39,6 +40,10 @@ class Queue extends Component {
         }
         <div className="container">
           <div className="queue-container">
+          <CSSTransitionGroup
+            transitionName="fade"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500} >
           {//display 'Head' if there are values to display
             nodeArr.length ? <div>Head</div> : <div></div>
           }
@@ -55,6 +60,8 @@ class Queue extends Component {
           {//display 'Tail' if there are values to display
             nodeArr.length ? <div>Tail</div> : <div></div>
           }
+          </CSSTransitionGroup>
+
         </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
+const HIGHLIGHT_BST_NODE_AT_INDEX = 'HIGHLIGHT_BST_NODE_AT_INDEX'
+const TOGGLE_BST_COLOR = 'TOGGLE_BST_COLOR'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
@@ -15,8 +17,9 @@ export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node
 export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
-
 })
+export const highlightBSTNodeAtIndex = index => ({ type: HIGHLIGHT_BST_NODE_AT_INDEX, index })
+export const toggleBSTColor = flip => ({ type: TOGGLE_BST_COLOR, flip })
 
 class BinarySearchTree {
     constructor(value) {
@@ -24,6 +27,7 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
+        this.toggledStatus = false;
     }
     insert(node) {
         if (typeof node !== 'object') {
@@ -158,6 +162,12 @@ export default function (state = { initialTree, bstDemo }, action) {
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             // return newJSX;
             return Object.assign({}, bstDemo);
+        case HIGHLIGHT_BST_NODE_AT_INDEX:
+            //console.log('here', action.index)
+            return Object.assign({}, state, { highlightIdx: action.index })
+          case TOGGLE_BST_COLOR:
+            console.log('state inside toggle', action.flip);
+            return Object.assign({}, state, { toggledStatus: action.flip } )
 
         default:
             return state

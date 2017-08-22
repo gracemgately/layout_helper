@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { breadthFirstForEach, drawBSTnodes } from '../components'
-import {breadthFirstForEach_, arrayifyBst, groupBstNodes} from '../utils'
+import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
@@ -53,10 +53,10 @@ class BinarySearchTree extends Component {
 
 
   asyncCalls(arr) {
-        // send arrayified bst nodes, get drawings and parentIdx values back
+    // send arrayified bst nodes, get drawings and parentIdx values back
     const bstDivs = drawBSTnodes(arr);
 
-        // group the bstDivs by parentIdx groups
+    // group the bstDivs by parentIdx groups
 
     let groups = groupBstNodes(bstDivs);
 
@@ -72,46 +72,56 @@ class BinarySearchTree extends Component {
 
     console.log('this.state.array.... ', this.state.array);
 
-      return (
+    return (
 
-        <div>
+      <div>
 
-          <h1> Binary Search Tree </h1>
-          <div className='formDisplay' >
-            <AddBSTNodeForm />
-            <DeleteBSTNodeForm />
-            <SaveDSForm content={this.props.array} userId={this.props.user.id}/>
+        <h1> Binary Search Tree </h1>
+        <div className='formDisplay' >
+          <AddBSTNodeForm />
+          <DeleteBSTNodeForm />
+          <SaveDSForm content={this.props.array} userId={this.props.user.id} />
 
-          </div>
-          <div className="container">
-            {
-              this.state.groups.map((ele, index) => {
-                return (
-                  <div className={'bstlevel' + index} key={index}>
-                    {
-                      ele.map((node, idx) => {
-                        return (<div key={idx}>{node}</div>)
-                      })
-                    }
-                  </div>)
-              })
-            }
-          </div>
         </div>
+        <div className="container">
+          <CSSTransitionGroup
+            transitionName="fade"
+            transitionEnterTimeout={500}
+            transitionLeaveTimeout={500} >
+            {
+            this.state.groups.map((ele, index) => {
+              return (
+                <div className={'bstlevel' + index} key={index}>
+                  {
+                    ele.map((node, idx) => {
+                      return (
+                        <div key={idx}>
+                          {node}
+                        </div>)
+                    })
+                  }
+                </div>)
+            })
+          }
+          </CSSTransitionGroup>
+
+      </div >
+
+        </div >
       )
-    }
+  }
 }
 
 
 
-  const mapState = (state) => {
-    return {
-      user: state.user,
-      BST: state.bstNode,
-      array: state.bstNode.array
-    }
-
+const mapState = (state) => {
+  return {
+    user: state.user,
+    BST: state.bstNode,
+    array: state.bstNode.array
   }
+
+}
 
 
 export default connect(mapState, null)(BinarySearchTree);
