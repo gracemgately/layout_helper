@@ -1,3 +1,15 @@
+export const bstType = (type, node) => {
+  console.log('in in here hello', node);
+  if (type === "Depth First: Pre-Order"){
+    if (node.value === 8){
+      this.forceUpdate(className="BSTNode2")
+    }
+    }
+}
+
+
+
+
 // import React from 'react'
 // import { drawBSTNode2 } from '../components';
 

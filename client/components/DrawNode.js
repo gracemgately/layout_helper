@@ -15,15 +15,15 @@ export const drawNode = (node, toggled, index, highlightIndex) => {
     <div className="basicnode">
       <svg>
         <defs>
-            <linearGradient id="MyGradient">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="yellow" />
-            </linearGradient>
-            <linearGradient id="MyGradient2">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="#87ceeb" />
-            </linearGradient>
-          </defs>
+          <linearGradient id="MyGradient">
+            <stop offset="5%" stopColor="white" />
+            <stop offset="95%" stopColor="yellow" />
+          </linearGradient>
+          <linearGradient id="MyGradient2">
+            <stop offset="5%" stopColor="white" />
+            <stop offset="95%" stopColor="#87ceeb" />
+          </linearGradient>
+        </defs>
         <circle className={toggled === true && index === highlightIndex ? "yellow" : "none"} key={index} cx="25" cy="25" r="25"> </circle>
 
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
@@ -36,7 +36,7 @@ export const drawNode = (node, toggled, index, highlightIndex) => {
 export const drawQueueNode = (node, toggled, index, highlightIndex) => {
   return (
     <div className="queue-container">
-     { <div className="basicnode">
+      {<div className="basicnode">
         <svg>
           <defs>
             <linearGradient id="MyGradient">
@@ -68,7 +68,7 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
       </div>
       <div className="basicnode">
         <svg>
-        <defs>
+          <defs>
             <linearGradient id="MyGradient">
               <stop offset="5%" stopColor="white" />
               <stop offset="95%" stopColor="yellow" />
@@ -88,16 +88,24 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
 }
 
 
-export const drawBSTNode2 = (node, toggled, index, highlightBSTIndex) => {
-  console.log('githere', node)
-  // const color = fill === 'yellow' ? 'yellow' : 'none';
-  //console.log('color', color);
+export const drawBSTNode2 = (node, flipped) => {
+  console.log('githere', node, flipped)
   return (
     <div className="basicnode">
       {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
-        <circle className={toggled === true && index === highlightBSTIndex ? "yellow" : "none"} cx="25" cy="25" r="25"> </circle>
-        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
+        <defs>
+          <linearGradient id="MyGradient">
+            <stop offset="5%" stopColor="white" />
+            <stop offset="95%" stopColor="pink" />
+          </linearGradient>
+          <linearGradient id="MyGradient2">
+            <stop offset="5%" stopColor="yellow" />
+            <stop offset="95%" stopColor="green" />
+          </linearGradient>
+        </defs>
+        <circle className={flipped === true && node.value === 8 ? 'bstNode2' : 'bstNode'} cx="25" cy="25" r="25"> </circle>
+        <text x="50%" y="50%" textAnchor="middle" stroke="black " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
@@ -143,6 +151,25 @@ export const breadthFirstForEach = (node) => {
     let level = treeLevel(tree);
     // console.log("LEVEL", level);
     if (node.value) collection.push([drawBSTNode2(tree), level]);
+
+    if (tree.left) queue.push(tree.left)
+    if (tree.right) queue.push(tree.right)
+  }
+  return collection;
+}
+
+export const breadthFirstForEachDemo = (node, preOrder, flipped) => {
+  console.log('toggled in breadth first', flipped)
+  var queue = preOrder;
+  var collection = [];
+  var tree;
+
+  while (queue.length) {
+    tree = queue.shift();
+    // console.log("tree", tree);
+    let level = treeLevel(tree);
+    // console.log("LEVEL", level);
+    if (node.value) collection.push([drawBSTNode2(tree, flipped), level]);
 
     if (tree.left) queue.push(tree.left)
     if (tree.right) queue.push(tree.right)

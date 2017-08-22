@@ -289,9 +289,6 @@ svg {
   display: flex;
   color: #016670;
   fill: url(#MyGradient);
-
-
-
 }
 
 .none {
@@ -301,6 +298,22 @@ svg {
   color: #016670;
   fill: url(#MyGradient2);
 
+}
+
+.bstNode {
+  border: 5px;
+  stroke: green;
+  display: flex;
+  color: #016670;
+  fill: url(#MyGradient2);
+}
+
+.bstNode2 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: url(#MyGradient);
 }
 
 #fade-stop-2 {

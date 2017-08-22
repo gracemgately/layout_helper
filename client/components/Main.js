@@ -41,6 +41,7 @@ const Main = (props) => {
               <Link to="/binary-search-tree">Binary Search Tree</Link>
               <Link to="/queue">Queue</Link>
               <Link to="/stack">Stack</Link>
+              <Link to="/bstDemo">BST Demo</Link>
             </div>
         }
       </nav>

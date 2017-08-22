@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { breadthFirstForEach, drawBSTNode2 } from '../components'
-import { traverseTree, highlightBSTNodeAtIndex } from '../store'
+import { breadthFirstForEach, breadthFirstForEachDemo, drawBSTNode2 } from '../components'
+import store, { toggleBSTColor, traverseTree, highlightBSTNodeAtIndex } from '../store'
 import { CSSTransitionGroup } from 'react-transition-group';
+import { bstType } from '../utils/BSTHelperFunctions'
 
 /**
  * COMPONENT
@@ -14,8 +15,10 @@ class BSTType extends Component {
     super(props);
     this.state = {
       selectedBST: '',
+      toggled: false
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -23,45 +26,24 @@ class BSTType extends Component {
     this.setState({ selectedBST: evt.target.value })
   }
 
-  depthFirstForEach(type) {
-    const fill = 'yellow';
+  handleSubmit(evt, type, node, flip){
+    evt.preventDefault();
+    this.setState({toggled: flip})
+    // store.dispatch(toggleBSTColor(flip));
+    const flipped = this.state.toggled;
+    const preOrder = [8, 4, 2, 6, 12, 10, 14]
+    breadthFirstForEachDemo(node, preOrder, flipped)
+  }
 
-    if (type === 'Depth First: In-order') {
-
-        if (this.left) this.left.depthFirstForEach(type);
-        drawBSTNode2(this, this.props.toggled, index, this.props.highlightIndex);
-
-        // drawBSTNode2(this, fill);
-        // console.log('this node', this);
-        //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
-
-
-        if (this.right) this.right.depthFirstForEach(type);
-    }
-    if (type === 'Depth First: Pre-order') {
-        this.colored = true;
-
-        drawBSTNode2(this, fill)
-
-        if (this.left) { this.left.depthFirstForEach(type); }
-        if (this.right) { this.right.depthFirstForEach(type); }
-    }
-
-    if (type === 'Depth First: Post-order') {
-        if (this.left) { this.left.depthFirstForEach(type); }
-        if (this.right) { this.right.depthFirstForEach(type); }
-
-        drawBSTNode2(this, fill)
-    }
-}
 
   render() {
-    console.log('state', this.state);
-    const { BST, highlightIndex, toggled } = this.props;
-    console.log('props', this.props);
+    // const toggled = this.props.toggled;
+    // console.log('toggled props', this.props.toggled);
+
+    const { BST } = this.props;
 
     let groups = [];
-    const bstArr = breadthFirstForEach(BST.bstDemo, toggled, highlightIndex);
+    const bstArr = breadthFirstForEach(BST.bstDemo);
 
     bstArr.map(([node, level]) => {
       if (!groups[level]) groups[level] = [];
@@ -85,7 +67,7 @@ class BSTType extends Component {
           </select>
         </div>
         <div className="input-group-btn">
-          <button onClick={(evt) => this.props.handleSubmit(evt, type, this.props)}
+          <button onClick={(evt) => this.handleSubmit(evt, type, BST.bstDemo, !this.state.toggled)}
           >Start Demo!
           </button>
         </div>
@@ -125,21 +107,22 @@ const mapState = (state) => {
   return {
     BST: state.bstNode,
     highlightIndex: state.node.highlightIdx,
-    toggled: state.node.toggledStatus
+    toggled: state.node.toggledBSTStatus
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleSubmit(evt, BSTtype){
-      evt.preventDefault();
-      dispatch(traverseTree( { BSTtype } ))
-      dispatch(highlightBSTNodeAtIndex())
-    }
-  }
+// const mapDispatch = (dispatch) => {
+//   return {
+//     handleSubmit(evt, type, node, flip){
+//       evt.preventDefault();
+//       const preOrder = [8, 4, 2, 6, 12, 10, 14]
+//       dispatch(toggleBSTColor(flip))
+//       breadthFirstForEachDemo(node, preOrder, flip)
 
-}
+//     }
+//   }
+// }
 
 
-export default connect(mapState, mapDispatch)(BSTType);
+export default connect(mapState, null)(BSTType);
 

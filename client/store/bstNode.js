@@ -18,7 +18,7 @@ export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
 })
-export const highlightBSTNodeAtIndex = index => ({ type: HIGHLIGHT_BST_NODE_AT_INDEX, index })
+// export const highlightBSTNodeAtIndex = index => ({ type: HIGHLIGHT_BST_NODE_AT_INDEX, index })
 export const toggleBSTColor = flip => ({ type: TOGGLE_BST_COLOR, flip })
 
 class BinarySearchTree {
@@ -27,7 +27,7 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
-        this.toggledStatus = false;
+        this.toggledBSTStatus = false;
     }
     insert(node) {
         if (typeof node !== 'object') {
@@ -166,8 +166,7 @@ export default function (state = { initialTree, bstDemo }, action) {
             //console.log('here', action.index)
             return Object.assign({}, state, { highlightIdx: action.index })
           case TOGGLE_BST_COLOR:
-            console.log('state inside toggle', action.flip);
-            return Object.assign({}, state, { toggledStatus: action.flip } )
+            return Object.assign({}, state, { toggledBSTStatus: action.flip } )
 
         default:
             return state
