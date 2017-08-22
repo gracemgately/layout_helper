@@ -8,6 +8,7 @@ const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
+const CLEAN_BST_STATE = 'CLEAN_BST_STATE'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
@@ -16,6 +17,7 @@ export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
 })
+export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
 
 class BinarySearchTree {
     constructor(value) {
@@ -150,6 +152,10 @@ export default function (state = { initialTree, bstDemo }, action) {
             console.log('bstDemo', bstDemo)
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             return Object.assign({}, bstDemo);
+
+        case CLEAN_BST_STATE:
+            console.log('clean bst state');
+            return Object.assign({}, {});
 
         default:
             return state
