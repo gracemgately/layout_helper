@@ -8,6 +8,7 @@ import bstNode, { cleanBSTState } from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 import { CSSTransitionGroup } from 'react-transition-group';
 import UploadCSV from './Forms/UploadCSV'
+import RandomBSTForm from './Forms/RandomBSTForm'
 
 
 
@@ -98,6 +99,7 @@ class BinarySearchTree extends Component {
                 <AddBSTNodeForm />
                 <DeleteBSTNodeForm />
                 <SaveDSForm content={this.props.array} userId={this.props.user.id} />
+                <RandomBSTForm />
 
               </div>
 
@@ -123,7 +125,8 @@ class BinarySearchTree extends Component {
 
 
 
-  const mapState = (state) => {
+const mapState = (state) => {
+  console.log('state in BST ', state);
     return {
       user: state.user,
       BST: state.bstNode,
