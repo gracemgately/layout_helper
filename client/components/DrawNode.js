@@ -5,11 +5,15 @@ import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 import { RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 
-export const drawNode = (node, fill = "none") => {
+
+
+
+export const drawNode = (node, toggled, index, highlightIndex) => {
+  console.log('toggled', toggled, index, highlightIndex);
   return (
-    <div className="basicnode">
+    <div className={toggled === "true" ? "yellow" : "none" }>
     <svg>
-      <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+      <circle  className={toggled === true && index === highlightIndex ? "yellow" : "none" } key={index} cx="25" cy="25" r="25"> </circle>
 
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
@@ -19,13 +23,15 @@ export const drawNode = (node, fill = "none") => {
 }
 
 
-export const drawBSTNode2 = (node, fill = 'none') => {
+export const drawBSTNode2 = (node, fill) => {
   console.log('githere', fill, node)
+  const color = fill === 'yellow' ? 'yellow' : 'none';
+  console.log('color', color);
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
-        <circle className="circle1" fill={fill} cx="25" cy="25" r="25"> </circle>
+        <circle className={color}  cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
@@ -62,3 +68,11 @@ function treeLevel(node) {
   }
   return counter;
 }
+
+const mapState = (state) => {
+  return {
+    toggled: state.node.toggledStatus
+  }
+}
+
+export default connect(mapState, null)(drawNode);

@@ -146,9 +146,9 @@ svg {
 
 .circle1 {
 
-  border: 5px;
-  stroke: #026670;
-  fill: #FEF9C7;
+  // border: 5px;
+  // stroke: #026670;
+  //fill: #FEF9C7;
   // stroke-width: "20";
 
 }
@@ -160,7 +160,7 @@ svg {
 
 .basicnode {
   display: flex;
-  color: #026670;
+  color: #016670;
 }
 
 .arrowsize {
@@ -232,7 +232,7 @@ svg {
 
 
 #DSTitle {
-  text-decoration: underline;  
+  text-decoration: underline;
 }
 
 /* starting state of animation*/
@@ -254,3 +254,18 @@ svg {
   transition: opacity 500ms ease-in;
 }
 
+.yellow {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: yellow;
+}
+
+.none {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: lightcyan;
+}

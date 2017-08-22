@@ -36,7 +36,6 @@ class BSTType extends Component {
       groups[level].push(node);
     })
     const type = this.state.selectedBST;
-    const JSXArr =  groups;
     return (
 
       <div>
@@ -54,7 +53,7 @@ class BSTType extends Component {
           </select>
         </div>
         <div className="input-group-btn">
-          <button onClick={(evt) => this.props.handleSubmit(evt, type, this.props, JSXArr)}
+          <button onClick={(evt) => this.props.handleSubmit(evt, type, this.props)}
           >Start Demo!
           </button>
         </div>
@@ -98,9 +97,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSubmit(evt, BSTtype, props, JSXArr){
+    handleSubmit(evt, BSTtype){
       evt.preventDefault();
-      // dispatch(getArray({ JSXArr }))
       dispatch(traverseTree( { BSTtype } ))
 
     }

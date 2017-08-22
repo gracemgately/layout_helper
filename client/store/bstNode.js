@@ -6,16 +6,13 @@ const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
-const GET_ARRAY = 'GET_ARRAY'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
-})
-export const getArray = array => ({
-    type: GET_ARRAY, array
+
 })
 
 class BinarySearchTree {
@@ -76,14 +73,14 @@ class BinarySearchTree {
         } else if (this[direction]) { this.parent.insert(this[direction]) }
     }
 
-    depthFirstForEach(type, step, JSXArr, iterator) {
+    depthFirstForEach(type) {
         const fill = 'yellow';
 
         if (type === 'Depth First: In-order') {
-            let counter = 0;
-            if (this.left) this.left.depthFirstForEach(type, step, JSXArr, iterator);
-            iterator(this.value, step, counter);
-            counter++;
+
+            if (this.left) this.left.depthFirstForEach(type);
+            drawBSTNode2(this, fill);
+
             // drawBSTNode2(this, fill);
             // console.log('this node', this);
             //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
