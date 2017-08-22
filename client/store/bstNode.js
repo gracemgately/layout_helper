@@ -24,8 +24,11 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
+        this.colored = false;
+        this.bstCount = 0;
     }
     insert(node) {
+        this.bstCount++;
         if (typeof node !== 'object') {
             node = new BinarySearchTree(node);
         }
@@ -48,6 +51,7 @@ class BinarySearchTree {
 
 
     remove(value) {
+        this.bstCount--;
         const deleteRef = this.contains(value);
         if (!deleteRef) return false;
         deleteRef.die();
@@ -107,6 +111,7 @@ class BinarySearchTree {
             drawBSTNode2(this, fill)
         }
     }
+
 
 
 }

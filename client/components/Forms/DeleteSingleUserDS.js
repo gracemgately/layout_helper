@@ -11,7 +11,7 @@ import { DeleteUserDS } from '../../store'
  */
 const DeleteSingleUserDS = (props) => {
     return (
-        <button onClick ={(evt) => props.deleteDS(evt, props.DSType, props.DSId)}>Delete</button>
+        <button onClick ={(evt) => props.deleteDS(evt, props.DSType, props.DSId)}>X</button>
     )
 }
 

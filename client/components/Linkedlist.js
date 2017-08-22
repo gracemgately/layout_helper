@@ -7,8 +7,8 @@ import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
 import UploadCSV from './Forms/UploadCSV'
-
 import { nodeArray_ } from '../utils';
+import InsertionTime from './InsertionTime';
 
 
 /**
@@ -51,6 +51,7 @@ class Linkedlist extends Component {
 
           }
         </div>
+        <InsertionTime />
       </div>
     )
   }

@@ -6,7 +6,8 @@ import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 import { CSSTransitionGroup } from 'react-transition-group';
-import UploadCSV from './Forms/UploadCSV'
+import UploadCSV from './Forms/UploadCSV';
+import BSTInsertionTime from './BSTInsertionTime';
 
 
 
@@ -56,7 +57,6 @@ const BinarySearchTree = (props) => {
 
 
 
-  // console.log('groups ', groups);
   return (
 
     <div>
@@ -102,7 +102,7 @@ const BinarySearchTree = (props) => {
                 </CSSTransitionGroup>
 
       </div>
-   
+      <BSTInsertionTime />
 </div>
   )
 }
@@ -117,7 +117,6 @@ const BinarySearchTree = (props) => {
     return {
       user: state.user,
       BST: state.bstNode,
-      NodeCount: state.bstNode.BSTNodeCount
     }
 
   }

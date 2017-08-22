@@ -5,6 +5,8 @@ import QueueForm from './Forms/QueueForm';
 import SaveLLForm from './Forms/SaveLLForm';
 import UploadCSV from './Forms/UploadCSV'
 import { nodeArray_ } from '../utils'
+import InsertionTime from './InsertionTime';
+
 
 
 /**
@@ -44,6 +46,7 @@ class Queue extends Component {
 
           }
         </div>
+        <InsertionTime />
       </div>
     )
   }

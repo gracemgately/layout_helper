@@ -7,6 +7,7 @@ import UploadCSV from './Forms/UploadCSV'
 import { drawNode } from '../components'
 import SaveLLForm from './Forms/SaveLLForm';
 import { nodeArray_ } from '../utils';
+import InsertionTime from './InsertionTime';
 
 
 const Stack = (props) => {
@@ -42,6 +43,7 @@ const Stack = (props) => {
                 }
 
             </div>
+             <InsertionTime />
         </div>
     )
 }
