@@ -69,14 +69,16 @@ export const drawBSTNode2 = (node, fill = 'none') => {
   )
 }
 
-export const drawBSTNode3 = (node) => {
+export const drawBSTNode3 = (node, idx) => {
 
+  console.log('node in drawBSTNode3 ', node)
+  console.log('idx in drawBSTNode3 ', idx)
   if (!node.value) {
     return (
       <div className="basicnode">
       <svg>
       <circle className="circle-empty" fill="none" cx="25" cy="25" r="25"> </circle>
-      <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">empty</text>
+      <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em"></text>
     </svg>
       </div>
     )
@@ -85,7 +87,7 @@ export const drawBSTNode3 = (node) => {
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
-      <svg>
+    <svg id={idx}>
         <circle className="circle1" fill="none" cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
@@ -131,10 +133,10 @@ export const userBST = (cleanbst) => {
   cleanbst = removeEmptyChildren(cleanbst);
   const collection = [];
 
-  cleanbst.map(node => {
+  cleanbst.map( (node, idx) => {
     let parentIdx = node.parent;
     if (node.parent === null) parentIdx = "root";
-    collection.push([drawBSTNode3(node), parentIdx]);
+    collection.push([drawBSTNode3(node, idx), parentIdx]);
   })
 
   return collection;
@@ -147,10 +149,10 @@ export const drawBSTnodes = (cleanbst) => {
     cleanbst = removeEmptyChildren(cleanbst);
     const collection = [];
 
-    cleanbst.map(node => {
+    cleanbst.map( (node, idx) => {
       let parentIdx = node.parent;
       if (node.parent === null) parentIdx = "root";
-      collection.push([drawBSTNode3(node), parentIdx]);
+      collection.push([drawBSTNode3(node, idx), parentIdx]);
     })
 
     return collection;

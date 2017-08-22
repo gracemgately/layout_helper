@@ -14,7 +14,8 @@ export {default as SingleUserDS} from './SingleUserDS'
 export {default as Home} from './Home'
 export {default as BSTType} from './BSTType'
 export {default as UploadCSV} from './Forms/UploadCSV'
-export {default as DeleteSingleUserDS} from './Forms/DeleteSingleUserDS'
+export { default as DeleteSingleUserDS } from './Forms/DeleteSingleUserDS'
+export { default as D3render } from './D3render'
 
 
 export * from './arrow'

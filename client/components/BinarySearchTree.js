@@ -1,9 +1,10 @@
 import React, {Component} from 'react'
 import { connect } from 'react-redux'
 import { breadthFirstForEach, drawBSTnodes } from '../components'
-import {breadthFirstForEach_, arrayifyBst, groupBstNodes} from '../utils'
+import {breadthFirstForEach_, arrayifyBst, groupBstNodes, drawD3Lines} from '../utils'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
+import D3render from './D3render';
 import bstNode, { cleanBSTState } from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 import { CSSTransitionGroup } from 'react-transition-group';
@@ -48,6 +49,7 @@ class BinarySearchTree extends Component {
     let arr = this.state.array;
     if (this.props.location.query) arr = this.props.location.query.content;
     this.asyncCalls(arr);
+    drawD3Lines()
 
   }
 
@@ -61,6 +63,7 @@ class BinarySearchTree extends Component {
       this.setState({ BST: nextProps.BST, array: arr });
       this.asyncCalls(nextProps.array);
     }
+    drawD3Lines()
   }
 
 
@@ -118,6 +121,7 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
+          <div><D3render /></div>
         </div>
       )
     }
