@@ -6,37 +6,8 @@ import { logout } from '../store'
 import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 import { removeEmptyChildren } from '../utils'
 
-
-
-
-export const drawNode = (node, toggled, index, highlightIndex) => {
-  console.log('toggled', toggled, index, highlightIndex);
+const drawBasicNode = (node, toggled, index, highlightIndex) => {
   return (
-    <div className="basicnode">
-      <svg>
-        <defs>
-            <linearGradient id="MyGradient">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="yellow" />
-            </linearGradient>
-            <linearGradient id="MyGradient2">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="#87ceeb" />
-            </linearGradient>
-          </defs>
-        <circle className={toggled === true && index === highlightIndex ? "yellow" : "none"} key={index} cx="25" cy="25" r="25"> </circle>
-
-        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
-      </svg>
-      {(node.next !== null) ? RightArrow(node.value) : null}
-    </div>
-  );
-}
-
-export const drawQueueNode = (node, toggled, index, highlightIndex) => {
-  return (
-    <div className="queue-container">
-     { <div className="basicnode">
         <svg>
           <defs>
             <linearGradient id="MyGradient">
@@ -48,10 +19,28 @@ export const drawQueueNode = (node, toggled, index, highlightIndex) => {
               <stop offset="95%" stopColor="#87ceeb" />
             </linearGradient>
           </defs>
-          <circle className={toggled === true && index === highlightIndex ? "yellow" : "none"} cx="25" cy="25" r="25"> </circle>
+          <circle className={toggled === true && index === highlightIndex ? "yellow" : "none"} key={index} cx="25" cy="25" r="25"> </circle>
 
           <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
         </svg>
+  )
+}
+
+export const drawNode = (node, toggled, index, highlightIndex) => {
+  console.log('toggled', toggled, index, highlightIndex);
+  return (
+    <div className="basicnode">
+      {drawBasicNode(node, toggled, index, highlightIndex)}
+      {(node.next !== null) ? RightArrow(node.value) : null}
+    </div>
+  );
+}
+
+export const drawQueueNode = (node, toggled, index, highlightIndex) => {
+  return (
+    <div className="queue-container">
+     { <div className="basicnode">
+        {drawBasicNode(node, toggled, index, highlightIndex)}
       </div>}
       <div id="down-arrow">
         {(node.next !== null) ? DownArrow(node.value) : null}
@@ -67,21 +56,7 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
         {(node.next !== null) ? DownArrow(node.value) : null}
       </div>
       <div className="basicnode">
-        <svg>
-        <defs>
-            <linearGradient id="MyGradient">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="yellow" />
-            </linearGradient>
-            <linearGradient id="MyGradient2">
-              <stop offset="5%" stopColor="white" />
-              <stop offset="95%" stopColor="#87ceeb" />
-            </linearGradient>
-          </defs>
-          <circle className={toggled === true && index === highlightIndex ? "yellow" : "none"} cx="25" cy="25" r="25"> </circle>
-
-          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
-        </svg>
+        {drawBasicNode(node, toggled, index, highlightIndex)}
       </div>
     </div>
   );
