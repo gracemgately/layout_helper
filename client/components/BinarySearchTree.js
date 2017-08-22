@@ -24,8 +24,6 @@ class BinarySearchTree extends Component {
       groups: []
     }
     this.asyncCalls = this.asyncCalls.bind(this);
-
-    console.log('props ', props);
   }
 
 
@@ -37,15 +35,12 @@ class BinarySearchTree extends Component {
   // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
     this.asyncCalls();
-    console.log('component mounted');
-
   }
 
   componentWillReceiveProps(nextProps) {
 
     console.log('nextProps ', nextProps);
     if (nextProps.BST !== this.state.BST) {
-      console.log('next props...');
       this.setState({ BST: nextProps.BST, array: nextProps.array });
       this.asyncCalls(nextProps.array);
     }
@@ -53,35 +48,34 @@ class BinarySearchTree extends Component {
 
 
   asyncCalls(arr) {
-        // send arrayified bst nodes, get drawings and parentIdx values back
+    // send arrayified bst nodes, get drawings and parentIdx values back
     const bstDivs = drawBSTnodes(arr);
 
-        // group the bstDivs by parentIdx groups
-
+    // group the bstDivs by parentIdx groups
     let groups = groupBstNodes(bstDivs);
-
-    console.log('groups ', groups);
-
     this.setState({ groups: groups });
   }
 
 
   render() {
 
-    console.log('this.props.array.... ', this.props.array);
-
-    console.log('this.state.array.... ', this.state.array);
+    // console.log('this.props.array.... ', this.props.array);
+    // console.log('this.state.array.... ', this.state.array);
 
       return (
 
         <div>
-
-          <h1> Binary Search Tree </h1>
-          <div className='formDisplay' >
+          <div className='main-container-controls' >
+            <h2> Binary Search <br/> Tree </h2>
             <AddBSTNodeForm />
             <DeleteBSTNodeForm />
+            <UploadCSV DSType={'binarysearchtree'}/>
+            {this.props.user.id ? 
+            <div className="save-form">
+              Save Your Binary  <br/> Search Tree:
             <SaveDSForm content={this.props.array} userId={this.props.user.id}/>
-
+            </div> 
+            : null}
           </div>
           <div className="container">
             {

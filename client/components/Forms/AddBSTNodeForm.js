@@ -13,16 +13,14 @@ const AddBSTNodeForm = (props) => {
         var nodeValue = Number(evt.target.node.value);
           props.addSingleBSTNode(nodeValue);
           props.writeNode('');
-
         // pass BST class to cleanBST everytime 'Add Me!' is clicked, i.e. new node is added.  we create an arrayified tree at every node change.
           props.callArrayfyBST(props.bstNode);
 
       }
-
-      console.log('props.array ', props.array);
       return (
 
     <div>
+     Add a Node:
       <form id="form-group" onSubmit={handleSubmit}>
         <div>
           <input
@@ -32,13 +30,8 @@ const AddBSTNodeForm = (props) => {
             name="node"
             value={props.newNode}
           />
-        </div>
-        <br />
-        <div className="input-group-btn">
-          <button
-            className="btn btn-default"
-            type="submit">Add Me!
-          </button>
+          <br />
+          <button className="btn btn-default" type="submit">Add Me!</button>
         </div>
       </form>
     </div>

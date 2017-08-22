@@ -66,21 +66,15 @@ export default class SaveLLForm extends Component {
   render() {
     return (
       <div>
-      <div>
-      </div>
-      <form id="form-group"  >
-        <div>
+      <form id="form-group-left"  >
           <input
             type="text"
             onChange={this.handleChange}
-            placeholder="add name for your linked list"
+            placeholder="name.."
           />
-        </div>
-        <br />
-        <div className="input-group-btn">
+          <br/>
           <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
           { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
-        </div>
       </form>
     </div>
     )
