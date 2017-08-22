@@ -40,7 +40,7 @@ class Linkedlist extends Component {
           this.props.location.query ?
             <h2>Name: {this.props.location.query.name}</h2>
             :
-            <div className='formDisplay'>
+            <div className='formDisplay queue-container'>
               <InsertNodeForm />
               <DeleteNodeForm />
               <UploadCSV DSType={'linkedlist'} />

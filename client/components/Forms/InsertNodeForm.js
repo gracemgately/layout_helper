@@ -18,7 +18,15 @@ const InsertNodeForm = (props) => {
             value={props.newNode}
           />
         </div>
-        <div>
+        <br />
+        <div className="input-group-btn">
+          <button type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to Head</button>
+          <br />
+          <button type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to Tail</button>
+          <br />
+        </div>
+        <br />
+          <div>
           <input
             type="text"
             onChange={props.handleIdxChange}
@@ -26,13 +34,10 @@ const InsertNodeForm = (props) => {
             name="index"
           />
         </div>
-        <br />
-        <div className="input-group-btn">
-          <button type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to Head</button>
           <br />
-          <button type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to Tail</button>
+          <div>
           <button type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
-        </div>
+          </div>
       </form>
     </div>
   )
