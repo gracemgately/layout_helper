@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addNodeToTail, deleteNodeFromTail, highlightNodeAtIndex } from '../../store'
+import { writeNode, addNodeToTail, deleteNodeFromTail, toggleColor, highlightNodeAtIndex } from '../../store'
 
 const StackForm = (props) => {
     const nodeArr = props.nodeArr;
@@ -20,7 +20,7 @@ const StackForm = (props) => {
                 <div className="input-group-btn">
                     <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item to Stack</button>
                     <button type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item Off Stack</button>
-                    <button type="click" onClick={(evt) => props.handlePeek(evt, nodeArr.length - 1)} > PEEK </button>
+                    <button type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled, nodeArr) }> PEEK </button>
                 </div>
             </form>
         </div>
@@ -32,7 +32,9 @@ const mapState = (state) => {
     return {
         nodes: state.node,
         newNode: state.writeNode.newNode,
-        highlightIndex: state.node.highlightIdx
+        highlightIndex: state.node.highlightIdx,
+        toggled: state.node.toggledStatus
+
     }
 }
 
@@ -51,10 +53,10 @@ const mapDispatch = (dispatch) => {
             dispatch(deleteNodeFromTail());
 
         },
-        handlePeek(evt, index) {
+        handlePeek(evt, flip, nodeArr) {
             evt.preventDefault();
-            console.log(index);
-            dispatch(highlightNodeAtIndex(index));
+            dispatch(toggleColor(flip));
+            dispatch(highlightNodeAtIndex(nodeArr.length - 1))
         }
     }
 }

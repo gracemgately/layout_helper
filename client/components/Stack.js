@@ -11,7 +11,7 @@ import { nodeArray_ } from '../utils';
 
 const Stack = (props) => {
 
-    const { user, nodes, highlightIndex } = props
+    const { user, nodes, highlightIndex, toggled } = props
 
     const nodeArr = (props.location.query) ? (props.location.query.content) : (nodeArray_(nodes));
 
@@ -31,13 +31,12 @@ const Stack = (props) => {
             <div className="container">
                 {
                     (nodeArr.map((node, index) => {
-                        var highlight = (index === highlightIndex) ? "yellow" : "none"
                         return (
-                            <div className="basicnode" key={index}>
-                                {drawNode(node, highlight)}
-                            </div>
+                          <div className='basicNode' >
+                            {drawNode(node, toggled,  index, highlightIndex)}
+                          </div>
                         )
-                    }))
+                      }))
 
                 }
 
@@ -55,6 +54,7 @@ const mapState = (state) => {
     user: state.user,
     nodes: state.node,
     highlightIndex: state.node.highlightIdx,
+    toggled: state.node.toggledStatus
 
   }
 }
