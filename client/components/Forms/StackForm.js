@@ -15,11 +15,9 @@ const StackForm = (props) => {
                         placeholder="add item to stack"
                         name="node"
                     />
-                </div>
                 <br />
-                <div className="input-group-btn">
-                    <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item to Stack</button>
-                    <button type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item Off Stack</button>
+                    <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item</button>
+                    <button type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item</button>
                     <button type="click" onClick={(evt) => props.handlePeek(evt, nodeArr.length - 1)} > PEEK </button>
                 </div>
             </form>

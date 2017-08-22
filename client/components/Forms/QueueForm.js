@@ -15,9 +15,7 @@ const QueueForm = (props) => {
             name="node"
             value={props.newNode}
           />
-        </div>
         <br />
-        <div className="input-group-btn">
           <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>
           <button type="click" name="tail" onClick={(evt) => props.handleHeadDelete(evt, props.newNode)} > Dequeue</button>
           <button type="click" onClick={(evt) => props.handlePeek(evt, 0)} > PEEK </button>
