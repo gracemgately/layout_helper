@@ -1,13 +1,15 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { breadthFirstForEach } from '../DrawNode'
-import { removeSingleBSTNode, writeNode } from '../../store'
+import { removeSingleBSTNode, writeNode, cleanBST } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {
 
+  const { bstNode } = props;
+
   return (
     <div>
-      <form id="form-group" onSubmit={props.handleSubmit}>
+      <form id="form-group" onSubmit={(evt) => props.handleSubmit(evt, bstNode)}>
         <div>
           <input
             type="text"
@@ -41,12 +43,13 @@ const mapDispatch = (dispatch) => {
     handleChange(evt){
       dispatch(writeNode(Number(evt.target.value)));
     },
-    handleSubmit(evt) {
+    handleSubmit(evt, bst) {
       evt.preventDefault();
       var nodeValue = Number(evt.target.node.value);
-      console.log('nodeValue', nodeValue);
       dispatch(removeSingleBSTNode(nodeValue))
       dispatch(writeNode(''));
+      dispatch(cleanBST(bst))
+
     }
   }
 }

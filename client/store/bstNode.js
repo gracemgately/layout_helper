@@ -1,15 +1,18 @@
 'use strict';
 import history from '../history'
+import { arrayifyBst, removeEmptyChildren } from '../utils'
 import { breadthFirstForEach, drawBSTNode2 } from '../components'
 
 const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
+const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
+export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
 
@@ -126,10 +129,10 @@ bstDemo.insert(14);
 // bstDemo.insert(11);
 // bstDemo.insert(13);
 // bstDemo.insert(15);
-const step = 0;
-const JSXArr = {};
+// const step = 0;
+// const JSXArr = {};
 
-export default function (state = { initialTree, bstDemo, step, JSXArr }, action) {
+export default function (state = { initialTree, bstDemo }, action) {
 
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
@@ -138,8 +141,15 @@ export default function (state = { initialTree, bstDemo, step, JSXArr }, action)
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
-        // case GET_ARRAY:
-        //     return Object.assign({}, action.JSXArr )
+        case ARRAYIFY_CLASS_BST:
+            let arrayBST = arrayifyBst(state)
+            console.log('state in ARRAYIFY_CLASS_BST', state);
+
+            console.log('arrayBST in ARRAYIFY_CLASS_BST', arrayBST);
+            let arrayBST2 = removeEmptyChildren(arrayBST);
+            console.log('arrayBST2 in ARRAYIFY_CLASS_BST', arrayBST2);
+            return Object.assign({}, state, { array: arrayBST2 });
+
         case TRAVERSE_TREE:
             // console.log('state', state);
             // const newJSX = JSXArr.slice(0);

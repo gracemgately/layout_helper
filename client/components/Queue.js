@@ -1,16 +1,24 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { drawNode } from '../components'
-import QueueForm from './Forms/QueueForm';
-import SaveLLForm from './Forms/SaveLLForm';
+import { drawQueueNode } from '../components'
+import QueueForm from './Forms/QueueForm'
+import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
+
 import { nodeArray_ } from '../utils'
+import { cleanState } from '../store'
 
 
 /**
  * COMPONENT
  */
 class Queue extends Component {
+    //use componentWillUnmount to clean the state of any carryover
+    //values that otherwise would cause the LL to rerender as a Queue
+    //or Stack when switching between components
+    componentWillUnmount() {
+        this.props.cleanStateValues();
+    }
 
   render() {
     const { user, nodes, highlightIndex, toggled } = this.props;
@@ -30,16 +38,24 @@ class Queue extends Component {
             </div>
         }
         <div className="container">
+          <div className="queue-container">
+          {//display 'Head' if there are values to display
+            nodeArr.length ? <div>Head</div> : <div></div>
+          }
           {
             (nodeArr.map((node, index) => {
               return (
-                <div className='basicNode' >
-                  {drawNode(node, toggled,  index, highlightIndex)}
+                <div className="basicnode" key={index}>
+                  {drawQueueNode(node, toggled,  index, highlightIndex)}
                 </div>
               )
             }))
 
           }
+          {//display 'Tail' if there are values to display
+            nodeArr.length ? <div>Tail</div> : <div></div>
+          }
+        </div>
         </div>
       </div>
     )
@@ -60,4 +76,13 @@ const mapState = (state) => {
   }
 }
 
-export default connect(mapState)(Queue);
+const mapDispatch = (dispatch) => {
+    return {
+        cleanStateValues() {
+            dispatch(cleanState())
+        }
+    }
+}
+
+
+export default connect(mapState, mapDispatch)(Queue);

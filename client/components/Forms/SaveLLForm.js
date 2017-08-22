@@ -12,7 +12,8 @@ export default class SaveLLForm extends Component {
     this.state = {
       name: name,
       content: null,
-      userId: props.user.id
+      userId: props.user.id,
+      saveStatus: false
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -53,7 +54,11 @@ export default class SaveLLForm extends Component {
   SaveDS(obj) {
 
     axios.post(`/api/${this.props.type}`, obj)
-      .then(res => console.log(res))
+      .then(res => {
+        console.log(res);
+        if (res.status === 200){
+          this.setState({saveStatus: true})}
+        })
       .catch(err => console.log(err))
 
   }
@@ -74,7 +79,7 @@ export default class SaveLLForm extends Component {
         <br />
         <div className="input-group-btn">
           <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
-
+          { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
         </div>
       </form>
     </div>

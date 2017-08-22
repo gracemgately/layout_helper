@@ -9,6 +9,8 @@ const DELETE_NODE_FROM_HEAD = 'DELETE_NODE_FROM_HEAD'
 const DELETE_AT_INDEX = 'DELETE_AT_INDEX'
 const HIGHLIGHT_NODE_AT_INDEX = 'HIGHLIGHT_NODE_AT_INDEX'
 const TOGGLE_COLOR = 'TOGGLE_COLOR'
+const CLEAN_STATE = 'CLEAN_STATE'
+
 
 export const getNode = node => ({ type: GET_NODE, node })
 export const addNodeToTail = node => ({ type: ADD_NODE_TO_TAIL, node })
@@ -19,6 +21,7 @@ export const deleteNodeFromHead = () => ({ type: DELETE_NODE_FROM_HEAD })
 export const deleteAtIndex = node => ({ type: DELETE_AT_INDEX, node })
 export const highlightNodeAtIndex = index => ({ type: HIGHLIGHT_NODE_AT_INDEX, index })
 export const toggleColor = flip => ({ type: TOGGLE_COLOR, flip })
+export const cleanState = () => ({ type: CLEAN_STATE })
 
 
 //ES6 class declaration to create a node object which can have the following
@@ -131,7 +134,7 @@ class LinkedList {
 }
 
 // create a new linkedlist class, which will hold all the nodes
-const list = new LinkedList();
+var list = new LinkedList();
 // // initialize list
 // list.addToTail(1);
 // list.addToTail(4);
@@ -182,11 +185,14 @@ export default function (state = list, action) {
       list.removeAtIndex(action.node.index);
       return Object.assign({}, list);
     case HIGHLIGHT_NODE_AT_INDEX:
-      console.log('here', action.index)
+      //console.log('here', action.index)
       return Object.assign({}, state, { highlightIdx: action.index })
     case TOGGLE_COLOR:
       console.log('state inside toggle', action.flip);
       return Object.assign({}, state, { toggledStatus: action.flip } )
+    case CLEAN_STATE:
+      list = new LinkedList();
+      return Object.assign({}, list)
     default:
       return state
   }
