@@ -1,6 +1,6 @@
 'use strict';
 import history from '../history'
-import { arrayifyBst, removeEmptyChildren } from '../utils'
+import { arrayifyBst, removeEmptyChildren, getRandomNumbersArr } from '../utils'
 import { breadthFirstForEach, drawBSTNode2 } from '../components'
 
 const GET_BSTNODE = 'GET_BSTNODE'
@@ -8,6 +8,8 @@ const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
+const CLEAN_BST_STATE = 'CLEAN_BST_STATE'
+const GET_RANDOM_BST = 'GET_RANDOM_BST'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
@@ -16,6 +18,8 @@ export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
 export const traverseTree = BSTtype => ({
     type: TRAVERSE_TREE, BSTtype
 })
+export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
+export const getRandomBst = () => ({ type: GET_RANDOM_BST })
 
 class BinarySearchTree {
     constructor(value) {
@@ -126,6 +130,9 @@ bstDemo.insert(14);
 // bstDemo.insert(15);
 
 
+const randomBST = new BinarySearchTree();
+
+
 export default function (state = { initialTree, bstDemo }, action) {
 
     switch (action.type) {
@@ -150,6 +157,20 @@ export default function (state = { initialTree, bstDemo }, action) {
             console.log('bstDemo', bstDemo)
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             return Object.assign({}, bstDemo);
+
+        case CLEAN_BST_STATE:
+            console.log('clean bst state');
+            return Object.assign({}, {});
+
+        case GET_RANDOM_BST:
+            console.log('get random bst');
+            let arr = getRandomNumbersArr();
+
+            for (let i = 0; i < arr.length; i++){
+                randomBST.insert(arr[i]);
+            }
+            console.log('randomBST ', randomBST);
+            return Object.assign({}, randomBST);
 
         default:
             return state
