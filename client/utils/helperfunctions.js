@@ -197,19 +197,6 @@ export const moveCount = (nodeArr) => {
   return [moves, bigO];
 }
 
-//
-//BSTInsertionTime.js
-// export const breadthFirstForEach = (iterator, queue) => {
-//   queue = queue || [this];
-//   if (!queue.length) return;
-//   var tree = queue.shift();
-//   iterator(tree.value);
-//   if (tree.left) queue.push(tree.left);
-//   if (tree.right) queue.push(tree.right);
-//   BinarySearchTree.prototype.breadthFirstForEach(iterator, queue);
-// };
-
-
 export const BSTMoveCount = (bstArr) => {
   var moves = 0;
   var bigO = "O(n)";
