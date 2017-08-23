@@ -1,27 +1,11 @@
+//LIBRARIES
 import React from 'react'
 import PropTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {withRouter, Link} from 'react-router-dom'
+
+//UTILS & STORE
 import { logout } from '../store'
-
-// export const Arrow = (props) => {
-
-
-//   return (
-//     <div> arrow tests
-//     <div>{RightArrow()}</div>
-//     <div>{LeftArrow()}</div>
-//     <div>{UpArrow()}</div>
-//     <div>{DownArrow()}</div>
-//     <div>{SouthEastArrow()}</div>
-//     <div>{SouthWestArrow()}</div>
-//     <div>{BidirectionalLeftRightArrow()}</div>
-//     <div>{BidirectionalUpDownArrow()}</div>
-//     <div>{doubleLeftRightArrow()}</div>
-//     </div>
-//   )
-
-// }
 
 export const RightArrow = (data) => {
   return (

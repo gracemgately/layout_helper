@@ -1,5 +1,8 @@
+//LIBRARIES
 import React from 'react';
 import { connect } from 'react-redux'
+
+//UTILS & STORE
 import { removeSingleBSTNode, writeNode, arrayifyClassBST } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {

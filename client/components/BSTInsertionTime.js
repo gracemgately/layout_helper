@@ -1,7 +1,10 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
-import { node } from '../store'
 import history from '../history'
+
+//UTILS & STORE
+import { node } from '../store'
 import { BSTMoveCount } from '../utils'
 
 const BSTInsertionTime = (props) => {

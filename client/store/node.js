@@ -132,7 +132,6 @@ class LinkedList {
   removeAtIndex(index) {
     this.nodeCount--;
     let deletedNode = search(index);
-    console.log('deleted node', deletedNode)
     let prevNode = deletedNode.previous;
     prevNode.next = deletedNode.next;
     deletedNode.previous = prevNode;
@@ -142,11 +141,6 @@ class LinkedList {
 
 // create a new linkedlist class, which will hold all the nodes
 var list = new LinkedList();
-// // initialize list
-// list.addToTail(1);
-// list.addToTail(4);
-// list.addToTail(16);
-// list.addToTail(34);
 
 // external search function converts LinkedList class to an ordered array and search at specific index
 const search = (index) => {
@@ -161,7 +155,6 @@ const search = (index) => {
     currentNode = currentNode.next;
     counter++;
   }
-  console.log('found node at index ', currentNode);
   return currentNode;
 
 }
@@ -192,7 +185,6 @@ export default function (state = list, action) {
       list.removeAtIndex(action.node.index);
       return Object.assign({}, list);
     case HIGHLIGHT_NODE_AT_INDEX:
-      //console.log('here', action.index)
       return Object.assign({}, state, { highlightIdx: action.index })
     case TOGGLE_COLOR:
       return Object.assign({}, state, { toggledStatus: action.flip } )

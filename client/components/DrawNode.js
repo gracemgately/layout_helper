@@ -1,11 +1,15 @@
+//COMPONENTS
+import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
+
+//LIBRARIES
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+
+//UTILS & STORE
 import { logout } from '../store'
-import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 import { removeEmptyChildren, gradient, drawBasicNode } from '../utils'
-// import * as d3 from 'd3'
 
 export const drawNode = (node, toggled, index, highlightIndex) => {
   return (
@@ -59,7 +63,6 @@ export const drawBSTNode2 = (node) => {
 }
 
 export const drawBSTNode3 = (node) => {
-
   if (!node.value) {
     return (
       <div className="basicnode">
@@ -119,8 +122,8 @@ function treeLevel(node) {
 
 
 // takes user bst and calls drawBST() to render the nodes in full tree form
-export const userBST = (cleanbst) => {
 
+export const userBST = (cleanbst) => {
   cleanbst = removeEmptyChildren(cleanbst);
   const collection = [];
 

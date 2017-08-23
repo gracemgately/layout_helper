@@ -1,16 +1,19 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
+//COMPONENTS
+import React, { Component } from 'react';
+import StackForm from './Forms/StackForm';
+import UploadCSV from './Forms/UploadCSV';
+import { drawStackNode } from '../components';
+import SaveLLForm from './Forms/SaveLLForm';
+import InsertionTime from './InsertionTime';
+
+//LIBRARIES
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
 import { CSSTransitionGroup } from 'react-transition-group';
 
-import StackForm from './Forms/StackForm'
-import UploadCSV from './Forms/UploadCSV'
-import { drawStackNode } from '../components'
-import SaveLLForm from './Forms/SaveLLForm';
-
+//UTILS & STORE
 import { nodeArray_ } from '../utils';
-import InsertionTime from './InsertionTime';
 import { cleanState } from '../store'
 
 
@@ -75,7 +78,9 @@ class Stack extends Component {
                     </div>
                     </div>
 
-             <InsertionTime />
+                    {this.props.location.query ? null: 
+                        <InsertionTime />
+                    } 
         </div>
 
         )

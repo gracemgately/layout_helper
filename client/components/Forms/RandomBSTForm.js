@@ -1,5 +1,8 @@
+//LIBRARIES
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+
+//UTILS & STORE
 import {getRandomBst, arrayifyClassBST} from '../../store'
 
 const RandomBSTForm = (props) => {
@@ -10,8 +13,6 @@ const RandomBSTForm = (props) => {
 
     </div>
   )
-
-
 }
 
 const mapState = (state) => {
@@ -23,7 +24,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt, bst) {
-      console.log('fired ', bst);
       evt.preventDefault();
       dispatch(getRandomBst())
       dispatch(arrayifyClassBST(bst))

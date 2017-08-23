@@ -1,12 +1,14 @@
+//COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
+
+//LIBRARIES
+import { connect } from 'react-redux'
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /**
  * COMPONENT
  */
-
 
 class BSTType extends Component {
   constructor(props) {
@@ -26,7 +28,6 @@ class BSTType extends Component {
 
   handleSubmit(evt, type, node, flip) {
     evt.preventDefault();
-    console.log('type', type);
     if (type === "Depth First: Pre-order") {
       node.value = 1;
       node.left.value = 2;

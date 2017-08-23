@@ -1,7 +1,11 @@
+//COMPONENTS
 import React, {Component} from 'react'
+
+//LIBRARIES
 import { connect } from 'react-redux'
 import axios from 'axios'
 
+//UTILS & STORE
 import { LLNodeArray_ } from '../../utils'
 
 export default class SaveLLForm extends Component {
