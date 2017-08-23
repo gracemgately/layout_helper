@@ -60,12 +60,12 @@ class UploadCSV extends Component {
             {/*tell the user their file has been uploaded and display the submit button only
             if the state has received the values (from the file) to render*/}
                 <ReactFileReader handleFiles={this.handleFiles}>
-                        Upload a CSV:<button className='btn'>Upload</button>
+                        Upload a CSV:<button className='buttonstyle'>Upload</button>
                 </ReactFileReader>
             {this.state.arrToRender ? 
                     <div>
                     File Uploaded!
-                    <button onClick={this.handleSubmit}>Submit</button>
+                    <button className="buttonstyle" onClick={this.handleSubmit}>Submit</button>
                     </div>
                 : null}
             </div>

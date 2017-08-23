@@ -16,9 +16,9 @@ const StackForm = (props) => {
                         name="node"
                     />
                 <br />
-                    <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item</button>
-                    <button type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item</button>
-                    <button type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled, nodeArr) }> PEEK </button>
+                    <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item</button>
+                    <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item</button>
+                    <button className="buttonstyle" type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled, nodeArr) }> PEEK </button>
                 </div>
             </form>
         </div>

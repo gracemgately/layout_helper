@@ -1,6 +1,7 @@
 @import 'bst';
 @import '../mainComponent';
 @import '../userDS';
+@import 'button';
 
 body {
   // font-family: 'Roboto Slab';
@@ -153,7 +154,7 @@ body {
       align-content: center;
       text-align: center;
       background-color: #043878;
-      border-radius: 5px;
+      border-radius: 2px;
 
   }
 
@@ -246,37 +247,43 @@ svg {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 5vw;
+  padding-top: 10px;
 }
 
 .bstlevel1 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
+
 }
 
 .bstlevel2 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel3 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel4 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel5 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .formDisplay {

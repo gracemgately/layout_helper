@@ -19,7 +19,7 @@ const DeleteBSTNodeForm = (props) => {
             value={props.newNode}
           />
         <br />
-          <button className="btn btn-default" type="submit">Delete Me!</button>
+          <button className="buttonstyle" type="submit">Delete Me!</button>
         </div>
       </form>
     </div>

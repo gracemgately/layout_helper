@@ -73,7 +73,7 @@ class SaveDSForm extends Component {
             placeholder="name.."
           />
         <br />
-          <button type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
+          <button className="buttonstyle" type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>
           { this.state.saveStatus ? <div className="saved-ds"> {this.state.name} has been saved! </div> : null }
       </form>
     </div>

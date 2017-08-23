@@ -6,7 +6,7 @@ const RandomBSTForm = (props) => {
 
   return (
     <div>
-          <button type="click" onClick={(evt) => props.handleSubmit(evt, props.bstNode)} > Get a random BST</button>
+          <button type="click" className="buttonstyle" onClick={(evt) => props.handleSubmit(evt, props.bstNode)} > Get a random BST</button>
 
     </div>
   )
