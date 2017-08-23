@@ -65,7 +65,7 @@ class BSTType extends Component {
 
     this.setState({ toggled: flip })
     const preOrder = [16, 12, 8, 14, 20, 18, 22];
-    breadthFirstForEachDemo(node, preOrder)
+    breadthFirstForEach(node, preOrder)
   }
 
 
