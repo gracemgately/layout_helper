@@ -73,17 +73,12 @@ export const drawBSTNode3 = (node) => {
 
   return (
     <div className="basicnode">
-      {(node.left !== null) ? SouthWestArrow(node.value) : null}
-      <svg>
-      <linearGradient id="MyGradient0">
-        <stop offset="5%" stopColor="white" />
-        <stop offset="95%" stopColor="yellow" />
-      </linearGradient>
-        <circle className="circle1" fill="yellow" cx="25" cy="25" r="25"> </circle>
-        <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
-      </svg>
+      <div className="bstcircle"> <div className="bsttext"> {node.value}</div></div>
 
+      <div className="arrow-container">
+      {(node.left !== null) ? SouthWestArrow(node.value) : null}
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
+      </div>
     </div>
   )
 }

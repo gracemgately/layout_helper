@@ -57,17 +57,17 @@ export const DownArrow = (data) => {
 
 export const SouthEastArrow = (data) => {
   return (
-    <p className="arrowsizeSE">
+    <div className="arrowsizeSE">
       {'\u2199'}
-    </p>
+    </div>
   )
 }
 
 export const SouthWestArrow = (data) => {
   return (
-    <p className="arrowsize">
+    <div className="arrowsize">
       {'\u2199'}
-    </p>
+    </div>
   )
 }
 

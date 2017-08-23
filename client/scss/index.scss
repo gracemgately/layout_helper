@@ -201,12 +201,36 @@ svg {
 
 
 .basicnode {
-  display: flex;
-  width: 150px;
-  height: 150px;
+  height: 120px;
+  width: 80px;
+  border: 1px solid #000000;
+
   &-linkedlist {
       padding-top: 10vw;
+
   }
+}
+
+.arrow-container{
+  display: flex;
+  justify-content: space-around;
+}
+
+.bstcircle {
+  border: 5px solid #ff0000;
+  background-color: #00ff00;
+  width: 50px;
+  height: 50px;
+  border-radius: 1000px;
+  margin: 0.5em;
+}
+
+.bsttext {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
 }
 
 .arrowsize {
@@ -233,36 +257,50 @@ svg {
   justify-content: center;
   width: 100%;
   padding-top: 5vw;
+  overflow: auto;
 }
 
 .bstlevel1 {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: auto;
 }
 
 .bstlevel2 {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: auto;
 }
 
 .bstlevel3 {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: auto;
+
 }
 
 .bstlevel4 {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: auto;
 }
 
 .bstlevel5 {
   display: flex;
   justify-content: center;
   width: 100%;
+  overflow: auto;
+}
+
+.bstlevel6 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  overflow: auto;
 }
 
 .formDisplay {
