@@ -7,15 +7,15 @@
  @include flex-master(column);
 
   &-controls {
-   @include flex-master(column); 
+   @include flex-master(column);
     float: left;
     border-right: 1px solid grey;
-    background-color: white;
+
     color: #043878;
     height: 100vw;
   }
   &-display {
-    @include flex-master(column); 
+    @include flex-master(column);
     height: 100%
   }
 }

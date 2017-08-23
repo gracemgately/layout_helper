@@ -4,13 +4,17 @@
 @import 'button';
 
 body {
-  // font-family: 'Roboto Slab';
-  // background-color: #EDEAE5;
-  background-color: white;
+  background-color: #5fbecf;
+  background-image: linear-gradient(145deg, #65CCF4 0%,white 100%);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+
+  // background-color: white;
   // font: #026670;
   font-family: 'Nixie One', cursive;
   -webkit-font-smoothing: antialiased;
-  font: #043878;
+  font: #0D141D;
 
 
   a {
@@ -69,7 +73,6 @@ body {
   .textBar {
   display: flex;
   height: 79px;
-  background-color: white;
   font-family: 'Nixie One', cursive;
   margin-left: 0;
   margin-right: 0;
@@ -118,25 +121,9 @@ body {
 .flex-container {
   display: flex;
   justify-content: center;
-  height: 250px;
+  height: 100%;
   margin: 0px;
   padding: 0px;
-  animation:
-    bounce 5s linear infinite;
-}
-
-@keyframes bounce {
-  0%, 100% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(150px, 0);
-  }
-
-  99% {
-    transform: translate(0, 0);
-  }
 }
 
 .col-xs-10 {
@@ -226,7 +213,7 @@ svg {
 
 .basicnode {
   display: flex;
-  width: 100px;
+  width: 120px;
   height: 100px;
   &-linkedlist {
       padding-top: 10vw;
