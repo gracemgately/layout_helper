@@ -1,7 +1,7 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { breadthFirstForEach, drawBSTnodes } from '../components'
-import {breadthFirstForEach_, arrayifyBst, groupBstNodes} from '../utils'
+import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode, { cleanBSTState } from '../store';
@@ -14,7 +14,7 @@ import RandomBSTForm from './Forms/RandomBSTForm';
 
 class BinarySearchTree extends Component {
 
-  componentWillUnmount(){
+  componentWillUnmount() {
     // this.props.cleanStateValues();
   }
 
@@ -63,30 +63,30 @@ class BinarySearchTree extends Component {
 
 
   render() {
-      return (
-
+    return (
+      <div>
         <div>
           {//only render forms to edit DS if it is not a previously-saved one
             this.props.location.query ?
-            <div>
-              <h2> Binary Search <br/> Tree </h2>
-              <h2>Name: {this.props.location.query.name}</h2>
-            </div>
+              <div>
+                <h2> Binary Search <br /> Tree </h2>
+                <h2>Name: {this.props.location.query.name}</h2>
+              </div>
               :
               <div className='main-container-controls' >
-                <h2> Binary Search <br/> Tree </h2>
+                <h2> Binary Search <br /> Tree </h2>
                 <AddBSTNodeForm />
                 <DeleteBSTNodeForm />
-                <UploadCSV DSType={'binarysearchtree'}/>
-                {this.props.user.id ? 
-                <div className="save-form">
-                  Save Your Binary  <br/> Search Tree:
-                <SaveDSForm content={this.props.array} userId={this.props.user.id}/>
-                </div> 
-                : null}
-              <RandomBSTForm />
+                <UploadCSV DSType={'binarysearchtree'} />
+                {this.props.user.id ?
+                  <div className="save-form">
+                    Save Your Binary  <br /> Search Tree:
+                <SaveDSForm content={this.props.array} userId={this.props.user.id} />
+                  </div>
+                  : null}
+                <RandomBSTForm />
               </div>
-        }
+          }
           <div className="container">
             {
               this.state.groups.map((ele, index) => {
@@ -103,28 +103,28 @@ class BinarySearchTree extends Component {
           </div>
           <BSTInsertionTime />
         </div>
-      )
-    }
+      </div >
+    )
+  }
 }
 
 
 
 const mapState = (state) => {
-    return {
-      user: state.user,
-      BST: state.bstNode,
-      array: state.bstNode.array
-    }
+  return {
+    user: state.user,
+    BST: state.bstNode,
+    array: state.bstNode.array
+  }
 
 }
 
-  const mapDispatch = (dispatch) => {
-    return {
-      cleanStateValues(){
-        dispatch(cleanBSTState())
-      }
+const mapDispatch = (dispatch) => {
+  return {
+    cleanStateValues() {
+      dispatch(cleanBSTState())
     }
   }
-
+}
 
 export default connect(mapState, mapDispatch)(BinarySearchTree);

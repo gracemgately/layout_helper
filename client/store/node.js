@@ -195,7 +195,6 @@ export default function (state = list, action) {
       //console.log('here', action.index)
       return Object.assign({}, state, { highlightIdx: action.index })
     case TOGGLE_COLOR:
-      console.log('state inside toggle', action.flip);
       return Object.assign({}, state, { toggledStatus: action.flip } )
     case CLEAN_STATE:
       list = new LinkedList();
