@@ -1,0 +1,33 @@
+@mixin flex-master($dir: row){
+  flex-direction: $dir;
+  justify-content: flex-start;
+}
+
+.main-container {
+ @include flex-master(column);
+
+  &-controls {
+   @include flex-master(column); 
+    float: left;
+    border-right: 1px solid grey;
+    background-color:#EDEAE5;
+    color: #026670;
+    height: 100vw;
+  }
+  &-display {
+    @include flex-master(column); 
+    height: 100%
+  }
+}
+
+.save-form {
+  margin-top: 15px;
+  color: #026670;
+}
+
+
+
+
+
+
+

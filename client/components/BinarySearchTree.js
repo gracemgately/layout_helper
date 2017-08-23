@@ -29,8 +29,6 @@ class BinarySearchTree extends Component {
       groups: []
     }
     this.asyncCalls = this.asyncCalls.bind(this);
-
-    console.log('props ', props);
   }
 
 
@@ -42,21 +40,14 @@ class BinarySearchTree extends Component {
   // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
     this.asyncCalls();
-    console.log('component mounted');
-
-
     let arr = this.state.array;
     if (this.props.location.query) arr = this.props.location.query.content;
     this.asyncCalls(arr);
-
   }
 
   componentWillReceiveProps(nextProps) {
-
-    console.log('nextProps ', nextProps);
     let arr = nextProps.array;
     if (nextProps.BST !== this.state.BST) {
-      console.log('next props...');
       if (this.props.location.query) arr = this.props.location.query.content;
       this.setState({ BST: nextProps.BST, array: arr });
       this.asyncCalls(nextProps.array);
@@ -65,45 +56,40 @@ class BinarySearchTree extends Component {
 
 
   asyncCalls(arr) {
-        // send arrayified bst nodes, get drawings and parentIdx values back
+    // send arrayified bst nodes, get drawings and parentIdx values back
     const bstDivs = drawBSTnodes(arr);
 
-        // group the bstDivs by parentIdx groups
-
+    // group the bstDivs by parentIdx groups
     let groups = groupBstNodes(bstDivs);
-
-    console.log('groups ', groups);
-
     this.setState({ groups: groups });
   }
 
 
   render() {
-
-    console.log('this.props.location.query in bst', this.props.location.query);
-
-
       return (
 
         <div>
-
-          <h1> Binary Search Tree </h1>
-
           {//only render forms to edit DS if it is not a previously-saved one
             this.props.location.query ?
+            <div>
+              <h2> Binary Search <br/> Tree </h2>
               <h2>Name: {this.props.location.query.name}</h2>
+            </div>
               :
-
-
-              <div className='formDisplay' >
+              <div className='main-container-controls' >
+                <h2> Binary Search <br/> Tree </h2>
                 <AddBSTNodeForm />
                 <DeleteBSTNodeForm />
-                <SaveDSForm content={this.props.array} userId={this.props.user.id} />
-                <RandomBSTForm />
-
+                <UploadCSV DSType={'binarysearchtree'}/>
+                {this.props.user.id ? 
+                <div className="save-form">
+                  Save Your Binary  <br/> Search Tree:
+                <SaveDSForm content={this.props.array} userId={this.props.user.id}/>
+                </div> 
+                : null}
+              <RandomBSTForm />
               </div>
-
-          }
+        }
           <div className="container">
             {
               this.state.groups.map((ele, index) => {
