@@ -18,65 +18,6 @@ class SingleUserDS extends Component {
     var canvas = this.refs.myCanvas;
     var c = canvas.getContext("2d");
 
-    //create the container that will hold the boincing balls.
-    var container = {
-      x: 0,
-      y: 0,
-      width: 400,
-      height: 200
-    };
-    //create the array of circles that will be animated
-    var circles = [{
-      x: 50,
-      y: 100,
-      r: 5,
-      vx: 5,
-      vy: 5,
-      color: 173
-    }, {
-      x: 150,
-      y: 80,
-      r: 10,
-      vx: 5,
-      vy: 8,
-      color: 173
-    }, {
-      x: 90,
-      y: 150,
-      r: 5,
-      vx: 5,
-      vy: 5,
-      color: 173
-    }, {
-      x: 100,
-      y: 50,
-      r: 2,
-      vx: 8,
-      vy: 5,
-      color: 173
-    }, {
-      x: 100,
-      y: 50,
-      r: 2,
-      vx: 8,
-      vy: 5,
-      color: 173
-    },{
-      x: 100,
-      y: 50,
-      r: 2,
-      vx: 8,
-      vy: 5,
-      color: 173
-    }, {
-      x: 100,
-      y: 50,
-      r: 2,
-      vx: 8,
-      vy: 5,
-      color: 173
-    }];
-
     function animate() {
       //draw the container
       c.fillStyle = "#EDEAE5";
@@ -198,3 +139,66 @@ const mapState = (state) => {
 
 export default connect(mapState, null)(SingleUserDS);
 
+
+//ANIMATION FUNCTIONALITY BY GICHUHI MBUGUA, 2015: 
+//https://codepen.io/gichmbugua/pen/LpZWgo
+
+
+//create the container that will hold the boincing balls.
+    var container = {
+      x: 0,
+      y: 0,
+      width: 400,
+      height: 200
+    };
+//create the array of circles that will be animated
+    var circles = [{
+      x: 50,
+      y: 100,
+      r: 5,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }, {
+      x: 150,
+      y: 80,
+      r: 10,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }, {
+      x: 90,
+      y: 150,
+      r: 5,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }, {
+      x: 100,
+      y: 50,
+      r: 2,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }, {
+      x: 100,
+      y: 50,
+      r: 2,
+      vx: 1,
+      vy: 1,
+      color: 173
+    },{
+      x: 100,
+      y: 50,
+      r: 2,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }, {
+      x: 100,
+      y: 50,
+      r: 2,
+      vx: 1,
+      vy: 1,
+      color: 173
+    }];
