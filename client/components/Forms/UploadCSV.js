@@ -1,8 +1,12 @@
+//COMPONENTS
 import React, {Component} from 'react'
+
+//LIBRARIES
 import { connect } from 'react-redux'
 import axios from 'axios'
 import ReactFileReader from 'react-file-reader';
 
+//UTILS & STORE
 import { addNodeToTail, addSingleBSTNode, arrayifyClassBST } from '../../store'
 
 class UploadCSV extends Component {
@@ -53,8 +57,6 @@ class UploadCSV extends Component {
     }
 
     render(){
-        // console.log('state', this.state);
-        // console.log('props', this.props);
         return(
             <div>
             {/*tell the user their file has been uploaded and display the submit button only

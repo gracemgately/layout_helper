@@ -1,7 +1,11 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addSingleBSTNode, arrayifyClassBST } from '../../store'
 import history from '../../history'
+
+//UTILS & STORE
+import { writeNode, addSingleBSTNode, arrayifyClassBST } from '../../store'
+
 
 
 const AddBSTNodeForm = (props) => {

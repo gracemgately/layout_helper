@@ -1,5 +1,8 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
+
+//UTILS & STORE
 import { writeNode, addNodeToTail, deleteNodeFromTail, toggleColor, highlightNodeAtIndex } from '../../store'
 
 const StackForm = (props) => {

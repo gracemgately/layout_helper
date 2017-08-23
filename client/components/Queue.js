@@ -1,13 +1,17 @@
+//COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { drawQueueNode } from '../components'
 import QueueForm from './Forms/QueueForm'
 import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
-import { CSSTransitionGroup } from 'react-transition-group';
 
-import { nodeArray_ } from '../utils'
+//LIBRARIES
+import { connect } from 'react-redux'
+import { CSSTransitionGroup } from 'react-transition-group';
 import InsertionTime from './InsertionTime';
+
+//UTILITIES & STORE
+import { nodeArray_ } from '../utils'
 import { cleanState } from '../store'
 
 
@@ -73,7 +77,9 @@ class Queue extends Component {
 
         </div>
         </div>
-        <InsertionTime />
+        {this.props.location.query ? null: 
+          <InsertionTime />
+        } 
       </div>
     )
   }
@@ -85,7 +91,6 @@ class Queue extends Component {
  */
 
 const mapState = (state) => {
-  console.log('queue toggled', state.node.toggledStatus);
   return {
     user: state.user,
     nodes: state.node,

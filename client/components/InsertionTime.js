@@ -1,8 +1,11 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
-import { node } from '../store'
 import history from '../history'
+
+//UTILS & STORE
 import { nodeArray_, moveCount } from '../utils'
+import { node } from '../store'
 
 const InsertionTime = (props) => {
     const { nodes, nodeCount }  = props;
@@ -10,9 +13,6 @@ const InsertionTime = (props) => {
     const nodeArrLength = (nodeArray_(nodes)).length;
     const moves = moveCount(nodeArr)[0];
     const bigO = moveCount(nodeArr)[1];
-    // const isPeek = 
-    console.log("PROPS STACK", props);
-    console.log("NODECOUNT", nodeCount);
 
     return (
     <div>

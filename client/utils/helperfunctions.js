@@ -78,10 +78,6 @@ export const arrayifyBst = (BST) => {
     });
     counter++;
   }
-  console.log('arrayfybst ', collection);
-
-  console.log('time it takes arrayify to run', new Date() - startTime);
-
   return collection;
 }
 
@@ -115,8 +111,6 @@ export const removeEmptyChildren = (collection) => {
       }
       else break;
     }
-
-    console.log('time it takes removeEmptyChildren to run', new Date() - startTime);
 
     return filteredCollection;
 
@@ -203,19 +197,6 @@ export const moveCount = (nodeArr) => {
   return [moves, bigO];
 }
 
-//
-//BSTInsertionTime.js
-// export const breadthFirstForEach = (iterator, queue) => {
-//   queue = queue || [this];
-//   if (!queue.length) return;
-//   var tree = queue.shift();
-//   iterator(tree.value);
-//   if (tree.left) queue.push(tree.left);
-//   if (tree.right) queue.push(tree.right);
-//   BinarySearchTree.prototype.breadthFirstForEach(iterator, queue);
-// };
-
-
 export const BSTMoveCount = (bstArr) => {
   var moves = 0;
   var bigO = "O(n)";
@@ -240,6 +221,5 @@ export const getRandomNumbersArr = () => {
     if (arr.indexOf(randomNum) !== -1) randomNum = 21 + i;
     arr.push(randomNum);
   }
-  console.log('arr ', arr);
   return arr;
 }

@@ -1,16 +1,20 @@
+//COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { breadthFirstForEach, drawBSTnodes } from '../components'
-import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
-import bstNode, { cleanBSTState } from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
-import { CSSTransitionGroup } from 'react-transition-group';
-import UploadCSV from './Forms/UploadCSV';
 import BSTInsertionTime from './BSTInsertionTime';
+import UploadCSV from './Forms/UploadCSV';
 import RandomBSTForm from './Forms/RandomBSTForm';
 
+//LIBRARIES
+import { connect } from 'react-redux'
+import { CSSTransitionGroup } from 'react-transition-group';
+
+//UTILS & STORE
+import { breadthFirstForEach, drawBSTnodes } from '../components'
+import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
+import bstNode, { cleanBSTState } from '../store';
 
 class BinarySearchTree extends Component {
 
@@ -27,8 +31,6 @@ class BinarySearchTree extends Component {
     }
     this.asyncCalls = this.asyncCalls.bind(this);
   }
-
-
 
   // // send arrayified bst nodes, get drawings and parentIdx values back
   // let bstDivs = drawBSTnodes(cleanBST);
@@ -101,9 +103,11 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
+        {this.props.location.query ? null: 
           <BSTInsertionTime />
+        } 
         </div>
-      </div >
+        </div>
     )
   }
 }
