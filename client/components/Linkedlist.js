@@ -31,18 +31,24 @@ class Linkedlist extends Component {
 
     return (
       <div>
-
-        <h2> Linked List </h2>
-
         {//only render forms to edit DS if it is not a previously-saved one
           this.props.location.query ?
-            <h2>Name: {this.props.location.query.name}</h2>
+          <div>
+              <h2> Linked List </h2>
+              <h2>Name: {this.props.location.query.name}</h2>
+            </div>
             :
-            <div className='formDisplay'>
+            <div className='main-container-controls'>
+              <h2> Linked List </h2>
               <InsertNodeForm />
               <DeleteNodeForm />
               <UploadCSV DSType={'linkedlist'} />
-              {user.id ? <SaveLLForm type={'linkedlists'} content={nodeArr} user={user} /> : null}
+              {user.id ? 
+                <div className="save-form">
+                Save Your Linked List:
+                <SaveLLForm type={'linkedlists'} content={nodeArr} user={user} /> 
+                </div>
+                : null}
             </div>
         }
 
@@ -50,7 +56,7 @@ class Linkedlist extends Component {
           {
             (nodeArr.map((node, index) => {
               return (
-                <div className="basicnode" key={index}>
+                <div className="basicnode-linkedlist" key={index}>
                   {drawNode(node)}
                 </div>
               )

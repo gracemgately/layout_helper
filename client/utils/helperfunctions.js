@@ -229,3 +229,17 @@ export const BSTMoveCount = (bstArr) => {
   return [moves, bigO];
 }
 
+
+
+export const getRandomNumbersArr = () => {
+  const length = Math.floor((Math.random() * 5) + 5); // random length between 1 and 20
+  let arr = [];
+  // create an array of unique integers
+  for (let i = 0; i < length; i++){
+    let randomNum = Math.floor((Math.random() * 20) + 1);
+    if (arr.indexOf(randomNum) !== -1) randomNum = 21 + i;
+    arr.push(randomNum);
+  }
+  console.log('arr ', arr);
+  return arr;
+}

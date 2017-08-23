@@ -29,4 +29,5 @@ export * from './Forms/StackForm'
 export * from './Forms/QueueForm'
 export * from './Forms/SaveDSForm'
 export * from './InsertionTime'
+export * from './Forms/RandomBSTForm'
 

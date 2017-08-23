@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import axios from 'axios'
 import ReactFileReader from 'react-file-reader';
 
-import { addNodeToTail, addSingleBSTNode } from '../../store'
+import { addNodeToTail, addSingleBSTNode, arrayifyClassBST } from '../../store'
 
 class UploadCSV extends Component {
 
@@ -47,6 +47,7 @@ class UploadCSV extends Component {
         else if (this.state.DSType === 'binarysearchtree'){
             this.state.arrToRender.forEach(value => {
                 this.props.addSingleBSTNode(value);
+                this.props.callArrayfyBST(this.props.bstNode);
             });
         }
     }
@@ -56,17 +57,16 @@ class UploadCSV extends Component {
         // console.log('props', this.props);
         return(
             <div>
-            <div>Upload your CSV here</div>
-            <ReactFileReader handleFiles={this.handleFiles}>
-                <button className='btn'>Upload</button>
-            </ReactFileReader>
             {/*tell the user their file has been uploaded and display the submit button only
             if the state has received the values (from the file) to render*/}
+                <ReactFileReader handleFiles={this.handleFiles}>
+                        Upload a CSV:<button className='btn'>Upload</button>
+                </ReactFileReader>
             {this.state.arrToRender ? 
-                <div>
-                    <div> File Uploaded! </div> 
+                    <div>
+                    File Uploaded!
                     <button onClick={this.handleSubmit}>Submit</button>
-                </div>
+                    </div>
                 : null}
             </div>
         )
@@ -74,15 +74,25 @@ class UploadCSV extends Component {
 }
 
 
+const mapState = (state) => {
+    return {
+        bstNode: state.bstNode,
+    }
+
+}
+
 const mapDispatch = (dispatch) => {
     return {
         handleTailSubmit(evt, nodeValue){
         evt.preventDefault();
         dispatch(addNodeToTail({ value: +nodeValue }))
         }, 
-        addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value))
+        addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value)),
+        callArrayfyBST: (BST) => dispatch(arrayifyClassBST(BST))
     }            
 }
+
+
 
 
 export default connect(null, mapDispatch)(UploadCSV);

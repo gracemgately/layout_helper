@@ -28,18 +28,26 @@ class Queue extends Component {
     const nodeArr = (this.props.location.query) ? (this.props.location.query.content) : (nodeArray_(nodes));
 
     return (
-      <div>
-        <h2> Queue </h2>
+      <div className='main-container-display'>
         {//only render forms to edit DS if it is not a previously-saved one
-          this.props.location.query ?
-            <h2>Name: {this.props.location.query.name}</h2>
-            :
-            <div className='formDisplay'>
-              <QueueForm nodeArray={nodeArr} />
-              <UploadCSV DSType={'queue'} />
-              {user.id ? <SaveLLForm type={'queues'} content={nodeArr} user={user} /> : null}
-            </div>
-        }
+            this.props.location.query ?
+              <div>
+                <h2> Queue </h2>
+                <h2>Name: {this.props.location.query.name}</h2>
+              </div>
+              :
+              <div className='main-container-controls'>
+                <h2> Queue </h2>
+                <QueueForm nodeArray={nodeArr} />
+                <UploadCSV DSType={'queue'} />
+                {user.id ?
+                  <div className="save-form">
+                    Save Your Queue:
+                <SaveLLForm type={'queues'} content={nodeArr} user={user} />
+                  </div>
+                  : null}
+              </div>
+          }
         <div className="container">
           <div className="queue-container">
           {//display 'Head' if there are values to display

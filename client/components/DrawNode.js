@@ -55,7 +55,6 @@ export const drawStackNode = (node, fill = "none") => {
 
 
 export const drawBSTNode2 = (node, fill = 'none') => {
-  console.log('githere', fill, node)
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
@@ -63,7 +62,6 @@ export const drawBSTNode2 = (node, fill = 'none') => {
         <circle className={node.colored ? 'yellow' : 'none'} cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
-
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   )
