@@ -1,13 +1,17 @@
+//COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { drawQueueNode } from '../components'
 import QueueForm from './Forms/QueueForm'
 import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
-import { CSSTransitionGroup } from 'react-transition-group';
 
-import { nodeArray_ } from '../utils'
+//LIBRARIES
+import { connect } from 'react-redux'
+import { CSSTransitionGroup } from 'react-transition-group';
 import InsertionTime from './InsertionTime';
+
+//UTILITIES & STORE
+import { nodeArray_ } from '../utils'
 import { cleanState } from '../store'
 
 

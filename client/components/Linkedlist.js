@@ -1,15 +1,20 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types'
-import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
-import { drawNode} from '../components'
+//COMPONENTS
+import React, { Component } from 'react';
+import { drawNode} from '../components';
 import InsertNodeForm from './Forms/InsertNodeForm';
 import DeleteNodeForm from './Forms/DeleteNodeForm';
 import SaveLLForm from './Forms/SaveLLForm';
-import UploadCSV from './Forms/UploadCSV'
-import { nodeArray_ } from '../utils';
+import UploadCSV from './Forms/UploadCSV';
 import InsertionTime from './InsertionTime';
-import { cleanState } from '../store'
+
+//LIBRARIES
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
+import { withRouter, Link } from 'react-router-dom';
+
+//UTILS & STORE
+import { nodeArray_ } from '../utils';
+import { cleanState } from '../store';
 
 /**
  * COMPONENT

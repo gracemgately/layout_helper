@@ -1,5 +1,8 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
+
+//UTILS & STORE
 import { writeNode, addNodeToTail, deleteNodeFromHead, toggleColor, highlightNodeAtIndex } from '../../store'
 
 const QueueForm = (props) => {
@@ -50,6 +53,7 @@ const mapDispatch = (dispatch) => {
       dispatch(deleteNodeFromHead())
     },
     handlePeek(evt, flip){
+
       evt.preventDefault();
       dispatch(toggleColor(flip));
       dispatch(highlightNodeAtIndex(0))

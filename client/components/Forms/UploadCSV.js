@@ -1,8 +1,12 @@
+//COMPONENTS
 import React, {Component} from 'react'
+
+//LIBRARIES
 import { connect } from 'react-redux'
 import axios from 'axios'
 import ReactFileReader from 'react-file-reader';
 
+//UTILS & STORE
 import { addNodeToTail, addSingleBSTNode, arrayifyClassBST } from '../../store'
 
 class UploadCSV extends Component {

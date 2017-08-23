@@ -1,7 +1,10 @@
+//LIBRARIES
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
+
+//UTILS & STORE
 import { deleteNodeFromHead, deleteNodeFromTail, deleteAtIndex, writeDeleteIndex } from '../../store'
 
 const DeleteNodeForm = (props) => {
