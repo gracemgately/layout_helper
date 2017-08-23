@@ -8,7 +8,13 @@ const DeleteNodeForm = (props) => {
 
   return (
     <div>
+      Delete a Node:
       <form id="form-group"  >
+        <span id="form-group-left">
+          <button type="click" name="head" onClick={(evt) => props.handleHeadDelete(evt)} >Delete Node <br/> from Head</button>
+          <button type="click" name="tail" onClick={(evt) => props.handleTailDelete(evt)} > Delete Node <br/>  from Tail</button>
+        </span>
+        <br />
         <div>
           <input
             type="text"
@@ -16,12 +22,7 @@ const DeleteNodeForm = (props) => {
             placeholder="specify index.."
             name="delete-index"
           />
-        </div>
-        <br />
-        <div className="input-group-btn">
-          <button type="click" name="head" onClick={(evt) => props.handleHeadDelete(evt)} >Delete Node from Head</button>
-          <br />
-          <button type="click" name="tail" onClick={(evt) => props.handleTailDelete(evt)} > Delete Node from Tail</button>
+          <br/>
           <button type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.index)} > Delete at specific index</button>
         </div>
       </form>

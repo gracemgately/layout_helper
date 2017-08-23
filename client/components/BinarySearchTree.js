@@ -4,17 +4,19 @@ import { breadthFirstForEach, drawBSTnodes } from '../components'
 import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
 import AddBSTNodeForm from './Forms/AddBSTNodeForm';
 import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
-import bstNode from '../store';
+import bstNode, { cleanBSTState } from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 import { CSSTransitionGroup } from 'react-transition-group';
-import UploadCSV from './Forms/UploadCSV'
+import UploadCSV from './Forms/UploadCSV';
+import BSTInsertionTime from './BSTInsertionTime';
+import RandomBSTForm from './Forms/RandomBSTForm';
 
 
-
-/**
- * COMPONENT
- */
 class BinarySearchTree extends Component {
+
+  componentWillUnmount() {
+    // this.props.cleanStateValues();
+  }
 
   constructor(props) {
     super(props);
@@ -24,8 +26,6 @@ class BinarySearchTree extends Component {
       groups: []
     }
     this.asyncCalls = this.asyncCalls.bind(this);
-
-    console.log('props ', props);
   }
 
 
@@ -37,16 +37,16 @@ class BinarySearchTree extends Component {
   // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
     this.asyncCalls();
-    console.log('component mounted');
-
+    let arr = this.state.array;
+    if (this.props.location.query) arr = this.props.location.query.content;
+    this.asyncCalls(arr);
   }
 
   componentWillReceiveProps(nextProps) {
-
-    console.log('nextProps ', nextProps);
+    let arr = nextProps.array;
     if (nextProps.BST !== this.state.BST) {
-      console.log('next props...');
-      this.setState({ BST: nextProps.BST, array: nextProps.array });
+      if (this.props.location.query) arr = this.props.location.query.content;
+      this.setState({ BST: nextProps.BST, array: arr });
       this.asyncCalls(nextProps.array);
     }
   }
@@ -57,58 +57,54 @@ class BinarySearchTree extends Component {
     const bstDivs = drawBSTnodes(arr);
 
     // group the bstDivs by parentIdx groups
-
     let groups = groupBstNodes(bstDivs);
-
-    console.log('groups ', groups);
-
     this.setState({ groups: groups });
   }
 
 
   render() {
-
-    console.log('this.props.array.... ', this.props.array);
-
-    console.log('this.state.array.... ', this.state.array);
-
     return (
-
       <div>
-
-        <h1> Binary Search Tree </h1>
-        <div className='formDisplay' >
-          <AddBSTNodeForm />
-          <DeleteBSTNodeForm />
-          <SaveDSForm content={this.props.array} userId={this.props.user.id} />
-
-        </div>
-        <div className="container">
-          <CSSTransitionGroup
-            transitionName="fade"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={500} >
-            {
-            this.state.groups.map((ele, index) => {
-              return (
-                <div className={'bstlevel' + index} key={index}>
-                  {
-                    ele.map((node, idx) => {
-                      return (
-                        <div key={idx}>
-                          {node}
-                        </div>)
-                    })
-                  }
-                </div>)
-            })
+        <div>
+          {//only render forms to edit DS if it is not a previously-saved one
+            this.props.location.query ?
+              <div>
+                <h2> Binary Search <br /> Tree </h2>
+                <h2>Name: {this.props.location.query.name}</h2>
+              </div>
+              :
+              <div className='main-container-controls' >
+                <h2> Binary Search <br /> Tree </h2>
+                <AddBSTNodeForm />
+                <DeleteBSTNodeForm />
+                <UploadCSV DSType={'binarysearchtree'} />
+                {this.props.user.id ?
+                  <div className="save-form">
+                    Save Your Binary  <br /> Search Tree:
+                <SaveDSForm content={this.props.array} userId={this.props.user.id} />
+                  </div>
+                  : null}
+                <RandomBSTForm />
+              </div>
           }
-          </CSSTransitionGroup>
-
+          <div className="container">
+            {
+              this.state.groups.map((ele, index) => {
+                return (
+                  <div className={'bstlevel' + index} key={index}>
+                    {
+                      ele.map((node, idx) => {
+                        return (<div key={idx}>{node}</div>)
+                      })
+                    }
+                  </div>)
+              })
+            }
+          </div>
+          <BSTInsertionTime />
+        </div>
       </div >
-
-        </div >
-      )
+    )
   }
 }
 
@@ -123,5 +119,12 @@ const mapState = (state) => {
 
 }
 
+const mapDispatch = (dispatch) => {
+  return {
+    cleanStateValues() {
+      dispatch(cleanBSTState())
+    }
+  }
+}
 
-export default connect(mapState, null)(BinarySearchTree);
+export default connect(mapState, mapDispatch)(BinarySearchTree);

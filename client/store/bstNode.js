@@ -1,6 +1,6 @@
 'use strict';
 import history from '../history'
-import { arrayifyBst, removeEmptyChildren } from '../utils'
+import { arrayifyBst, removeEmptyChildren, getRandomNumbersArr } from '../utils'
 import { breadthFirstForEach, drawBSTNode2 } from '../components'
 
 const GET_BSTNODE = 'GET_BSTNODE'
@@ -8,18 +8,20 @@ const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
-const HIGHLIGHT_BST_NODE_AT_INDEX = 'HIGHLIGHT_BST_NODE_AT_INDEX'
-const TOGGLE_BST_COLOR = 'TOGGLE_BST_COLOR'
+const GET_ARRAY = 'GET_ARRAY'
+const CLEAN_BST_STATE = 'CLEAN_BST_STATE'
+const GET_RANDOM_BST = 'GET_RANDOM_BST'
 
 export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
-export const traverseTree = BSTtype => ({
-    type: TRAVERSE_TREE, BSTtype
-})
-// export const highlightBSTNodeAtIndex = index => ({ type: HIGHLIGHT_BST_NODE_AT_INDEX, index })
+
 export const toggleBSTColor = flip => ({ type: TOGGLE_BST_COLOR, flip })
+export const traverseTree = BSTtype => ({ type: TRAVERSE_TREE, BSTtype })
+export const getArray = array => ({ type: GET_ARRAY, array })
+export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
+export const getRandomBst = () => ({ type: GET_RANDOM_BST })
 
 class BinarySearchTree {
     constructor(value) {
@@ -27,9 +29,11 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
-        // this.toggledBSTStatus = false;
+        this.colored = false;
+        this.bstCount = 0;
     }
     insert(node) {
+        this.bstCount++;
         if (typeof node !== 'object') {
             node = new BinarySearchTree(node);
         }
@@ -52,6 +56,7 @@ class BinarySearchTree {
 
 
     remove(value) {
+        this.bstCount--;
         const deleteRef = this.contains(value);
         if (!deleteRef) return false;
         deleteRef.die();
@@ -113,6 +118,7 @@ class BinarySearchTree {
     }
 
 
+
 }
 
 
@@ -133,12 +139,13 @@ bstDemo.insert(22);
 // bstDemo.insert(11);
 // bstDemo.insert(13);
 // bstDemo.insert(15);
-// const step = 0;
-// const JSXArr = {};
 const toggledBSTStatus = false;
 
-export default function (state = { initialTree, bstDemo, toggledBSTStatus }, action) {
+const step = 0;
+const JSXArr = {};
+const randomBST = new BinarySearchTree();
 
+export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBSTStatus }, action) {
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
@@ -146,31 +153,38 @@ export default function (state = { initialTree, bstDemo, toggledBSTStatus }, act
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
+
+        // case GET_ARRAY:
+        //     return Object.assign({}, action.JSXArr )
+
         case ARRAYIFY_CLASS_BST:
             let arrayBST = arrayifyBst(state)
-            console.log('state in ARRAYIFY_CLASS_BST', state);
-
-            console.log('arrayBST in ARRAYIFY_CLASS_BST', arrayBST);
             let arrayBST2 = removeEmptyChildren(arrayBST);
-            console.log('arrayBST2 in ARRAYIFY_CLASS_BST', arrayBST2);
             return Object.assign({}, state, { array: arrayBST2 });
 
         case TRAVERSE_TREE:
-            // console.log('state', state);
-            // const newJSX = JSXArr.slice(0);
-            // console.log('newJSX', newJSX);
-            // const utilFn = findJSXVal(newJSX);
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             // return newJSX;
             return Object.assign({}, bstDemo);
-        case HIGHLIGHT_BST_NODE_AT_INDEX:
-            //console.log('here', action.index)
-            return Object.assign({}, state, { highlightIdx: action.index })
-          case TOGGLE_BST_COLOR:
-            console.log('flip reducer', action.flip)
-            console.log('this.state reducer', toggledBSTStatus, state)
+        // case HIGHLIGHT_BST_NODE_AT_INDEX:
+        //     //console.log('here', action.index)
+        //     return Object.assign({}, state, { highlightIdx: action.index })
+        //   case TOGGLE_BST_COLOR:
+        //     console.log('flip reducer', action.flip)
+        //     console.log('this.state reducer', toggledBSTStatus, state)
 
-            return Object.assign({}, state, { toggledBSTStatus: action.flip } )
+        //     return Object.assign({}, state, { toggledBSTStatus: action.flip } )
+
+        case CLEAN_BST_STATE:
+            return Object.assign({}, {});
+
+        case GET_RANDOM_BST:
+            let arr = getRandomNumbersArr();
+
+            for (let i = 0; i < arr.length; i++){
+                randomBST.insert(arr[i]);
+            }
+            return Object.assign({}, randomBST);
 
         default:
             return state

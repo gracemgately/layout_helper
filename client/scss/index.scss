@@ -1,5 +1,6 @@
 @import 'bst';
-
+@import '../mainComponent';
+@import '../userDS';
 
 body {
   font-family: 'Roboto', sans-serif;
@@ -16,6 +17,11 @@ body {
     display: block;
   }
 
+  hr{
+    padding: 0px;
+    margin: 0px;
+  }
+
   h1 {
     color: #026670;
     text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
@@ -24,7 +30,7 @@ body {
   }
 
  h2 {
-    color: #C3C3C3;
+    color: #026670;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
   }
 
@@ -141,8 +147,14 @@ body {
 }
 #form-group {
   color: #026670;
+  &-left {
+    padding-left: 15px;
+  }
 }
 
+#bst-form-group {
+  color: #026670;
+}
 svg {
   height: 50px;
   width: 50px;
@@ -154,6 +166,22 @@ svg {
   stroke: yellow;
   fill: url(#MyGradient0);
   stroke-width: "20";
+
+}
+
+.yellow {
+
+  border: 5px;
+  stroke: #026670;
+  fill: yellow;
+
+}
+
+.none {
+
+  border: 5px;
+  stroke: #026670;
+  fill: none;
 
 }
 
@@ -176,12 +204,22 @@ svg {
   display: flex;
   width: 150px;
   height: 150px;
+  &-linkedlist {
+      padding-top: 10vw;
+  }
 }
 
 .arrowsize {
   font-size: 2em;
   padding: 0;
   margin: 0;
+}
+
+.arrowsizeSE {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+  transform: scaleX(-1);
 }
 
 .arrow-empty {
@@ -194,6 +232,7 @@ svg {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding-top: 5vw;
 }
 
 .bstlevel1 {
@@ -228,6 +267,7 @@ svg {
 
 .formDisplay {
   display: flex;
+  float: left
 }
 
 
@@ -287,6 +327,18 @@ svg {
   transition: opacity 500ms ease-in;
 }
 
+.runtime {
+  color: #026670;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.runtimeInline {
+  color: #026670;
+  text-shadow: 0px 0px 6px rgba(300,300,20,2);
+  font-size: 20px;
+}
+
 .yellow {
   border: 5px;
   stroke: orange;
@@ -317,7 +369,7 @@ svg {
 }
 
 #down-arrow {
-  margin-left: 15px
+  margin-left: 15px;
 }
 
 .saved-ds {

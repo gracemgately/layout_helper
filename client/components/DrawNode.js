@@ -8,7 +8,6 @@ import { removeEmptyChildren, gradient, drawBasicNode } from '../utils'
 import * as d3 from 'd3'
 
 export const drawNode = (node, toggled, index, highlightIndex) => {
-  console.log('toggled', toggled, index, highlightIndex);
   return (
     <div className="basicnode">
       {drawBasicNode(node, toggled, index, highlightIndex)}
@@ -54,7 +53,6 @@ export const drawBSTNode2 = (node) => {
         <circle className={ node.value === 1  ? 'bstNode2' : node.value === 2 ? 'bstNode3' : node.value === 3 ? 'bstNode4': node.value === 4 ? 'bstNode5' : node.value === 5 ? 'bstNode6': node.value === 6 ? 'bstNode7': node.value === 7 ? 'bstNode8' : 'bstNode'} cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="black " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
-
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   )

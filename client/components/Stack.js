@@ -10,6 +10,7 @@ import { drawStackNode } from '../components'
 import SaveLLForm from './Forms/SaveLLForm';
 
 import { nodeArray_ } from '../utils';
+import InsertionTime from './InsertionTime';
 import { cleanState } from '../store'
 
 
@@ -32,16 +33,24 @@ class Stack extends Component {
         const nodeArr = (this.props.location.query) ? (this.props.location.query.content) : (nodeArray_(nodes));
 
         return (
-            <div>
-                <h2> Stack </h2>
+            <div className='main-container-display'>
                 {//only render forms to edit DS if it is not a previously-saved one
                     this.props.location.query ?
-                        <h2>Name: {this.props.location.query.name}</h2>
+                        <div>
+                            <h2> Stack </h2>
+                            <h2>Name: {this.props.location.query.name}</h2>
+                        </div>
                         :
-                        <div className='formDisplay'>
+                        <div className='main-container-controls'>
+                            <h2> Stack </h2>
                             <StackForm nodeArr={nodeArr} />
                             <UploadCSV DSType={'stack'} />
-                            {user.id ? <SaveLLForm type={'stacks'} content={nodeArr} user={user} /> : null}
+                            {user.id ?
+                                <div className="save-form">
+                                     Save Your Stack:
+                                <SaveLLForm type={'stacks'} content={nodeArr} user={user} />
+                                </div>:
+                                null}
                         </div>
                 }
                 <div className="container">
@@ -65,8 +74,11 @@ class Stack extends Component {
                             }
                     </div>
                     </div>
-                </div>
-                )
+
+             <InsertionTime />
+        </div>
+
+        )
     }
 }
 

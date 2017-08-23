@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { breadthFirstForEach } from '../DrawNode'
-import { removeSingleBSTNode, writeNode, cleanBST } from '../../store'
+import { removeSingleBSTNode, writeNode, arrayifyClassBST } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {
 
@@ -9,6 +8,7 @@ const DeleteBSTNodeForm = (props) => {
 
   return (
     <div>
+    Delete a Node:
       <form id="form-group" onSubmit={(evt) => props.handleSubmit(evt, bstNode)}>
         <div>
           <input
@@ -18,13 +18,8 @@ const DeleteBSTNodeForm = (props) => {
             onChange={props.handleChange}
             value={props.newNode}
           />
-        </div>
         <br />
-        <div className="input-group-btn">
-          <button
-            className="btn btn-default"
-            type="submit">Delete Me!
-      </button>
+          <button className="btn btn-default" type="submit">Delete Me!</button>
         </div>
       </form>
     </div>
@@ -48,7 +43,7 @@ const mapDispatch = (dispatch) => {
       var nodeValue = Number(evt.target.node.value);
       dispatch(removeSingleBSTNode(nodeValue))
       dispatch(writeNode(''));
-      dispatch(cleanBST(bst))
+      dispatch(arrayifyClassBST(bst))
 
     }
   }

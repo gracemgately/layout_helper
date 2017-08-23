@@ -15,6 +15,7 @@ export {default as Home} from './Home'
 export {default as BSTType} from './BSTType'
 export {default as UploadCSV} from './Forms/UploadCSV'
 export {default as DeleteSingleUserDS} from './Forms/DeleteSingleUserDS'
+export {default as InsertionTime} from './InsertionTime'
 
 
 export * from './arrow'
@@ -27,4 +28,6 @@ export * from './Stack'
 export * from './Forms/StackForm'
 export * from './Forms/QueueForm'
 export * from './Forms/SaveDSForm'
+export * from './InsertionTime'
+export * from './Forms/RandomBSTForm'
 
