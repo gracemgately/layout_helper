@@ -64,7 +64,9 @@ class Linkedlist extends Component {
 
           }
         </div>
-        <InsertionTime />
+        {this.props.location.query ? null: 
+          <InsertionTime />
+        } 
       </div>
     )
   }

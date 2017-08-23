@@ -101,9 +101,11 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
+        {this.props.location.query ? null: 
           <BSTInsertionTime />
+        } 
         </div>
-      </div >
+        </div>
     )
   }
 }

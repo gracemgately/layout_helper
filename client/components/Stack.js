@@ -75,7 +75,9 @@ class Stack extends Component {
                     </div>
                     </div>
 
-             <InsertionTime />
+                    {this.props.location.query ? null: 
+                        <InsertionTime />
+                    } 
         </div>
 
         )
