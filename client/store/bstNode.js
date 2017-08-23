@@ -8,6 +8,7 @@ const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
 const REMOVE_SINGLE_BST_NODE = 'REMOVE_SINGLE_BST_NODE'
 const ARRAYIFY_CLASS_BST = 'ARRAYIFY_CLASS_BST'
 const TRAVERSE_TREE = 'TRAVERSE_TREE'
+const GET_ARRAY = 'GET_ARRAY'
 const CLEAN_BST_STATE = 'CLEAN_BST_STATE'
 const GET_RANDOM_BST = 'GET_RANDOM_BST'
 
@@ -15,9 +16,8 @@ export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
-export const traverseTree = BSTtype => ({
-    type: TRAVERSE_TREE, BSTtype
-})
+export const traverseTree = BSTtype => ({ type: TRAVERSE_TREE, BSTtype })
+export const getArray = array => ({ type: GET_ARRAY, array })
 export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
 export const getRandomBst = () => ({ type: GET_RANDOM_BST })
 
@@ -27,8 +27,11 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
+        this.colored = false;
+        this.bstCount = 0;
     }
     insert(node) {
+        this.bstCount++;
         if (typeof node !== 'object') {
             node = new BinarySearchTree(node);
         }
@@ -51,6 +54,7 @@ class BinarySearchTree {
 
 
     remove(value) {
+        this.bstCount--;
         const deleteRef = this.contains(value);
         if (!deleteRef) return false;
         deleteRef.die();
@@ -79,20 +83,24 @@ class BinarySearchTree {
         } else if (this[direction]) { this.parent.insert(this[direction]) }
     }
 
-    depthFirstForEach(type) {
+    depthFirstForEach(type, step, JSXArr, iterator) {
         const fill = 'yellow';
 
         if (type === 'Depth First: In-order') {
-            if (this.left) this.left.depthFirstForEach(type);
-
-            drawBSTNode2(this, fill);
-            console.log('this node', this);
+            let counter = 0;
+            if (this.left) this.left.depthFirstForEach(type, step, JSXArr, iterator);
+            iterator(this.value, step, counter);
+            counter++;
+            // drawBSTNode2(this, fill);
+            // console.log('this node', this);
             //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
 
 
             if (this.right) this.right.depthFirstForEach(type);
         }
         if (type === 'Depth First: Pre-order') {
+            this.colored = true;
+
             drawBSTNode2(this, fill)
 
             if (this.left) { this.left.depthFirstForEach(type); }
@@ -106,6 +114,7 @@ class BinarySearchTree {
             drawBSTNode2(this, fill)
         }
     }
+
 
 
 }
@@ -128,13 +137,13 @@ bstDemo.insert(14);
 // bstDemo.insert(11);
 // bstDemo.insert(13);
 // bstDemo.insert(15);
+const step = 0;
+const JSXArr = {};
 
 
 const randomBST = new BinarySearchTree();
 
-
-export default function (state = { initialTree, bstDemo }, action) {
-
+export default function (state = { initialTree, bstDemo, step, JSXArr }, action) {
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
@@ -142,34 +151,29 @@ export default function (state = { initialTree, bstDemo }, action) {
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
+            
+        // case GET_ARRAY:
+        //     return Object.assign({}, action.JSXArr )
 
         case ARRAYIFY_CLASS_BST:
             let arrayBST = arrayifyBst(state)
-            console.log('state in ARRAYIFY_CLASS_BST', state);
-
-            console.log('arrayBST in ARRAYIFY_CLASS_BST', arrayBST);
             let arrayBST2 = removeEmptyChildren(arrayBST);
-            console.log('arrayBST2 in ARRAYIFY_CLASS_BST', arrayBST2);
             return Object.assign({}, state, { array: arrayBST2 });
 
         case TRAVERSE_TREE:
-            console.log('here in traverse tree', action.BSTtype.BSTtype);
-            console.log('bstDemo', bstDemo)
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
+            // return newJSX;
             return Object.assign({}, bstDemo);
 
         case CLEAN_BST_STATE:
-            console.log('clean bst state');
             return Object.assign({}, {});
 
         case GET_RANDOM_BST:
-            console.log('get random bst');
             let arr = getRandomNumbersArr();
 
             for (let i = 0; i < arr.length; i++){
                 randomBST.insert(arr[i]);
             }
-            console.log('randomBST ', randomBST);
             return Object.assign({}, randomBST);
 
         default:

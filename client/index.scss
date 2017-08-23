@@ -150,6 +150,9 @@ body {
   }
 }
 
+#bst-form-group {
+  color: #026670;
+}
 svg {
   height: 50px;
   width: 50px;
@@ -160,6 +163,24 @@ svg {
   border: 5px;
   stroke: #026670;
   // fill: #FEF9C7;
+  // stroke-width: "20";
+
+}
+
+.yellow {
+
+  border: 5px;
+  stroke: #026670;
+  fill: yellow;
+  // stroke-width: "20";
+
+}
+
+.none {
+
+  border: 5px;
+  stroke: #026670;
+  fill: none;
   // stroke-width: "20";
 
 }
@@ -192,6 +213,13 @@ svg {
   font-size: 2em;
   padding: 0;
   margin: 0;
+}
+
+.arrowsizeSE {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+  transform: scaleX(-1);
 }
 
 .arrow-empty {
@@ -299,6 +327,17 @@ svg {
   transition: opacity 500ms ease-in;
 }
 
+.runtime {
+  color: #026670;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.runtimeInline {
+  color: #026670;
+  text-shadow: 0px 0px 6px rgba(300,300,20,2);
+  font-size: 20px;
+}
 .queue-container {
   display:flex;
   flex-direction: column;

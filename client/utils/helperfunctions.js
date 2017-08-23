@@ -189,6 +189,46 @@ export const nodeArray_ = (nodes) => {
 }
 
 //
+//Linkedlist.js
+export const moveCount = (nodeArr) => {
+  var moves = 0;
+  var bigO = "O(n)";
+  if (nodeArr.length === 1) {
+    moves = 1; //o(1) runtime
+    bigO = "O(1)";
+  } else {
+    moves = nodeArr.length; //o(n) runtime
+    bigO = "O(n)";
+  }
+  return [moves, bigO];
+}
+
+//
+//BSTInsertionTime.js
+// export const breadthFirstForEach = (iterator, queue) => {
+//   queue = queue || [this];
+//   if (!queue.length) return;
+//   var tree = queue.shift();
+//   iterator(tree.value);
+//   if (tree.left) queue.push(tree.left);
+//   if (tree.right) queue.push(tree.right);
+//   BinarySearchTree.prototype.breadthFirstForEach(iterator, queue);
+// };
+
+
+export const BSTMoveCount = (bstArr) => {
+  var moves = 0;
+  var bigO = "O(n)";
+  if (bstArr.length === 1) {
+    moves = 1; //o(1) runtime
+    bigO = "O(1)";
+  } else {
+    moves = bstArr.length; //o(n) runtime
+    bigO = "O(n)";
+  }
+  return [moves, bigO];
+}
+
 
 
 export const getRandomNumbersArr = () => {

@@ -10,6 +10,7 @@ import { drawStackNode } from '../components'
 import SaveLLForm from './Forms/SaveLLForm';
 
 import { nodeArray_ } from '../utils';
+import InsertionTime from './InsertionTime';
 import { cleanState } from '../store'
 
 
@@ -71,7 +72,10 @@ class Stack extends Component {
                         }
                     </div>
                 </div>
-            </div>
+        
+             <InsertionTime />
+        </div>
+    
         )
     }
 }

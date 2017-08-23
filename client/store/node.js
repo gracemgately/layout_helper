@@ -38,12 +38,14 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.nodeCount = 0;
   }
 
   addToHead(v) {
 
     const newNode = new Node(v);
     const formerHead = this.head;
+    this.nodeCount++;
 
     this.head = newNode;
 
@@ -59,6 +61,7 @@ class LinkedList {
   addToTail(item) {
     const newNode = new Node(item);
     const oldTail = this.tail;
+    this.nodeCount++;
 
     this.tail = newNode;
 
@@ -79,6 +82,7 @@ class LinkedList {
 
     let newNode = new Node(value);
     let currentNode = search(index);
+    this.nodeCount++;
 
     let prev = currentNode.previous;
     prev.next = newNode;
@@ -90,6 +94,7 @@ class LinkedList {
 
   removeHead() {
     const oldHead = this.head;
+    this.nodeCount--;
 
     if (!oldHead) return;
 
@@ -106,6 +111,7 @@ class LinkedList {
 
   removeTail() {
     const oldTail = this.tail;
+    this.nodeCount--;
 
     if (!oldTail) return;
 
@@ -121,6 +127,7 @@ class LinkedList {
   }
 
   removeAtIndex(index) {
+    this.nodeCount--;
     let deletedNode = search(index);
     console.log('deleted node', deletedNode)
     let prevNode = deletedNode.previous;
@@ -143,7 +150,7 @@ const search = (index) => {
 
   // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
   // keep looking at next node until next node === idx
-
+  // let nodeCount = this.nodeCount;
   let currentNode = Object.assign({}, list.head);
   let counter = 0;
   // loop while there is next node and counter is <= idx -1

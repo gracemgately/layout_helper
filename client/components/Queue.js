@@ -6,6 +6,7 @@ import SaveLLForm from './Forms/SaveLLForm'
 import UploadCSV from './Forms/UploadCSV'
 
 import { nodeArray_ } from '../utils'
+import InsertionTime from './InsertionTime';
 import { cleanState } from '../store'
 
 
@@ -68,6 +69,7 @@ class Queue extends Component {
           }
         </div>
         </div>
+        <InsertionTime />
       </div>
     )
   }
