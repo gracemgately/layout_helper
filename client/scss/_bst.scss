@@ -1,60 +1,55 @@
 
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
 .bstNode {
   border: 5px;
   stroke: green;
   display: flex;
   color: #016670;
-  fill: url(#MyGradient2);
+  fill: url(#MyGradient);
 }
 
-.bstNode2 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #F8D9DF;
+.bstNode2{
+  @extend .bstNode;
+  stroke: #E36A80;
+  //fill: linear-gradient(#F8D9DF, white)
+  fill: url(#MyGradient2)
 }
+
 .bstNode3 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: pink
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient3);
 }
+
 .bstNode4 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #F495A6
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient4);
 }
 .bstNode5 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #F3788E
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient5);
 }
 
 .bstNode6 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #ED4564
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient6)
 }
 
 .bstNode7 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #B11531
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient7)
 }
 .bstNode8 {
-  border: 5px;
-  stroke: pink;
-  display: flex;
-  color: #006570;
-  fill: #87192D
+  @extend .bstNode;
+  stroke: #E36A80;
+  fill: url(#MyGradient8)
 }
