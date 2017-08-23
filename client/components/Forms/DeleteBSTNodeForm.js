@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { breadthFirstForEach } from '../DrawNode'
-import { removeSingleBSTNode, writeNode, cleanBST } from '../../store'
+import { removeSingleBSTNode, writeNode, arrayifyClassBST } from '../../store'
 
 const DeleteBSTNodeForm = (props) => {
 
@@ -44,7 +43,7 @@ const mapDispatch = (dispatch) => {
       var nodeValue = Number(evt.target.node.value);
       dispatch(removeSingleBSTNode(nodeValue))
       dispatch(writeNode(''));
-      dispatch(cleanBST(bst))
+      dispatch(arrayifyClassBST(bst))
 
     }
   }
