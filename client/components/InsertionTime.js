@@ -1,8 +1,11 @@
+//LIBRARIES
 import React from 'react'
 import { connect } from 'react-redux'
-import { node } from '../store'
 import history from '../history'
+
+//UTILS & STORE
 import { nodeArray_, moveCount } from '../utils'
+import { node } from '../store'
 
 const InsertionTime = (props) => {
     const { nodes, nodeCount }  = props;

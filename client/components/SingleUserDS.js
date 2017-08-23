@@ -1,10 +1,14 @@
+//COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { withRouter, Link } from 'react-router-dom'
-import store, { getAllUserDS } from '../store'
-import { FetchUserDS } from '../store'
 import DeleteSingleUserDS from './Forms/DeleteSingleUserDS'
 
+//LIBRARIES
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
+
+//UTILS & STORE
+import store, { getAllUserDS } from '../store'
+import { FetchUserDS } from '../store'
 import { _Time } from '../utils'
 
 /**

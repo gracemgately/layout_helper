@@ -1,13 +1,14 @@
 //COMPONENTS
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
+
+//LIBRARIES
+import { connect } from 'react-redux'
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /**
  * COMPONENT
  */
-
 
 class BSTType extends Component {
   constructor(props) {
