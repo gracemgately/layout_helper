@@ -215,10 +215,19 @@ svg {
 }
 
 
-.basicnode {
+.demonode {
   display: flex;
   width: 150px;
   height: 150px;
+  &-linkedlist {
+      padding-top: 10vw;
+  }
+}
+
+.basicnode {
+  display: flex;
+  width: 100px;
+  height: 100px;
   &-linkedlist {
       padding-top: 10vw;
   }

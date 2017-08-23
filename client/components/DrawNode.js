@@ -50,7 +50,7 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
 
 export const drawBSTNode2 = (node) => {
   return (
-    <div className="basicnode">
+    <div className="demonode">
       {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
         {gradient()}
