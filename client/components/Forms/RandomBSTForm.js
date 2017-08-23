@@ -23,7 +23,6 @@ const mapState = (state) => {
 const mapDispatch = (dispatch) => {
   return {
     handleSubmit(evt, bst) {
-      console.log('fired ', bst);
       evt.preventDefault();
       dispatch(getRandomBst())
       dispatch(arrayifyClassBST(bst))

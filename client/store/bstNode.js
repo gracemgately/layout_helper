@@ -93,9 +93,9 @@ class BinarySearchTree {
             if (this.left) this.left.depthFirstForEach(type);
             drawBSTNode2(this, fill);
 
-            // drawBSTNode2(this, fill);
-            // console.log('this node', this);
-            //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
+            //idea is that once the node is processed, the drawBSTNode 
+            //function will be triggered with a fill setting andthe node will 
+            //be redrawn with yellow fill, much like in the peek functions of stack and queue....
 
 
             if (this.right) this.right.depthFirstForEach(type);
@@ -131,14 +131,7 @@ bstDemo.insert(14)
 bstDemo.insert(20);
 bstDemo.insert(18);
 bstDemo.insert(22);
-// bstDemo.insert(1);
-// bstDemo.insert(3);
-// bstDemo.insert(5);
-// bstDemo.insert(7);
-// bstDemo.insert(9);
-// bstDemo.insert(11);
-// bstDemo.insert(13);
-// bstDemo.insert(15);
+
 const toggledBSTStatus = false;
 
 const step = 0;
@@ -154,9 +147,6 @@ export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBS
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
 
-        // case GET_ARRAY:
-        //     return Object.assign({}, action.JSXArr )
-
         case ARRAYIFY_CLASS_BST:
             let arrayBST = arrayifyBst(state)
             let arrayBST2 = removeEmptyChildren(arrayBST);
@@ -166,14 +156,6 @@ export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBS
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             // return newJSX;
             return Object.assign({}, bstDemo);
-        // case HIGHLIGHT_BST_NODE_AT_INDEX:
-        //     //console.log('here', action.index)
-        //     return Object.assign({}, state, { highlightIdx: action.index })
-        //   case TOGGLE_BST_COLOR:
-        //     console.log('flip reducer', action.flip)
-        //     console.log('this.state reducer', toggledBSTStatus, state)
-
-        //     return Object.assign({}, state, { toggledBSTStatus: action.flip } )
 
         case CLEAN_BST_STATE:
             return Object.assign({}, {});

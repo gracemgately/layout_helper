@@ -15,9 +15,6 @@ const animate = () => {
       circle.style("fill", "steelblue");
       circle.attr("r", 30);
 
-
-      console.log('circle ', circle);
-
    // ----------------------
 
 

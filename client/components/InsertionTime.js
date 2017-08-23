@@ -10,9 +10,6 @@ const InsertionTime = (props) => {
     const nodeArrLength = (nodeArray_(nodes)).length;
     const moves = moveCount(nodeArr)[0];
     const bigO = moveCount(nodeArr)[1];
-    // const isPeek = 
-    console.log("PROPS STACK", props);
-    console.log("NODECOUNT", nodeCount);
 
     return (
     <div>

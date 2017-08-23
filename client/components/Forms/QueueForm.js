@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { writeNode, addNodeToTail, deleteNodeFromHead, toggleColor, highlightNodeAtIndex } from '../../store'
 
 const QueueForm = (props) => {
-
-  console.log('toggled prop', props.toggled)
   return (
     <div>
       <form id="form-group"  >
@@ -52,7 +50,6 @@ const mapDispatch = (dispatch) => {
       dispatch(deleteNodeFromHead())
     },
     handlePeek(evt, flip){
-      console.log('flip', flip)
       evt.preventDefault();
       dispatch(toggleColor(flip));
       dispatch(highlightNodeAtIndex(0))

@@ -26,7 +26,6 @@ class BSTType extends Component {
 
   handleSubmit(evt, type, node, flip) {
     evt.preventDefault();
-    console.log('type', type);
     if (type === "Depth First: Pre-order") {
       node.value = 1;
       node.left.value = 2;

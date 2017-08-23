@@ -18,7 +18,6 @@ class SaveDSForm extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    // this.SaveDS = this.SaveDS.bind(this);
   }
 
   handleChange(evt) {
@@ -43,22 +42,6 @@ class SaveDSForm extends Component {
       })
       .catch(err => console.log(err))
   }
-
-  // SaveDS() {
-
-  // //  // convert bst to heap array
-  // //   let content = arrayifyBst(obj);
-  // //   content = removeEmptyChildren(content);
-  //   // console.log('this.state.content ', this.state.content)
-
-  //   axios.post('/api/binarysearchtrees', {
-  //     name: this.state.name,
-  //     content: this.state.content
-  //   })
-  //     .then(res => console.log(res))
-  //     .catch(err => console.log(err))
-
-  // }
 
   render() {
 

@@ -53,8 +53,6 @@ class UploadCSV extends Component {
     }
 
     render(){
-        // console.log('state', this.state);
-        // console.log('props', this.props);
         return(
             <div>
             {/*tell the user their file has been uploaded and display the submit button only

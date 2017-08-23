@@ -78,10 +78,6 @@ export const arrayifyBst = (BST) => {
     });
     counter++;
   }
-  console.log('arrayfybst ', collection);
-
-  console.log('time it takes arrayify to run', new Date() - startTime);
-
   return collection;
 }
 
@@ -115,8 +111,6 @@ export const removeEmptyChildren = (collection) => {
       }
       else break;
     }
-
-    console.log('time it takes removeEmptyChildren to run', new Date() - startTime);
 
     return filteredCollection;
 
@@ -240,6 +234,5 @@ export const getRandomNumbersArr = () => {
     if (arr.indexOf(randomNum) !== -1) randomNum = 21 + i;
     arr.push(randomNum);
   }
-  console.log('arr ', arr);
   return arr;
 }
