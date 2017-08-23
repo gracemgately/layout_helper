@@ -162,8 +162,8 @@ svg {
 
   border: 5px;
   stroke: #026670;
-  // fill: #FEF9C7;
-  // stroke-width: "20";
+  fill: #FEF9C7;
+  stroke-width: "20";
 
 }
 
@@ -338,6 +338,22 @@ svg {
   text-shadow: 0px 0px 6px rgba(300,300,20,2);
   font-size: 20px;
 }
+
+.yellow {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: yellow;
+}
+
+.none {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: lightcyan;
+}
 .queue-container {
   display:flex;
   flex-direction: column;
@@ -349,7 +365,7 @@ svg {
 }
 
 #down-arrow {
-  margin-left: 15px
+  margin-left: 15px;
 }
 
 .saved-ds {

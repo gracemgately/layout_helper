@@ -22,9 +22,7 @@ class Queue extends Component {
     }
 
   render() {
-
-    const { user, nodes, highlightIndex } = this.props;
-    
+    const { user, nodes, highlightIndex, toggled } = this.props;
     const nodeArr = (this.props.location.query) ? (this.props.location.query.content) : (nodeArray_(nodes));
 
     return (
@@ -55,10 +53,9 @@ class Queue extends Component {
           }
           {
             (nodeArr.map((node, index) => {
-              var highlight = (index === highlightIndex) ? "yellow" : "none"
               return (
                 <div className="basicnode" key={index}>
-                  {drawQueueNode(node, highlight)}
+                  {drawQueueNode(node, toggled,  index, highlightIndex)}
                 </div>
               )
             }))
@@ -85,6 +82,7 @@ const mapState = (state) => {
     user: state.user,
     nodes: state.node,
     highlightIndex: state.node.highlightIdx,
+    toggled: state.node.toggledStatus
   }
 }
 

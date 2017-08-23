@@ -6,11 +6,14 @@ import { logout } from '../store'
 import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 import {removeEmptyChildren} from '../utils'
 
-export const drawNode = (node, fill = "none") => {
+
+
+
+export const drawNode = (node, toggled, index, highlightIndex) => {
   return (
-    <div className="basicnode">
+    <div className={toggled === "true" ? "yellow" : "none" }>
     <svg>
-      <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+      <circle  className={toggled === true && index === highlightIndex ? "yellow" : "none" } key={index} cx="25" cy="25" r="25"> </circle>
 
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
@@ -19,12 +22,12 @@ export const drawNode = (node, fill = "none") => {
   );
 }
 
-export const drawQueueNode = (node, fill = "none") => {
+export const drawQueueNode = (node, toggled, index, highlightIndex) => {
   return (
     <div className="queue-container">
       <div className="basicnode">
         <svg>
-          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+          <circle className={toggled === true && index === highlightIndex ? "yellow" : "none" }cx="25" cy="25" r="25"> </circle>
 
           <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
         </svg>
@@ -36,7 +39,7 @@ export const drawQueueNode = (node, fill = "none") => {
   );
 }
 
-export const drawStackNode = (node, fill = "none") => {
+export const drawStackNode = (node, toggled, index, highlightIndex) => {
   return (
     <div className="queue-container">
       <div id="down-arrow">
@@ -44,7 +47,7 @@ export const drawStackNode = (node, fill = "none") => {
       </div>
       <div className="basicnode">
         <svg>
-          <circle fill={fill} className="circle1" cx="25" cy="25" r="25"> </circle>
+          <circle  className={toggled === true && index === highlightIndex ? "yellow" : "none"} cx="25" cy="25" r="25"> </circle>
 
           <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
         </svg>
@@ -54,12 +57,13 @@ export const drawStackNode = (node, fill = "none") => {
 }
 
 
-export const drawBSTNode2 = (node, fill = 'none') => {
+export const drawBSTNode2 = (node, fill) => {
+  const color = fill === 'yellow' ? 'yellow' : 'none';
   return (
     <div className="basicnode">
     {(node.left !== null) ? SouthWestArrow(node.value) : null}
       <svg>
-        <circle className={node.colored ? 'yellow' : 'none'} cx="25" cy="25" r="25"> </circle>
+        <circle className={color}  cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
@@ -123,6 +127,7 @@ function treeLevel(node) {
 }
 
 
+
 // takes user bst and calls drawBST() to render the nodes in full tree form
 export const userBST = (cleanbst) => {
 
@@ -153,3 +158,11 @@ export const drawBSTnodes = (cleanbst) => {
 
     return collection;
   }
+
+  const mapState = (state) => {
+    return {
+      toggled: state.node.toggledStatus
+    }
+  }
+
+  export default connect(mapState, null)(drawNode);
