@@ -83,14 +83,14 @@ class BinarySearchTree {
         } else if (this[direction]) { this.parent.insert(this[direction]) }
     }
 
-    depthFirstForEach(type, step, JSXArr, iterator) {
+    depthFirstForEach(type) {
         const fill = 'yellow';
 
         if (type === 'Depth First: In-order') {
-            let counter = 0;
-            if (this.left) this.left.depthFirstForEach(type, step, JSXArr, iterator);
-            iterator(this.value, step, counter);
-            counter++;
+
+            if (this.left) this.left.depthFirstForEach(type);
+            drawBSTNode2(this, fill);
+
             // drawBSTNode2(this, fill);
             // console.log('this node', this);
             //idea is that once the node is processed, the drawBSTNode function will be triggered with a fill setting andthe node will be redrawn with yellow fill, much like in the peek functions of stack and queue....
@@ -139,8 +139,6 @@ bstDemo.insert(14);
 // bstDemo.insert(15);
 const step = 0;
 const JSXArr = {};
-
-
 const randomBST = new BinarySearchTree();
 
 export default function (state = { initialTree, bstDemo, step, JSXArr }, action) {
