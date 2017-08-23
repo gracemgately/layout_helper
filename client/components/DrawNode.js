@@ -5,6 +5,8 @@ import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 import { UpArrow, DownArrow, RightArrow, SouthEastArrow, SouthWestArrow } from '../components'
 import { removeEmptyChildren } from '../utils'
+import * as d3 from 'd3'
+
 
 
 
@@ -89,7 +91,8 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
 
 
 export const drawBSTNode2 = (node, flipped) => {
-  console.log('githere', node, flipped)
+
+  //console.log('githere', node, flipped)
   return (
     <div className="basicnode">
       {(node.left !== null) ? SouthWestArrow(node.value) : null}
@@ -104,7 +107,7 @@ export const drawBSTNode2 = (node, flipped) => {
             <stop offset="95%" stopColor="green" />
           </linearGradient>
         </defs>
-        <circle className={flipped === true && node.value === 8 ? 'bstNode2' : 'bstNode'} cx="25" cy="25" r="25"> </circle>
+        <circle className={ node.value === 1  ? 'bstNode2' : node.value === 2 ? 'bstNode3' : node.value === 3 ? 'bstNode4': node.value === 4 ? 'bstNode5' : node.value === 5 ? 'bstNode6': node.value === 6 ? 'bstNode7': node.value === 7 ? 'bstNode8' : 'bstNode'} cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="black " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
@@ -158,19 +161,16 @@ export const breadthFirstForEach = (node) => {
   return collection;
 }
 
-export const breadthFirstForEachDemo = (node, preOrder, flipped) => {
-  console.log('toggled in breadth first', flipped)
+export const breadthFirstForEachDemo = (node, preOrder) => {
   var queue = preOrder;
   var collection = [];
   var tree;
-
+  var counter = 0;
   while (queue.length) {
     tree = queue.shift();
-    // console.log("tree", tree);
     let level = treeLevel(tree);
-    // console.log("LEVEL", level);
-    if (node.value) collection.push([drawBSTNode2(tree, flipped), level]);
-
+    if (node.value) collection.push([drawBSTNode2(tree, counter), level]);
+    counter++;
     if (tree.left) queue.push(tree.left)
     if (tree.right) queue.push(tree.right)
   }

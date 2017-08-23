@@ -75,6 +75,7 @@ class Queue extends Component {
  */
 
 const mapState = (state) => {
+  console.log('queue toggled', state.node.toggledStatus);
   return {
     user: state.user,
     nodes: state.node,

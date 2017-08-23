@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { breadthFirstForEach, breadthFirstForEachDemo, drawBSTNode2 } from '../components'
-import store, { toggleBSTColor, traverseTree, highlightBSTNodeAtIndex } from '../store'
+import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
 import { CSSTransitionGroup } from 'react-transition-group';
-import { bstType } from '../utils/BSTHelperFunctions'
 
 /**
  * COMPONENT
@@ -26,32 +24,61 @@ class BSTType extends Component {
     this.setState({ selectedBST: evt.target.value })
   }
 
-  handleSubmit(evt, type, node, flip){
+  handleSubmit(evt, type, node, flip) {
     evt.preventDefault();
-    this.setState({toggled: flip})
-    // store.dispatch(toggleBSTColor(flip));
-    const flipped = this.state.toggled;
-    const preOrder = [8, 4, 2, 6, 12, 10, 14]
-    breadthFirstForEachDemo(node, preOrder, flipped)
+    console.log('type', type);
+    if (type === "Depth First: Pre-order") {
+      node.value = 1;
+      node.left.value = 2;
+      node.left.left.value = 3;
+      node.left.right.value = 4;
+      node.right.value = 5;
+      node.right.left.value = 6;
+      node.right.right.value = 7;
+    } else if (type === "Depth First: In-order")
+    {
+      node.left.left.value = 1;
+      node.left.value = 2;
+      node.left.right.value = 3;
+      node.value = 4;
+      node.right.left.value = 5;
+      node.right.value = 6;
+      node.right.right.value = 7;
+    } else if (type === "Depth First: Post-order")
+    {
+      node.left.left.value = 1;
+      node.left.right.value = 2;
+      node.left.value = 3;
+      node.right.left.value = 4;
+      node.right.right.value = 5;
+      node.right.value = 6;
+      node.value = 7;
+    } else {
+      node.value = 1;
+      node.left.value = 2;
+      node.right.value = 3;
+      node.left.left.value = 4;
+      node.left.right.value = 5;
+      node.right.left.value = 6;
+      node.right.right.value = 7;
+    }
+
+    this.setState({ toggled: flip })
+    const preOrder = [16, 12, 8, 14, 20, 18, 22];
+    breadthFirstForEachDemo(node, preOrder)
   }
 
 
   render() {
-    // const toggled = this.props.toggled;
-    // console.log('toggled props', this.props.toggled);
-
     const { BST } = this.props;
-
     let groups = [];
     const bstArr = breadthFirstForEach(BST.bstDemo);
-
     bstArr.map(([node, level]) => {
       if (!groups[level]) groups[level] = [];
       groups[level].push(node);
     })
     const type = this.state.selectedBST;
     return (
-
       <div>
         <h1> Binary Search Tree Demo</h1>
         <div>
@@ -74,7 +101,7 @@ class BSTType extends Component {
         <br /><br />
         <div className="container2">
           {
-           groups.map((ele, index) => {
+            groups.map((ele, index) => {
 
               return (
                 <div className={'bstlevel' + index} key={index}>
@@ -85,7 +112,7 @@ class BSTType extends Component {
                         <div key={idx} >
                           {node}
                         </div>
-                        )
+                      )
                     })
                   }
 
@@ -105,24 +132,9 @@ class BSTType extends Component {
 
 const mapState = (state) => {
   return {
-    BST: state.bstNode,
-    highlightIndex: state.node.highlightIdx,
-    toggled: state.node.toggledBSTStatus
+    BST: state.bstNode
   }
 }
-
-// const mapDispatch = (dispatch) => {
-//   return {
-//     handleSubmit(evt, type, node, flip){
-//       evt.preventDefault();
-//       const preOrder = [8, 4, 2, 6, 12, 10, 14]
-//       dispatch(toggleBSTColor(flip))
-//       breadthFirstForEachDemo(node, preOrder, flip)
-
-//     }
-//   }
-// }
-
 
 export default connect(mapState, null)(BSTType);
 

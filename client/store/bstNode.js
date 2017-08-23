@@ -27,7 +27,7 @@ class BinarySearchTree {
         this.magnitude = 1;
         this.left = null;
         this.right = null;
-        this.toggledBSTStatus = false;
+        // this.toggledBSTStatus = false;
     }
     insert(node) {
         if (typeof node !== 'object') {
@@ -118,13 +118,13 @@ class BinarySearchTree {
 
 const initialTree = new BinarySearchTree();
 const bstDemo = new BinarySearchTree();
-bstDemo.insert(8);
-bstDemo.insert(4);
+bstDemo.insert(16);
 bstDemo.insert(12);
-bstDemo.insert(2);
-bstDemo.insert(6);
-bstDemo.insert(10);
-bstDemo.insert(14);
+bstDemo.insert(8);
+bstDemo.insert(14)
+bstDemo.insert(20);
+bstDemo.insert(18);
+bstDemo.insert(22);
 // bstDemo.insert(1);
 // bstDemo.insert(3);
 // bstDemo.insert(5);
@@ -135,8 +135,9 @@ bstDemo.insert(14);
 // bstDemo.insert(15);
 // const step = 0;
 // const JSXArr = {};
+const toggledBSTStatus = false;
 
-export default function (state = { initialTree, bstDemo }, action) {
+export default function (state = { initialTree, bstDemo, toggledBSTStatus }, action) {
 
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
@@ -166,6 +167,9 @@ export default function (state = { initialTree, bstDemo }, action) {
             //console.log('here', action.index)
             return Object.assign({}, state, { highlightIdx: action.index })
           case TOGGLE_BST_COLOR:
+            console.log('flip reducer', action.flip)
+            console.log('this.state reducer', toggledBSTStatus, state)
+
             return Object.assign({}, state, { toggledBSTStatus: action.flip } )
 
         default:

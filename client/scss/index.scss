@@ -1,7 +1,9 @@
+
 body {
   font-family: 'Roboto', sans-serif;
   background-color: #EDEAE5;
   font: #026670;
+
 
   a {
     text-decoration: none;
@@ -313,9 +315,52 @@ svg {
   stroke: pink;
   display: flex;
   color: #006570;
-  fill: url(#MyGradient);
+  fill: #F8D9DF;
+}
+.bstNode3 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: pink
+}
+.bstNode4 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: #F495A6
+}
+.bstNode5 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: #F3788E
 }
 
+.bstNode6 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: #ED4564
+}
+
+.bstNode7 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: #B11531
+}
+.bstNode8 {
+  border: 5px;
+  stroke: pink;
+  display: flex;
+  color: #006570;
+  fill: #87192D
+}
 #fade-stop-2 {
   stop-color: white;
 }
