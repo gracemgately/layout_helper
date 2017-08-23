@@ -16,6 +16,8 @@ export const getBSTNode = node => ({ type: GET_BSTNODE, node })
 export const addSingleBSTNode = value => ({ type: ADD_SINGLE_BST_NODE, value })
 export const removeSingleBSTNode = node => ({ type: REMOVE_SINGLE_BST_NODE, node })
 export const arrayifyClassBST = bst => ({ type: ARRAYIFY_CLASS_BST, bst })
+
+export const toggleBSTColor = flip => ({ type: TOGGLE_BST_COLOR, flip })
 export const traverseTree = BSTtype => ({ type: TRAVERSE_TREE, BSTtype })
 export const getArray = array => ({ type: GET_ARRAY, array })
 export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
@@ -122,13 +124,13 @@ class BinarySearchTree {
 
 const initialTree = new BinarySearchTree();
 const bstDemo = new BinarySearchTree();
-bstDemo.insert(8);
-bstDemo.insert(4);
+bstDemo.insert(16);
 bstDemo.insert(12);
-bstDemo.insert(2);
-bstDemo.insert(6);
-bstDemo.insert(10);
-bstDemo.insert(14);
+bstDemo.insert(8);
+bstDemo.insert(14)
+bstDemo.insert(20);
+bstDemo.insert(18);
+bstDemo.insert(22);
 // bstDemo.insert(1);
 // bstDemo.insert(3);
 // bstDemo.insert(5);
@@ -137,11 +139,13 @@ bstDemo.insert(14);
 // bstDemo.insert(11);
 // bstDemo.insert(13);
 // bstDemo.insert(15);
+const toggledBSTStatus = false;
+
 const step = 0;
 const JSXArr = {};
 const randomBST = new BinarySearchTree();
 
-export default function (state = { initialTree, bstDemo, step, JSXArr }, action) {
+export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBSTStatus }, action) {
     switch (action.type) {
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
@@ -149,7 +153,7 @@ export default function (state = { initialTree, bstDemo, step, JSXArr }, action)
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
-            
+
         // case GET_ARRAY:
         //     return Object.assign({}, action.JSXArr )
 
@@ -162,6 +166,14 @@ export default function (state = { initialTree, bstDemo, step, JSXArr }, action)
             bstDemo.depthFirstForEach(action.BSTtype.BSTtype);
             // return newJSX;
             return Object.assign({}, bstDemo);
+        // case HIGHLIGHT_BST_NODE_AT_INDEX:
+        //     //console.log('here', action.index)
+        //     return Object.assign({}, state, { highlightIdx: action.index })
+        //   case TOGGLE_BST_COLOR:
+        //     console.log('flip reducer', action.flip)
+        //     console.log('this.state reducer', toggledBSTStatus, state)
+
+        //     return Object.assign({}, state, { toggledBSTStatus: action.flip } )
 
         case CLEAN_BST_STATE:
             return Object.assign({}, {});

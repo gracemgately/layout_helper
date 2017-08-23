@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { breadthFirstForEach } from '../components'
-import { traverseTree, getArray } from '../store'
+import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /**
@@ -14,8 +13,10 @@ class BSTType extends Component {
     super(props);
     this.state = {
       selectedBST: '',
+      toggled: false
     }
     this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
 
   }
 
@@ -23,21 +24,61 @@ class BSTType extends Component {
     this.setState({ selectedBST: evt.target.value })
   }
 
-  render() {
-    console.log('state', this.state);
-    const { BST } = this.props;
-    console.log('props', BST.bstDemo);
+  handleSubmit(evt, type, node, flip) {
+    evt.preventDefault();
+    console.log('type', type);
+    if (type === "Depth First: Pre-order") {
+      node.value = 1;
+      node.left.value = 2;
+      node.left.left.value = 3;
+      node.left.right.value = 4;
+      node.right.value = 5;
+      node.right.left.value = 6;
+      node.right.right.value = 7;
+    } else if (type === "Depth First: In-order")
+    {
+      node.left.left.value = 1;
+      node.left.value = 2;
+      node.left.right.value = 3;
+      node.value = 4;
+      node.right.left.value = 5;
+      node.right.value = 6;
+      node.right.right.value = 7;
+    } else if (type === "Depth First: Post-order")
+    {
+      node.left.left.value = 1;
+      node.left.right.value = 2;
+      node.left.value = 3;
+      node.right.left.value = 4;
+      node.right.right.value = 5;
+      node.right.value = 6;
+      node.value = 7;
+    } else {
+      node.value = 1;
+      node.left.value = 2;
+      node.right.value = 3;
+      node.left.left.value = 4;
+      node.left.right.value = 5;
+      node.right.left.value = 6;
+      node.right.right.value = 7;
+    }
 
+    this.setState({ toggled: flip })
+    const preOrder = [16, 12, 8, 14, 20, 18, 22];
+    breadthFirstForEach(node, preOrder)
+  }
+
+
+  render() {
+    const { BST } = this.props;
     let groups = [];
     const bstArr = breadthFirstForEach(BST.bstDemo);
-
     bstArr.map(([node, level]) => {
       if (!groups[level]) groups[level] = [];
       groups[level].push(node);
     })
     const type = this.state.selectedBST;
     return (
-
       <div>
         <h1> Binary Search Tree Demo</h1>
         <div>
@@ -53,14 +94,14 @@ class BSTType extends Component {
           </select>
         </div>
         <div className="input-group-btn">
-          <button onClick={(evt) => this.props.handleSubmit(evt, type, this.props)}
+          <button onClick={(evt) => this.handleSubmit(evt, type, BST.bstDemo, !this.state.toggled)}
           >Start Demo!
           </button>
         </div>
         <br /><br />
         <div className="container2">
           {
-           groups.map((ele, index) => {
+            groups.map((ele, index) => {
 
               return (
                 <div className={'bstlevel' + index} key={index}>
@@ -68,10 +109,10 @@ class BSTType extends Component {
                     ele.map((node, idx) => {
 
                       return (
-                        <div key={idx} className={ node.colored ? 'yellow' : 'none'}>
+                        <div key={idx} >
                           {node}
                         </div>
-                        )
+                      )
                     })
                   }
 
@@ -91,21 +132,9 @@ class BSTType extends Component {
 
 const mapState = (state) => {
   return {
-    BST: state.bstNode,
+    BST: state.bstNode
   }
 }
 
-const mapDispatch = (dispatch) => {
-  return {
-    handleSubmit(evt, BSTtype){
-      evt.preventDefault();
-      dispatch(traverseTree( { BSTtype } ))
-
-    }
-  }
-
-}
-
-
-export default connect(mapState, mapDispatch)(BSTType);
+export default connect(mapState, null)(BSTType);
 

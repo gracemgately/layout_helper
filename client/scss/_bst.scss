@@ -1,0 +1,54 @@
+
+@mixin linear-gradient($direction, $color-stops...) {
+  background: nth(nth($color-stops, 1), 1);
+  background: -webkit-linear-gradient(legacy-direction($direction), $color-stops);
+  background: linear-gradient($direction, $color-stops);
+}
+
+.bstNode {
+  border: 5px;
+  stroke: green;
+  display: flex;
+  color: #016670;
+  fill: url(#MyGradient);
+}
+
+.bstNode2{
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient2)
+}
+
+.bstNode3 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient3);
+}
+
+.bstNode4 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient4);
+}
+.bstNode5 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient5);
+}
+
+.bstNode6 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient6)
+}
+
+.bstNode7 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient7)
+}
+.bstNode8 {
+  @extend .bstNode;
+  stroke: pink;
+  fill: url(#MyGradient8)
+}

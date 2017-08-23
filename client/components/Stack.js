@@ -45,38 +45,39 @@ class Stack extends Component {
                             <h2> Stack </h2>
                             <StackForm nodeArr={nodeArr} />
                             <UploadCSV DSType={'stack'} />
-                            {user.id ? 
+                            {user.id ?
                                 <div className="save-form">
                                      Save Your Stack:
-                                <SaveLLForm type={'stacks'} content={nodeArr} user={user} /> 
-                                </div>: 
+                                <SaveLLForm type={'stacks'} content={nodeArr} user={user} />
+                                </div>:
                                 null}
                         </div>
                 }
                 <div className="container">
                     <div className="stack-container">
-                        {//display 'Head' if there are values to display
-                            nodeArr.length ? <div>Tail</div> : <div></div>
-                        }
-                        {
-                            (nodeArr.map((node, index) => {
-                                var highlight = (index === highlightIndex) ? "yellow" : "none"
-                                return (
-                                    <div className="basicnode" key={index}>
-                                        {drawStackNode(node, toggled, index, highlightIndex)}
-                                    </div>
-                                )
-                            }))
-                        }
-                        {//display 'Tail' if there are values to display
-                            nodeArr.length ? <div>Head</div> : <div></div>
-                        }
+
+                            {//display 'Head' if there are values to display
+                                nodeArr.length ? <div>Tail</div> : <div></div>
+                            }
+                            {
+                                (nodeArr.map((node, index) => {
+                                    var highlight = (index === highlightIndex) ? "yellow" : "none"
+                                    return (
+                                        <div className="basicnode" key={index}>
+                                            {drawStackNode(node, toggled, index, highlightIndex)}
+                                        </div>
+                                    )
+                                }))
+                            }
+                            {//display 'Tail' if there are values to display
+                                nodeArr.length ? <div>Head</div> : <div></div>
+                            }
                     </div>
-                </div>
-        
+                    </div>
+
              <InsertionTime />
         </div>
-    
+
         )
     }
 }
@@ -88,7 +89,7 @@ class Stack extends Component {
 const mapState = (state) => {
 
     return {
-        user: state.user,
+                    user: state.user,
         nodes: state.node,
         highlightIndex: state.node.highlightIdx,
         toggled: state.node.toggledStatus
@@ -99,8 +100,8 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-        cleanStateValues() {
-            dispatch(cleanState())
+                    cleanStateValues() {
+                dispatch(cleanState())
         }
     }
 }

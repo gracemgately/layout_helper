@@ -1,5 +1,6 @@
-@import './mainComponent';
-@import './userDS';
+@import 'bst';
+@import '../mainComponent';
+@import '../userDS';
 
 body {
   // font-family: 'Roboto Slab';
@@ -9,6 +10,7 @@ body {
   font-family: 'Nixie One', cursive;
   -webkit-font-smoothing: antialiased;
   font: #043878;
+
 
   a {
     text-decoration: none;
@@ -22,7 +24,7 @@ body {
 
   hr{
     padding: 0px;
-    margin: 0px;    
+    margin: 0px;
   }
 
   h1 {
@@ -175,8 +177,8 @@ svg {
 .circle1 {
 
   border: 5px;
-  stroke: #026670;
-  fill: #FEF9C7;
+  stroke: yellow;
+  fill: url(#MyGradient0);
   stroke-width: "20";
 
 }
@@ -186,7 +188,6 @@ svg {
   border: 5px;
   stroke: #026670;
   fill: yellow;
-  // stroke-width: "20";
 
 }
 
@@ -195,7 +196,6 @@ svg {
   border: 5px;
   stroke: #026670;
   fill: none;
-  // stroke-width: "20";
 
 }
 
@@ -355,18 +355,22 @@ svg {
 
 .yellow {
   border: 5px;
-  stroke: #026670;
+  stroke: orange;
   display: flex;
   color: #016670;
-  fill: yellow;
+  fill: url(#MyGradient);
 }
 
 .none {
   border: 5px;
-  stroke: #026670;
+  stroke: darkturquoise;
   display: flex;
   color: #016670;
-  fill: lightcyan;
+  fill: url(#MyGradient2);
+}
+
+#fade-stop-2 {
+  stop-color: white;
 }
 .queue-container {
   display:flex;
