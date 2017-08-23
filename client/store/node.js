@@ -8,6 +8,7 @@ const DELETE_NODE_FROM_TAIL = 'DELETE_NODE_FROM_TAIL'
 const DELETE_NODE_FROM_HEAD = 'DELETE_NODE_FROM_HEAD'
 const DELETE_AT_INDEX = 'DELETE_AT_INDEX'
 const HIGHLIGHT_NODE_AT_INDEX = 'HIGHLIGHT_NODE_AT_INDEX'
+const TOGGLE_COLOR = 'TOGGLE_COLOR'
 const CLEAN_STATE = 'CLEAN_STATE'
 
 
@@ -19,6 +20,7 @@ export const deleteNodeFromTail = () => ({ type: DELETE_NODE_FROM_TAIL })
 export const deleteNodeFromHead = () => ({ type: DELETE_NODE_FROM_HEAD })
 export const deleteAtIndex = node => ({ type: DELETE_AT_INDEX, node })
 export const highlightNodeAtIndex = index => ({ type: HIGHLIGHT_NODE_AT_INDEX, index })
+export const toggleColor = flip => ({ type: TOGGLE_COLOR, flip })
 export const cleanState = () => ({ type: CLEAN_STATE })
 
 
@@ -38,12 +40,15 @@ class LinkedList {
   constructor() {
     this.head = null;
     this.tail = null;
+    this.nodeCount = 0;
+    this.toggledStatus = false;
   }
 
   addToHead(v) {
 
     const newNode = new Node(v);
     const formerHead = this.head;
+    this.nodeCount++;
 
     this.head = newNode;
 
@@ -59,6 +64,7 @@ class LinkedList {
   addToTail(item) {
     const newNode = new Node(item);
     const oldTail = this.tail;
+    this.nodeCount++;
 
     this.tail = newNode;
 
@@ -79,6 +85,7 @@ class LinkedList {
 
     let newNode = new Node(value);
     let currentNode = search(index);
+    this.nodeCount++;
 
     let prev = currentNode.previous;
     prev.next = newNode;
@@ -90,6 +97,7 @@ class LinkedList {
 
   removeHead() {
     const oldHead = this.head;
+    this.nodeCount--;
 
     if (!oldHead) return;
 
@@ -106,6 +114,7 @@ class LinkedList {
 
   removeTail() {
     const oldTail = this.tail;
+    this.nodeCount--;
 
     if (!oldTail) return;
 
@@ -121,6 +130,7 @@ class LinkedList {
   }
 
   removeAtIndex(index) {
+    this.nodeCount--;
     let deletedNode = search(index);
     console.log('deleted node', deletedNode)
     let prevNode = deletedNode.previous;
@@ -143,7 +153,7 @@ const search = (index) => {
 
   // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
   // keep looking at next node until next node === idx
-
+  // let nodeCount = this.nodeCount;
   let currentNode = Object.assign({}, list.head);
   let counter = 0;
   // loop while there is next node and counter is <= idx -1
@@ -184,7 +194,10 @@ export default function (state = list, action) {
     case HIGHLIGHT_NODE_AT_INDEX:
       //console.log('here', action.index)
       return Object.assign({}, state, { highlightIdx: action.index })
-    case CLEAN_STATE: 
+    case TOGGLE_COLOR:
+      console.log('state inside toggle', action.flip);
+      return Object.assign({}, state, { toggledStatus: action.flip } )
+    case CLEAN_STATE:
       list = new LinkedList();
       return Object.assign({}, list)
     default:

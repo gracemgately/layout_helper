@@ -18,7 +18,7 @@ export default class Home extends Component {
                     <div className="card">
                         <Link to={`/linked-list`}>
                             <div className="col-xs-10">
-                                <img src="/images/singlell.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/lledit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Linked List</h4>
                             </div>
                         </Link>
@@ -27,7 +27,7 @@ export default class Home extends Component {
                     <div className="card">
                         <Link to={`/binary-search-tree`}>
                             <div className="col-xs-10">
-                                <img src="/images/bstblack.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <img src="/images/bstedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
                                 <h4>Binary Search Tree</h4>
                             </div>
                         </Link>
@@ -36,7 +36,7 @@ export default class Home extends Component {
                     <div className="card">
                         <Link to={`/queue`}>
                             <div className="col-xs-10">
-                                <img src="/images/queue.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <img src="/images/queueedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
                                 <h4>Queue</h4>
                             </div>
                         </Link>
@@ -45,7 +45,7 @@ export default class Home extends Component {
                     <div className="card">
                         <Link to={`/stack`}>
                             <div className="col-xs-10">
-                                <img src="/images/stack.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/stackedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Stack</h4>
                             </div>
                         </Link>

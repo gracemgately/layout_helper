@@ -1,9 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { writeNode, addNodeToTail, deleteNodeFromHead, highlightNodeAtIndex } from '../../store'
+import { writeNode, addNodeToTail, deleteNodeFromHead, toggleColor, highlightNodeAtIndex } from '../../store'
 
 const QueueForm = (props) => {
 
+  console.log('toggled prop', props.toggled)
   return (
     <div>
       <form id="form-group"  >
@@ -18,7 +19,7 @@ const QueueForm = (props) => {
         <br />
           <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>
           <button type="click" name="tail" onClick={(evt) => props.handleHeadDelete(evt, props.newNode)} > Dequeue</button>
-          <button type="click" onClick={(evt) => props.handlePeek(evt, 0)} > PEEK </button>
+          <button type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled) } > PEEK </button>
         </div>
       </form>
     </div>
@@ -31,7 +32,8 @@ const mapState = (state) => {
   return {
     nodes: state.node,
     newNode: state.writeNode.newNode,
-    index: state.writeNode.index
+    index: state.writeNode.index,
+    toggled: state.node.toggledStatus
   }
 }
 
@@ -49,10 +51,12 @@ const mapDispatch = (dispatch) => {
       evt.preventDefault();
       dispatch(deleteNodeFromHead())
     },
-    handlePeek(evt, index){
+    handlePeek(evt, flip){
+      console.log('flip', flip)
       evt.preventDefault();
-      console.log(index);
-      dispatch(highlightNodeAtIndex(index));
+      dispatch(toggleColor(flip));
+      dispatch(highlightNodeAtIndex(0))
+
   }
   }
 }

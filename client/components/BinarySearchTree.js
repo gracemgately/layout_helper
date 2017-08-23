@@ -7,14 +7,11 @@ import DeleteBSTNodeForm from './Forms/DeleteBSTNodeForm';
 import bstNode, { cleanBSTState } from '../store';
 import SaveDSForm from './Forms/SaveDSForm';
 import { CSSTransitionGroup } from 'react-transition-group';
-import UploadCSV from './Forms/UploadCSV'
-import RandomBSTForm from './Forms/RandomBSTForm'
+import UploadCSV from './Forms/UploadCSV';
+import BSTInsertionTime from './BSTInsertionTime';
+import RandomBSTForm from './Forms/RandomBSTForm';
 
 
-
-/**
- * COMPONENT
- */
 class BinarySearchTree extends Component {
 
   componentWillUnmount(){
@@ -104,6 +101,7 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
+          <BSTInsertionTime />
         </div>
       )
     }
@@ -112,7 +110,6 @@ class BinarySearchTree extends Component {
 
 
 const mapState = (state) => {
-  console.log('state in BST ', state);
     return {
       user: state.user,
       BST: state.bstNode,

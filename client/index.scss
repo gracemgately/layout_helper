@@ -2,12 +2,13 @@
 @import './userDS';
 
 body {
-  font-family: 'Roboto', sans-serif;
+  // font-family: 'Roboto Slab';
   // background-color: #EDEAE5;
   background-color: white;
   // font: #026670;
-  font-family: monospace;
-  font: black;
+  font-family: 'Nixie One', cursive;
+  -webkit-font-smoothing: antialiased;
+  font: #043878;
 
   a {
     text-decoration: none;
@@ -26,16 +27,18 @@ body {
 
   h1 {
     // color: #026670;
-    color: black;
-    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
-    font-size: 40px;
+    color: #043878;
+    // text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    font-size: 35px;
     margin-left: 20px;
-    font-family: monospace;
+    font-family: 'Nixie One', cursive;
+    // font-family: 'Roboto Mono', monospace;
+    -webkit-font-smoothing: antialiased;
   }
 
  h2 {
     // color: #026670;
-    color: black;
+    color: #043878;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
   }
 
@@ -47,24 +50,24 @@ body {
 
   nav a {
     display: inline-block;
-    margin: 1em;
+    margin: 0.2em;
     // color: #026670;
-    color: black;
-    font-family: 'Roboto', sans-serif;
-    margin-left: 20px;
+    color: #043878;
+    font-family: 'Nixie One', cursive;
+    margin-left: 10px;
     font-size: 20px;
   }
 
     nav a:hover {
-    background-color: #9FEDD7;
+    background-color: #A8C6EC;
 }
 
 
   .textBar {
   display: flex;
   height: 79px;
-  background-color: #F9EDEA;
-  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  font-family: 'Nixie One', cursive;
   margin-left: 0;
   margin-right: 0;
   font-style: italic;
@@ -75,37 +78,37 @@ body {
 
 .textTextBar {
   // color: #026670;
-  color: black;
-  font-size: 35px;
+  color: #043878;
+  font-size: 25px;
 }
 
   input {
-    background-color: #9FEDD7;
-    color: 026670;
+    background-color: #A8C6EC;
+    color: #043878;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 15px;
   }
 
    button {
-    background-color: #9FEDD7;
+    background-color: #A8C6EC;
     // color: #026670;
-    color: black;
+    color: #043878;
     font-family: 'Roboto', sans-serif;
     font-size: 11px;
     // border: #FCE181;
-    border-color:#FEF9C7;
+    // border-color:#FEF9C7;
   }
 
   button:hover {
 
-    background-color: #9FEDD7;
+    background-color: #A8C6EC;
 }
 
   form div {
     margin: 1em;
     display: inline-block;
-    color: #9FEDD7;
+    color: #A8C6EC;
     font-size: 15px;
 
   }
@@ -147,7 +150,7 @@ body {
       margin: 20px;
       align-content: center;
       text-align: center;
-      background-color: black;
+      background-color: #043878;
       border-radius: 5px;
 
   }
@@ -161,6 +164,9 @@ body {
   }
 }
 
+#bst-form-group {
+  color: #026670;
+}
 svg {
   height: 50px;
   width: 50px;
@@ -170,7 +176,25 @@ svg {
 
   border: 5px;
   stroke: #026670;
-  // fill: #FEF9C7;
+  fill: #FEF9C7;
+  stroke-width: "20";
+
+}
+
+.yellow {
+
+  border: 5px;
+  stroke: #026670;
+  fill: yellow;
+  // stroke-width: "20";
+
+}
+
+.none {
+
+  border: 5px;
+  stroke: #026670;
+  fill: none;
   // stroke-width: "20";
 
 }
@@ -203,6 +227,13 @@ svg {
   font-size: 2em;
   padding: 0;
   margin: 0;
+}
+
+.arrowsizeSE {
+  font-size: 2em;
+  padding: 0;
+  margin: 0;
+  transform: scaleX(-1);
 }
 
 .arrow-empty {
@@ -310,6 +341,33 @@ svg {
   transition: opacity 500ms ease-in;
 }
 
+.runtime {
+  color: #043878;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.runtimeInline {
+  color: #043878;
+  text-shadow: 0px 0px 6px rgba(300,300,20,2);
+  font-size: 20px;
+}
+
+.yellow {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: yellow;
+}
+
+.none {
+  border: 5px;
+  stroke: #026670;
+  display: flex;
+  color: #016670;
+  fill: lightcyan;
+}
 .queue-container {
   display:flex;
   flex-direction: column;
@@ -321,7 +379,7 @@ svg {
 }
 
 #down-arrow {
-  margin-left: 15px
+  margin-left: 15px;
 }
 
 .saved-ds {

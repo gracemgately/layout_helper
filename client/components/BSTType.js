@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { breadthFirstForEach } from '../components'
-import { traverseTree } from '../store'
+import { traverseTree, getArray } from '../store'
 import { CSSTransitionGroup } from 'react-transition-group';
 
 /**
@@ -36,7 +36,6 @@ class BSTType extends Component {
       groups[level].push(node);
     })
     const type = this.state.selectedBST;
-
     return (
 
       <div>
@@ -59,9 +58,9 @@ class BSTType extends Component {
           </button>
         </div>
         <br /><br />
-        <div className="container">
+        <div className="container2">
           {
-            groups.map((ele, index) => {
+           groups.map((ele, index) => {
 
               return (
                 <div className={'bstlevel' + index} key={index}>
@@ -69,7 +68,7 @@ class BSTType extends Component {
                     ele.map((node, idx) => {
 
                       return (
-                        <div key={idx}>
+                        <div key={idx} className={ node.colored ? 'yellow' : 'none'}>
                           {node}
                         </div>
                         )
@@ -98,11 +97,10 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleSubmit(evt, BSTtype, props){
-      console.log('props here', props.BST.bstDemo);
+    handleSubmit(evt, BSTtype){
       evt.preventDefault();
-      dispatch(traverseTree( { BSTtype} ))
-      //breadthFirstForEach(props.BST.bstDemo)
+      dispatch(traverseTree( { BSTtype } ))
+
     }
   }
 

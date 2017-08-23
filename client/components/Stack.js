@@ -10,6 +10,7 @@ import { drawStackNode } from '../components'
 import SaveLLForm from './Forms/SaveLLForm';
 
 import { nodeArray_ } from '../utils';
+import InsertionTime from './InsertionTime';
 import { cleanState } from '../store'
 
 
@@ -24,9 +25,10 @@ class Stack extends Component {
         this.props.cleanStateValues();
     }
 
+    //const { user, nodes, highlightIndex, toggled } = props
     render() {
 
-        const { user, nodes, highlightIndex } = this.props
+        const { user, nodes, highlightIndex, toggled } = this.props
 
         const nodeArr = (this.props.location.query) ? (this.props.location.query.content) : (nodeArray_(nodes));
 
@@ -61,7 +63,7 @@ class Stack extends Component {
                                 var highlight = (index === highlightIndex) ? "yellow" : "none"
                                 return (
                                     <div className="basicnode" key={index}>
-                                        {drawStackNode(node, highlight)}
+                                        {drawStackNode(node, toggled, index, highlightIndex)}
                                     </div>
                                 )
                             }))
@@ -71,7 +73,10 @@ class Stack extends Component {
                         }
                     </div>
                 </div>
-            </div>
+        
+             <InsertionTime />
+        </div>
+    
         )
     }
 }
@@ -81,10 +86,13 @@ class Stack extends Component {
  */
 
 const mapState = (state) => {
+
     return {
         user: state.user,
         nodes: state.node,
         highlightIndex: state.node.highlightIdx,
+        toggled: state.node.toggledStatus
+
 
     }
 }
