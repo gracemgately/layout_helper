@@ -71,8 +71,10 @@ class BinarySearchTree extends Component {
         <div>
           {//only render forms to edit DS if it is not a previously-saved one
             this.props.location.query ?
+            <div>
               <h2> Binary Search <br/> Tree </h2>
               <h2>Name: {this.props.location.query.name}</h2>
+            </div>
               :
               <div className='main-container-controls' >
                 <h2> Binary Search <br/> Tree </h2>
