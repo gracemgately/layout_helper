@@ -48,6 +48,7 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
 
 
 
+// Used for demo?
 export const drawBSTNode2 = (node) => {
   return (
     <div className="demonode">
@@ -62,7 +63,8 @@ export const drawBSTNode2 = (node) => {
   )
 }
 
-export const drawBSTNode3 = (node) => {
+// Used for dynamic tree
+export const drawBSTNode3 = (node, nodeArr) => {
   if (!node.value) {
     return (
       <div className="basicnode">
@@ -76,7 +78,7 @@ export const drawBSTNode3 = (node) => {
 
   return (
     <div className="basicnode">
-      {(node.left !== null) ? SouthWestArrow(node.value) : null}
+      {(node.left && nodeArr[node.left] && nodeArr[node.left].value) ? SouthWestArrow(node.value) : null}
       <svg>
       <linearGradient id="MyGradient0">
         <stop offset="5%" stopColor="white" />
@@ -86,7 +88,7 @@ export const drawBSTNode3 = (node) => {
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
 
-      {(node.right !== null) ? SouthEastArrow(node.value) : null}
+      {(node.right && nodeArr[node.right] && nodeArr[node.right].value) ? SouthEastArrow(node.value) : null}
     </div>
   )
 }
@@ -146,7 +148,7 @@ export const drawBSTnodes = (cleanbst) => {
   cleanbst.map(node => {
     let parentIdx = node.parent;
     if (node.parent === null) parentIdx = "root";
-    collection.push([drawBSTNode3(node), parentIdx]);
+    collection.push([drawBSTNode3(node, cleanbst), parentIdx]);
   })
 
   return collection;

@@ -204,7 +204,7 @@ svg {
 .circle-empty {
 
   border: 5px;
-  stroke: white;
+  stroke: transparent;
 
 }
 
@@ -293,6 +293,18 @@ svg {
   justify-content: center;
   width: 100%;
   padding: 0;
+}
+
+.bstlevel6 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.bstlevel7 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .formDisplay {
