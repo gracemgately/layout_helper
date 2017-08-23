@@ -35,7 +35,7 @@ const AddBSTNodeForm = (props) => {
             value={props.newNode}
           />
           <br />
-          <button className="btn btn-default" type="submit">Add Me!</button>
+          <button className="buttonstyle" type="submit">Add Me!</button>
         </div>
       </form>
     </div>

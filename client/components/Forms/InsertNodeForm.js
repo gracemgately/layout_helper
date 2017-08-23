@@ -22,8 +22,8 @@ const InsertNodeForm = (props) => {
             value={props.newNode}
           />   
           <br/>       
-          <button type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to <br/> Head</button>
-          <button type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to <br/> Tail</button>
+          <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to <br/> Head</button>
+          <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to <br/> Tail</button>
         </div>
         <br/>
         <div>
@@ -34,7 +34,7 @@ const InsertNodeForm = (props) => {
             name="index"
           />
         <br />
-        <button type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
+        <button className="buttonstyle" type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
         </div>
       </form>
     </div>

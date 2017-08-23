@@ -1,16 +1,22 @@
 @import 'bst';
-@import './mainComponent';
-@import './userDS';
+@import 'mainComponent';
+@import 'userDS';
+@import 'button';
 
 body {
-  font-family: 'Roboto', sans-serif;
-  background-color: #EDEAE5;
-  font: #026670;
+  // font-family: 'Roboto Slab';
+  // background-color: #EDEAE5;
+  background-color: white;
+  // font: #026670;
+  font-family: 'Nixie One', cursive;
+  -webkit-font-smoothing: antialiased;
+  font: #043878;
 
 
   a {
     text-decoration: none;
-    color: #026670;
+    // color: #026670;
+    color: black;
   }
 
   label {
@@ -23,42 +29,48 @@ body {
   }
 
   h1 {
-    color: #026670;
-    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
-    font-size: 40px;
-    margin-left: 20px
+    // color: #026670;
+    color: #043878;
+    // text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    font-size: 35px;
+    margin-left: 20px;
+    font-family: 'Nixie One', cursive;
+    // font-family: 'Roboto Mono', monospace;
+    -webkit-font-smoothing: antialiased;
   }
 
  h2 {
-    color: #026670;
+    // color: #026670;
+    color: #043878;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
   }
 
    h4 {
-    color: #FCE181;
+   color: #F9EDEA;
     padding: 0px;
     margin: 0px;
   }
 
   nav a {
     display: inline-block;
-    margin: 1em;
-    color: #026670;
-    font-family: 'Roboto', sans-serif;
-    margin-left: 20px;
+    margin: 0.2em;
+    // color: #026670;
+    color: #043878;
+    font-family: 'Nixie One', cursive;
+    margin-left: 10px;
     font-size: 20px;
   }
 
     nav a:hover {
-    background-color: #9FEDD7;
+    background-color: #A8C6EC;
 }
 
 
   .textBar {
   display: flex;
   height: 79px;
-  background-color: #FEF9C7;
-  font-family: 'Roboto', sans-serif;
+  background-color: white;
+  font-family: 'Nixie One', cursive;
   margin-left: 0;
   margin-right: 0;
   font-style: italic;
@@ -68,36 +80,38 @@ body {
 }
 
 .textTextBar {
-  color: #026670;
-  font-size: 35px;
+  // color: #026670;
+  color: #043878;
+  font-size: 25px;
 }
 
   input {
-    background-color: #9FEDD7;
-    color: 026670;
+    background-color: #A8C6EC;
+    color: #043878;
     font-family: 'Roboto', sans-serif;
     font-weight: bold;
     font-size: 15px;
   }
 
    button {
-    background-color: #9FEDD7;
-    color: #026670;
+    background-color: #A8C6EC;
+    // color: #026670;
+    color: #043878;
     font-family: 'Roboto', sans-serif;
     font-size: 11px;
     // border: #FCE181;
-    border-color:#FEF9C7;
+    // border-color:#FEF9C7;
   }
 
   button:hover {
 
-    background-color: #9FEDD7;
+    background-color: #A8C6EC;
 }
 
   form div {
     margin: 1em;
     display: inline-block;
-    color: #9FEDD7;
+    color: #A8C6EC;
     font-size: 15px;
 
   }
@@ -139,14 +153,15 @@ body {
       margin: 20px;
       align-content: center;
       text-align: center;
-      background-color: #026670;
-      border-radius: 5px;
+      background-color: #043878;
+      border-radius: 2px;
 
   }
 
 }
 #form-group {
-  color: #026670;
+  // color: #026670;
+  color: black;
   &-left {
     padding-left: 15px;
   }
@@ -232,37 +247,43 @@ svg {
   display: flex;
   justify-content: center;
   width: 100%;
-  padding-top: 5vw;
+  padding-top: 10px;
 }
 
 .bstlevel1 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
+
 }
 
 .bstlevel2 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel3 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel4 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .bstlevel5 {
   display: flex;
   justify-content: center;
   width: 100%;
+  padding: 0;
 }
 
 .formDisplay {
@@ -328,13 +349,13 @@ svg {
 }
 
 .runtime {
-  color: #026670;
+  color: #043878;
   font-size: 20px;
   font-style: italic;
 }
 
 .runtimeInline {
-  color: #026670;
+  color: #043878;
   text-shadow: 0px 0px 6px rgba(300,300,20,2);
   font-size: 20px;
 }

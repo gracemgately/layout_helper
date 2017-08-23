@@ -68,7 +68,7 @@ export const drawBSTNode3 = (node) => {
       <div className="basicnode">
         <svg>
           <circle className="circle-empty" fill="none" cx="25" cy="25" r="25"> </circle>
-          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">empty</text>
+          <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em"></text>
         </svg>
       </div>
     )

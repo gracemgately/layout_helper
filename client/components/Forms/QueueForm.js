@@ -18,9 +18,9 @@ const QueueForm = (props) => {
             value={props.newNode}
           />
         <br />
-          <button type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>
-          <button type="click" name="tail" onClick={(evt) => props.handleHeadDelete(evt, props.newNode)} > Dequeue</button>
-          <button type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled) } > PEEK </button>
+          <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>
+          <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handleHeadDelete(evt, props.newNode)} > Dequeue</button>
+          <button className="buttonstyle" type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled) } > PEEK </button>
         </div>
       </form>
     </div>
