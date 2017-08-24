@@ -2,16 +2,18 @@
 @import 'mainComponent';
 @import 'userDS';
 @import 'button';
+@import 'nav';
 
 body {
   background-color: #5fbecf;
-  background-image: linear-gradient(145deg, #65CCF4 0%,white 100%);
+  background-image: linear-gradient(60deg, #61C5F6 5%,white 100%);
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
 
   // background-color: white;
   // font: #026670;
+  // font-family: 'Ubuntu', sans-serif;
   font-family: 'Nixie One', cursive;
   -webkit-font-smoothing: antialiased;
   font: #0D141D;
@@ -34,7 +36,7 @@ body {
 
   h1 {
     // color: #026670;
-    color: #043878;
+    color: #07203F;
     // text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
     font-size: 35px;
     margin-left: 20px;
@@ -45,8 +47,10 @@ body {
 
  h2 {
     // color: #026670;
-    color: #043878;
+    color: #07203F;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
+    font-size: 20px;
+    padding-left: 15px;
   }
 
    h4 {
@@ -55,19 +59,7 @@ body {
     margin: 0px;
   }
 
-  nav a {
-    display: inline-block;
-    margin: 0.2em;
-    // color: #026670;
-    color: #043878;
-    font-family: 'Nixie One', cursive;
-    margin-left: 10px;
-    font-size: 20px;
-  }
 
-    nav a:hover {
-    background-color: #A8C6EC;
-}
 
 
   .textBar {
@@ -84,23 +76,23 @@ body {
 
 .textTextBar {
   // color: #026670;
-  color: #043878;
+  color: #07203F;
   font-size: 25px;
 }
 
   input {
-    background-color: #A8C6EC;
+    background-color: #E1E8F1;
     color: #043878;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Ubuntu', sans-serif;
     font-weight: bold;
     font-size: 15px;
   }
 
    button {
-    background-color: #A8C6EC;
+    background-color: #BED3EC;
     // color: #026670;
     color: #043878;
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Arial';
     font-size: 11px;
     // border: #FCE181;
     // border-color:#FEF9C7;
@@ -209,8 +201,9 @@ svg {
 }
 
 .circle1 {
-
-  border: 5px;
+  padding-right: 7px;
+  padding-left: 7px;
+  border: 10px;
   stroke: yellow;
   fill: url(#MyGradient0);
   stroke-width: "20";
@@ -245,6 +238,7 @@ svg {
   display:flex;
   flex-wrap: wrap;
   justify-content: center;
+  padding-top: 50px;
 }
 
 
@@ -259,10 +253,12 @@ svg {
 
 .basicnode {
   display: flex;
+  justify-content: center;
   width: 120px;
-  height: 100px;
+  height: 120px;
   &-linkedlist {
       padding-top: 10vw;
+
   }
 }
 

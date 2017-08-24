@@ -24,7 +24,7 @@ class UploadCSV extends Component {
 
     handleFiles = files => {
         const reader = new FileReader();
-    
+
         reader.onload = (e) => {
             //file values come in as a string, split into an array and
             //map to number values
@@ -39,10 +39,10 @@ class UploadCSV extends Component {
 
     handleSubmit(evt){
         evt.preventDefault();
-        if (this.state.DSType === 'linkedlist' || 
+        if (this.state.DSType === 'linkedlist' ||
             this.state.DSType === 'queue' ||
             this.state.DSType === 'stack') {
-        //for each value, dispatch the adding functionality 
+        //for each value, dispatch the adding functionality
         //passed down from mapToDispatch
             this.state.arrToRender.forEach(value => {
                 this.props.handleTailSubmit(evt, value);
@@ -61,10 +61,10 @@ class UploadCSV extends Component {
             <div>
             {/*tell the user their file has been uploaded and display the submit button only
             if the state has received the values (from the file) to render*/}
-                <ReactFileReader handleFiles={this.handleFiles}>
-                        Upload a CSV:<button className='buttonstyle'>Upload</button>
+                <ReactFileReader handleFiles={this.handleFiles}>&nbsp;&nbsp;&nbsp;
+                        Upload a CSV: <button className='buttonstyle'>Upload</button>
                 </ReactFileReader>
-            {this.state.arrToRender ? 
+            {this.state.arrToRender ?
                     <div>
                     File Uploaded!
                     <button className="buttonstyle" onClick={this.handleSubmit}>Submit</button>
@@ -88,10 +88,10 @@ const mapDispatch = (dispatch) => {
         handleTailSubmit(evt, nodeValue){
         evt.preventDefault();
         dispatch(addNodeToTail({ value: +nodeValue }))
-        }, 
+        },
         addSingleBSTNode: (value) => dispatch(addSingleBSTNode(value)),
         callArrayfyBST: (BST) => dispatch(arrayifyClassBST(BST))
-    }            
+    }
 }
 
 

@@ -15,8 +15,9 @@ const StackForm = (props) => {
                     <input
                         type="text"
                         onChange={props.handleChange}
-                        placeholder="add item to stack"
+                        placeholder="add a node"
                         name="node"
+                        size="12"
                     />
                 <br />
                     <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item</button>

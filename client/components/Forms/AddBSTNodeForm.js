@@ -24,7 +24,7 @@ const AddBSTNodeForm = (props) => {
       return (
 
     <div>
-     Add a Node:
+     &nbsp;&nbsp;&nbsp;Add a Node:
       <form id="form-group" onSubmit={handleSubmit}>
         <div>
           <input
@@ -33,6 +33,7 @@ const AddBSTNodeForm = (props) => {
             placeholder="add a node"
             name="node"
             value={props.newNode}
+            size="12"
           />
           <br />
           <button className="buttonstyle" type="submit">Add Me!</button>

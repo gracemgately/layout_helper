@@ -7,20 +7,16 @@ import BSTInsertionTime from './BSTInsertionTime';
 import UploadCSV from './Forms/UploadCSV';
 import RandomBSTForm from './Forms/RandomBSTForm';
 
+
 //LIBRARIES
 import { connect } from 'react-redux'
-import { CSSTransitionGroup } from 'react-transition-group';
 
 //UTILS & STORE
-import { breadthFirstForEach, drawBSTnodes } from '../components'
-import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
-import bstNode, { cleanBSTState } from '../store';
+import { drawBSTnodes } from '../components'
+import {  groupBstNodes } from '../utils'
+import { cleanBSTState } from '../store';
 
 class BinarySearchTree extends Component {
-
-  componentWillUnmount() {
-    // this.props.cleanStateValues();
-  }
 
   constructor(props) {
     super(props);
@@ -32,11 +28,6 @@ class BinarySearchTree extends Component {
     this.asyncCalls = this.asyncCalls.bind(this);
   }
 
-  // // send arrayified bst nodes, get drawings and parentIdx values back
-  // let bstDivs = drawBSTnodes(cleanBST);
-
-  // // group the bstDivs by parentIdx groups
-  // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
     this.asyncCalls();
     let arr = this.state.array;
@@ -66,7 +57,6 @@ class BinarySearchTree extends Component {
 
   render() {
     return (
-      <div>
         <div>
           {//only render forms to edit DS if it is not a previously-saved one
             this.props.location.query ?
@@ -82,7 +72,7 @@ class BinarySearchTree extends Component {
                 <UploadCSV DSType={'binarysearchtree'} />
                 {this.props.user.id ?
                   <div className="save-form">
-                    Save Your Binary  <br /> Search Tree:
+                  &nbsp;&nbsp;&nbsp;Save Your Binary  <br /> &nbsp;&nbsp;&nbsp;Search Tree:
                 <SaveDSForm content={this.props.array} userId={this.props.user.id} />
                   </div>
                   : null}
@@ -103,16 +93,14 @@ class BinarySearchTree extends Component {
               })
             }
           </div>
-        {this.props.location.query ? null: 
+        {this.props.location.query ? null:
           <BSTInsertionTime />
-        } 
+        }
         </div>
-        </div>
+
     )
   }
 }
-
-
 
 const mapState = (state) => {
   return {
