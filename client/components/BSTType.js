@@ -1,6 +1,6 @@
 //COMPONENTS
 import React, { Component } from 'react'
-import { breadthFirstForEach, breadthFirstForEachDemo, deanimate, animate } from '../components'
+import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
 import BstDemoAnimation from '../components/BstDemoAnimation'
 
 //LIBRARIES
