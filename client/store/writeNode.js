@@ -14,8 +14,10 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case WRITE_NODE:
       return Object.assign({}, state, { newNode: action.node })
+
     case WRITE_INDEX:
       return Object.assign({}, state, { index: action.node })
+      
       case WRITE_DELETE_INDEX:
       return Object.assign({}, state, { index: action.index })
     default:

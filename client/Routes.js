@@ -37,7 +37,7 @@ class Routes extends Component {
             <Route path="/binary-search-tree" component={BinarySearchTree} />
             <Route path="/queue" component={Queue} />
             <Route path="/stack" component={Stack} />
-            <Route path="/bstdemo" component={BSTType} />
+            <Route path="/bstDemo" component={BSTType} />
             {
               isLoggedIn ?
                 <Switch>
@@ -48,7 +48,7 @@ class Routes extends Component {
                   <Route path="/queue" component={Queue} />
                   <Route path="/stack" component={Stack} />
                   <Route path="/my-data-structures" component={SingleUserDS}/>
-                  <Route path="/bstdemo" component={BSTType} />
+                  <Route path="/bstDemo" component={BSTType} />
                 </Switch> : null
             }
             {/* Displays our Login component as a fallback */}

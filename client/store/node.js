@@ -31,35 +31,46 @@ var list = new LinkedListClass();
 
 export default function (state = list, action) {
   switch (action.type) {
+
     case GET_NODE:
       return action.node
+
     case ADD_NODE_TO_TAIL:
       list.addToTail(action.node.value);
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
+
     case ADD_NODE_TO_HEAD:
       list.addToHead(action.node.value);
       // do not pass by reference!  use Object.assign{} to return new object and signal that state is updated
       return Object.assign({}, list);
+
     case DELETE_NODE_FROM_TAIL:
       list.removeTail();
       return Object.assign({}, list);
+
     case DELETE_NODE_FROM_HEAD:
       list.removeHead();
       return Object.assign({}, list);
+
     case SEARCH_NODE:
       list.addAtIndex(action.node.value, action.node.index);
       return Object.assign({}, list);
+
     case DELETE_AT_INDEX:
       list.removeAtIndex(action.node.index);
       return Object.assign({}, list);
+
     case HIGHLIGHT_NODE_AT_INDEX:
       return Object.assign({}, state, { highlightIdx: action.index })
+
     case TOGGLE_COLOR:
       return Object.assign({}, state, { toggledStatus: action.flip } )
+
     case CLEAN_STATE:
       list = new LinkedListClass();
       return Object.assign({}, list)
+      
     default:
       return state
   }

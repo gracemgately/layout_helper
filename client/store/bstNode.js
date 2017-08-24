@@ -26,7 +26,7 @@ export const getRandomBst = () => ({ type: GET_RANDOM_BST })
 
 
 
-const initialTree = new BinarySearchTreeClass();
+let initialTree = new BinarySearchTreeClass();
 const bstDemo = new BinarySearchTreeClass();
 bstDemo.insert(16);
 bstDemo.insert(12);
@@ -47,6 +47,7 @@ export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBS
         case ADD_SINGLE_BST_NODE:
             initialTree.insert(action.value);
             return Object.assign({}, initialTree);
+
         case REMOVE_SINGLE_BST_NODE:
             initialTree.remove(action.node)
             return Object.assign({}, initialTree);
@@ -62,7 +63,8 @@ export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBS
             return Object.assign({}, bstDemo);
 
         case CLEAN_BST_STATE:
-            return Object.assign({}, {});
+            initialTree = new BinarySearchTreeClass();
+            return Object.assign({}, state, initialTree, {array: []});
 
         case GET_RANDOM_BST:
             let arr = getRandomNumbersArr();
