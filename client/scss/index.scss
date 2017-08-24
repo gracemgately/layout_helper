@@ -120,7 +120,8 @@ body {
   }
 .flex-container {
   display: flex;
-  justify-content: center;
+  flex-wrap: wrap;
+  justify-content: left;
   height: 100%;
   margin: 0px;
   padding: 0px;
@@ -133,14 +134,59 @@ body {
   .card {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 200px;
-      width: 200px;
+      height: 383px;
+      width: 152px;
+      transition: 0.3s;
+      padding-top: 10px;
+      margin: 20px;
+      align-content: left;
+      text-align: center;
+      background-color: white;
+      border-radius: 2px;
+
+  }
+
+    .llcard {
+      position: static;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      height: 124px;
+      width: 355px;
       transition: 0.3s;
       padding-top: 10px;
       margin: 20px;
       align-content: center;
       text-align: center;
-      background-color: #043878;
+      background-color: white;
+      border-radius: 2px;
+
+  }
+
+  .qcard {
+      position: static;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      height: 120px;
+      width: 324px;
+      transition: 0.3s;
+      padding-top: 10px;
+      margin: 20px;
+      align-content: center;
+      text-align: center;
+      background-color: white;
+      border-radius: 2px;
+
+  }
+
+      .bstcard {
+      position: static;
+      box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+      height: 282px;
+      width: 324px;
+      transition: 0.3s;
+      padding-top: 10px;
+      margin: 20px;
+      align-content: center;
+      text-align: center;
+      background-color: white;
       border-radius: 2px;
 
   }

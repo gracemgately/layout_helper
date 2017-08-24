@@ -18,28 +18,28 @@ export default class Home extends Component {
                 </div>
 
                 <div className="flex-container" >
-                    <div className="card">
+                    <div className="llcard">
                         <Link to={`/linked-list`}>
                             <div className="col-xs-10">
-                                <img src="/images/lledit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/lllarge.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Linked List</h4>
                             </div>
                         </Link>
 
                     </div>
-                    <div className="card">
+                    <div className="bstcard">
                         <Link to={`/binary-search-tree`}>
                             <div className="col-xs-10">
-                                <img src="/images/bstedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <img src="/images/bstss.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
                                 <h4>Binary Search Tree</h4>
                             </div>
                         </Link>
 
                     </div>
-                    <div className="card">
+                    <div className="qcard">
                         <Link to={`/queue`}>
                             <div className="col-xs-10">
-                                <img src="/images/queueedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <img src="/images/queuess.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
                                 <h4>Queue</h4>
                             </div>
                         </Link>
@@ -48,7 +48,7 @@ export default class Home extends Component {
                     <div className="card">
                         <Link to={`/stack`}>
                             <div className="col-xs-10">
-                                <img src="/images/stackedit.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/stackss.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Stack</h4>
                             </div>
                         </Link>
