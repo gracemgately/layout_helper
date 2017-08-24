@@ -1,7 +1,7 @@
 'use strict';
 import history from '../history'
-import { arrayifyBst, removeEmptyChildren, getRandomNumbersArr } from '../utils'
-import { breadthFirstForEach, drawBSTNode2 } from '../components'
+import { arrayifyBst, removeEmptyChildren, getRandomNumbersArr, BinarySearchTreeClass } from '../utils'
+
 
 const GET_BSTNODE = 'GET_BSTNODE'
 const ADD_SINGLE_BST_NODE = 'ADD_SINGLE_BST_NODE'
@@ -23,109 +23,10 @@ export const getArray = array => ({ type: GET_ARRAY, array })
 export const cleanBSTState = () => ({ type: CLEAN_BST_STATE })
 export const getRandomBst = () => ({ type: GET_RANDOM_BST })
 
-class BinarySearchTree {
-    constructor(value) {
-        this.value = value;
-        this.magnitude = 1;
-        this.left = null;
-        this.right = null;
-        this.colored = false;
-        this.bstCount = 0;
-        this.direction = null;
-    }
-    insert(node) {
-        this.bstCount++;
-        if (typeof node !== 'object') {
-            node = new BinarySearchTree(node);
-        }
-        this.magnitude++;
-        if (this.value === undefined) {
-            this.value = node.value;
-            return;
-        }
-        var direction = node.value < this.value ? 'left' : 'right';
-        node.parent = this;
-        node.direction = direction;
-        if (!this[direction]) this[direction] = node;
-        else this[direction].insert(node);
-    }
-    contains(value) {
-        if (this.value === value) return this;
-        var direction = value < this.value ? 'left' : 'right';
-        if (this[direction]) return this[direction].contains(value);
-        else return false;
-    }
 
 
-    remove(value) {
-        this.bstCount--;
-        const deleteRef = this.contains(value);
-        if (!deleteRef) return false;
-        deleteRef.die();
-    }
-
-    die() {
-        if ((!this.parent) && (!this.left) && (!this.right)) {
-            this.value = undefined;
-            return;
-        }
-        if ((!this.parent && this.left) || (!this.parent && this.right)) {
-            var side = this.left ? 'left' : 'right';
-            this.value = this[side].value
-            this[side].parent = null;
-            this[side] = null;
-            return;
-        }
-
-        var direction = (this.parent.right && (this.value === this.parent.right.value)) ? 'right' : 'left';
-
-        var otherDirection = direction === 'right' ? 'left' : 'right';
-        this.parent[direction] = null;
-        if (this[direction] && this[otherDirection]) {
-            this.parent.insert(this.right);
-            this.parent.insert(this.left);
-        } else if (this[direction]) { this.parent.insert(this[direction]) }
-    }
-
-    depthFirstForEach(type) {
-        const fill = 'yellow';
-
-        if (type === 'Depth First: In-order') {
-
-            if (this.left) this.left.depthFirstForEach(type);
-            drawBSTNode2(this, fill);
-
-            //idea is that once the node is processed, the drawBSTNode
-            //function will be triggered with a fill setting andthe node will
-            //be redrawn with yellow fill, much like in the peek functions of stack and queue....
-
-
-            if (this.right) this.right.depthFirstForEach(type);
-        }
-        if (type === 'Depth First: Pre-order') {
-            this.colored = true;
-
-            drawBSTNode2(this, fill)
-
-            if (this.left) { this.left.depthFirstForEach(type); }
-            if (this.right) { this.right.depthFirstForEach(type); }
-        }
-
-        if (type === 'Depth First: Post-order') {
-            if (this.left) { this.left.depthFirstForEach(type); }
-            if (this.right) { this.right.depthFirstForEach(type); }
-
-            drawBSTNode2(this, fill)
-        }
-    }
-
-
-
-}
-
-
-const initialTree = new BinarySearchTree();
-const bstDemo = new BinarySearchTree();
+const initialTree = new BinarySearchTreeClass();
+const bstDemo = new BinarySearchTreeClass();
 bstDemo.insert(16);
 bstDemo.insert(12);
 bstDemo.insert(8);
@@ -138,7 +39,7 @@ const toggledBSTStatus = false;
 
 const step = 0;
 const JSXArr = {};
-const randomBST = new BinarySearchTree();
+const randomBST = new BinarySearchTreeClass();
 
 export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBSTStatus }, action) {
     switch (action.type) {

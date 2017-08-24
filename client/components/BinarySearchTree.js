@@ -7,20 +7,16 @@ import BSTInsertionTime from './BSTInsertionTime';
 import UploadCSV from './Forms/UploadCSV';
 import RandomBSTForm from './Forms/RandomBSTForm';
 
+
 //LIBRARIES
 import { connect } from 'react-redux'
-import { CSSTransitionGroup } from 'react-transition-group';
 
 //UTILS & STORE
-import { breadthFirstForEach, drawBSTnodes } from '../components'
-import { breadthFirstForEach_, arrayifyBst, groupBstNodes } from '../utils'
-import bstNode, { cleanBSTState } from '../store';
+import { drawBSTnodes } from '../components'
+import {  groupBstNodes } from '../utils'
+import { cleanBSTState } from '../store';
 
 class BinarySearchTree extends Component {
-
-  componentWillUnmount() {
-    // this.props.cleanStateValues();
-  }
 
   constructor(props) {
     super(props);
@@ -32,11 +28,6 @@ class BinarySearchTree extends Component {
     this.asyncCalls = this.asyncCalls.bind(this);
   }
 
-  // // send arrayified bst nodes, get drawings and parentIdx values back
-  // let bstDivs = drawBSTnodes(cleanBST);
-
-  // // group the bstDivs by parentIdx groups
-  // let groups = groupBstNodes(bstDivs);
   componentDidMount() {
     this.asyncCalls();
     let arr = this.state.array;
@@ -110,8 +101,6 @@ class BinarySearchTree extends Component {
     )
   }
 }
-
-
 
 const mapState = (state) => {
   return {
