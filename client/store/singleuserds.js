@@ -43,7 +43,7 @@ const deleteUserStack = stackID => ({ type: DELETE_USER_STACK, stackID });
 
 //THUNKS
 
-export const FetchUserDS = userId => 
+export const FetchUserDS = userId =>
     dispatch =>
         axios.get(`/api/users/${userId}/data-structures`)
         .then(res => {
@@ -52,7 +52,7 @@ export const FetchUserDS = userId =>
             dispatch(getUserQueue(res.data.queues))
             dispatch(getUserStack(res.data.stacks))
         })
-        .catch(err => console.error())
+        .catch(err => console.error('could not fetch user', err))
 
 
 export const DeleteUserDS = (DSType, DSId) =>
@@ -66,7 +66,7 @@ export const DeleteUserDS = (DSType, DSId) =>
             if (DSType === 'stacks') dispatch(deleteUserStack(DSId));
             history.push('/my-data-structures');
         })
-        .catch(err => console.error())
+        .catch(err => console.error('Could not delete user', err))
 
 //REDUCER
 export default function (state = defaultState, action) {
