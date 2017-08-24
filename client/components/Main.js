@@ -37,7 +37,6 @@ const Main = (props) => {
               {/* The navbar will show these links after you log in */}
               <div className="nav-menu">
                 <Link to="/">Home  </Link>
-                <a href="#" onClick={handleClick}>Logout </a>
                 <Link to="/linked-list">Linked List</Link>
                 <Link to="/binary-search-tree">Binary Search Tree</Link>
                 <Link to="/queue">Queue</Link>
@@ -46,11 +45,8 @@ const Main = (props) => {
                 <Link to="/BSTDemo">BST Types</Link>
               </div>
               <div className="navtop-container-2" >
-                <div className="log-in" >
-                  <Link to="/login">Log in</Link>
-                </div> /
-                <div className="sign-up">
-                  <Link to="/signup">Sign up</Link>
+                <div >
+                  <a href="#" onClick={handleClick}>Logout </a>
                 </div>
               </div>
             </div> :
