@@ -399,4 +399,28 @@ svg {
   color: black;
 }
 
+.demostart {
+  border: 5px solid pink;
+  color: red;
+  fill: yellow;
+}
+
+.democircle {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  text-align: center;
+  background: lightgreen;
+}
+
+.innerTEXT {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    text-align: center;
+    margin-left: 12px;
+}
+
+
 
