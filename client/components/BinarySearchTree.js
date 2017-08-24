@@ -28,6 +28,10 @@ class BinarySearchTree extends Component {
     this.asyncCalls = this.asyncCalls.bind(this);
   }
 
+  componentWillUnmount(){
+    this.props.cleanStateValues();
+  }
+
   componentDidMount() {
     this.asyncCalls();
     let arr = this.state.array;
@@ -115,6 +119,7 @@ const mapDispatch = (dispatch) => {
   return {
     cleanStateValues() {
       dispatch(cleanBSTState())
+
     }
   }
 }

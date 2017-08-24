@@ -15,6 +15,8 @@ const DeleteNodeForm = (props) => {
       <form id="form-group"  >
         <span id="form-group-left">
           <button type="click" className="buttonstyle" onClick={(evt) => props.handleHeadDelete(evt)} >Delete Node <br/> from Head</button>
+        </span>
+         <span id="form-group-left">
           <button type="click" className="buttonstyle" onClick={(evt) => props.handleTailDelete(evt)} > Delete Node <br/>  from Tail</button>
         </span>
         <br />
