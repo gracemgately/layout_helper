@@ -16,40 +16,40 @@ export default class Home extends Component {
                         <span> A data structures visualization tool </span>
                     </div>
                 </div>
-                
+
                 <div className="flex-container" >
                      <Link to={`/linked-list`}>
                             <div className="card">
-                                        <img className='img-size' src="/images/llbig.png"></img>
-                                        <h4>Linked List</h4>
+                                        <img className='img-size' src="/images/ll.png"></img>
+                                        Linked List
                             </div>
                     </Link>
 
-                            
+
                     <Link to={`/binary-search-tree`}>
                             <div className="card">
-                                
-                                        <img className='img-size' src="/images/bstbig.png"></img>
-                                        <h4>Binary Search Tree</h4>
-                                
+
+                                        <img className='img-size' src="/images/bst.png"></img>
+                                        Binary Search Tree
+
                             </div>
                     </Link>
+
                     <Link to={`/queue`}>
                             <div className="card">
-                                        <img className='img-size' src="/images/queuebig.png"></img>
-                                        <h4>Queue</h4>
+                                        <img className='img-size' src="/images/queue.png"></img>
+                                        Queue
                              </div>
                     </Link>
+
                     <Link to={`/stack`}>
-                            <div className="card">
-                                
-                                        <img className='img-size' src="/images/stackbig.png"></img>
-                                        <h4>Stack</h4>
+                        <div className="card">
+                            <img className='img-size' src="/images/stack.png"></img>Stack
                         </div>
                     </Link>
                 </div>
             </div>
-           
+
         )
     }
 }

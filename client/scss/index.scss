@@ -45,7 +45,7 @@ body {
     -webkit-font-smoothing: antialiased;
   }
 
- h2 {
+  h2 {
     // color: #026670;
     color: #07203F;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
@@ -73,13 +73,13 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-}
+  }
 
 .textTextBar {
   // color: #026670;
   color: #07203F;
   font-size: 25px;
-}
+  }
 
   input {
     background-color: #E1E8F1;
@@ -102,7 +102,7 @@ body {
   button:hover {
 
     background-color: #A8C6EC;
-}
+  }
 
   form div {
     margin: 1em;
@@ -111,34 +111,15 @@ body {
     font-size: 15px;
 
   }
+
 .flex-container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
   // height: 85%;
   // width: 25%;
-  margin: 0px;
-  // padding: 10px;
-}
-
-// .flex-col {
-//   display: flex;
-//   flex-direction: column;
-//   margin: 0px;
-//   padding: 0px;
-// }
-
-// .col-xs-10 {
-//   height: 90%;
-//   // width: 50%;
-// }
-
-.img-size {
-  min-height: 400px;
-  min-width: 400px;
-  // max-height: 250px;
-  // max-width: 250px;
-  // line-height: 250px;
+  margin: 20px;
+  padding-top: 50px;
 }
 
   .card {
@@ -150,7 +131,7 @@ body {
       display: flex;
       flex-direction: column;
       // padding-top: 30px;
-      margin: 5px;
+      margin: 20px;
       align-content: left;
       text-align: center;
       background-color: white;
@@ -160,10 +141,22 @@ body {
 
   }
 
-}
+  .card img.wide {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+  .card img.tall {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+  } ​
+
+
 #form-group {
   // color: #026670;
   color: black;
+
   &-left {
     padding-left: 15px;
   }
@@ -438,4 +431,5 @@ svg {
   color: black;
 }
 
+}
 
