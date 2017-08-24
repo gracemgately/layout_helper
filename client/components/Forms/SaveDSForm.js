@@ -56,6 +56,7 @@ class SaveDSForm extends Component {
             type="text"
             onChange={this.handleChange}
             placeholder="name.."
+            size="12"
           />
         <br />
           <button className="buttonstyle" type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>

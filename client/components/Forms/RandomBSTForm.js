@@ -8,7 +8,7 @@ import {getRandomBst, arrayifyClassBST} from '../../store'
 const RandomBSTForm = (props) => {
 
   return (
-    <div>
+    <div>&nbsp;&nbsp;&nbsp;
           <button type="click" className="buttonstyle" onClick={(evt) => props.handleSubmit(evt, props.bstNode)} > Get a random BST</button>
 
     </div>

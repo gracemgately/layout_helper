@@ -57,7 +57,6 @@ class BinarySearchTree extends Component {
 
   render() {
     return (
-      <div>
         <div>
           {//only render forms to edit DS if it is not a previously-saved one
             this.props.location.query ?
@@ -73,7 +72,7 @@ class BinarySearchTree extends Component {
                 <UploadCSV DSType={'binarysearchtree'} />
                 {this.props.user.id ?
                   <div className="save-form">
-                    Save Your Binary  <br /> Search Tree:
+                  &nbsp;&nbsp;&nbsp;Save Your Binary  <br /> &nbsp;&nbsp;&nbsp;Search Tree:
                 <SaveDSForm content={this.props.array} userId={this.props.user.id} />
                   </div>
                   : null}
@@ -98,7 +97,7 @@ class BinarySearchTree extends Component {
           <BSTInsertionTime />
         }
         </div>
-        </div>
+
     )
   }
 }
