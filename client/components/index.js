@@ -15,7 +15,8 @@ export {default as Home} from './Home'
 export {default as BSTType} from './BSTType'
 export {default as UploadCSV} from './Forms/UploadCSV'
 export {default as DeleteSingleUserDS} from './Forms/DeleteSingleUserDS'
-export {default as InsertionTime} from './InsertionTime'
+export { default as InsertionTime } from './InsertionTime'
+export {default as BstDemoAnimation} from './BstDemoAnimation'
 
 
 export * from './arrow'

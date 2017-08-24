@@ -1,6 +1,6 @@
 //COMPONENTS
 import React, { Component } from 'react'
-import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
+import { breadthFirstForEach, breadthFirstForEachDemo, BstDemoAnimation } from '../components'
 
 //LIBRARIES
 import { connect } from 'react-redux'
@@ -121,6 +121,7 @@ class BSTType extends Component {
             })
           }
         </div>
+        <BstDemoAnimation />
       </div>
     )
   }
