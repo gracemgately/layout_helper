@@ -73,28 +73,36 @@ export default function (state = defaultState, action) {
     switch (action.type) {
         case GET_USER_BST:
             return Object.assign({}, state, {BinarySearchTrees: action.binarysearchtrees});
+        
         case GET_USER_LL:
             return Object.assign({}, state, {LinkedLists: action.linkedlists});
+        
         case GET_USER_QUEUE:
             return Object.assign({}, state, {Queues: action.queues});
+
         case GET_USER_STACK:
             return Object.assign({}, state, {Stacks: action.stacks});
+
         case DELETE_USER_LL:
             const allUserLL = state.LinkedLists;
             const newLLArray = deleteFromArray(allUserLL, action.linkedListID)
             return Object.assign({}, state, {LinkedLists: newLLArray});
+
         case DELETE_USER_QUEUE:
             const allUserQueue = state.Queues;
             const newQueueArray = deleteFromArray(allUserQueue, action.queueID)
             return Object.assign({}, state, {Queues: newQueueArray});
+
         case DELETE_USER_BST:
             const allUserBST = state.BinarySearchTrees;
             const newBSTArray = deleteFromArray(allUserBST, action.BSTID)
             return Object.assign({}, state, {BinarySearchTrees: newBSTArray});
+
         case DELETE_USER_STACK:
             const allUserStack = state.Stacks;
             const newStackArray = deleteFromArray(allUserStack, action.stackID)
             return Object.assign({}, state, {Stacks: newStackArray});
+            
         default:
             return defaultState;
     }

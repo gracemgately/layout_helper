@@ -1,6 +1,7 @@
 //COMPONENTS
 import React, { Component } from 'react'
 import { breadthFirstForEach, breadthFirstForEachDemo } from '../components'
+import BstDemoAnimation from '../components/BstDemoAnimation'
 
 //LIBRARIES
 import { connect } from 'react-redux'
@@ -16,6 +17,7 @@ class BSTType extends Component {
     this.state = {
       selectedBST: '',
       toggled: false
+
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -120,6 +122,7 @@ class BSTType extends Component {
             })
           }
         </div>
+        <BstDemoAnimation />
       </div>
     )
   }
