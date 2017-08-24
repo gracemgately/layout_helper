@@ -31,6 +31,7 @@ class BinarySearchTree {
         this.right = null;
         this.colored = false;
         this.bstCount = 0;
+        this.direction = null;
     }
     insert(node) {
         this.bstCount++;
@@ -44,6 +45,7 @@ class BinarySearchTree {
         }
         var direction = node.value < this.value ? 'left' : 'right';
         node.parent = this;
+        node.direction = direction;
         if (!this[direction]) this[direction] = node;
         else this[direction].insert(node);
     }
@@ -93,8 +95,8 @@ class BinarySearchTree {
             if (this.left) this.left.depthFirstForEach(type);
             drawBSTNode2(this, fill);
 
-            //idea is that once the node is processed, the drawBSTNode 
-            //function will be triggered with a fill setting andthe node will 
+            //idea is that once the node is processed, the drawBSTNode
+            //function will be triggered with a fill setting andthe node will
             //be redrawn with yellow fill, much like in the peek functions of stack and queue....
 
 

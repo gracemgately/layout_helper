@@ -72,6 +72,7 @@ export const arrayifyBst = (BST) => {
 
     collection.push({
       value: current.value,
+      direction: current.direction,
       left: childrenIdx(counter)[0],
       right: childrenIdx(counter)[1],
       parent: parentIdx(counter)
