@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 //UTILS & STORE
 import { drawBSTnodes } from '../components'
 import {  groupBstNodes } from '../utils'
-import { cleanBSTState } from '../store';
+import { removeSingleBSTNode, cleanBSTState } from '../store';
 
 class BinarySearchTree extends Component {
 
@@ -26,6 +26,10 @@ class BinarySearchTree extends Component {
       groups: []
     }
     this.asyncCalls = this.asyncCalls.bind(this);
+  }
+
+  componentWillUnmount(){
+    this.props.cleanStateValues();
   }
 
   componentDidMount() {
@@ -115,6 +119,7 @@ const mapDispatch = (dispatch) => {
   return {
     cleanStateValues() {
       dispatch(cleanBSTState())
+
     }
   }
 }
