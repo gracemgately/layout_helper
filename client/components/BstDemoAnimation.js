@@ -4,7 +4,7 @@ import history from '../history'
 import $ from "jquery";
 
 
-const animate = () => {
+export const animate = () => {
 
 
     let hello = d3.select("body").selectAll(".democircle")
@@ -25,13 +25,31 @@ const animate = () => {
 
 }
 
+export const deanimate = () => {
+
+
+        let hello = d3.select("body").selectAll(".democircle")
+                .style("background-color", "pink")
+
+
+
+
+
+    }
+
 export default class BstDemoAnimation extends Component {
+
+
 
     render() {
 
-        return (
+        console.log('bstdemoanimation is called');
 
-                <div>{animate()}</div>
+        return (
+            <div>
+            <div>{deanimate()}</div>
+            <div>{animate()}</div>
+                </div>
         )
     }
 }

@@ -16,7 +16,7 @@ export {default as BSTType} from './BSTType'
 export {default as UploadCSV} from './Forms/UploadCSV'
 export {default as DeleteSingleUserDS} from './Forms/DeleteSingleUserDS'
 export { default as InsertionTime } from './InsertionTime'
-export {default as BstDemoAnimation} from './BstDemoAnimation'
+// export {default as BstDemoAnimation} from './BstDemoAnimation'
 
 
 export * from './arrow'
@@ -31,4 +31,5 @@ export * from './Forms/QueueForm'
 export * from './Forms/SaveDSForm'
 export * from './InsertionTime'
 export * from './Forms/RandomBSTForm'
+export * from './BstDemoAnimation'
 

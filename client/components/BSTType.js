@@ -1,6 +1,7 @@
 //COMPONENTS
 import React, { Component } from 'react'
-import { breadthFirstForEach, breadthFirstForEachDemo, BstDemoAnimation } from '../components'
+import { breadthFirstForEach, breadthFirstForEachDemo, deanimate, animate } from '../components'
+import BstDemoAnimation from '../components/BstDemoAnimation'
 
 //LIBRARIES
 import { connect } from 'react-redux'
@@ -15,7 +16,9 @@ class BSTType extends Component {
     super(props);
     this.state = {
       selectedBST: '',
-      toggled: false
+      toggled: false,
+      display: 0
+
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,6 +70,7 @@ class BSTType extends Component {
     this.setState({ toggled: flip })
     const preOrder = [16, 12, 8, 14, 20, 18, 22];
     breadthFirstForEach(node, preOrder)
+    this.setState({ display: this.state.display++ })
   }
 
 
@@ -121,7 +125,7 @@ class BSTType extends Component {
             })
           }
         </div>
-        <BstDemoAnimation />
+        {this.state.display === 0 ? <BstDemoAnimation /> : null }
       </div>
     )
   }
