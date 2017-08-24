@@ -38,8 +38,7 @@ class BSTType extends Component {
       node.right.value = 5;
       node.right.left.value = 6;
       node.right.right.value = 7;
-    } else if (type === "Depth First: In-order")
-    {
+    } else if (type === "Depth First: In-order") {
       node.left.left.value = 1;
       node.left.value = 2;
       node.left.right.value = 3;
@@ -47,8 +46,7 @@ class BSTType extends Component {
       node.right.left.value = 5;
       node.right.value = 6;
       node.right.right.value = 7;
-    } else if (type === "Depth First: Post-order")
-    {
+    } else if (type === "Depth First: Post-order") {
       node.left.left.value = 1;
       node.left.right.value = 2;
       node.left.value = 3;
@@ -82,27 +80,28 @@ class BSTType extends Component {
     })
     const type = this.state.selectedBST;
     return (
-      <div>
-        <h1> Binary Search Tree Demo</h1>
-        <div>
-          <select
-            form="bst-type-form"
-            name="type"
-            onChange={this.handleChange}
-          >
-            <option>Depth First: Pre-order</option>
-            <option>Depth First: In-order</option>
-            <option>Depth First: Post-order</option>
-            <option>Breadth First</option>
-          </select>
-        </div>
-        <div className="input-group-btn">
-          <button onClick={(evt) => this.handleSubmit(evt, type, BST.bstDemo, !this.state.toggled)}
-          >Start Demo!
+      <div >
+        <div className='main-container-controls'>
+          <h2> Binary Search Tree Types</h2>
+          <div className="bst-type-form">
+            <select
+              form="bst-type-form"
+              name="type"
+              onChange={this.handleChange}
+            >
+              <option>Depth First: Pre-order</option>
+              <option>Depth First: In-order</option>
+              <option>Depth First: Post-order</option>
+              <option>Breadth First</option>
+            </select>
+          </div>
+          <div className="bst-type-form buttonstyle">
+            <button onClick={(evt) => this.handleSubmit(evt, type, BST.bstDemo, !this.state.toggled)}
+            >Start Demo!
           </button>
+          </div>
         </div>
-        <br /><br />
-        <div className="container2">
+        <div className="container">
           {
             groups.map((ele, index) => {
 

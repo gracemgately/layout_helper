@@ -11,7 +11,7 @@ const DeleteBSTNodeForm = (props) => {
 
   return (
     <div>
-    Delete a Node:
+    &nbsp;&nbsp;&nbsp;Delete a Node:
       <form id="form-group" onSubmit={(evt) => props.handleSubmit(evt, bstNode)}>
         <div>
           <input
@@ -20,6 +20,7 @@ const DeleteBSTNodeForm = (props) => {
             name="node"
             onChange={props.handleChange}
             value={props.newNode}
+            size="12"
           />
         <br />
           <button className="buttonstyle" type="submit">Delete Me!</button>

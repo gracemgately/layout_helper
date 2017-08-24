@@ -13,9 +13,10 @@ const QueueForm = (props) => {
           <input
             type="text"
             onChange={props.handleChange}
-            placeholder="add an item to queue"
+            placeholder="add a node"
             name="node"
             value={props.newNode}
+            size="12"
           />
         <br />
           <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Enqueue</button>

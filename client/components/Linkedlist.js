@@ -48,10 +48,10 @@ class Linkedlist extends Component {
               <InsertNodeForm />
               <DeleteNodeForm />
               <UploadCSV DSType={'linkedlist'} />
-              {user.id ? 
+              {user.id ?
                 <div className="save-form">
-                Save Your Linked List:
-                <SaveLLForm type={'linkedlists'} content={nodeArr} user={user} /> 
+                &nbsp;&nbsp;&nbsp;Save Your Linked List:
+                <SaveLLForm type={'linkedlists'} content={nodeArr} user={user} />
                 </div>
                 : null}
             </div>
@@ -69,9 +69,9 @@ class Linkedlist extends Component {
 
           }
         </div>
-        {this.props.location.query ? null: 
+        {this.props.location.query ? null:
           <InsertionTime />
-        } 
+        }
       </div>
     )
   }

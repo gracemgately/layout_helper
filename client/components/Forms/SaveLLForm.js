@@ -45,7 +45,7 @@ export default class SaveLLForm extends Component {
 
     var LLtoBeMod = this.state.content;//get information about the props off the state
     var LLModified = LLNodeArray_(LLtoBeMod);//modify that LL into the array with reference indices
-    
+
     var LLtoSave = {
       name: this.state.name,
       content: LLModified,
@@ -75,6 +75,7 @@ export default class SaveLLForm extends Component {
             type="text"
             onChange={this.handleChange}
             placeholder="name.."
+            size="12"
           />
           <br/>
           <button className="buttonstyle" type="click" onClick={(evt) => this.handleSubmit(evt)} >Save</button>

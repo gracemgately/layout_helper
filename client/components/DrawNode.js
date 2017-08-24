@@ -23,7 +23,7 @@ export const drawNode = (node, toggled, index, highlightIndex) => {
 export const drawQueueNode = (node, toggled, index, highlightIndex) => {
   return (
     <div className="queue-container">
-     { <div className="basicnode">
+      {<div className="basicnode">
         {drawBasicNode(node, toggled, index, highlightIndex)}
       </div>}
       <div id="down-arrow">
@@ -53,12 +53,9 @@ export const drawBSTNode2 = (node) => {
   return (
     <div className="demonode">
       {(node.left !== null) ? SouthWestArrow(node.value) : null}
-
       <div className='bstNode democircle' cx="25" cy="25" r="25">
         <span className="innerTEXT">{node.value}</span>
       </div>
-
-
       {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   )
@@ -68,9 +65,9 @@ export const drawBSTNode2 = (node) => {
 export const drawBSTNode3 = (node, nodeArr) => {
   if (!node.value) {
     return (
-      <div className="basicnode">
+      <div >
         <svg>
-          <circle className="circle-empty" fill="none" cx="25" cy="25" r="25"> </circle>
+          <circle className="circle-empty basicnode" fill="none" cx="25" cy="25" r="25"> </circle>
           <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em"></text>
         </svg>
       </div>
@@ -78,18 +75,20 @@ export const drawBSTNode3 = (node, nodeArr) => {
   }
 
   return (
-    <div className="basicnode">
-      {(node.left && nodeArr[node.left] && nodeArr[node.left].value) ? SouthWestArrow(node.value) : null}
+    <div className="circle1">
+
       <svg>
-      <linearGradient id="MyGradient0">
-        <stop offset="5%" stopColor="white" />
-        <stop offset="95%" stopColor="yellow" />
-      </linearGradient>
-        <circle className="circle1" fill="yellow" cx="25" cy="25" r="25"> </circle>
+        <linearGradient id="MyGradient0">
+          <stop offset="5%" stopColor="white" />
+          <stop offset="95%" stopColor="yellow" />
+        </linearGradient>
+        <circle className="circle1 basicnode" fill="yellow" cx="25" cy="25" r="25"> </circle>
         <text x="50%" y="50%" textAnchor="middle" stroke="#51c5cf " strokeWidth="2px" dy=".3em">{node.value}</text>
       </svg>
-
-      {(node.right && nodeArr[node.right] && nodeArr[node.right].value) ? SouthEastArrow(node.value) : null}
+      <div className="arrowcontainer" >
+        {(node.left && nodeArr[node.left] && nodeArr[node.left].value) ? SouthWestArrow(node.value) : null}
+        {(node.right && nodeArr[node.right] && nodeArr[node.right].value) ? SouthEastArrow(node.value) : null}
+      </div>
     </div>
   )
 }

@@ -11,7 +11,7 @@ const InsertNodeForm = (props) => {
 //added individual handleSubmit functions for inserting at head and at tail
   return (
     <div>
-    Add a Node:
+    &nbsp;&nbsp;&nbsp;Add a Node:
       <form id="form-group">
         <div>
           <input
@@ -20,8 +20,9 @@ const InsertNodeForm = (props) => {
             placeholder="add a node"
             name="node"
             value={props.newNode}
-          />   
-          <br/>       
+            size="12"
+          />
+          <br/>
           <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to <br/> Head</button>
           <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to <br/> Tail</button>
         </div>
@@ -32,6 +33,7 @@ const InsertNodeForm = (props) => {
             onChange={props.handleIdxChange}
             placeholder="specify index.."
             name="index"
+            size="12"
           />
         <br />
         <button className="buttonstyle" type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
