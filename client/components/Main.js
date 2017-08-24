@@ -21,38 +21,60 @@ const Main = (props) => {
         <div className="logo" >
           <h1 className="logo">  N O D E  &nbsp;&nbsp; L E G O</h1>
         </div>
-        <div className="navtop-container-2" >
+        {/* <div className="navtop-container-2" >
           <div className="log-in" >
             <Link to="/login">Log in</Link>
           </div> /
           <div className="sign-up">
             <Link to="/signup">Sign up</Link>
           </div>
-        </div>
+        </div> */}
       </div>
       <nav>
         {
           isLoggedIn ?
-            <div className="nav">
+            <div className="nav-tools">
               {/* The navbar will show these links after you log in */}
-              <Link to="/">Home  </Link>
-              <a href="#" onClick={handleClick}>Logout </a>
-              <Link to="/linked-list">Linked List</Link>
-              <Link to="/binary-search-tree">Binary Search Tree</Link>
-              <Link to="/queue">Queue</Link>
-              <Link to="/stack">Stack</Link>
-              <Link to="/my-data-structures">My Data Structures</Link>
-              <Link to="/BSTDemo">BST Types</Link>
+              <div className="nav-menu">
+                <Link to="/">Home  </Link>
+                <a href="#" onClick={handleClick}>Logout </a>
+                <Link to="/linked-list">Linked List</Link>
+                <Link to="/binary-search-tree">Binary Search Tree</Link>
+                <Link to="/queue">Queue</Link>
+                <Link to="/stack">Stack</Link>
+                <Link to="/my-data-structures">My Data Structures</Link>
+                <Link to="/BSTDemo">BST Types</Link>
+              </div>
+              <div className="navtop-container-2" >
+                <div className="log-in" >
+                  <Link to="/login">Log in</Link>
+                </div> /
+                <div className="sign-up">
+                  <Link to="/signup">Sign up</Link>
+                </div>
+              </div>
             </div> :
-            <div className="nav">
+            <div className=" nav-tools">
               {/* The navbar will show these links before you log in */}
-              <Link to="/">Home </Link>
-              <Link to="/linked-list">Linked List</Link>
-              <Link to="/binary-search-tree">Binary Search Tree</Link>
-              <Link to="/queue">Queue</Link>
-              <Link to="/stack">Stack</Link>
-              <Link to="/bstDemo">BST Types</Link>
-              <br />
+
+              <div className="nav-menu">
+                <Link to="/">Home </Link>
+                <Link to="/linked-list">Linked List</Link>
+                <Link to="/binary-search-tree">Binary Search Tree</Link>
+                <Link to="/queue">Queue</Link>
+                <Link to="/stack">Stack</Link>
+                <Link to="/bstDemo">BST Types</Link>
+                <br />
+              </div>
+
+              <div className="navtop-container-2" >
+                <div className="log-in" >
+                  <Link to="/login">Log in</Link>
+                </div> /
+                <div className="sign-up">
+                  <Link to="/signup">Sign up</Link>
+                </div>
+              </div>
             </div>
         }
       </nav>

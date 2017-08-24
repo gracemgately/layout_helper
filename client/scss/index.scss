@@ -155,8 +155,9 @@ svg {
 }
 
 .circle1 {
-
-  border: 5px;
+  padding-right: 7px;
+  padding-left: 7px;
+  border: 10px;
   stroke: yellow;
   fill: url(#MyGradient0);
   stroke-width: "20";
@@ -206,10 +207,12 @@ svg {
 
 .basicnode {
   display: flex;
+  justify-content: center;
   width: 120px;
-  height: 100px;
+  height: 120px;
   &-linkedlist {
       padding-top: 10vw;
+
   }
 }
 
