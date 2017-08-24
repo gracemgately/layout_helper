@@ -14,7 +14,7 @@ import { connect } from 'react-redux'
 //UTILS & STORE
 import { drawBSTnodes } from '../components'
 import {  groupBstNodes } from '../utils'
-import { removeSingleBSTNode, cleanBSTState } from '../store';
+import { cleanBSTState } from '../store';
 
 class BinarySearchTree extends Component {
 
