@@ -10,7 +10,8 @@
    @include flex-master(column);
     float: left;
     border-right: 1px solid grey;
-
+    font-family: 'Nixie One', cursive;
+    width: 15%;
     color: #043878;
     height: 100vw;
   }

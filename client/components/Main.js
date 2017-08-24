@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router-dom'
+import { connect } from 'react-redux'
+import { withRouter, Link } from 'react-router-dom'
 import { logout } from '../store'
 
 /**
@@ -17,31 +17,42 @@ const Main = (props) => {
 
   return (
     <div>
-      <h1>Node Lego</h1>
+      <div className="navtop-container" >
+        <div className="logo" >
+          <h1 className="logo">  N O D E  &nbsp;&nbsp; L E G O</h1>
+        </div>
+        <div className="navtop-container-2" >
+          <div className="log-in" >
+            <Link to="/login">Log in</Link>
+          </div> /
+          <div className="sign-up">
+            <Link to="/signup">Sign up</Link>
+          </div>
+        </div>
+      </div>
       <nav>
         {
           isLoggedIn ?
-            <div>
+            <div className="nav">
               {/* The navbar will show these links after you log in */}
-              <Link to="/">Home</Link>
-              <a href="#" onClick={handleClick}>Logout</a>
+              <Link to="/">Home  </Link>
+              <a href="#" onClick={handleClick}>Logout </a>
               <Link to="/linked-list">Linked List</Link>
               <Link to="/binary-search-tree">Binary Search Tree</Link>
               <Link to="/queue">Queue</Link>
               <Link to="/stack">Stack</Link>
               <Link to="/my-data-structures">My Data Structures</Link>
-              <Link to="/BSTDemo">BST Demo</Link>
+              <Link to="/BSTDemo">BST Types</Link>
             </div> :
-            <div>
+            <div className="nav">
               {/* The navbar will show these links before you log in */}
-              <Link to="/">Home</Link>
-              <Link to="/login">Login</Link>
-              <Link to="/signup">Sign Up</Link>
+              <Link to="/">Home </Link>
               <Link to="/linked-list">Linked List</Link>
               <Link to="/binary-search-tree">Binary Search Tree</Link>
               <Link to="/queue">Queue</Link>
               <Link to="/stack">Stack</Link>
-              <Link to="/bstDemo">BST Demo</Link>
+              <Link to="/bstDemo">BST Types</Link>
+              <br />
             </div>
         }
       </nav>
@@ -62,7 +73,7 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleClick () {
+    handleClick() {
       dispatch(logout())
     }
   }

@@ -1,0 +1,50 @@
+.navtop-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.navtop-container-2 {
+  display: flex;
+  flex-direction: row;
+  padding-right: 30px;
+  padding-top: 20px;
+  padding-bottom: 30px;
+}
+
+nav a {
+  display: inline-block;
+  margin: 0.2em;
+  // color: #026670;
+  color: #043878;
+  font-family: 'Nixie One', cursive;
+  font-weight: bold;
+  margin-left: 10px;
+  font-size: 17px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+
+  &-hover {
+    background-color: #A8C6EC;
+  }
+}
+
+// nav a:hover {
+//   background-color: #A8C6EC;
+// }
+
+.log-in {
+  padding-right: 10px;
+  font-weight: bold;
+}
+
+.sign-up {
+  padding-left: 10px;
+  font-weight: bold;
+}
+
+.logo {
+  text-align: center;
+  font-weight: bold;
+  flex-grow:2;
+  padding-bottom: 15px;
+}

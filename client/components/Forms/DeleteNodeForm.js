@@ -11,7 +11,7 @@ const DeleteNodeForm = (props) => {
 
   return (
     <div>
-      Delete a Node:
+      &nbsp;&nbsp;&nbsp;Delete a Node:
       <form id="form-group"  >
         <span id="form-group-left">
           <button type="click" className="buttonstyle" onClick={(evt) => props.handleHeadDelete(evt)} >Delete Node <br/> from Head</button>
@@ -24,6 +24,7 @@ const DeleteNodeForm = (props) => {
             onChange={props.handleIdxChange}
             placeholder="specify index.."
             name="delete-index"
+            size="12"
           />
           <br/>
           <button type="click" className="buttonstyle" onClick={(evt) => props.handleIndexSubmit(evt, props.index)} > Delete at specific index</button>
