@@ -64,7 +64,7 @@ export default function (state = { initialTree, bstDemo, step, JSXArr, toggledBS
 
         case CLEAN_BST_STATE:
             initialTree = new BinarySearchTreeClass();
-            return Object.assign({}, initialTree, {array: []});
+            return Object.assign({}, state, initialTree, {array: []});
 
         case GET_RANDOM_BST:
             let arr = getRandomNumbersArr();
