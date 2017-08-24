@@ -113,19 +113,20 @@ body {
   }
 .flex-container {
   display: flex;
-  flex-wrap: row wrap;
-  justify-content: center;
-  height: 100%;
+  flex-wrap: wrap;
+  // justify-content: space-between;
+  height: 85%;
+  // width: 50%;
   margin: 0px;
-  padding: 0px;
+  // padding: 10px;
 }
 
-.flex-col {
-  display: flex;
-  flex-direction: column;
-  margin: 0px;
-  padding: 0px;
-}
+// .flex-col {
+//   display: flex;
+//   flex-direction: column;
+//   margin: 0px;
+//   padding: 0px;
+// }
 
 .col-xs-10 {
   height: 85%;
@@ -134,71 +135,78 @@ body {
   .card {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 310px;
-      width: 152px;
+      height: 180px;
+      width: 340px;
       transition: 0.3s;
-      padding-top: 10px;
-      margin: 10px;
+      padding-top: 30px;
+      // margin: 5px;
       align-content: left;
       text-align: center;
       background-color: white;
-      border-radius: 2px;
+      // border-radius: 1px;
+      // margin: 0px;
+      padding: 5px;
 
   }
 
     .llcard {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 140px;
-      width: 355px;
+      height: 180px;
+      width: 340px;
       transition: 0.3s;
-      padding-top: 10px;
-      margin: 10px;
+      padding-top: 30px;
+      // margin: 5px;
       align-content: center;
       text-align: center;
       background-color: white;
-      border-radius: 2px;
+      // border-radius: 1px;
+      // margin: 0px;
+      padding: 5px;
 
   }
 
   .qcard {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 145px;
-      width: 355px;
+      height: 180px;
+      width: 340px;
       transition: 0.3s;
-      padding-top: 10px;
-      margin: 10px;
+      padding-top: 30px;
+      // margin: 5px;
       align-content: center;
       text-align: center;
       background-color: white;
-      border-radius: 2px;
+      // border-radius: 1px;
+      // margin: 0px;
+      padding: 5px;
 
   }
 
       .bstcard {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 282px;
-      width: 324px;
+      height: 180px;
+      width: 340px;
       transition: 0.3s;
-      padding-top: 10px;
-      margin: 10px;
-      // align-content: center;
+      padding-top: 30px;
+      // margin: 5px;
+      padding: 5px;
+      align-content: center;
       text-align: center;
       background-color: white;
-      border-radius: 2px;
+      // border-radius: 1px;
 
   }
 
-  .queue {
-    // padding-left: 100px;
-  }
+  // .queue {
+  //   // padding-left: 100px;
+  // }
 
-  .bst {
-    padding-left: 0px;
-    // align-content: center;
-  }
+  // .bst {
+  //   padding-left: 0px;
+  //   // align-content: center;
+  // }
 
 }
 #form-group {
@@ -270,12 +278,24 @@ svg {
 
 .basicnode {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  // align-items: center;
   width: 120px;
   height: 120px;
   &-linkedlist {
       padding-top: 10vw;
 
+  }
+  &-queue {
+    height: 75px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+    &-stack {
+    // height: 75px !important;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    height: 0px;
   }
 }
 
@@ -447,15 +467,19 @@ svg {
 .queue-container {
   display:flex;
   flex-direction: column;
+  justify-content: center;
+  // height: 75px;
 }
 
 .stack-container {
   display:flex;
   flex-direction: column-reverse;
+  justify-content: center;
 }
 
 #down-arrow {
   margin-left: 15px;
+  padding-top: 0px;
 }
 
 .saved-ds {

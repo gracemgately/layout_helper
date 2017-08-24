@@ -18,47 +18,47 @@ export default class Home extends Component {
                 </div>
                 
                 <div className="flex-container" >
-                    <div className="flex-col" >
                     <div className="llcard">
                         <Link to={`/linked-list`}>
                             <div className="col-xs-10">
-                                <img src="/images/lllarge.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/llperfect.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Linked List</h4>
                             </div>
                         </Link>
 
                     </div>
-                    <div className ="queue">
-                     <div className="qcard">
-                        <Link to={`/queue`}>
-                            <div className="col-xs-10">
-                                <img src="/images/queuess.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
-                                <h4>Queue</h4>
-                            </div>
-                        </Link>
-                    </div>
-                    </div>
-                    </div>
+              
                     <div className="bst">
                     <div className="bstcard">
                         <Link to={`/binary-search-tree`}>
                             <div className="col-xs-10">
-                                <img src="/images/bstss.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <img src="/images/bstperfect.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
                                 <h4>Binary Search Tree</h4>
                             </div>
                         </Link>
                     </div>
                     </div>
+                          <div className ="queue">
+                     <div className="qcard">
+                        <Link to={`/queue`}>
+                            <div className="col-xs-10">
+                                <img src="/images/queueperfect.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <h4>Queue</h4>
+                            </div>
+                        </Link>
+                    </div>
+                    </div>
+                    
                    
                     <div className="card">
                         <Link to={`/stack`}>
                             <div className="col-xs-10">
-                                <img src="/images/stackss.jpg" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <img src="/images/stackperfect.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Stack</h4>
                             </div>
                         </Link>
+                        </div>
                     </div>
-                </div>
             </div>
         )
     }
