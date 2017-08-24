@@ -43,7 +43,7 @@ const Main = (props) => {
                 <Link to="/queue">Queue</Link>
                 <Link to="/stack">Stack</Link>
                 <Link to="/my-data-structures">My Data Structures</Link>
-                <Link to="/BSTDemo">BST Types</Link>
+                <Link to="/bstDemo">BST Types</Link>
               </div>
               <div className="navtop-container-2" >
                 <div className="log-in" >
