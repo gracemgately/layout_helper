@@ -1,4 +1,5 @@
 import history from '../history'
+import { LinkedListClass } from '../utils'
 
 const GET_NODE = 'GET_NODE'
 const ADD_NODE_TO_TAIL = 'ADD_NODE_TO_TAIL'
@@ -24,140 +25,8 @@ export const toggleColor = flip => ({ type: TOGGLE_COLOR, flip })
 export const cleanState = () => ({ type: CLEAN_STATE })
 
 
-//ES6 class declaration to create a node object which can have the following
-//properties (or they can be null). Based on which properties are not null,S
-//we can determine what data structure and arrows??? should be rendered
-class Node {
-  constructor(value, next = null, previous = null) {
-    this.value = value;
-    this.next = next;
-    this.previous = previous;
-  }
-}
-
-class LinkedList {
-
-  constructor() {
-    this.head = null;
-    this.tail = null;
-    this.nodeCount = 0;
-    this.toggledStatus = false;
-  }
-
-  addToHead(v) {
-
-    const newNode = new Node(v);
-    const formerHead = this.head;
-    this.nodeCount++;
-
-    this.head = newNode;
-
-    if (formerHead) {
-      formerHead.previous = newNode;
-      newNode.next = formerHead;
-    }
-
-    if (!this.tail) this.tail = newNode;
-
-  }
-
-  addToTail(item) {
-    const newNode = new Node(item);
-    const oldTail = this.tail;
-    this.nodeCount++;
-
-    this.tail = newNode;
-
-    if (!this.head) {
-      this.head = this.tail;
-    }
-
-    if (oldTail) {
-      oldTail.next = newNode;
-      newNode.previous = oldTail;
-    }
-  }
-
-
-    // PREV -- 'NEW'(insertion)  -- CURR
-
-  addAtIndex(value, index) {
-
-    let newNode = new Node(value);
-    let currentNode = search(index);
-    this.nodeCount++;
-
-    let prev = currentNode.previous;
-    prev.next = newNode;
-    newNode.next = currentNode;
-    currentNode.previous = newNode;
-    newNode.previous = prev;
-
-  }
-
-  removeHead() {
-    const oldHead = this.head;
-    this.nodeCount--;
-
-    if (!oldHead) return;
-
-    if (oldHead.next) {
-      this.head = oldHead.next;
-      this.head.previous = null;
-    } else { // if there is no item == no head
-      this.head = null;
-      this.tail = null;
-    }
-
-    return oldHead.value;
-  }
-
-  removeTail() {
-    const oldTail = this.tail;
-    this.nodeCount--;
-
-    if (!oldTail) return;
-
-    if (oldTail.previous) {
-      this.tail = oldTail.previous;
-      this.tail.next = null;
-    } else { // if there is no item == no head
-      this.head = null;
-      this.tail = null;
-    }
-
-    return oldTail.value;
-  }
-
-  removeAtIndex(index) {
-    this.nodeCount--;
-    let deletedNode = search(index);
-    let prevNode = deletedNode.previous;
-    prevNode.next = deletedNode.next;
-    deletedNode.previous = prevNode;
-  }
-
-}
-
 // create a new linkedlist class, which will hold all the nodes
-var list = new LinkedList();
-
-// external search function converts LinkedList class to an ordered array and search at specific index
-const search = (index) => {
-
-  // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
-  // keep looking at next node until next node === idx
-  // let nodeCount = this.nodeCount;
-  let currentNode = Object.assign({}, list.head);
-  let counter = 0;
-  // loop while there is next node and counter is <= idx -1
-  while (currentNode.next !== null && counter <= (index - 1)) {
-    currentNode = currentNode.next;
-    counter++;
-  }
-  return currentNode;
-
-}
+var list = new LinkedListClass();
 
 
 export default function (state = list, action) {
@@ -189,7 +58,7 @@ export default function (state = list, action) {
     case TOGGLE_COLOR:
       return Object.assign({}, state, { toggledStatus: action.flip } )
     case CLEAN_STATE:
-      list = new LinkedList();
+      list = new LinkedListClass();
       return Object.assign({}, list)
     default:
       return state
