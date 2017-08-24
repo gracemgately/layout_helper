@@ -16,8 +16,7 @@ class BSTType extends Component {
     super(props);
     this.state = {
       selectedBST: '',
-      toggled: false,
-      display: 0
+      toggled: false
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -70,7 +69,6 @@ class BSTType extends Component {
     this.setState({ toggled: flip })
     const preOrder = [16, 12, 8, 14, 20, 18, 22];
     breadthFirstForEach(node, preOrder)
-    this.setState({ display: this.state.display++ })
   }
 
 
@@ -125,7 +123,7 @@ class BSTType extends Component {
             })
           }
         </div>
-        {this.state.display === 0 ? <BstDemoAnimation /> : null }
+        <BstDemoAnimation />
       </div>
     )
   }
