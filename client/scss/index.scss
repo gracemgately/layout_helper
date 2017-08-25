@@ -45,7 +45,7 @@ body {
     -webkit-font-smoothing: antialiased;
   }
 
- h2 {
+  h2 {
     // color: #026670;
     color: #07203F;
     text-shadow: 0px 0px 1px rgba(255,255,255,0.7);
@@ -54,9 +54,10 @@ body {
   }
 
    h4 {
-   color: #F9EDEA;
+   color: #07203F;
     padding: 0px;
     margin: 0px;
+    padding-top: 0px;
   }
 
 
@@ -72,13 +73,13 @@ body {
   align-items: center;
   justify-content: center;
   margin-bottom: 20px;
-}
+  }
 
 .textTextBar {
   // color: #026670;
   color: #07203F;
   font-size: 25px;
-}
+  }
 
   input {
     background-color: #E1E8F1;
@@ -101,7 +102,7 @@ body {
   button:hover {
 
     background-color: #A8C6EC;
-}
+  }
 
   form div {
     margin: 1em;
@@ -110,37 +111,52 @@ body {
     font-size: 15px;
 
   }
+
 .flex-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
-  margin: 0px;
-  padding: 0px;
-}
-
-.col-xs-10 {
-  height: 85%;
+  // height: 85%;
+  // width: 25%;
+  margin: 20px;
+  padding-top: 50px;
 }
 
   .card {
       position: static;
       box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-      height: 200px;
-      width: 200px;
+      height: 306px;
+      width: 310px;
       transition: 0.3s;
-      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      // padding-top: 30px;
       margin: 20px;
-      align-content: center;
+      align-content: left;
       text-align: center;
-      background-color: #043878;
-      border-radius: 2px;
+      background-color: white;
+      border-radius: 1px;
+      // margin: 0px;
+      // padding: 5px;
 
   }
 
-}
+  .card img.wide {
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+  }
+  .card img.tall {
+    max-height: 100%;
+    max-width: 100%;
+    width: auto;
+  } ​
+
+
 #form-group {
   // color: #026670;
   color: black;
+
   &-left {
     padding-left: 15px;
   }
@@ -207,12 +223,24 @@ svg {
 
 .basicnode {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
+  // align-items: center;
   width: 120px;
   height: 120px;
   &-linkedlist {
       padding-top: 10vw;
 
+  }
+  &-queue {
+    height: 75px;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+  }
+    &-stack {
+    // height: 75px !important;
+    margin-bottom: 0px;
+    padding-bottom: 15px;
+    height: 0px;
   }
 }
 
@@ -367,21 +395,26 @@ svg {
 .queue-container {
   display:flex;
   flex-direction: column;
+  justify-content: center;
+  // height: 75px;
 }
 
 .stack-container {
   display:flex;
   flex-direction: column-reverse;
+  justify-content: center;
 }
 
 #down-arrow {
   margin-left: 15px;
+  padding-top: 0px;
 }
 
 .saved-ds {
   color: black;
 }
 
+}
 
 .alert-warning {
   background-color: yellow;
