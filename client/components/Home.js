@@ -23,8 +23,10 @@ export default class Home extends Component {
                             <div className="col-xs-10">
                                 <img src="/images/ll.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Linked List</h4>
+
                             </div>
-                        </Link>
+                    </Link>
+
 
                     </div>
                     <div className="card">
@@ -50,11 +52,13 @@ export default class Home extends Component {
                             <div className="col-xs-10">
                                 <img src="/images/stack.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
                                 <h4>Stack</h4>
+
                             </div>
-                        </Link>
-                    </div>
+                    </Link>
+
                 </div>
             </div>
+
         )
     }
 }

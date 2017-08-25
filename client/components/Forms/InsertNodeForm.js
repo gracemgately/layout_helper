@@ -1,46 +1,100 @@
 //LIBRARIES
-import React from 'react'
+import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { withRouter, Link } from 'react-router-dom'
 
 //UTILS & STORE
-import { writeNode, writeIndex, addNodeToTail, addNodeToHead, searchNode } from '../../store'
+import store, { writeNode, writeIndex, addNodeToTail, addNodeToHead, searchNode } from '../../store'
 
-const InsertNodeForm = (props) => {
-//added individual handleSubmit functions for inserting at head and at tail
-  return (
-    <div>
-    &nbsp;&nbsp;&nbsp;Add a Node:
+class InsertNodeForm extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      dirty: false
+    }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleTailSubmit = this.handleTailSubmit.bind(this);
+  }
+  //added individual handleSubmit functions for inserting at head and at tail
+
+  handleChange(evt) {
+    store.dispatch(writeNode(Number(evt.target.value)));
+    this.setState({
+      dirty: true
+    })
+  }
+
+  handleHeadSubmit(evt, nodeValue) {
+    evt.preventDefault();
+    store.dispatch(addNodeToHead({ value: +nodeValue }))
+    store.dispatch(writeNode(''))
+    this.setState({
+      dirty: false
+    })
+  }
+
+  handleTailSubmit(evt, nodeValue) {
+    evt.preventDefault();
+    store.dispatch(addNodeToTail({ value: +nodeValue }))
+    store.dispatch(writeNode(''))
+    this.setState({
+      dirty: false
+    })
+  }
+
+  render() {
+    const numerified = Number(this.props.newNode);
+    console.log(numerified);
+    const noNumbers = /^[0-9]+$/;
+    console.log(noNumbers.test('yes'));
+
+    return (
+      <div>
+        &nbsp;&nbsp;&nbsp;Add a Node:
       <form id="form-group">
-        <div>
-          <input
-            type="text"
-            onChange={props.handleChange}
-            placeholder="add a node"
-            name="node"
-            value={props.newNode}
-            size="12"
-          />
-          <br/>
-          <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleHeadSubmit(evt, props.newNode)} >Add Node to <br/> Head</button>
-          <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} > Add Node to <br/> Tail</button>
-        </div>
-        <br/>
-        <div>
-          <input
-            type="text"
-            onChange={props.handleIdxChange}
-            placeholder="specify index.."
-            name="index"
-            size="12"
-          />
-        <br />
-        <button className="buttonstyle" type="click" onClick={(evt) => props.handleIndexSubmit(evt, props.newNode, props.index)} > Add at specific index</button>
-        </div>
-      </form>
-    </div>
-  )
+          <div>
+            {(Number.isNaN(numerified) || numerified === 0) && this.state.dirty ? <div className="alert alert-warning">Please enter a number</div> : null
+            }
+            <input
+              type="text"
+              onChange={this.handleChange}
+              placeholder="add a node"
+              name="node"
+              value={this.props.newNode}
+              size="12"
+            />
+            <br />
+            <button
+              className="buttonstyle"
+              type="click"
+              disabled={numerified === 0 || Number.isNaN(numerified)} onClick={(evt) => this.handleHeadSubmit(evt, this.props.newNode)}
+              onClick={(evt) => this.handleHeadSubmit(evt, this.props.newNode)} >Add Node to <br /> Head
+            </button>
+            <button
+              className="buttonstyle"
+              type="click"
+              disabled={numerified === 0 || Number.isNaN(numerified)} onClick={(evt) => this.handleTailSubmit(evt, this.props.newNode)}
+              onClick={(evt) => this.handleTailSubmit(evt, this.props.newNode)} > Add Node to <br /> Tail
+            </button>
+          </div>
+          <br />
+          <div>
+            <input
+              type="text"
+              onChange={this.props.handleIdxChange}
+              placeholder="specify index.."
+              name="index"
+              size="12"
+            />
+            <br />
+            <button className="buttonstyle" type="click" onClick={(evt) => this.props.handleIndexSubmit(evt, this.props.newNode, this.props.index)} > Add at specific index</button>
+          </div>
+        </form>
+      </div>
+    )
+  }
 }
 
 //newNode is mounted off writeNode in the reducer
@@ -54,23 +108,10 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
   return {
-    handleChange(evt) {
-      dispatch(writeNode(Number(evt.target.value)));
-    },
     handleIdxChange(evt) {
       dispatch(writeIndex(Number(evt.target.value)));
     },
-    handleHeadSubmit(evt, nodeValue) {
-      evt.preventDefault();
-      dispatch(addNodeToHead({ value: +nodeValue }))
-      dispatch(writeNode(''))
-    },
-    handleTailSubmit(evt, nodeValue){
-      evt.preventDefault();
-      dispatch(addNodeToTail({ value: +nodeValue }))
-      dispatch(writeNode(''))
-    },
-    handleIndexSubmit(evt, nodeValue, index){
+    handleIndexSubmit(evt, nodeValue, index) {
       evt.preventDefault();
       dispatch(searchNode({ value: +nodeValue, index: +index }))
       dispatch(writeNode(''))

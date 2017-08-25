@@ -23,7 +23,7 @@ export const drawNode = (node, toggled, index, highlightIndex) => {
 export const drawQueueNode = (node, toggled, index, highlightIndex) => {
   return (
     <div className="queue-container">
-      {<div className="basicnode">
+      {<div className="basicnode-queue">
         {drawBasicNode(node, toggled, index, highlightIndex)}
       </div>}
       <div id="down-arrow">
@@ -39,7 +39,7 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
       <div id="down-arrow">
         {(node.next !== null) ? DownArrow(node.value) : null}
       </div>
-      <div className="basicnode">
+      <div className="basicnode-stack">
         {drawBasicNode(node, toggled, index, highlightIndex)}
       </div>
     </div>
@@ -74,8 +74,10 @@ export const drawBSTNode3 = (node, nodeArr) => {
     )
   }
 
+  console.log(node.direction);
+
   return (
-    <div className="circle1">
+    <div className={"center " + node.direction}>
 
       <svg>
         <linearGradient id="MyGradient0">

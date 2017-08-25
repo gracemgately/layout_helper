@@ -16,7 +16,7 @@ const BSTInsertionTime = (props) => {
 
     return (
     <div>
-        <h3 className="runtime">Operation took <span className="runtimeInline">{bstArrLength}</span> moves. Expected <span className="runtimeInline">{moves}</span> number of moves based on <span className="runtimeInline">{bigO}</span> time complexity. </h3>
+        <h3 className="runtime">Operation took <span className="runtimeInline">{bstArrLength}</span> moves. Expected <span className="runtimeInline">{moves}</span> moves based on <span className="runtimeInline">{bigO}</span> time complexity. </h3>
     </div>
   )
 }
