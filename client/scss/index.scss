@@ -216,17 +216,28 @@ svg {
   }
 }
 
+.center {
+  text-align: center;
+}
+
+.arrowRotateLeft {
+  transform: rotateY(45deg);
+  &:only-child {
+    margin-right: 32px;
+  }
+}
+
+.arrowRotateRight {
+  transform: rotateY(45deg) scaleX(-1);
+  &:only-child {
+    margin-left: 32px;
+  }
+}
+
 .arrowsize {
   font-size: 2em;
   padding: 0;
   margin: 0;
-}
-
-.arrowsizeSE {
-  font-size: 2em;
-  padding: 0;
-  margin: 0;
-  transform: scaleX(-1);
 }
 
 .arrow-empty {
@@ -235,59 +246,31 @@ svg {
   margin: 0;
 }
 
-.bstlevel0 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding-top: 10px;
-}
-
-.bstlevel1 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-
-}
-
-.bstlevel2 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-}
-
-.bstlevel3 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-}
-
-.bstlevel4 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-}
-
-.bstlevel5 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  padding: 0;
-}
-
-.bstlevel6 {
+.bstlevel {
   display: flex;
   justify-content: center;
   width: 100%;
 }
 
-.bstlevel7 {
-  display: flex;
-  justify-content: center;
-  width: 100%;
+@for $i from 0 through 7{
+  .bstlevel#{$i} {
+    color: black;
+    @extend .bstlevel
+  }
+}
+
+.left {
+  // &:only-child {
+  //   margin-right: 50px
+  // }
+  margin-right: 20px;
+}
+
+.right {
+  // &:only-child {
+  //   margin-left: 50px;
+  // }
+  margin-left: 20px;
 }
 
 .formDisplay {
@@ -396,6 +379,13 @@ svg {
 }
 
 .saved-ds {
+  color: black;
+}
+
+
+.alert-warning {
+  background-color: yellow;
+  border-color: #e96506;
   color: black;
 }
 

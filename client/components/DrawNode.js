@@ -74,8 +74,10 @@ export const drawBSTNode3 = (node, nodeArr) => {
     )
   }
 
+  console.log(node.direction);
+
   return (
-    <div className="circle1">
+    <div className={"center " + node.direction}>
 
       <svg>
         <linearGradient id="MyGradient0">

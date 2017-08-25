@@ -1,32 +1,71 @@
 //LIBRARIES
-import React from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 //UTILS & STORE
-import { writeNode, addNodeToTail, deleteNodeFromTail, toggleColor, highlightNodeAtIndex } from '../../store'
+import store, { writeNode, addNodeToTail, deleteNodeFromTail, toggleColor, highlightNodeAtIndex } from '../../store'
 
-const StackForm = (props) => {
-    const nodeArr = props.nodeArr;
+class StackForm extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            dirty: false
+        }
 
-    return (
-        <div>
-            <form id="form-group"  >
-                <div>
-                    <input
-                        type="text"
-                        onChange={props.handleChange}
-                        placeholder="add a node"
-                        name="node"
-                        size="12"
-                    />
-                <br />
-                    <button className="buttonstyle" type="click" name="head" onClick={(evt) => props.handleTailSubmit(evt, props.newNode)} >Add Item</button>
-                    <button className="buttonstyle" type="click" name="tail" onClick={(evt) => props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item</button>
-                    <button className="buttonstyle" type="click" onClick={(evt) => props.handlePeek(evt, !props.toggled, nodeArr) }> PEEK </button>
-                </div>
-            </form>
-        </div>
-    )
+        this.handleChange = this.handleChange.bind(this);
+        this.handleTailSubmit = this.handleTailSubmit.bind(this);
+    }
+
+    handleChange(evt) {
+        store.dispatch(writeNode(Number(evt.target.value)));
+        this.setState({
+            dirty: true
+        })
+    }
+
+    handleTailSubmit(evt, nodeValue) {
+        evt.preventDefault();
+        store.dispatch(addNodeToTail({ value: +nodeValue }))
+        store.dispatch(writeNode(''))
+        this.setState({
+            dirty: false
+        })
+    }
+
+    render() {
+        const numerified = Number(this.props.newNode);
+        console.log(numerified);
+        const noNumbers = /^[0-9]+$/;
+        console.log(noNumbers.test('yes'));
+        const nodeArr = this.props.nodeArr;
+
+        return (
+            <div>
+                <form id="form-group"  >
+                    <div>
+                        {(Number.isNaN(numerified) || numerified === 0) && this.state.dirty ? <div className="alert alert-warning">Please enter a number</div> : null
+                        }
+                        <input
+                            type="text"
+                            onChange={this.handleChange}
+                            placeholder="add a node"
+                            name="node"
+                            size="12"
+                        />
+
+                        <br />
+                        <button
+                            className="buttonstyle" type="click"
+                            disabled={numerified === 0 || Number.isNaN(numerified)} onClick={(evt) => this.props.handleTailSubmit(evt, this.props.newNode)}
+                            onClick={(evt) => this.handleTailSubmit(evt, this.props.newNode)} >Add Item
+                        </button>
+                        <button className="buttonstyle" type="click" name="tail" onClick={(evt) => this.props.handlePopSubmit(evt, nodeArr[nodeArr.length - 1])} > Pop Item</button>
+                        <button className="buttonstyle" type="click" onClick={(evt) => this.props.handlePeek(evt, !this.props.toggled, nodeArr)}> PEEK </button>
+                    </div>
+                </form>
+            </div>
+        )
+    }
 }
 
 
@@ -42,14 +81,6 @@ const mapState = (state) => {
 
 const mapDispatch = (dispatch) => {
     return {
-        handleChange(evt) {
-            dispatch(writeNode(Number(evt.target.value)));
-        },
-        handleTailSubmit(evt, nodeValue) {
-            evt.preventDefault();
-            dispatch(addNodeToTail({ value: +nodeValue }))
-            dispatch(writeNode(''))
-        },
         handlePopSubmit(evt, lastNode) {
             evt.preventDefault();
             dispatch(deleteNodeFromTail());

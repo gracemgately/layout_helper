@@ -41,7 +41,7 @@ export const DownArrow = (data) => {
 
 export const SouthEastArrow = (data) => {
   return (
-    <p className="arrowsizeSE">
+    <p className="arrowsize arrowRotateRight">
       {'\u2199'}
     </p>
   )
@@ -49,7 +49,7 @@ export const SouthEastArrow = (data) => {
 
 export const SouthWestArrow = (data) => {
   return (
-    <p className="arrowsize">
+    <p className="arrowsize arrowRotateLeft">
       {'\u2199'}
     </p>
   )
