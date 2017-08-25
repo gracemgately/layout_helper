@@ -211,6 +211,7 @@ svg {
 
 .demonode {
   display: flex;
+  flex-direction: column;
   width: 150px;
   height: 150px;
   &-linkedlist {
@@ -430,6 +431,7 @@ svg {
   height: 40px;
   border-radius: 50%;
   text-align: center;
+  margin-left: 15px;
   background: linear-gradient(yellow, white);
   color: black;
   font-weight: bold;

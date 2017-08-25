@@ -52,11 +52,14 @@ export const drawStackNode = (node, toggled, index, highlightIndex) => {
 export const drawBSTNode2 = (node) => {
   return (
     <div className="demonode">
-      {(node.left !== null) ? SouthWestArrow(node.value) : null}
+
       <div className='bstNode democircle' cx="25" cy="25" r="25">
         <span className="innerTEXT">{node.value}</span>
+      </div >
+      <div className="arrowcontainer" >
+        {(node.left !== null) ? SouthWestArrow(node.value) : null}
+        {(node.right !== null) ? SouthEastArrow(node.value) : null}
       </div>
-      {(node.right !== null) ? SouthEastArrow(node.value) : null}
     </div>
   )
 }

@@ -16,7 +16,7 @@ const InsertionTime = (props) => {
 
     return (
     <div>
-        <h3 className="runtime">Operation took <span className="runtimeInline">{nodeArrLength}</span> moves. Expected <span className="runtimeInline">{moves}</span> moves based on <span className="runtimeInline">{bigO}</span> time complexity. </h3>
+        <h3 className="runtime">Operation took <span className="runtimeInline">{nodeArrLength}</span> moves. Expected <span className="runtimeInline">{moves}</span> moves based on <span className="runtimeInline">{bigO}</span> upper-bound time complexity. </h3>
     </div>
   )
 }
