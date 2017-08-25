@@ -65,10 +65,10 @@ export class LinkedListClass {
 
     // PREV -- 'NEW'(insertion)  -- CURR
 
-  addAtIndex(value, index) {
+  addAtIndex(value, index, list) {
 
     let newNode = new NodeClass(value);
-    let currentNode = search(index);
+    let currentNode = search(index, list);
     this.nodeCount++;
 
     let prev = currentNode.previous;
@@ -113,9 +113,9 @@ export class LinkedListClass {
     return oldTail.value;
   }
 
-  removeAtIndex(index) {
+  removeAtIndex(index, list) {
     this.nodeCount--;
-    let deletedNode = search(index);
+    let deletedNode = search(index, list);
     let prevNode = deletedNode.previous;
     prevNode.next = deletedNode.next;
     deletedNode.previous = prevNode;
@@ -124,7 +124,7 @@ export class LinkedListClass {
 }
 
 // external search function converts LinkedListClass class to an ordered array and search at specific index
-const search = (index) => {
+const search = (index, list) => {
 
     // {this.head = 1: { next:4 { next: 16 { next:34 }}}}
     // keep looking at next node until next node === idx

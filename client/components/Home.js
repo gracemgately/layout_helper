@@ -54,8 +54,9 @@ export default class Home extends Component {
                                 <h4>Stack</h4>
 
                             </div>
-                    </Link>
+                        </Link>
 
+                    </div>
                 </div>
             </div>
 

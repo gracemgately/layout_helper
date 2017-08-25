@@ -54,11 +54,11 @@ export default function (state = list, action) {
       return Object.assign({}, list);
 
     case SEARCH_NODE:
-      list.addAtIndex(action.node.value, action.node.index);
+      list.addAtIndex(action.node.value, action.node.index, list);
       return Object.assign({}, list);
 
     case DELETE_AT_INDEX:
-      list.removeAtIndex(action.node.index);
+      list.removeAtIndex(action.node.index, list);
       return Object.assign({}, list);
 
     case HIGHLIGHT_NODE_AT_INDEX:
@@ -70,7 +70,7 @@ export default function (state = list, action) {
     case CLEAN_STATE:
       list = new LinkedListClass();
       return Object.assign({}, list)
-      
+
     default:
       return state
   }
