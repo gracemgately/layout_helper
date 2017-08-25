@@ -12,7 +12,7 @@ const animate = () => {
             .duration(250)
             .transition()
             .delay(1000 + this.firstChild.innerHTML * 500)
-            .style("background-color", "pink")
+            .style("background", "orange")
 
     })
 
@@ -21,7 +21,8 @@ const animate = () => {
 const deanimate = () => {
 
     d3.select("body").selectAll(".democircle")
-        .style("background-color", "lightgreen")
+        .style("background", "yellow")
+
 
 }
 

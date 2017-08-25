@@ -433,7 +433,9 @@ svg {
   height: 40px;
   border-radius: 50%;
   text-align: center;
-  background: lightgreen;
+  background: linear-gradient(yellow, white);
+  color: black;
+  font-weight: bold;
 }
 
 .innerTEXT {

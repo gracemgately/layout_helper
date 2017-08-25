@@ -18,35 +18,44 @@ export default class Home extends Component {
                 </div>
 
                 <div className="flex-container" >
-                     <Link to={`/linked-list`}>
-                            <div className="card">
-                                        <img className='img-size' src="/images/ll.png"></img>
-                                        Linked List
-                            </div>
-                    </Link>
-
-
-                    <Link to={`/binary-search-tree`}>
-                            <div className="card">
-
-                                        <img className='img-size' src="/images/bst.png"></img>
-                                        Binary Search Tree
+                    <div className="card">
+                        <Link to={`/linked-list`}>
+                            <div className="col-xs-10">
+                                <img src="/images/ll.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <h4>Linked List</h4>
 
                             </div>
                     </Link>
 
-                    <Link to={`/queue`}>
-                            <div className="card">
-                                        <img className='img-size' src="/images/queue.png"></img>
-                                        Queue
-                             </div>
+
+                    </div>
+                    <div className="card">
+                        <Link to={`/binary-search-tree`}>
+                            <div className="col-xs-10">
+                                <img src="/images/bst.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <h4>Binary Search Tree</h4>
+                            </div>
+                        </Link>
+
+                    </div>
+                    <div className="card">
+                        <Link to={`/queue`}>
+                            <div className="col-xs-10">
+                                <img src="/images/queue.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%' }}></img>
+                                <h4>Queue</h4>
+                            </div>
+                        </Link>
+
+                    </div>
+                    <div className="card">
+                        <Link to={`/stack`}>
+                            <div className="col-xs-10">
+                                <img src="/images/stack.png" alt="Avatar" style={{ width: 90 + '%', height: 100 + '%'}}></img>
+                                <h4>Stack</h4>
+
+                            </div>
                     </Link>
 
-                    <Link to={`/stack`}>
-                        <div className="card">
-                            <img className='img-size' src="/images/stack.png"></img>Stack
-                        </div>
-                    </Link>
                 </div>
             </div>
 
